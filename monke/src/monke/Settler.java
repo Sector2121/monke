@@ -60,13 +60,13 @@ public class Settler extends Creature{
 			teleports[0] = new Teleport(1);
 			teleports[1] = new Teleport(1, teleports[0]);
 			teleports[0].SetPair(teleports[1]);
-			//remove resources
+			//remove resources + id meghatározás
 		}
 	}
 	
 	public void BuildRobot(String name) {
 		if(billOfResources.CheckResourceRobot(resources)) {
-			Robot r = new Robot(name, asteroid);
+			Robot r = new Robot(name, this.GetAsteroid());
 		}
 	}
 	
