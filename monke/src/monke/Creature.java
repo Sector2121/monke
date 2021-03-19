@@ -10,6 +10,14 @@ public class Creature {
 		//...
 	}
 	
+	public String GetName() {
+		return name;
+	}
+	
+	public void SetName(String name) {
+		this.name = name;
+	}
+	
 	public Asteroid GetAsteroid() {
 		return asteroid;
 	}

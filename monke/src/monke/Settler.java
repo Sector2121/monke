@@ -7,12 +7,13 @@ public class Settler extends Creature{
 	private static BillOfResources billOfResources;
 	private Teleport[] teleports;
 	
-	public Settler(Game game, BillOfResources bill) {
+	public Settler(Game game, BillOfResources bill, String name) {
 		hasTpk = 0;
 		this.game = game;
 		resources = null;
 		teleports = null;
 		billOfResources = bill;
+		this.SetName(name);
 	}
 	
 	public void Mine() {
@@ -63,8 +64,10 @@ public class Settler extends Creature{
 		}
 	}
 	
-	public void BuildRobot() {
-		
+	public void BuildRobot(String name) {
+		if(billOfResources.CheckResourceRobot(resources)) {
+			Robot r = new Robot(name, asteroid);
+		}
 	}
 	
 	public void PlaceTeleport(Asteroid a) {
