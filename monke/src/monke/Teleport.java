@@ -12,22 +12,29 @@ public class Teleport implements Travel{
 	}
 	
 	public void SetAsteroid(Asteroid a) {
-		
+		asteroid = a;
 	}
+	
 	public Teleport GetPair() {
-		return null;
+		return pair;
 	}
-	public void SetPair() {
-		
+	
+	public void SetPair(Teleport t) {
+		pair = t;
 	}
+	
 	public Asteroid GetAsteroid() {
-		return null;
+		return asteroid;
 	}
+	
 	public void RemoveTpk() {
 		
 	}
+	
 	public void Accept(Creature c) {
-		
+		if(pair.GetAsteroid() != null) {
+			c.SetAsteroid(pair.GetAsteroid());
+		}
 	}
 	
 }
