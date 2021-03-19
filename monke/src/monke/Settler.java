@@ -51,7 +51,7 @@ public class Settler extends Creature{
 	
 	@Override
 	public void Die() {
-		
+		game.RemoveSettler(this);
 	}
 	
 	public void BuildTeleport() {
