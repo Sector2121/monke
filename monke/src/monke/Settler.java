@@ -56,5 +56,5 @@ public class Settler extends Creature{
 	
 	public void PlaceTeleport(Asteroid a) {
 		
-	}
+	} 
 }
