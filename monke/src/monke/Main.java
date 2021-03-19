@@ -2,6 +2,7 @@ package monke;
 
 public class Main {
 	public static void main(String[] args) {
-		System.out.println("Zalán csúnya");
+		System.out.println("Fosós fiú csúnya");
 	}
 }
+//hihi
