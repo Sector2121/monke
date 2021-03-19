@@ -7,6 +7,14 @@ public class Settler extends Creature{
 	private static BillOfResources billOfResources;
 	private Teleport[] teleports;
 	
+	public Settler(Game game, BillOfResources bill) {
+		hasTpk = 0;
+		this.game = game;
+		resources = null;
+		teleports = null;
+		billOfResources = bill;
+	}
+	
 	public void Mine() {
 		
 	}
