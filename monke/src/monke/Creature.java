@@ -5,6 +5,7 @@ public class Creature {
 	private String name;
 	
 	public void Move(Travel t) {
+		t.Accept(this);
 		
 	}
 	
