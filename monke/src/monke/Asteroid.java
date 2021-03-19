@@ -1,12 +1,15 @@
 package monke;
 
+import java.awt.List;
+import java.util.ArrayList;
+
 public class Asteroid {
 	private int layers;
 	private boolean closeToSun;
 	private String weather;
 	private boolean isEmpty;
-	private Creature[] creatures;
-	private Resource[] resources;
+	private ArrayList<Creature> creatures;
+	private Resource resource;
 	private Travel[] neighbors;
 	
 	
@@ -31,7 +34,7 @@ public class Asteroid {
 	}
 	
 	public void ReduceLayers() {
-		
+		layers--;
 	}
 	
 	public void Remove(Creature c) {
@@ -39,7 +42,7 @@ public class Asteroid {
 	}
 	
 	public void Accept(Creature c) {
-		
+		creatures.add(c);
 	}
 	
 	public void CheckEnoughResources() {
@@ -56,23 +59,21 @@ public class Asteroid {
 		
 	}
 	
-	public Creature[] GetCreatures() {
+	public ArrayList<Creature> GetCreatures() {
 		return creatures;
 		
 	}
 	
 	public Resource GetResource() {
-		return null;
-		
+		return resource;
 	}
 	
 	public void SetResource(Resource r) {
-		
+		resource = r;
 	}
 	
 	public boolean GetCloseToSun() {
-		return false;
-		
+		return closeToSun;
 	}
 	
 	public void SunStorm() {
