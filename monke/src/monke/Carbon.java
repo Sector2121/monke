@@ -1,5 +1,5 @@
 package monke;
 
-public class Carbon {
+public class Carbon extends Resource{
 
 }

@@ -1,5 +1,5 @@
 package monke;
 
-public class Iron {
+public class Iron extends Resource{
 
 }
