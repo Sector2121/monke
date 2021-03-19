@@ -3,25 +3,31 @@ package monke;
 public class Asteroid {
 	private int layers;
 	private boolean closeToSun;
-	private String isEmpty;
+	private String weather;
+	private boolean isEmpty;
 	private Creature[] creatures;
 	private Resource[] resources;
 	private Travel[] neighbors;
 	
 	
+	public Asteroid() {
+		
+	}
 	
-	public Asteroid[] GetNeighbors(){
-		return null;
-	
-	}	
-	
+	public Travel[] GetNeighbors(){
+		return neighbors;
+	}
 	
 	public void AddCreature(Creature c){
 		
 	}	
 	
-	public void GetWeather(String s) {
-		
+	public void SetWeather(String w) {
+		weather = w;
+	}
+	
+	public String GetWeather() {
+		return weather;
 	}
 	
 	public void ReduceLayers() {
@@ -85,7 +91,4 @@ public class Asteroid {
 		
 	}
 	
-	public void SetWeather(String w) {
-		
-	}
 }
