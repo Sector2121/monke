@@ -11,15 +11,23 @@ public class Teleport implements Travel{
 		pair = p;
 	}
 	
-	public void SetAsteroid(Asteroid a) {}
+	public void SetAsteroid(Asteroid a) {
+		
+	}
 	public Teleport GetPair() {
 		return null;
 	}
-	public void SetPair() {}
+	public void SetPair() {
+		
+	}
 	public Asteroid GetAsteroid() {
 		return null;
 	}
-	public void RemoveTpk() {}
-	public void Accept() {}
+	public void RemoveTpk() {
+		
+	}
+	public void Accept() {
+		
+	}
 	
 }
