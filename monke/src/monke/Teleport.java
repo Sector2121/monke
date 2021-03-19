@@ -26,7 +26,7 @@ public class Teleport implements Travel{
 	public void RemoveTpk() {
 		
 	}
-	public void Accept() {
+	public void Accept(Creature c) {
 		
 	}
 	

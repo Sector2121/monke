@@ -11,9 +11,7 @@ public class Game {
 		settlers = se;
 	}
 	
-	public void RemoveAsteroid(Asteroid a) {
-		
-	}
+	public void RemoveAsteroid(Asteroid a) {}
 	public void RemoveCreature(Creature c) {
 		
 	}
