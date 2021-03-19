@@ -5,6 +5,12 @@ public class BillOfResources {
 	private Resource[] billOfRobot;
 	private Resource[] billOfBase;
 	
+	public BillOfResources(Resource[] billOfTpk, Resource[] billOfRobot, Resource[] billOfBase) {
+		this.billOfTpk = billOfTpk;
+		this.billOfRobot = billOfRobot;
+		this.billOfBase = billOfBase;
+	}
+	
 	public void AddResource(Resource r) {
 		
 	}
