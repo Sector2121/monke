@@ -5,10 +5,10 @@ public class Game {
 	private Asteroid[] asteroids;
 	private Settler[] settlers;
 	
-	public Game(Sun s, Asteroid[] a, Settler[] se){
-		sun = s;
-		asteroids = a;
-		settlers = se;
+	public Game(int asteroidCount, int settlerCount){
+		sun = new Sun();
+		asteroids = new Asteroid[asteroidCount];
+		settlers = new Settler[settlerCount];
 	}
 	
 	public void RemoveAsteroid(Asteroid a) {}
