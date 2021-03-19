@@ -5,9 +5,15 @@ public class Teleport implements Travel{
 	private Asteroid asteroid;
 	private Teleport pair;
 	
-	public Teleport(int i, Asteroid a, Teleport p){
+	public Teleport(int i) {
 		id = i;
-		asteroid = a;
+		asteroid = null;
+		pair = null;
+	}
+	
+	public Teleport(int i, Teleport p){
+		id = i;
+		asteroid = null;
 		pair = p;
 	}
 	
