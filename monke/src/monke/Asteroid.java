@@ -1,6 +1,5 @@
 package monke;
 
-import java.awt.List;
 import java.util.ArrayList;
 
 public class Asteroid {
@@ -10,14 +9,18 @@ public class Asteroid {
 	private boolean isEmpty;
 	private ArrayList<Creature> creatures;
 	private Resource resource;
-	private Travel[] neighbors;
+	private ArrayList<Travel> neighbors;
 	
 	
 	public Asteroid() {
 		
 	}
 	
-	public Travel[] GetNeighbors(){
+	public boolean GetIsEmpty() {
+		return isEmpty;
+	}
+	
+	public ArrayList<Travel> GetNeighbors(){
 		return neighbors;
 	}
 	
