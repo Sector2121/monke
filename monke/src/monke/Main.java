@@ -55,17 +55,17 @@ public class Main {
 			}
 			else if (cmd[0].equals("replace_resource")) {
 				System.out.println("Enter asteroid layer:");
-				int l = myObj.nextInt();
+				int l = Integer.parseInt(myObj.nextLine());
 				if(l != 0) {
 					System.out.println("\tOperation failed, asteroid has layers!");
 				}
 				else {
 					System.out.println("\tEnter asteroid resource (uranium, waterice, carbon, iron, empty):");
 					String ra = myObj.nextLine();
-					if(ra.equals("empty")) {
+					if (ra.equals("empty")) {
 						System.out.println("\t\tEnter settler resource (uranium, waterice, carbon, iron, empty):");
 						String rs = myObj.nextLine();
-						if(rs.equals("empty")) {
+						if (rs.equals("empty")) {
 							System.out.println("\t\t\tOperation failed, settler doesn't have resource!");
 						}
 						else {
@@ -87,7 +87,16 @@ public class Main {
 			} else if (cmd[0].equals("give up")) {
 				
 			} else if (cmd[0].equals("sunstorm")) {
-				
+				System.out.println("Enter asteroid layer:");
+				int l = Integer.parseInt(myObj.nextLine());
+				System.out.println("\tEnter asteroid resource (uranium, waterice, carbon, iron, empty):");
+				String ra = myObj.nextLine();
+				if (l == 0 && ra.equals("empty")) {
+					System.out.println("\tCreatures save, asteroid doesn't have layers and is empty!");
+				}
+				else {
+					System.out.println("\tCreatures dies, asteroid has layers and/or is not empty!");
+				}
 			}
 			else {
 				System.out.println("'" + cmd[0] +"' is not recognized command");
