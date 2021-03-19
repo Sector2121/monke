@@ -7,8 +7,6 @@ import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) {
-		System.out.println("Szisza");
-	    
 		Scanner myObj = new Scanner(System.in);
 	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		while (true) {
@@ -22,13 +20,26 @@ public class Main {
 			}	
 			else if (cmd[0].equals("exit")) {
 				break;
-			} else if (cmd[0].equals("mine")) {
-				System.out.println("szex");
+			} else if (cmd[0].equals("move")) {
 
 			} else if (cmd[0].equals("drill")) {
 				System.out.println("Enter asteroid layer:");
 				int layer=myObj.nextInt();
-			} 
+			} else if (cmd[0].equals("mine")) {
+				
+			} else if (cmd[0].equals("build")) {
+				
+			} else if (cmd[0].equals("place teleport")) {
+				
+			} else if (cmd[0].equals("replace resource")) {
+				
+			} else if (cmd[0].equals("skip")) {
+				
+			} else if (cmd[0].equals("give up")) {
+				
+			} else if (cmd[0].equals("sunstorm")) {
+				
+			}
 			else {
 				System.out.println("'" + cmd[0] +"' is not recognized command");
 			}
