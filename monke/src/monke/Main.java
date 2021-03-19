@@ -52,8 +52,36 @@ public class Main {
 				
 			} else if (cmd[0].equals("place teleport")) {
 				//viktor
-			} else if (cmd[0].equals("replace resource")) {
-				
+			}
+			else if (cmd[0].equals("replace_resource")) {
+				System.out.println("Enter asteroid layer:");
+				int l = myObj.nextInt();
+				if(l != 0) {
+					System.out.println("\tOperation failed, asteroid has layers!");
+				}
+				else {
+					System.out.println("\tEnter asteroid resource (uranium, waterice, carbon, iron, empty):");
+					String ra = myObj.nextLine();
+					if(ra.equals("empty")) {
+						System.out.println("\t\tEnter settler resource (uranium, waterice, carbon, iron, empty):");
+						String rs = myObj.nextLine();
+						if(rs.equals("empty")) {
+							System.out.println("\t\t\tOperation failed, settler doesn't have resource!");
+						}
+						else {
+							switch(rs) {
+								case "iron": System.out.println("\t\t\tYou succesfully replaced iron!"); break;
+								case "carbon": System.out.println("\t\t\tYou succesfully replaced carbon!"); break;
+								case "uranium": System.out.println("\t\t\tYou succesfully replaced uranium!"); break;
+								case "waterice": System.out.println("\t\t\tYou succesfully replaced waterice!"); break;
+								default: System.out.println("\t\t\tThere is no such resource!"); break;
+							}
+						}
+					}
+					else {
+						System.out.println("\t\tOperation failed, asteroid has resource!");
+					}
+				}
 			} else if (cmd[0].equals("skip")) {
 				
 			} else if (cmd[0].equals("give up")) {
