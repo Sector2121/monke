@@ -55,7 +55,12 @@ public class Settler extends Creature{
 	}
 	
 	public void BuildTeleport() {
-		
+		if(billOfResources.CheckResourceTpk(resources)) {
+			teleports[0] = new Teleport(1);
+			teleports[1] = new Teleport(1, teleports[0]);
+			teleports[0].SetPair(teleports[1]);
+			//remove resources
+		}
 	}
 	
 	public void BuildRobot() {
