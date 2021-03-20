@@ -33,4 +33,6 @@ public class Creature {
 	}
 	
 	public void Die() {}
+	
+	public void Explode() {}
 }
