@@ -70,7 +70,7 @@ public class Asteroid {
 	}
 	
 	public int GetLayers() {
-		System.out.println("The layers on this asteroid: " + layers);
+		System.out.println("\t Jó én egy belsõ változó vagyok, adj meg lécci egy értéket utálom ezt a szart: ");
 		return layers;
 	}
 	
@@ -94,8 +94,7 @@ public class Asteroid {
 	}
 	
 	public boolean GetCloseToSun() {
-		if(closeToSun) System.out.println("The asteroid is close to the sun!");
-		else System.out.println("The asteroid is not close to the sun!");
+		System.out.println("\t Belsõ vagyok én add meg, hogy napközeli vagyok-e?");
 		return closeToSun;
 	}
 	

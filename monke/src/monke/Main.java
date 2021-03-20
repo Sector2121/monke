@@ -7,7 +7,8 @@ import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) {
-		
+		Settler s = new Settler();
+		Asteroid a = new Asteroid();
 		Scanner myObj = new Scanner(System.in);
 	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		while (true) {
@@ -24,8 +25,18 @@ public class Main {
 			} else if (cmd[0].equals("move")) {
 
 			} else if (cmd[0].equals("drill")) {
-				System.out.println("Enter asteroid layer:");
-				int layer = myObj.nextInt();
+				s.Drill();
+				a.GetLayers();
+				int ertek = Integer.parseInt(myObj.nextLine());
+				if (ertek==1) {
+					a.GetCloseToSun();
+					String napközelség = myObj.nextLine();
+					if(napközelség=="igen") {
+
+					}
+				}
+				
+				
 			} else if (cmd[0].equals("mine")) {
 				System.out.print("Enter asteroid layer: ");
 				int layer = Integer.parseInt(myObj.nextLine());

@@ -9,9 +9,11 @@ public class Settler extends Creature{
 	private static BillOfResources billOfResources;
 	private Teleport[] teleports;
 	
-	public Settler() {}
+	public Settler() {
+		//System.out.println("Settler created!");
+	}
 	
-	public Settler(Game game, BillOfResources bill, String name, Asteroid asteroid) {
+	/*public Settler(Game game, BillOfResources bill, String name, Asteroid asteroid) {
 		hasTpk = 0;
 		this.game = game;
 		resources = new ArrayList<Resource>();
@@ -20,7 +22,7 @@ public class Settler extends Creature{
 		this.SetName(name);
 		this.asteroid = asteroid;
 		System.out.println("Settler created!");
-	}
+	}*/
 	
 	public void Mine() {
 		if(GetAsteroid().GetResource() != null && GetAsteroid().GetLayers() == 0) {

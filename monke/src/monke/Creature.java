@@ -27,9 +27,10 @@ public class Creature {
 	}
 	
 	public void Drill() {
-		if(asteroid.GetLayers() > 0) {
+		/*if(asteroid.GetLayers() > 0) {
 			asteroid.ReduceLayers();
-		}
+		}*/
+		System.out.println("Meg lett hívva a drill");
 	}
 	
 	public void Die() {}
