@@ -16,7 +16,7 @@ public class BillOfResources {
 	}
 	
 	public void RemoveResource(Resource r) {
-		
+		 
 	}
 	
 	public boolean CheckResourceTpk(Resource[] r) {
