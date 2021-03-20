@@ -7,7 +7,7 @@ public class BillOfResources {
 	private ArrayList<Resource> billOfRobot;
 	private ArrayList<Resource> billOfBase;
 	
-	public BillOfResources() {
+	public BillOfResources() { 
 		
 	}
 	
