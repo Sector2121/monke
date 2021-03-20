@@ -4,10 +4,7 @@ public class Sun {
 	private Asteroid[] asteroids;
 	private boolean sunStormNextRound;
 	
-	public Sun() {
-		
-	}
-	
+	public Sun() {}
 	
 	public Sun(Asteroid[] asteroids, boolean sunStormNextRound) {
 		this.asteroids = asteroids;
@@ -20,6 +17,8 @@ public class Sun {
 	
 	public void SunStorm() {
 		System.out.println("Start sun sunstorm!");
+		asteroids[0].GetLayers();
+		asteroids[0].SunStorm();
 
 	}
 	
