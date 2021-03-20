@@ -1,32 +1,39 @@
 package monke;
 
+import java.util.ArrayList;
+
 public class Settler extends Creature{
 	private int hasTpk;
 	private Game game;
-	private Resource[] resources;
+	private ArrayList<Resource> resources;
 	private static BillOfResources billOfResources;
 	private Teleport[] teleports;
+	
+	public Settler() {}
 	
 	public Settler(Game game, BillOfResources bill, String name) {
 		hasTpk = 0;
 		this.game = game;
-		resources = null;
+		resources = new ArrayList<Resource>();
 		teleports = null;
 		billOfResources = bill;
 		this.SetName(name);
 	}
 	
 	public void Mine() {
-		
-	}
-	
-	public void AddResource(Resource r) {
-		if(resources.length < 10) {
-			
+		if(this.GetAsteroid().GetResource() != null && this.GetAsteroid().GetLayers() == 0) {
+			if(resources.size() < 10) {
+				AddResource(this.GetAsteroid().GetResource());
+				this.GetAsteroid().SetResource(null);
+			}
 		}
 	}
 	
-	public Resource[] GetResources() {
+	public void AddResource(Resource r) {
+		resources.add(r);
+	}
+	
+	public ArrayList<Resource> GetResources() {
 		return resources;
 	}
 	

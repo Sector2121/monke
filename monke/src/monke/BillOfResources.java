@@ -1,11 +1,13 @@
 package monke;
 
+import java.util.ArrayList;
+
 public class BillOfResources {
-	private Resource[] billOfTpk;
-	private Resource[] billOfRobot;
-	private Resource[] billOfBase;
+	private ArrayList<Resource> billOfTpk;
+	private ArrayList<Resource> billOfRobot;
+	private ArrayList<Resource> billOfBase;
 	
-	public BillOfResources(Resource[] billOfTpk, Resource[] billOfRobot, Resource[] billOfBase) {
+	public BillOfResources(ArrayList<Resource> billOfTpk, ArrayList<Resource> billOfRobot, ArrayList<Resource> billOfBase) {
 		this.billOfTpk = billOfTpk;
 		this.billOfRobot = billOfRobot;
 		this.billOfBase = billOfBase;
@@ -19,19 +21,19 @@ public class BillOfResources {
 		 
 	}
 	
-	public boolean CheckResourceTpk(Resource[] r) {
+	public boolean CheckResourceTpk(ArrayList<Resource> r) {
 		
 		System.out.println("Tpk resource checked");
 		return true;
 	}
 	
-	public boolean CheckResourceRobot(Resource[] r) {
+	public boolean CheckResourceRobot(ArrayList<Resource> r) {
 		
 		System.out.println("Robot resource checked");
 		return true;
 	}
 	
-	public boolean CheckResourceBase(Resource[] r) {
+	public boolean CheckResourceBase(ArrayList<Resource> r) {
 		
 		System.out.println("Base resource checked");
 		return true;

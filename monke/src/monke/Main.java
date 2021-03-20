@@ -98,7 +98,7 @@ public class Main {
 				if(l != 0) {
 					System.out.println("\tOperation failed, asteroid has layers!");
 				}
-				else {
+				else { 
 					System.out.println("\tEnter asteroid resource (uranium, waterice, carbon, iron, empty):");
 					String ra = myObj.nextLine();
 					if (ra.equals("empty")) {

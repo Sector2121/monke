@@ -8,6 +8,7 @@ public class Sun {
 		
 	}
 	
+	
 	public Sun(Asteroid[] asteroids, boolean sunStormNextRound) {
 		this.asteroids = asteroids;
 		this.sunStormNextRound = sunStormNextRound;
