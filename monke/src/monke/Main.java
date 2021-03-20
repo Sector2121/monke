@@ -61,7 +61,14 @@ public class Main {
 					
 				}
 			} else if (cmd[0].equals("build")) {
-				//henló
+				System.out.println("Enter object to build (robot, teleport): ");
+				String string = myObj.nextLine();
+				if(string.equals("robot")) {
+					s.BuildRobot();
+				}
+				if(string.equals("teleport")) {
+					s.BuildTeleport();
+				}
 			} else if (cmd[0].equals("place_teleport")) {
 				System.out.print("Enter amount of settler's teleports: ");
 				int teleportCount = Integer.parseInt(myObj.nextLine());
