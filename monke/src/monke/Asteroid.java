@@ -13,9 +13,9 @@ public class Asteroid {
 	
 	
 	public Asteroid() {
-		creatures = new ArrayList<Creature>();
+		/*creatures = new ArrayList<Creature>();
 		resource = new Iron();
-		neighbors = new ArrayList<Travel>();
+		neighbors = new ArrayList<Travel>();*/
 	}
 	
 	public boolean GetIsEmpty() {
@@ -41,7 +41,7 @@ public class Asteroid {
 	}
 	
 	public void ReduceLayers() {
-		layers--;
+		//layers--;
 		System.out.println("Layers reduced!");
 	}
 	
@@ -50,8 +50,8 @@ public class Asteroid {
 	}
 	
 	public void Accept(Creature c) {
-		creatures.add(c);
-		c.SetAsteroid(this);
+		/*creatures.add(c);
+		c.SetAsteroid(this);*/
 		System.out.println("Creature accepted to asteroid!");
 	}
 	
@@ -70,10 +70,10 @@ public class Asteroid {
 	}
 	
 	public ArrayList<Creature> GetCreatures() {
-		System.out.println("Creatures on this asteroid: ");
+		/*System.out.println("Creatures on this asteroid: ");
 		for(Creature c : creatures){
 			System.out.println(c.GetName());
-		}
+		}*/
 		return creatures;
 	}
 	
@@ -82,8 +82,8 @@ public class Asteroid {
 	}
 	
 	public void SetResource(Resource r) {
-		resource = r;
-		if(r == null) isEmpty = true;
+		/*resource = r;
+		if(r == null) isEmpty = true;*/
 	}
 	
 	public boolean GetCloseToSun() {
@@ -93,18 +93,19 @@ public class Asteroid {
 	
 	public void SunStorm() {
 		System.out.println("Sunstorm started!");
-		if(layers == 0 && isEmpty);
+		GetLayers();
+		/*if(layers == 0 && isEmpty);
 		else {
 			for(Creature c : creatures){
 				c.Die();
 			}
-		}
+		}*/
 	}
 	
 	public void Explode() {
-		for(Creature c : creatures){
+		/*for(Creature c : creatures){
 			c.Explode();
-		}
+		}*/
 	}
 	
 	public void AddNewNeighbor(Asteroid a) {
