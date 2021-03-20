@@ -69,7 +69,7 @@ public class Main {
 				}
 				if(string.equals("teleport")) {
 					s.BuildTeleport();
-				}
+				} 
 			} else if (cmd[0].equals("place_teleport")) {
 				System.out.print("Enter amount of settler's teleports: ");
 				int teleportCount = Integer.parseInt(myObj.nextLine());

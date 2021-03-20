@@ -55,7 +55,7 @@ public class Settler extends Creature{
 		else System.out.println("Asteroid can't be mined!");
 	}
 	
-	public void AddResource(Resource r) {
+	public void AddResource(Resource r) { 
 		resources.add(r);
 		System.out.println("Resource added!");
 	}
