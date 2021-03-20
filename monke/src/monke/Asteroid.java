@@ -23,8 +23,6 @@ public class Asteroid {
 	}
 	
 	public boolean GetIsEmpty() {
-		if(isEmpty) System.out.println("The asteroid is empty!");
-		else System.out.println("The asteroid is not empty!");
 		return isEmpty;
 	}
 	
@@ -33,7 +31,7 @@ public class Asteroid {
 	}
 	
 	public void AddCreature(Creature c){
-		System.out.println("Creature " + c.GetName() + " added!");
+		System.out.println("Creature (" + c.GetName() + ") added!");
 	}	
 	
 	public void SetWeather(String w) {
@@ -42,7 +40,7 @@ public class Asteroid {
 	}
 	
 	public String GetWeather() {
-		System.out.println("The weather is " + weather + "!");
+		System.out.println("Please set the weather of the asteroid (normal, hot, critical): ");
 		return weather;
 	}
 	
@@ -71,7 +69,7 @@ public class Asteroid {
 	}
 	
 	public int GetLayers() {
-		System.out.println("\t Jó én egy belsõ változó vagyok, adj meg lécci egy értéket utálom ezt a szart: ");
+		System.out.println("\tPlease set the layers of the asteroid: ");
 		return layers;
 	}
 	
@@ -93,7 +91,7 @@ public class Asteroid {
 	}
 	
 	public boolean GetCloseToSun() {
-		System.out.println("\t Belsõ vagyok én add meg, hogy napközeli vagyok-e?");
+		System.out.println("\tPlease decide if the asteroid is close to sun or not (yes/no): ");
 		return closeToSun;
 	}
 	
