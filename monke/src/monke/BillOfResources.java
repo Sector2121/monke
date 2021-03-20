@@ -1,11 +1,17 @@
 package monke;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class BillOfResources {
 	private ArrayList<Resource> billOfTpk;
 	private ArrayList<Resource> billOfRobot;
 	private ArrayList<Resource> billOfBase;
+	
+	Scanner myObj = new Scanner(System.in);
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	
 	public BillOfResources() { 
 		
@@ -25,10 +31,12 @@ public class BillOfResources {
 		return true;
 	}
 	
-	public boolean CheckResourceRobot(ArrayList<Resource> r) {
+	public boolean CheckResourceRobot() {
+		System.out.println("\t\tDoes the settler have enough resources for robot? (yes/no)");
+		String string = myObj.nextLine();
+		if(string.equals("yes")) return true;
+		else return false;
 		
-		System.out.println("Robot resource checked");
-		return true;
 	}
 	
 	public boolean CheckResourceBase(ArrayList<Resource> r) {

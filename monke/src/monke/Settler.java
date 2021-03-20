@@ -89,7 +89,7 @@ public class Settler extends Creature{
 		}
 		System.out.println("Settler did not have this resource!");
 		*/
-		System.out.println("\t\tResource removed");
+		System.out.println("\t\tRemoveResource was called");
 	}
 	
 	public void GiveUp() {
@@ -124,16 +124,13 @@ public class Settler extends Creature{
 	}
 	
 	public void BuildRobot() {
-		billOfResources.CheckResourceRobot(resources);
-		System.out.println("\tDoes the settler have enough resources for robot? (yes/no)");
-		String string = myObj.nextLine();
-		if(string.equals("yes")) {
+		System.out.println("\tBuildRobot was called");
+		if(billOfResources.CheckResourceRobot()) {
 			Robot r = new Robot();
-			//a.Accept(r);
 			RemoveResource();
-		} else {
-			System.out.println("\t\tSettler doesn't have the resources to build robot!");
 		}
+		//a.Accept(r);
+		//System.out.println("\t\tSettler doesn't have the resources to build robot!");
 	}
 	
 	public void PlaceTeleport(Asteroid a) {
