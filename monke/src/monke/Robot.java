@@ -6,7 +6,6 @@ public class Robot extends Creature{
 	
 	public Robot(Asteroid a) {
 		System.out.println("\t\t\tRobot constructor was called");
-		this.asteroid = a;
 		a.Accept(this);
 	}
 	

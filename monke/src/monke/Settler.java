@@ -9,7 +9,7 @@ public class Settler extends Creature{
 	private int hasTpk;
 	private Game game;
 	private ArrayList<Resource> resources;
-	private static BillOfResources billOfResources;
+	private static BillOfResources billOfResources = new BillOfResources();
 	private Teleport[] teleports;
 	
 	Scanner myObj = new Scanner(System.in);
@@ -108,6 +108,15 @@ public class Settler extends Creature{
 	}
 	
 	public void BuildTeleport() {
+		System.out.println("\tBuildTeleport was called");
+		if(hasTpk == 0) {
+			if(billOfResources.CheckResourceTpk()) {
+				RemoveResource();
+				hasTpk = 2;
+				Teleport t = new Teleport();
+			}
+		}
+		/*
 		if(billOfResources.CheckResourceTpk(resources) && hasTpk == 0) {
 			teleports[0] = new Teleport(1);
 			teleports[1] = new Teleport(1, teleports[0]);
@@ -121,6 +130,7 @@ public class Settler extends Creature{
 		else {
 			System.out.println("Settler does't have the resources to build teleport!");
 		}
+		*/
 	}
 	
 	public void BuildRobot() {

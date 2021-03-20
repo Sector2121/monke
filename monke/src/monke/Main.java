@@ -65,7 +65,6 @@ public class Main {
 				String string = myObj.nextLine();
 				if(string.equals("robot")) {
 					s.BuildRobot();
-					System.out.println("Robot built!");
 				}
 				if(string.equals("teleport")) {
 					s.BuildTeleport();

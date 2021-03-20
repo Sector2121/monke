@@ -1,7 +1,7 @@
 package monke;
 
 public class Creature {
-	protected Asteroid asteroid;
+	protected Asteroid asteroid = new Asteroid();
 	private String name;
 	
 	public void Move(Travel t) {

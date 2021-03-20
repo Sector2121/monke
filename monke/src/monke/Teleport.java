@@ -5,10 +5,8 @@ public class Teleport implements Travel{
 	private Asteroid asteroid;
 	private Teleport pair;
 	
-	public Teleport(int i) {
-		id = i;
-		asteroid = null;
-		pair = null;
+	public Teleport() {
+		System.out.println("\t\t\tTeleport constructor was called");
 	}
 	
 	public Teleport(int i, Teleport p){

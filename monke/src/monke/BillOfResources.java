@@ -25,10 +25,11 @@ public class BillOfResources {
 		 
 	}
 	
-	public boolean CheckResourceTpk(ArrayList<Resource> r) {
-		
-		System.out.println("Tpk resource checked");
-		return true;
+	public boolean CheckResourceTpk() {
+		System.out.println("\t\tDoes the settler have enough resources for teleport? (yes/no)");
+		String string = myObj.nextLine();
+		if(string.equals("yes")) return true;
+		else return false;
 	}
 	
 	public boolean CheckResourceRobot() {
