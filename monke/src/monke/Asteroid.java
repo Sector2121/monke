@@ -13,10 +13,6 @@ public class Asteroid {
 	
 	
 	public Asteroid() {
-		layers = 3;
-		isEmpty = false;
-		closeToSun = false;
-		weather = "normal";
 		creatures = new ArrayList<Creature>();
 		resource = new Iron();
 		neighbors = new ArrayList<Travel>();
