@@ -123,8 +123,13 @@ public class Main {
 				}
 			} else if (cmd[0].equals("skip")) {
 				
-			} else if (cmd[0].equals("give up")) {
-				
+			} else if (cmd[0].equals("give_up")) {
+				System.out.println("Are you sure, you want to give up the game? Yes/No");
+				String yn = myObj.nextLine();
+				Settler s1 = new Settler();
+				if(yn.equals("Yes")) {
+					s1.GiveUp();
+				}
 			} else if (cmd[0].equals("sunstorm")) {
 				System.out.println("Enter asteroid layer:");
 				int l = Integer.parseInt(myObj.nextLine());
