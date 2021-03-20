@@ -114,9 +114,8 @@ public class Settler extends Creature{
 		}
 	}
 	
-	public void BuildRobot(String name) {
+	public void BuildRobot() {
 		if(billOfResources.CheckResourceRobot(resources)) {
-			Robot r = new Robot(name, this.GetAsteroid());
 			System.out.println("Robot built!");
 		}
 		else {
