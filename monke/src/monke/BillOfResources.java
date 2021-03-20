@@ -7,10 +7,8 @@ public class BillOfResources {
 	private ArrayList<Resource> billOfRobot;
 	private ArrayList<Resource> billOfBase;
 	
-	public BillOfResources(ArrayList<Resource> billOfTpk, ArrayList<Resource> billOfRobot, ArrayList<Resource> billOfBase) {
-		this.billOfTpk = billOfTpk;
-		this.billOfRobot = billOfRobot;
-		this.billOfBase = billOfBase;
+	public BillOfResources() {
+		
 	}
 	
 	public void AddResource(Resource r) {
