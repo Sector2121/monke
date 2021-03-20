@@ -7,6 +7,13 @@ import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) {
+		
+		Asteroid a1 = new Asteroid();
+		Asteroid a2 = new Asteroid();
+		a1.AddNewNeighbor(a2);
+		Settler s1 = new Settler(a1);
+		a1.AddCreature(s1);
+		
 		Scanner myObj = new Scanner(System.in);
 	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		while (true) {
