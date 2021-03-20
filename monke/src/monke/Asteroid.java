@@ -100,6 +100,7 @@ public class Asteroid {
 	}
 	
 	public void SunStorm() {
+		System.out.println("Sunstorm started!");
 		if(layers == 0 && isEmpty);
 		else {
 			for(Creature c : creatures){
