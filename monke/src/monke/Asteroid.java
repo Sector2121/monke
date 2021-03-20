@@ -1,6 +1,9 @@
 package monke;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Asteroid implements Travel{
 	private int layers;
@@ -10,6 +13,10 @@ public class Asteroid implements Travel{
 	private ArrayList<Creature> creatures;
 	private Resource resource;
 	private ArrayList<Travel> neighbors;
+	
+	/*private Scanner myObj = new Scanner(System.in);
+	private BufferedReader br = new BufferedReader(new InputStreamReader(System.in));*/
+	
 	
 	
 	public Asteroid() {
@@ -46,7 +53,7 @@ public class Asteroid implements Travel{
 	}
 	
 	public void Remove(Creature c) {
-		System.out.println("Creature removed from asteroid!");
+		System.out.println("\t\t\t\t\tCreature removed from asteroid!");
 	}
 	
 	public void Accept(Creature c) {
@@ -65,7 +72,7 @@ public class Asteroid implements Travel{
 	}
 	
 	public int GetLayers() {
-		System.out.println("\tPlease set the layers of the asteroid: ");
+		System.out.println("\t\t\tDo get layers");
 		return layers;
 	}
 	
@@ -92,8 +99,11 @@ public class Asteroid implements Travel{
 	}
 	
 	public void SunStorm() {
-		System.out.println("Sunstorm started!");
-		GetLayers();
+		System.out.println("\t\t\t\tSunstorm in asteroid started!");
+		Settler s = new Settler();
+	    Robot r = new Robot();
+		s.Die();
+		r.Die();
 		/*if(layers == 0 && isEmpty);
 		else {
 			for(Creature c : creatures){

@@ -3,12 +3,16 @@ package monke;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) {
 		Settler s = new Settler();
 		Asteroid a = new Asteroid();
+		ArrayList<Asteroid> asteroids = new ArrayList<>();
+		asteroids.add(a);
+		Sun sun = new Sun(asteroids);
 		//Teleport tele = new Teleport();
 		Scanner myObj = new Scanner(System.in);
 	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -131,15 +135,13 @@ public class Main {
 					s.GiveUp();
 				}
 			} else if (cmd[0].equals("sunstorm")) {
-				System.out.println("Enter asteroid layer:");
+				System.out.println("Please set the layers of the asteroid: ");
 				int l = Integer.parseInt(myObj.nextLine());
-				System.out.println("\tEnter asteroid resource (uranium, waterice, carbon, iron, empty):");
-				String ra = myObj.nextLine();
-				if (l == 0 && ra.equals("empty")) {
-					System.out.println("\tCreatures save, asteroid doesn't have layers and is empty!");
+				if (l == 0) {
+					System.out.println("\tAll creature survived!");
 				}
 				else {
-					System.out.println("\tCreatures dies, asteroid has layers and/or is not empty!");
+					sun.SunStorm();
 				}
 			}
 			else {

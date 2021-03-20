@@ -12,8 +12,6 @@ public class Settler extends Creature{
 	private static BillOfResources billOfResources = new BillOfResources();
 	private Teleport[] teleports;
 	
-	Scanner myObj = new Scanner(System.in);
-    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	
 	public Settler() {
 		//System.out.println("Settler created!");
@@ -102,8 +100,10 @@ public class Settler extends Creature{
 	
 	@Override
 	public void Die() {
-		System.out.println("Settler died!");
-		game.RemoveSettler(this);
+		game = new Game();
+		asteroid.Remove(null);
+		game.RemoveSettler(null);
+		System.out.println("\t\t\t\t\t\t\tSettler died!");
 	}
 	
 	public void BuildTeleport() {

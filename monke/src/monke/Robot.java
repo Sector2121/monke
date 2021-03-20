@@ -8,11 +8,13 @@ public class Robot extends Creature{
 		System.out.println("\t\t\tRobot constructor was called");
 		a.Accept(this);
 	}
-	
+	Robot(){
+		
+	}
 	@Override
 	public void Die() {
-		GetAsteroid().Remove(this);
-		System.out.println("Robot died"); 
+		asteroid.Remove(null);
+		System.out.println("\t\t\t\t\t\tRobot died!");
 	}
 	
 	public void Step() {
