@@ -77,7 +77,7 @@ public class Main {
 					System.out.println("\tYou don't have a teleport to place!");
 				}
 				else if(teleportCount > 0 && teleportCount < 3) {
-					System.out.println("\tTeleport successfully placed!");
+					System.out.println("\tTeleport successfully placed!"); 
 					teleportCount--;
 					System.out.println("\tRemaining teleports: " + teleportCount);
 				}
