@@ -1,11 +1,13 @@
 package monke;
 
+import java.util.ArrayList;
+
 public class BillOfResources {
-	private Resource[] billOfTpk;
-	private Resource[] billOfRobot;
-	private Resource[] billOfBase;
+	private ArrayList<Resource> billOfTpk;
+	private ArrayList<Resource> billOfRobot;
+	private ArrayList<Resource> billOfBase;
 	
-	public BillOfResources(Resource[] billOfTpk, Resource[] billOfRobot, Resource[] billOfBase) {
+	public BillOfResources(ArrayList<Resource> billOfTpk, ArrayList<Resource> billOfRobot, ArrayList<Resource> billOfBase) {
 		this.billOfTpk = billOfTpk;
 		this.billOfRobot = billOfRobot;
 		this.billOfBase = billOfBase;
