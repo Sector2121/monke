@@ -39,6 +39,7 @@ public class Teleport implements Travel{
 	
 	public void Accept(Creature c) {
 		if(pair.GetAsteroid() != null) {
+			pair.GetAsteroid().AddCreature(c);;
 			c.SetAsteroid(pair.GetAsteroid());
 		}
 	}

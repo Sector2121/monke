@@ -57,6 +57,7 @@ public class Asteroid {
 	
 	public void Accept(Creature c) {
 		creatures.add(c);
+		c.SetAsteroid(this);
 		System.out.println("Creature accepted to asteroid!");
 	}
 	
@@ -83,14 +84,12 @@ public class Asteroid {
 	}
 	
 	public Resource GetResource() {
-		System.out.println("The resource on this asteroid: " + resource);
 		return resource;
 	}
 	
 	public void SetResource(Resource r) {
 		resource = r;
 		if(r == null) isEmpty = true;
-		System.out.println("Resource set to " + r + "!");
 	}
 	
 	public boolean GetCloseToSun() {
