@@ -24,6 +24,20 @@ public class Settler extends Creature{
 		System.out.println("Settler created!");
 	}*/
 	
+	
+	public void Move(Travel t) {
+			boolean tf;
+			tf = asteroid.CheckNeighbor(t);
+			if(tf) {
+				asteroid.Remove(this);
+				t.Accept(this);
+				System.out.println("You are now on a new asteroid!");
+			}else {
+				System.out.println("You unfortunately cant move to neighboring asteroid!");
+			}
+		}
+	
+	
 	public void Mine() {
 		if(GetAsteroid().GetResource() != null && GetAsteroid().GetLayers() == 0) {
 			if(resources.size() < 10) {
