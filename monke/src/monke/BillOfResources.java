@@ -21,16 +21,19 @@ public class BillOfResources {
 	
 	public boolean CheckResourceTpk(Resource[] r) {
 		
+		System.out.println("Tpk resource checked");
 		return true;
 	}
 	
 	public boolean CheckResourceRobot(Resource[] r) {
 		
+		System.out.println("Robot resource checked");
 		return true;
 	}
 	
 	public boolean CheckResourceBase(Resource[] r) {
 		
+		System.out.println("Base resource checked");
 		return true;
 	}
 }
