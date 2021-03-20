@@ -5,8 +5,7 @@ public class Robot extends Creature{
 	public Robot(String name, Asteroid a) {
 		this.SetName(name);
 		this.SetAsteroid(a);
-		a.Accept(this);
-		System.out.println("Robot built");
+		System.out.println("Robot created");
 	}
 	
 	@Override
