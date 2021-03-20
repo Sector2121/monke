@@ -63,7 +63,7 @@ public class Main {
 			} else if (cmd[0].equals("build")) {
 				System.out.println("Enter object to build (robot, teleport): ");
 				String string = myObj.nextLine();
-				if(string.equals("robot")) {
+				if(string.equals("robot")) {  
 					s.BuildRobot();
 					System.out.println("Robot built!");
 				}
