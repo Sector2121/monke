@@ -129,8 +129,6 @@ public class Settler extends Creature{
 			Robot r = new Robot();
 			RemoveResource();
 		}
-		//a.Accept(r);
-		//System.out.println("\t\tSettler doesn't have the resources to build robot!");
 	}
 	
 	public void PlaceTeleport(Asteroid a) {

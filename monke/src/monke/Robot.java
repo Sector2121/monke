@@ -5,7 +5,8 @@ import java.util.ArrayList;
 public class Robot extends Creature{
 	
 	public Robot() {
-		System.out.println("\tRobot constructor was called");
+		System.out.println("\t\t\tRobot constructor was called");
+		//a.Accept(this);
 	}
 	
 	@Override
