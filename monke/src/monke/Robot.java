@@ -4,10 +4,8 @@ import java.util.ArrayList;
 
 public class Robot extends Creature{
 	
-	public Robot(String name, Asteroid a) {
-		this.SetName(name);
-		this.SetAsteroid(a);
-		System.out.println("Robot created");
+	public Robot() {
+		
 	}
 	
 	@Override

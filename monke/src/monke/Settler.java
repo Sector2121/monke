@@ -1,6 +1,9 @@
 package monke;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Settler extends Creature{
 	private int hasTpk;
@@ -8,6 +11,9 @@ public class Settler extends Creature{
 	private ArrayList<Resource> resources;
 	private static BillOfResources billOfResources;
 	private Teleport[] teleports;
+	
+	Scanner myObj = new Scanner(System.in);
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	
 	public Settler() {
 		//System.out.println("Settler created!");
@@ -61,7 +67,7 @@ public class Settler extends Creature{
 	public void PlaceResource(Resource r) {
 		if(GetAsteroid().GetIsEmpty() && GetAsteroid().GetLayers() == 0) {
 			GetAsteroid().SetResource(r);
-			RemoveResource(r);
+			RemoveResource();
 			System.out.println("Resource placed!");
 		}
 		else System.out.println("The asteroid is not empty!");
@@ -72,7 +78,8 @@ public class Settler extends Creature{
 		return true;
 	}
 	
-	public void RemoveResource(Resource rem) {
+	public void RemoveResource(/*Resource rem*/) {
+		/*
 		for(Resource r : resources) {
 			if(r == rem) {
 				resources.remove(r);
@@ -81,6 +88,8 @@ public class Settler extends Creature{
 			}
 		}
 		System.out.println("Settler did not have this resource!");
+		*/
+		System.out.println("\t\tResource removed");
 	}
 	
 	public void GiveUp() {
@@ -115,11 +124,15 @@ public class Settler extends Creature{
 	}
 	
 	public void BuildRobot() {
-		if(billOfResources.CheckResourceRobot(resources)) {
-			System.out.println("Robot built!");
-		}
-		else {
-			System.out.println("Settler doesn't have the resources to build robot!");
+		billOfResources.CheckResourceRobot(resources);
+		System.out.println("\tDoes the settler have enough resources for robot? (yes/no)");
+		String string = myObj.nextLine();
+		if(string.equals("yes")) {
+			Robot r = new Robot();
+			//a.Accept(r);
+			RemoveResource();
+		} else {
+			System.out.println("\t\tSettler doesn't have the resources to build robot!");
 		}
 	}
 	
