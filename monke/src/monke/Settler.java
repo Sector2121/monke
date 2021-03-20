@@ -11,13 +11,14 @@ public class Settler extends Creature{
 	
 	public Settler() {}
 	
-	public Settler(Game game, BillOfResources bill, String name) {
+	public Settler(Game game, BillOfResources bill, String name, Asteroid asteroid) {
 		hasTpk = 0;
 		this.game = game;
 		resources = new ArrayList<Resource>();
 		teleports = null;
 		billOfResources = bill;
 		this.SetName(name);
+		this.asteroid = asteroid;
 		System.out.println("Settler created!");
 	}
 	
