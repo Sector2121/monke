@@ -9,6 +9,7 @@ public class Main {
 	public static void main(String[] args) {
 		Settler s = new Settler();
 		Asteroid a = new Asteroid();
+		//Teleport tele = new Teleport();
 		Scanner myObj = new Scanner(System.in);
 	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		while (true) {
@@ -23,7 +24,15 @@ public class Main {
 			else if (cmd[0].equals("exit")) {
 				break;
 			} else if (cmd[0].equals("move")) {
-
+				//System.out.print("Do you want to go through a teleport(T) or do you want to use your spaceship (S) ?");
+				//String answer = myObj.nextLine();
+				//if(answer.equals("S")) {
+					s.Move(a);
+				//}else if(answer.equals("T")) {
+				//	s.Move(tele);
+				//}
+				
+				
 			} else if (cmd[0].equals("drill")) {
 				s.Drill();
 				a.GetLayers();
@@ -118,9 +127,8 @@ public class Main {
 			} else if (cmd[0].equals("give_up")) {
 				System.out.println("Are you sure, you want to give up the game? Yes/No");
 				String yn = myObj.nextLine();
-				Settler s1 = new Settler();
 				if(yn.equals("Yes")) {
-					s1.GiveUp();
+					s.GiveUp();
 				}
 			} else if (cmd[0].equals("sunstorm")) {
 				System.out.println("Enter asteroid layer:");

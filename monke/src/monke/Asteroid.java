@@ -2,7 +2,7 @@ package monke;
 
 import java.util.ArrayList;
 
-public class Asteroid {
+public class Asteroid implements Travel{
 	private int layers;
 	private boolean closeToSun;
 	private String weather;

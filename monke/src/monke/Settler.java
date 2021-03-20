@@ -37,7 +37,7 @@ public class Settler extends Creature{
 			if(tf) {
 				asteroid.Remove(this);
 				t.Accept(this);
-				System.out.println("You are now on a new asteroid!");
+				//System.out.println("You are now on a new asteroid!");
 			}else {
 				System.out.println("You unfortunately cant move to neighboring asteroid!");
 			}
@@ -94,7 +94,6 @@ public class Settler extends Creature{
 	
 	public void GiveUp() {
 		System.out.println("Settler gave up!");
-		this.Die();
 	}
 	
 	public void Skip() {
