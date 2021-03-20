@@ -4,9 +4,10 @@ import java.util.ArrayList;
 
 public class Robot extends Creature{
 	
-	public Robot() {
+	public Robot(Asteroid a) {
 		System.out.println("\t\t\tRobot constructor was called");
-		//a.Accept(this);
+		this.asteroid = a;
+		a.Accept(this);
 	}
 	
 	@Override
