@@ -13,7 +13,13 @@ public class Asteroid {
 	
 	
 	public Asteroid() {
-		
+		layers = 3;
+		isEmpty = false;
+		closeToSun = false;
+		weather = "normal";
+		creatures = new ArrayList<Creature>();
+		resource = new Iron();
+		neighbors = new ArrayList<Travel>();
 	}
 	
 	public boolean GetIsEmpty() {
@@ -83,6 +89,7 @@ public class Asteroid {
 	
 	public void SetResource(Resource r) {
 		resource = r;
+		if(r == null) isEmpty = true;
 		System.out.println("Resource set to " + r + "!");
 	}
 	
