@@ -50,8 +50,20 @@ public class Main {
 				}
 			} else if (cmd[0].equals("build")) {
 				
-			} else if (cmd[0].equals("place teleport")) {
-				//viktor
+			} else if (cmd[0].equals("place_teleport")) {
+				System.out.print("Enter amount of settler's teleports: ");
+				int teleportCount = Integer.parseInt(myObj.nextLine());
+				if(teleportCount == 0) {
+					System.out.println("\tYou don't have a teleport to place!");
+				}
+				else if(teleportCount > 0 && teleportCount < 3) {
+					System.out.println("\tTeleport successfully placed!");
+					teleportCount--;
+					System.out.println("\tRemaining teleports: " + teleportCount);
+				}
+				else {
+					System.out.println("\tThat's not a valid number of teleports!");
+				}
 			}
 			else if (cmd[0].equals("replace_resource")) {
 				System.out.println("Enter asteroid layer:");
