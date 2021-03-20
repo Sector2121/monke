@@ -71,9 +71,9 @@ public class Settler extends Creature{
 		else System.out.println("The asteroid is not empty!");*/
 		System.out.println("\tStart replace resource to asteroida!");
 		boolean igaz_e = CheckResource(r);
-		//a.GetLayers();
+		asteroid.GetLayers();
 		if(igaz_e == true) {
-			//a.SetResource(r);
+			asteroid.SetResource(r);
 			RemoveResource(r);
 		}
 		else {
@@ -98,7 +98,7 @@ public class Settler extends Creature{
 		}
 		System.out.println("Settler did not have this resource!");
 		*/
-		System.out.println("\t\t\t\t\tRemoveResource was called");
+		System.out.println("\t\t\t\t\tRemoveResource was called!");
 	}
 	
 	public void GiveUp() {

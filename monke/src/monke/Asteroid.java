@@ -72,7 +72,7 @@ public class Asteroid implements Travel{
 	}
 	
 	public int GetLayers() {
-		System.out.println("\t\t\tDo get layers");
+		System.out.println("\t\t\tDo get layers!");
 		return layers;
 	}
 	
@@ -91,6 +91,7 @@ public class Asteroid implements Travel{
 	public void SetResource(Resource r) {
 		/*resource = r;
 		if(r == null) isEmpty = true;*/
+		System.out.println("\t\t\t\tSet asteroid resource!");
 	}
 	
 	public boolean GetCloseToSun() {
