@@ -49,7 +49,34 @@ public class Main {
 					
 				}
 			} else if (cmd[0].equals("build")) {
-				
+				System.out.println("Enter object to build (robot, teleport): ");
+				String b = myObj.nextLine();
+				System.out.println("\tEnter the amount of settler's iron: ");
+				int iron = Integer.parseInt(myObj.nextLine());
+				System.out.println("\tEnter the amount of settler's carbon: ");
+				int carbon = Integer.parseInt(myObj.nextLine());
+				System.out.println("\tEnter the amount of settler's uranium: ");
+				int uranium = Integer.parseInt(myObj.nextLine());;
+				System.out.println("\tEnter the amount of settler's waterice: ");
+				int waterice = Integer.parseInt(myObj.nextLine());
+				if(b.equals("robot")) {
+					if(iron >= 1 && carbon >= 1 && uranium >= 1) {
+						System.out.println("\t\tYou succesfully built a robot!");
+					} else {
+						System.out.println("\t\tYou don't have enough resources to build a robot!");
+					}
+				}
+				if(b.equals("teleport")) {
+					System.out.println("\tEnter the amount of settler's teleports: ");
+					int teleport = Integer.parseInt(myObj.nextLine());
+					if(teleport != 0) {
+						System.out.println("\t\tYou already have a teleport!");
+					} else if(iron >= 2 && uranium >= 1 && waterice >= 1) {
+						System.out.println("\t\tYou succesfully built a teleport!");
+					} else {
+						System.out.println("\t\tYou don't have enough resources to build a teleport!");
+					}
+				}
 			} else if (cmd[0].equals("place_teleport")) {
 				System.out.print("Enter amount of settler's teleports: ");
 				int teleportCount = Integer.parseInt(myObj.nextLine());
