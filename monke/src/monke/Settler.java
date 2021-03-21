@@ -54,7 +54,7 @@ public class Settler extends Creature{
 	}
 	
 	public void AddResource(Resource r) { 
-		resources.add(r);
+		//resources.add(r);
 		System.out.println("Resource added!");
 	}
 	
@@ -63,12 +63,12 @@ public class Settler extends Creature{
 	}
 	
 	public void PlaceResource(Resource r) {
-		if(GetAsteroid().GetIsEmpty() && GetAsteroid().GetLayers() == 0) {
+		//if(GetAsteroid().GetIsEmpty() && GetAsteroid().GetLayers() == 0) {
 			GetAsteroid().SetResource(r);
 			RemoveResource();
 			System.out.println("Resource placed!");
-		}
-		else System.out.println("The asteroid is not empty!");
+		//}
+		//else System.out.println("The asteroid is not empty!");
 	}
 	
 	public boolean CheckResource(Resource r) {
