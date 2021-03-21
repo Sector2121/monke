@@ -27,22 +27,22 @@ public class BillOfResources {
 	
 	public boolean CheckResourceTpk() {
 		System.out.println("\tDoes the settler have enough resources for teleport? (yes/no)");
-		String string = myObj.nextLine();
+		String string = myObj.nextLine(); //Bekéri a tesztelőtől, hogy van-e elég nyersanyag a teleportkapu építéséhez
 		if(string.equals("yes")) return true;
-		else return false;
+		else return false; //A választól függően ad vissza igazat, vagy hamisat
 	}
 	
 	public boolean CheckResourceRobot() {
 		System.out.println("\tDoes the settler have enough resources for robot? (yes/no)");
-		String string = myObj.nextLine();
+		String string = myObj.nextLine(); //Bekéri a tesztelőtől, hogy van-e elég nyersanyag a robot építéséhez
 		if(string.equals("yes")) return true;
-		else return false;
+		else return false; //A választól függően ad vissza igazat, vagy hamisat
 		
 	}
 	
 	public boolean CheckResourceBase(ArrayList<Resource> r) {
 		
 		System.out.println("Base resource checked");
-		return true;
+		return true; //Visszaadja, hogy van-e elég nyersanyag a bázis építéséhez
 	}
 }
