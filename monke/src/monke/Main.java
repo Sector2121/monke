@@ -8,14 +8,14 @@ import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) {
-		Settler s = new Settler();
-		Resource r = new Resource();
-		Asteroid a = new Asteroid(r);
-		s.SetAsteroid(a);
-		a.AddCreature(s);
-		Resource re = new Resource();
-		Scanner myObj = new Scanner(System.in);
-	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		Settler s = new Settler(); //A tesztesetek miatt létrehozott settler
+		Resource r = new Resource(); //A tesztesetek miatt létrehozott resource
+		Asteroid a = new Asteroid(r); //A tesztesetek miatt létrehozott asteroida
+		s.SetAsteroid(a); //Az 's' settlernek beállítja, hogy 'a' aszteroidán áll
+		a.AddCreature(s); //Az 'a' aszteroidának beállítja, hogy 's' settler rajta áll
+		Resource re = new Resource(); //A tesztesetek miatt létrehozott resource
+		Scanner myObj = new Scanner(System.in); //A tesztesetek miatt létrehozott szkenner
+	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); //A tesztesetek miatt létrehozott buffered reader
 		while (true) {
 			System.out.print("Enter command: ");
 			String[] cmd = null;
@@ -26,16 +26,16 @@ public class Main {
 			}
 			if (cmd.length == 0 || cmd[0].equals("")) {
 			}	
-			else if (cmd[0].equals("exit")) {
+			else if (cmd[0].equals("exit")) { //Ezzel a paranccsal lehet kilépni a programból
 				break;
-			} else if (cmd[0].equals("moveAsteroid")) {
-				s.Move(a);
-			}else if (cmd[0].equals("moveTpk")) {
+			} else if (cmd[0].equals("moveAsteroid")) { //Ezzel a paranccsal tud mozogni a settler egy átadott aszteroidára
+				s.Move(a); //Meghívjuk a settler Move függvényét
+			}else if (cmd[0].equals("moveTpk")) { //Ezzel a paranccsal tud mozogni a settler egy átadott aszteroidára teleportkapu segítségével
 				Teleport tele = new Teleport();
-				Teleport tele2 = new Teleport();
-				tele2.SetAsteroid(a);
-				tele.SetPair(tele2);
-				s.Move(tele);
+				Teleport tele2 = new Teleport(); //A tesztesetek miatt létrehozott teleportkapuk
+				tele2.SetAsteroid(a); //Beállítjuk, az aszteroidát a teleportkapunak
+				tele.SetPair(tele2); //Párosítjuk a kapukat
+				s.Move(tele); //Meghívjuk a settler Move függvényét
 			} else if (cmd[0].equals("drilluranium")) {
 				Uranium u = new Uranium();
 				Asteroid a1 = new Asteroid(u);
