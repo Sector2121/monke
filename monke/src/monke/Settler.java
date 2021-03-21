@@ -63,7 +63,25 @@ public class Settler extends Creature{
 	}
 	
 	public void PlaceResource(Resource r) {
-		//if(GetAsteroid().GetIsEmpty() && GetAsteroid().GetLayers() == 0) {
+		System.out.println("PlaceResorce was called!");
+		asteroid.GetLayers();
+		Scanner myObj = new Scanner(System.in);
+		int ertek = Integer.parseInt(myObj.nextLine());
+		if(ertek==0) {
+			boolean igaz_e = CheckResource(r);
+			if(igaz_e == true) {
+				asteroid.SetResource1(r);
+				RemoveResource(r);
+			}
+			else {
+				System.out.println("\tSettler doesn't have resource!");
+			}
+		}
+		else {
+			System.out.println("\tCan't replace resource");
+			return;
+		}
+		/*if(GetAsteroid().GetIsEmpty() && GetAsteroid().GetLayers() == 0) {
 			System.out.println("\\tStart replace resource to asteroida!");
 			boolean igaz_e = CheckResource(r);
 			asteroid.GetLayers();
@@ -75,11 +93,11 @@ public class Settler extends Creature{
 				System.out.println("\t\t\t\tSettler doesn't have resource!");
 			}
 		//}
-		//else System.out.println("The asteroid is not empty!");
+		//else System.out.println("The asteroid is not empty!");*/
 	}
 	
 	public boolean CheckResource(Resource r) {
-		System.out.println("\t\tSettler has this resource!");
+		System.out.println("\tSettler has this resource!");
 		return true;
 	}
 	
@@ -94,7 +112,7 @@ public class Settler extends Creature{
 		}
 		System.out.println("Settler did not have this resource!");
 		*/
-		System.out.println("\t\t\t\t\tSettler RemoveResource was called");
+		System.out.println("\tSettler RemoveResource was called!");
 	}
 	
 	public void GiveUp() {

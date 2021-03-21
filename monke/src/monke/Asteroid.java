@@ -95,6 +95,11 @@ public class Asteroid implements Travel{
 		this.resource=r;
 	}
 	
+	public void SetResource1(Resource r) {
+		System.out.println("\tAsteroid set resource!");
+		this.resource=r;
+	}
+	
 	public boolean GetCloseToSun() {
 		System.out.println("\tPlease decide if the asteroid is close to sun or not (yes/no): ");
 		return closeToSun;
