@@ -39,6 +39,7 @@ public class Main {
 				
 				
 			} else if (cmd[0].equals("drill")) {
+				System.out.println("PLLLLLS");
 				s.Drill();
 				a.GetLayers();
 				int ertek = Integer.parseInt(myObj.nextLine());
