@@ -23,7 +23,8 @@ public class Sun {
 		asteroids.get(0).GetLayers();
 		Scanner myObj = new Scanner(System.in);
 		int ertek = Integer.parseInt(myObj.nextLine());
-		if (ertek<1) {
+		if (ertek==0) {
+			System.out.println("\tEveryone save!");
 			return;
 		}
 		else if(ertek>0) {
