@@ -28,27 +28,27 @@ public class Creature {
 		asteroid = a;
 	}
 	
-	public void SetAsteroid1(Asteroid a) {
+	public void SetAsteroid1(Asteroid a) { //Beállítja az entitás 
 		System.out.println("\t\tSetAsteroid was called");
 		asteroid = a;
 	}
 	
-	public void Drill() {
+	public void Drill() { //Fúr az entitás
 		System.out.println("Drill was called");
 		asteroid.GetLayers();
 		Scanner myObj = new Scanner(System.in);
-		int ertek = Integer.parseInt(myObj.nextLine());
-		if (ertek<1) {
+		int ertek = Integer.parseInt(myObj.nextLine()); //Bekéri, hogy mekkora az aszteroida köpenye
+		if (ertek<1) { //Ha nincs köpenye, nem történik semmi
 			return;
 		}
 		asteroid.GetCloseToSun();
-		String napk�zels�g = myObj.nextLine();
-		if(ertek>0) {
-			asteroid.ReduceLayers(asteroid,ertek,napk�zels�g);
+		String napközelség = myObj.nextLine(); //Bekéri, hogy az aszteroida napközeli-e
+		if(ertek>0) { //Csökkenti a köpenyt
+			asteroid.ReduceLayers(asteroid,ertek,napközelség);
 		}		
 	}
 	
-	public void Die() {
+	public void Die() { //Az entitás meghal
 		System.out.println("Die was called");
 	}
 	
