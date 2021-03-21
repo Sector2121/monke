@@ -44,6 +44,8 @@ public class Teleport implements Travel{
 			c.SetAsteroid(pair.GetAsteroid());
 			
 		}
+		System.out.println("Creature accepted to asteroid");
+	
 	}
 	
 }

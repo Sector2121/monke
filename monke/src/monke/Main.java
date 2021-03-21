@@ -14,7 +14,9 @@ public class Main {
 		s.SetAsteroid(a);
 		a.AddCreature(s);
 		Resource re = new Resource();
-		//Teleport tele = new Teleport();
+		Teleport tele = new Teleport();
+		Teleport tele2 = new Teleport();
+		tele.SetPair(tele2);
 		Scanner myObj = new Scanner(System.in);
 	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		while (true) {
@@ -29,15 +31,10 @@ public class Main {
 			}	
 			else if (cmd[0].equals("exit")) {
 				break;
-			} else if (cmd[0].equals("move")) {
-				//System.out.print("Do you want to go through a teleport(T) or do you want to use your spaceship (S) ?");
-				//String answer = myObj.nextLine();
-				//if(answer.equals("S")) {
-					s.Move(a);
-				//}else if(answer.equals("T")) {
-				//	s.Move(tele);
-				//}
-				
+			} else if (cmd[0].equals("moveAsteroid")) {
+				s.Move(a);
+			}else if (cmd[0].equals("moveTpk")) {
+				s.Move(tele);
 			} else if (cmd[0].equals("drilluranium")) {
 				Uranium u = new Uranium();
 				Asteroid a1 = new Asteroid(u);
