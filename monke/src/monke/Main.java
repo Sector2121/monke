@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) {
+		System.out.println("asdasdsadasdas");
 		Settler s = new Settler();
 		Resource r = new Resource();
 		Asteroid a = new Asteroid(r);
