@@ -65,9 +65,6 @@ public class Main {
 					System.out.println("Asteroid can't be mined!");
 				} else {
 					s.Mine();
-					
-					}
-					
 				}
 			} else if (cmd[0].equals("build")) {
 				System.out.println("Enter object to build (robot, teleport): ");
