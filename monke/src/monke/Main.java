@@ -9,15 +9,17 @@ import java.util.Scanner;
 public class Main {
 	public static void main(String[] args) {
 		Settler s = new Settler();
-		Asteroid a = new Asteroid();
+		Resource r = new Resource();
+		Asteroid a = new Asteroid(r);
+		a.AddCreature(s);
 		ArrayList<Asteroid> asteroids = new ArrayList<>();
 		asteroids.add(a);
 		Sun sun = new Sun(asteroids);
-		Resource re = new Resource();
 		//Teleport tele = new Teleport();
 		Scanner myObj = new Scanner(System.in);
 	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		while (true) {
+			System.out.print("Enter command: ");
 			String[] cmd = null;
 			try {
 				cmd = br.readLine().split(" ");
@@ -37,21 +39,25 @@ public class Main {
 				//	s.Move(tele);
 				//}
 				
-				
-			} else if (cmd[0].equals("drill")) {
-				System.out.println("PLLLLLS");
+			} else if (cmd[0].equals("drilluranium")) {
+				System.out.println("Megbaszlak te kutya");
+				Uranium u = new Uranium();
+				Asteroid a1 = new Asteroid(u);
+				s.SetAsteroid(a1);
+				a1.AddCreature(s);
 				s.Drill();
-				a.GetLayers();
-				int ertek = Integer.parseInt(myObj.nextLine());
-				if (ertek==1) {
-					a.GetCloseToSun();
-					String napközelség = myObj.nextLine();
-					if(napközelség=="igen") {
-
-					}
-				}
-				
-				
+			} else if (cmd[0].equals("drillwaterice")) {
+				Waterice w = new Waterice();
+				Asteroid a2 = new Asteroid(w);
+				a2.AddCreature(s);
+				s.SetAsteroid(a2);
+				s.Drill();
+			} else if (cmd[0].equals("drillother")) {
+				Carbon c = new Carbon();
+				Asteroid a3 = new Asteroid(c);
+				a3.AddCreature(s);
+				s.SetAsteroid(a3);
+				s.Drill();
 			} else if (cmd[0].equals("mine")) {
 				System.out.print("Enter asteroid layer: ");
 				int layer = Integer.parseInt(myObj.nextLine());
@@ -105,11 +111,31 @@ public class Main {
 				if(l != 0) {
 					System.out.println("\tOperation failed, asteroid has layers!");
 				}
-				else {
-					s.PlaceResource(re);
+				else { 
+					System.out.println("\tEnter asteroid resource (uranium, waterice, carbon, iron, empty):");
+					String ra = myObj.nextLine();
+					if (ra.equals("empty")) {
+						System.out.println("\t\tEnter settler resource (uranium, waterice, carbon, iron, empty):");
+						String rs = myObj.nextLine();
+						if (rs.equals("empty")) {
+							System.out.println("\t\t\tOperation failed, settler doesn't have resource!");
+						}
+						else {
+							switch(rs) {
+								case "iron": System.out.println("\t\t\tYou succesfully replaced iron!"); break;
+								case "carbon": System.out.println("\t\t\tYou succesfully replaced carbon!"); break;
+								case "uranium": System.out.println("\t\t\tYou succesfully replaced uranium!"); break;
+								case "waterice": System.out.println("\t\t\tYou succesfully replaced waterice!"); break;
+								default: System.out.println("\t\t\tThere is no such resource!"); break;
+							}
+						}
+					}
+					else {
+						System.out.println("\t\tOperation failed, asteroid has resource!");
+					}
 				}
 			} else if (cmd[0].equals("skip")) {
-				
+				s.Skip();
 			} else if (cmd[0].equals("give_up")) {
 				System.out.println("Are you sure, you want to give up the game? Yes/No");
 				String yn = myObj.nextLine();

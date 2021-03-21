@@ -19,10 +19,10 @@ public class Asteroid implements Travel{
 	
 	
 	
-	public Asteroid() {
-		/*creatures = new ArrayList<Creature>();
-		resource = new Iron();
-		neighbors = new ArrayList<Travel>();*/
+	public Asteroid(Resource resource) {
+		creatures = new ArrayList<Creature>();
+		this.resource = resource;
+		neighbors = new ArrayList<Travel>();
 	}
 	
 	public boolean GetIsEmpty() {
@@ -34,6 +34,7 @@ public class Asteroid implements Travel{
 	}
 	
 	public void AddCreature(Creature c){
+		creatures.add(c);
 		System.out.println("Creature (" + c.GetName() + ") added!");
 	}	
 	
@@ -47,9 +48,11 @@ public class Asteroid implements Travel{
 		return weather;
 	}
 	
-	public void ReduceLayers() {
-		//layers--;
-		System.out.println("Layers reduced!");
+	public void ReduceLayers(Asteroid asteroid, int ertek, String napközelség) { //Lol ezt csak �gy lehet?
+		System.out.println("\tLayers reduced!");
+		if(ertek==1 && napközelség.equals("yes")) {
+			resource.CloseToSun(asteroid);
+		}
 	}
 	
 	public void Remove(Creature c) {
@@ -71,8 +74,8 @@ public class Asteroid implements Travel{
 		return true;
 	}
 	
-	public int GetLayers() {
-		System.out.println("\t\t\tDo get layers!");
+	public int GetLayers() { ///AJAJAJAJA //:=( (Hitler XD)
+		System.out.println("\t\t\tPlease enter layers");
 		return layers;
 	}
 	
@@ -89,9 +92,8 @@ public class Asteroid implements Travel{
 	}
 	
 	public void SetResource(Resource r) {
-		/*resource = r;
-		if(r == null) isEmpty = true;*/
-		System.out.println("\t\t\t\tSet asteroid resource!");
+		System.out.println("\t\t\tSetResource was called");
+		this.resource=r;
 	}
 	
 	public boolean GetCloseToSun() {
@@ -114,9 +116,8 @@ public class Asteroid implements Travel{
 	}
 	
 	public void Explode() {
-		/*for(Creature c : creatures){
-			c.Explode();
-		}*/
+		System.out.println("\t\t\tAsteroi explode was called");
+		creatures.get(0).Die();
 	}
 	
 	public void AddNewNeighbor(Asteroid a) {

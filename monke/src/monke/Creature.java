@@ -1,7 +1,9 @@
 package monke;
 
+import java.util.Scanner;
+
 public class Creature {
-	protected Asteroid asteroid = new Asteroid();
+	protected Asteroid asteroid;
 	private String name;
 	
 	public void Move(Travel t) {
@@ -27,13 +29,23 @@ public class Creature {
 	}
 	
 	public void Drill() {
-		/*if(asteroid.GetLayers() > 0) {
-			asteroid.ReduceLayers();
-		}*/
-		System.out.println("Meg lett hívva a drill");
+		System.out.println("Drill was called");
+		asteroid.GetLayers();
+		Scanner myObj = new Scanner(System.in);
+		int ertek = Integer.parseInt(myObj.nextLine());
+		if (ertek<1) {
+			return;
+		}
+		asteroid.GetCloseToSun();
+		String napközelség = myObj.nextLine();
+		if(ertek>0) {
+			asteroid.ReduceLayers(asteroid,ertek,napközelség);
+		}		
 	}
 	
-	public void Die() {}
+	public void Die() {
+		System.out.println("Die was called");
+	}
 	
 	public void Explode() {}
 }
