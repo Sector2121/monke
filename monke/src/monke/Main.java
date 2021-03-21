@@ -62,6 +62,7 @@ public class Main {
 				Resource r2 = new Resource();
 				Asteroid a4 = new Asteroid(r2);
 				Settler s2 = new Settler();
+				s2.SetAsteroid(a4);
 				a4.AddCreature(s);
 				a4.GetLayers();
 				int layer = Integer.parseInt(myObj.nextLine());
