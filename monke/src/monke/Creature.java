@@ -42,9 +42,9 @@ public class Creature {
 			return;
 		}
 		asteroid.GetCloseToSun();
-		String napközelség = myObj.nextLine(); //Bekéri, hogy az aszteroida napközeli-e
+		String napkozelseg = myObj.nextLine(); //Bekéri, hogy az aszteroida napközeli-e
 		if(ertek>0) { //Csökkenti a köpenyt
-			asteroid.ReduceLayers(asteroid,ertek,napközelség);
+			asteroid.ReduceLayers(asteroid,ertek,napkozelseg);
 		}		
 	}
 	
