@@ -110,7 +110,7 @@ public class Settler extends Creature{
 		game = new Game();
 		asteroid.Remove(null);
 		game.RemoveSettler(null);
-		System.out.println("\t\t\t\t\t\t\tSettler died!");
+		System.out.println("\t\t\t\t\t\tSettler died!");
 	}
 	
 	public void BuildTeleport() {

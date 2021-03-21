@@ -1,6 +1,7 @@
 package monke;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Sun {
 	private ArrayList<Asteroid> asteroids;
@@ -12,15 +13,21 @@ public class Sun {
 		this.sunStormNextRound = false;
 	}
 	
-	public void GetNewAsteroids() {
+	public void GetNewAsteroids(Asteroid asteroid) {
 		System.out.println("Get new asteroid!");
+		asteroids.add(asteroid);
 	}
 	
 	public void SunStorm() {
-		System.out.println("\t\tStarted sun the sunstorm!");
-		for(Asteroid a : asteroids) {
-			a.GetLayers();
-			a.SunStorm();
+		System.out.println("SunStorm was called!");
+		asteroids.get(0).GetLayers();
+		Scanner myObj = new Scanner(System.in);
+		int ertek = Integer.parseInt(myObj.nextLine());
+		if (ertek<1) {
+			return;
+		}
+		else if(ertek>0) {
+			asteroids.get(0).SunStorm();
 		}
 	}
 	

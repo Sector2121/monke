@@ -15,7 +15,7 @@ public class Game {
 	
 	public void RemoveAsteroid(Asteroid a) {}
 	public void RemoveSettler(Settler c) {
-		System.out.println("\t\t\t\t\t\tSettler removed from the game!");
+		System.out.println("\t\t\t\t\tSettler removed from the game!");
 	}
 	public boolean CheckSettlerLifeLines() {
 		return true;

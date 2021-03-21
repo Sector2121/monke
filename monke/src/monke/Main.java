@@ -13,9 +13,6 @@ public class Main {
 		Asteroid a = new Asteroid(r);
 		s.SetAsteroid(a);
 		a.AddCreature(s);
-		ArrayList<Asteroid> asteroids = new ArrayList<>();
-		asteroids.add(a);
-		Sun sun = new Sun(asteroids);
 		Resource re = new Resource();
 		//Teleport tele = new Teleport();
 		Scanner myObj = new Scanner(System.in);
@@ -42,7 +39,6 @@ public class Main {
 				//}
 				
 			} else if (cmd[0].equals("drilluranium")) {
-				System.out.println("Megbaszlak te kutya");
 				Uranium u = new Uranium();
 				Asteroid a1 = new Asteroid(u);
 				s.SetAsteroid(a1);
@@ -126,14 +122,10 @@ public class Main {
 					s.GiveUp();
 				}
 			} else if (cmd[0].equals("sunstorm")) {
-				System.out.println("Please set the layers of the asteroid: ");
-				int l = Integer.parseInt(myObj.nextLine());
-				if (l == 0) {
-					System.out.println("\tAll creature survived!");
-				}
-				else {
-					sun.SunStorm();
-				}
+				ArrayList<Asteroid> asteroids = new ArrayList<>();
+				asteroids.add(a);
+				Sun sun = new Sun(asteroids);
+				sun.SunStorm();
 			}
 			else {
 				System.out.println("'" + cmd[0] +"' is not recognized command");

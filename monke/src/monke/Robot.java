@@ -14,7 +14,7 @@ public class Robot extends Creature{
 	@Override
 	public void Die() {
 		asteroid.Remove(null);
-		System.out.println("\t\t\t\t\t\tRobot died!");
+		System.out.println("\t\t\t\t\tRobot died!");
 	}
 	
 	public void Step() {

@@ -35,7 +35,6 @@ public class Asteroid implements Travel{
 	
 	public void AddCreature(Creature c){
 		creatures.add(c);
-		System.out.println("Creature (" + c.GetName() + ") added!");
 	}	
 	
 	public void SetWeather(String w) {
@@ -48,15 +47,15 @@ public class Asteroid implements Travel{
 		return weather;
 	}
 	
-	public void ReduceLayers(Asteroid asteroid, int ertek, String napközelség) { //Lol ezt csak �gy lehet?
+	public void ReduceLayers(Asteroid asteroid, int ertek, String napkozelseg) { //Lol ezt csak �gy lehet?
 		System.out.println("\tLayers reduced!");
-		if(ertek==1 && napközelség.equals("yes")) {
+		if(ertek==1 && napkozelseg.equals("yes")) {
 			resource.CloseToSun(asteroid);
 		}
 	}
 	
 	public void Remove(Creature c) {
-		System.out.println("\t\t\t\t\tCreature removed from asteroid!");
+		System.out.println("\t\t\t\tCreature removed from asteroid!");
 	}
 	
 	public void Accept(Creature c) {
@@ -75,7 +74,7 @@ public class Asteroid implements Travel{
 	}
 	
 	public int GetLayers() {
-		System.out.println("\t\t\tPlease enter layers");
+		System.out.println("\tPlease enter layers");
 		return layers;
 	}
 	
@@ -102,17 +101,17 @@ public class Asteroid implements Travel{
 	}
 	
 	public void SunStorm() {
-		System.out.println("\t\t\t\tSunstorm in asteroid started!");
+		System.out.println("\tSunstorm in asteroid started!");
+		Resource r = new Resource();
+		Asteroid a = new Asteroid(r);
 		Settler s = new Settler();
-	    Robot r = new Robot();
+	    Robot r1 = new Robot();
+		a.AddCreature(s);
+		a.AddCreature(r1);
+		s.SetAsteroid(a);
+		r1.SetAsteroid(a);
 		s.Die();
-		r.Die();
-		/*if(layers == 0 && isEmpty);
-		else {
-			for(Creature c : creatures){
-				c.Die();
-			}
-		}*/
+		r1.Die();
 	}
 	
 	public void Explode() {
