@@ -64,19 +64,26 @@ public class Settler extends Creature{
 	
 	public void PlaceResource(Resource r) {
 		//if(GetAsteroid().GetIsEmpty() && GetAsteroid().GetLayers() == 0) {
-			GetAsteroid().SetResource(r);
-			RemoveResource();
-			System.out.println("Resource placed!");
+			System.out.println("\\tStart replace resource to asteroida!");
+			boolean igaz_e = CheckResource(r);
+			asteroid.GetLayers();
+			if(igaz_e == true) {
+				asteroid.SetResource(r);
+				RemoveResource(r);
+			}
+			else {
+				System.out.println("\t\t\t\tSettler doesn't have resource!");
+			}
 		//}
 		//else System.out.println("The asteroid is not empty!");
 	}
 	
 	public boolean CheckResource(Resource r) {
-		System.out.println("Settler has this resource!");
+		System.out.println("\t\tSettler has this resource!");
 		return true;
 	}
 	
-	public void RemoveResource(/*Resource rem*/) {
+	public void RemoveResource(Resource rem) {
 		/*
 		for(Resource r : resources) {
 			if(r == rem) {
@@ -87,7 +94,7 @@ public class Settler extends Creature{
 		}
 		System.out.println("Settler did not have this resource!");
 		*/
-		System.out.println("\t\tSettler RemoveResource was called");
+		System.out.println("\t\t\t\t\tSettler RemoveResource was called");
 	}
 	
 	public void GiveUp() {
@@ -108,9 +115,10 @@ public class Settler extends Creature{
 	
 	public void BuildTeleport() {
 		System.out.println("\tBuildTeleport was called");
+		Resource re = new Resource();
 		if(hasTpk == 0) {
 			if(billOfResources.CheckResourceTpk()) {
-				RemoveResource();
+				RemoveResource(re);
 				hasTpk = 2;
 				Teleport t = new Teleport();
 			}
@@ -134,9 +142,10 @@ public class Settler extends Creature{
 	
 	public void BuildRobot() {
 		System.out.println("\tBuildRobot was called");
+		Resource re = new Resource();
 		if(billOfResources.CheckResourceRobot()) {
 			Robot r = new Robot(asteroid);
-			RemoveResource();
+			RemoveResource(re);
 		}
 	}
 	

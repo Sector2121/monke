@@ -74,8 +74,8 @@ public class Asteroid implements Travel{
 		return true;
 	}
 	
-	public int GetLayers() { ///AJAJAJAJA //:=( (Hitler XD)
-		System.out.println("\t\tPlease enter layers");
+	public int GetLayers() {
+		System.out.println("\t\t\tPlease enter layers");
 		return layers;
 	}
 	
@@ -92,7 +92,7 @@ public class Asteroid implements Travel{
 	}
 	
 	public void SetResource(Resource r) {
-		System.out.println("\t\t\tAsteroid set resource to " + r);
+		System.out.println("\t\t\t\tAsteroid set resource!");
 		this.resource=r;
 	}
 	
