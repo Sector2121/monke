@@ -19,7 +19,7 @@ public class Asteroid implements Travel{
 	
 	
 	
-	public Asteroid(Resource resource) {
+	public Asteroid(Resource resource) { //Konstruktor
 		creatures = new ArrayList<Creature>();
 		this.resource = resource;
 		neighbors = new ArrayList<Travel>();
@@ -33,58 +33,58 @@ public class Asteroid implements Travel{
 		return neighbors;
 	}
 	
-	public void AddCreature(Creature c){
+	public void AddCreature(Creature c){ //Hozzáadja az entitást az aszteroidához
 		creatures.add(c);
 	}	
 	
-	public void SetWeather(String w) {
+	public void SetWeather(String w) { //Beállítja az időjárást a megkapottra
 		weather = w;
 		System.out.println("Weather set to " + w);
 	}
 	
-	public String GetWeather() {
-		System.out.println("Please set the weather of the asteroid (normal, hot, critical): ");
+	public String GetWeather() { //Visszaadja az időjárást
+		System.out.println("Please set the weather of the asteroid (normal, hot, critical): "); //Lekéri milyen épp az időjárás
 		return weather;
 	}
 	
-	public void ReduceLayers(Asteroid asteroid, int ertek, String napkozelseg) { //Lol ezt csak �gy lehet?
+	public void ReduceLayers(Asteroid asteroid, int ertek, String napkozelseg) { //Csökkenti az aszteroida köpenyét
 		System.out.println("\tLayers reduced!");
-		if(ertek==1 && napkozelseg.equals("yes")) {
+		if(ertek==1 && napkozelseg.equals("yes")) { //Ha épp napközelben van, akkor ahhoz mérten meghívja a resourcetól függően a CloseToSun fv-t
 			resource.CloseToSun(asteroid);
 		}
 	}
 	
-	public void Remove(Creature c) {
+	public void Remove(Creature c) { //Törli az aszteroidáról a megkapott entitást
 		System.out.println("\t\t\t\tCreature removed from asteroid!");
 	}
 	
-	public void Remove1(Creature c) {
+	public void Remove1(Creature c) { //A tabulálás miatt van még egy ilyen fv.
 		System.out.println("\tCreature removed from asteroid!");
 	}
 	
-	public void Accept(Creature c) {
+	public void Accept(Creature c) { //Elfogadja a rálépő entitást
 		/*creatures.add(c);
 		c.SetAsteroid(this);*/
 		System.out.println("\tCreature accepted to asteroid!");
 	}
 	
-	public void Accept1(Creature c) {
+	public void Accept1(Creature c) { //Tabulálás miatt van még egy ilyen fv.
 		/*creatures.add(c);
 		c.SetAsteroid(this);*/
 		System.out.println("\t\tCreature accepted to asteroid!");
 	}
 	
-	public void CheckEnoughResources() {
+	public void CheckEnoughResources() { //Megnézi, hogy van-e összesen minden nyersanyagból három az aszteroidán lévő telepeseknél
 		System.out.println("\tCheckEnoughResources was called!");
 	}
 	
-	public boolean CheckNeighbor(Travel t) {
+	public boolean CheckNeighbor(Travel t) { //Megnézi, hogy a kapott aszteroida szomszédja-e annak az aszteroidának amire ez hívva van
 		System.out.println("\tThe asteroid/teleport is a neighbor!"); 
 		return true;
 	}
 	
 	public int GetLayers() {
-		System.out.println("\tPlease enter layers");
+		System.out.println("\tPlease enter layers"); //Megkérdi mekkora az aszteroida köpenye
 		return layers;
 	}
 	
@@ -100,18 +100,18 @@ public class Asteroid implements Travel{
 		return resource;
 	}
 	
-	public void SetResource(Resource r) {
+	public void SetResource(Resource r) { //Beállítja az aszteroida nyersanyagát a kapottra
 		System.out.println("\t\t\tAsteroid set resource!");
 		this.resource=r;
 	}
 	
-	public void SetResource1(Resource r) {
+	public void SetResource1(Resource r) { //Tabulálás miatt van még egy ilyen fv.
 		System.out.println("\tAsteroid set resource!");
 		this.resource=r;
 	}
 	
-	public boolean GetCloseToSun() {
-		System.out.println("\tPlease decide if the asteroid is close to sun or not (yes/no): ");
+	public boolean GetCloseToSun() { 
+		System.out.println("\tPlease decide if the asteroid is close to sun or not (yes/no): "); //Megkérdezi a tesztelőtől, hogy napközelben van-e az aszteroida
 		return closeToSun;
 	}
 	
@@ -124,21 +124,21 @@ public class Asteroid implements Travel{
 		a.AddCreature(s);
 		a.AddCreature(r1);
 		s.SetAsteroid(a);
-		r1.SetAsteroid(a);
+		r1.SetAsteroid(a); //A teszthez szükséges tagok létrehozása és a köztük levő kapcsolat felállítása
 		s.Die();
-		r1.Die();
+		r1.Die(); //Az aszteroidán tartózkodó példa robotra és settlerre meghívjuk a Die() fv-t
 	}
 	
-	public void Explode() {
+	public void Explode() { //Felrobban asz aszteroida
 		System.out.println("\t\t\tAsteroi explode was called");
-		creatures.get(0).Die();
+		creatures.get(0).Die(); //A rajta lévő entitások meghalnak
 	}
 	
-	public void AddNewNeighbor(Asteroid a) {
+	public void AddNewNeighbor(Asteroid a) { //A megkapott aszteroida hozzáadódik az aszteroida szomszédai közé
 		System.out.println("New neighbor added!");
 	}
 	
-	public void RemoveNeighbor(Asteroid a) {
+	public void RemoveNeighbor(Asteroid a) { //A megkapott aszteroida törlődik az aszteroida szomszédai közül
 		System.out.println("Neighbor removed!");
 	}
 	
