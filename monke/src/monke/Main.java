@@ -59,25 +59,13 @@ public class Main {
 				s.SetAsteroid(a3);
 				s.Drill();
 			} else if (cmd[0].equals("mine")) {
-				System.out.print("Enter asteroid layer: ");
+				a.GetLayers();
 				int layer = Integer.parseInt(myObj.nextLine());
 				if(layer != 0) {
-					System.out.println("\tYou can't mine here!");
+					System.out.println("Asteroid can't be mined!");
 				} else {
-					System.out.print("\tEnter asteroid resource: ");
-					String resource = myObj.nextLine();
-					System.out.print("\t\tEnter settler's inventory count: ");
-					int invCount = Integer.parseInt(myObj.nextLine());
-					if(invCount >= 10) {
-						System.out.println("\t\t\tYou don't have space to carry!");
-					} else {
-						switch(resource) {
-						case "iron": System.out.println("\t\t\tYou succesfully mined iron!"); break;
-						case "carbon": System.out.println("\t\t\tYou succesfully mined carbon!"); break;
-						case "uranium": System.out.println("\t\t\tYou succesfully mined uranium!"); break;
-						case "waterice": System.out.println("\t\t\tYou succesfully mined waterice!"); break;
-						default: System.out.println("\t\t\tThere is no such resource!"); break;
-						}
+					s.Mine();
+					
 					}
 					
 				}
