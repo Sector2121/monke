@@ -44,11 +44,11 @@ public class Settler extends Creature{
 	
 	public void Mine() {
 		//if(GetAsteroid().GetResource() != null && GetAsteroid().GetLayers() == 0) {
-			if(resources.size() < 10) {
+			//if(resources.size() < 10) {
 				AddResource(GetAsteroid().GetResource());
 				GetAsteroid().SetResource(null);
 				System.out.println("Asteroid mined!");
-			}
+			//}
 		//}
 		
 	}

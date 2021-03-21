@@ -59,12 +59,17 @@ public class Main {
 				s.SetAsteroid(a3);
 				s.Drill();
 			} else if (cmd[0].equals("mine")) {
-				a.GetLayers();
+				Resource r2 = new Resource();
+				Asteroid a4 = new Asteroid(r2);
+				Settler s2 = new Settler();
+				a4.AddCreature(s);
+				a4.GetLayers();
 				int layer = Integer.parseInt(myObj.nextLine());
 				if(layer != 0) {
 					System.out.println("Asteroid can't be mined!");
 				} else {
-					s.Mine();
+					
+					s2.Mine();
 				}
 			} else if (cmd[0].equals("build")) {
 				System.out.println("Enter object to build (robot, teleport): ");
