@@ -26,14 +26,14 @@ public class BillOfResources {
 	}
 	
 	public boolean CheckResourceTpk() {
-		System.out.println("\t\tDoes the settler have enough resources for teleport? (yes/no)");
+		System.out.println("\tDoes the settler have enough resources for teleport? (yes/no)");
 		String string = myObj.nextLine();
 		if(string.equals("yes")) return true;
 		else return false;
 	}
 	
 	public boolean CheckResourceRobot() {
-		System.out.println("\t\tDoes the settler have enough resources for robot? (yes/no)");
+		System.out.println("\tDoes the settler have enough resources for robot? (yes/no)");
 		String string = myObj.nextLine();
 		if(string.equals("yes")) return true;
 		else return false;

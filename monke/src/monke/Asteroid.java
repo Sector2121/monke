@@ -58,18 +58,28 @@ public class Asteroid implements Travel{
 		System.out.println("\t\t\t\tCreature removed from asteroid!");
 	}
 	
+	public void Remove1(Creature c) {
+		System.out.println("\tCreature removed from asteroid!");
+	}
+	
 	public void Accept(Creature c) {
 		/*creatures.add(c);
 		c.SetAsteroid(this);*/
-		System.out.println("Creature accepted to asteroid!");
+		System.out.println("\tCreature accepted to asteroid!");
+	}
+	
+	public void Accept1(Creature c) {
+		/*creatures.add(c);
+		c.SetAsteroid(this);*/
+		System.out.println("\t\tCreature accepted to asteroid!");
 	}
 	
 	public void CheckEnoughResources() {
-		
+		System.out.println("\tCheckEnoughResources was called!");
 	}
 	
 	public boolean CheckNeighbor(Travel t) {
-		System.out.println("The asteroid/teleport is a neighbor!"); 
+		System.out.println("\tThe asteroid/teleport is a neighbor!"); 
 		return true;
 	}
 	
@@ -91,7 +101,7 @@ public class Asteroid implements Travel{
 	}
 	
 	public void SetResource(Resource r) {
-		System.out.println("\t\t\t\tAsteroid set resource!");
+		System.out.println("\t\t\tAsteroid set resource!");
 		this.resource=r;
 	}
 	

@@ -30,10 +30,11 @@ public class Settler extends Creature{
 	
 	
 	public void Move(Travel t) {
+		System.out.println("Move was callled");
 			boolean tf;
 			tf = asteroid.CheckNeighbor(t);
 			if(tf) {
-				asteroid.Remove(this);
+				asteroid.Remove1(this);
 				t.Accept(this);
 				//System.out.println("You are now on a new asteroid!");
 			}else {
@@ -43,19 +44,23 @@ public class Settler extends Creature{
 	
 	
 	public void Mine() {
-		//if(GetAsteroid().GetResource() != null && GetAsteroid().GetLayers() == 0) {
-			//if(resources.size() < 10) {
-				AddResource(GetAsteroid().GetResource());
-				GetAsteroid().SetResource(null);
-				System.out.println("\t\t\tAsteroid mined!");
-			//}
-		//}
-		
+		System.out.println("Mine was called");
+		System.out.println("\tAdd resource size");
+		Scanner myObj = new Scanner(System.in);
+		int ertek = Integer.parseInt(myObj.nextLine());
+		if(ertek<10) {
+			AddResource(GetAsteroid().GetResource());
+			GetAsteroid().SetResource(null);
+			asteroid.CheckEnoughResources();
+		}
+		else if(ertek==10) {
+			System.out.println("\tYou can't mine");
+			return;
+		}
 	}
 	
 	public void AddResource(Resource r) { 
-		//resources.add(r);
-		System.out.println("\t\t\tResource added to settler!");
+		System.out.println("\tResource added to settler!");
 	}
 	
 	public ArrayList<Resource> GetResources() {
@@ -117,6 +122,7 @@ public class Settler extends Creature{
 	
 	public void GiveUp() {
 		System.out.println("Settler gave up!");
+		Die();
 	}
 	
 	public void Skip() {
@@ -132,34 +138,22 @@ public class Settler extends Creature{
 	}
 	
 	public void BuildTeleport() {
-		System.out.println("\tBuildTeleport was called");
+		Scanner myObj = new Scanner(System.in);
+		System.out.println("BuildTeleport was called");
+		System.out.println("\tHow many teleports he has?");
+		int ertek = Integer.parseInt(myObj.nextLine());
 		Resource re = new Resource();
-		if(hasTpk == 0) {
+		if(ertek==0) {
 			if(billOfResources.CheckResourceTpk()) {
 				RemoveResource(re);
 				hasTpk = 2;
 				Teleport t = new Teleport();
 			}
 		}
-		/*
-		if(billOfResources.CheckResourceTpk(resources) && hasTpk == 0) {
-			teleports[0] = new Teleport(1);
-			teleports[1] = new Teleport(1, teleports[0]);
-			teleports[0].SetPair(teleports[1]);
-			System.out.println("Teleport built!");
-			//remove resources + id meghatározás
-		}
-		else if(hasTpk > 0){
-			System.out.println("Settler has teleports already!");
-		}
-		else {
-			System.out.println("Settler does't have the resources to build teleport!");
-		}
-		*/
 	}
 	
 	public void BuildRobot() {
-		System.out.println("\tBuildRobot was called");
+		System.out.println("BuildRobot was called");
 		Resource re = new Resource();
 		if(billOfResources.CheckResourceRobot()) {
 			Robot r = new Robot(asteroid);

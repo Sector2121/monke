@@ -14,9 +14,6 @@ public class Main {
 		s.SetAsteroid(a);
 		a.AddCreature(s);
 		Resource re = new Resource();
-		Teleport tele = new Teleport();
-		Teleport tele2 = new Teleport();
-		tele.SetPair(tele2);
 		Scanner myObj = new Scanner(System.in);
 	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		while (true) {
@@ -34,6 +31,10 @@ public class Main {
 			} else if (cmd[0].equals("moveAsteroid")) {
 				s.Move(a);
 			}else if (cmd[0].equals("moveTpk")) {
+				Teleport tele = new Teleport();
+				Teleport tele2 = new Teleport();
+				tele2.SetAsteroid(a);
+				tele.SetPair(tele2);
 				s.Move(tele);
 			} else if (cmd[0].equals("drilluranium")) {
 				Uranium u = new Uranium();

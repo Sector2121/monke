@@ -31,6 +31,7 @@ public class Teleport implements Travel{
 	}
 	
 	public Asteroid GetAsteroid() {
+		System.out.println("\t\tGetAsteroid was called!");
 		return asteroid;
 	}
 	
@@ -39,12 +40,16 @@ public class Teleport implements Travel{
 	}
 	
 	public void Accept(Creature c) {
-		if(pair.GetAsteroid() != null) {
+		System.out.println("\tTeleport accept was called!");
+		/*if(pair.GetAsteroid() != null) {
 			pair.GetAsteroid().AddCreature(c);;
-			c.SetAsteroid(pair.GetAsteroid());
-			
-		}
-		System.out.println("Creature accepted to asteroid");
+			c.SetAsteroid(pair.GetAsteroid());	
+		}*/
+		Resource r = new Resource();
+		Asteroid a = new Asteroid(r);
+		a=pair.GetAsteroid();
+		a.Accept1(c);
+		//System.out.println("\tCreature accepted to asteroid");
 	
 	}
 	

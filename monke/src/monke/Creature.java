@@ -28,6 +28,11 @@ public class Creature {
 		asteroid = a;
 	}
 	
+	public void SetAsteroid1(Asteroid a) {
+		System.out.println("\t\tSetAsteroid was called");
+		asteroid = a;
+	}
+	
 	public void Drill() {
 		System.out.println("Drill was called");
 		asteroid.GetLayers();
