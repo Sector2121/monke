@@ -28,46 +28,46 @@ public class Main {
 			}	
 			else if (cmd[0].equals("exit")) { //Ezzel a paranccsal lehet kilépni a programból
 				break;
-			} else if (cmd[0].equals("moveAsteroid")) { //Ezzel a paranccsal tud mozogni a settler egy átadott aszteroidára
-				s.Move(a); //Meghívjuk a settler Move függvényét
-			}else if (cmd[0].equals("moveTpk")) { //Ezzel a paranccsal tud mozogni a settler egy átadott aszteroidára teleportkapu segítségével
+			} else if (cmd[0].equals("moveAsteroid")) { //Ezzel a paranccsal nézzük meg mi történik amikor lép a settler
+				s.Move(a);
+			}else if (cmd[0].equals("moveTpk")) { //Ezzel a paranccsal nézzük meg mi történik amikor lép a settler teleportkapu segítségével
 				Teleport tele = new Teleport();
-				Teleport tele2 = new Teleport(); //A tesztesetek miatt létrehozott teleportkapuk
+				Teleport tele2 = new Teleport(); //A tesztesetek miatt létrehozott változók
 				tele2.SetAsteroid(a); //Beállítjuk, az aszteroidát a teleportkapunak
 				tele.SetPair(tele2); //Párosítjuk a kapukat
-				s.Move(tele); //Meghívjuk a settler Move függvényét
-			} else if (cmd[0].equals("drilluranium")) {
+				s.Move(tele);
+			} else if (cmd[0].equals("drilluranium")) { //Ezzel a paranccsal nézzük meg mi történik uránium furásakor
 				Uranium u = new Uranium();
-				Asteroid a1 = new Asteroid(u);
+				Asteroid a1 = new Asteroid(u); //A tesztesetek miatt létrehozott tesztalanyok
 				s.SetAsteroid(a1);
-				a1.AddCreature(s);
+				a1.AddCreature(s); //Beállítjuk a szükséges kapcsolatokat
 				s.Drill();
-			} else if (cmd[0].equals("drillwaterice")) {
+			} else if (cmd[0].equals("drillwaterice")) { //Ezzel a paranccsal nézzük meg mi történik vízjég furásakor
 				Waterice w = new Waterice();
-				Asteroid a2 = new Asteroid(w);
-				a2.AddCreature(s);
-				s.SetAsteroid(a2);
+				Asteroid a2 = new Asteroid(w); //A tesztesetek miatt létrehozott változók
+				a2.AddCreature(s); 
+				s.SetAsteroid(a2); //Beállítjuk a szükséges kapcsolatokat
 				s.Drill();
-			} else if (cmd[0].equals("drillother")) {
+			} else if (cmd[0].equals("drillother")) { //Ezzel a paranccsal nézzük meg mi történik a többi nyersanyag furásakor
 				Carbon c = new Carbon();
-				Asteroid a3 = new Asteroid(c);
+				Asteroid a3 = new Asteroid(c); //A tesztesetek miatt létrehozott változók
 				a3.AddCreature(s);
-				s.SetAsteroid(a3);
+				s.SetAsteroid(a3); //Beállítjuk a szükséges kapcsolatokat
 				s.Drill();
-			} else if (cmd[0].equals("mine")) {
+			} else if (cmd[0].equals("mine")) { //Ezzel a paranccsal nézzük meg mi történik bányászáskor
 				Resource r2 = new Resource();
 				Asteroid a4 = new Asteroid(r2);
-				Settler s2 = new Settler();
+				Settler s2 = new Settler(); //A tesztesetek miatt létrehozott változók
 				s2.SetAsteroid(a4);
-				a4.AddCreature(s);
-				a4.GetLayers();
-				int layer = Integer.parseInt(myObj.nextLine());
+				a4.AddCreature(s); //Beállítjuk a szükséges kapcsolatokat
+				a4.GetLayers(); //Lekéri az aszteroida köpenyét
+				int layer = Integer.parseInt(myObj.nextLine()); //Beolvassuk a bekért adatot a konzolról
 				if(layer != 0) {
-					System.out.println("\t\t\tAsteroid can't be mined!");
+					System.out.println("\t\t\tAsteroid can't be mined!"); // Ha van köpenye, akkor nem tud bányászni
 				} else {
 					s2.Mine();
 				}
-			} else if (cmd[0].equals("build")) {
+			} else if (cmd[0].equals("build")) { //Ezzel a paranccsal nézzük meg mi történik robot vagy teleportkapu építéskor
 				System.out.println("Enter object to build (robot, teleport): ");
 				String string = myObj.nextLine();
 				if(string.equals("robot")) {
