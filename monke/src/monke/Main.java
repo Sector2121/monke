@@ -106,14 +106,6 @@ public class Main {
 			}
 			else if (cmd[0].equals("replace_resource")) {
 				s.PlaceResource(r);
-				/*System.out.println("Please set the layers of the asteroid: ");
-				int l = Integer.parseInt(myObj.nextLine());
-				if(l != 0) {
-					System.out.println("\tOperation failed, asteroid has layers!");
-				}
-				else {
-					s.PlaceResource(re);
-				}*/
 			} else if (cmd[0].equals("skip")) {
 				s.Skip();
 			} else if (cmd[0].equals("give_up")) {
