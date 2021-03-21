@@ -47,7 +47,7 @@ public class Settler extends Creature{
 			//if(resources.size() < 10) {
 				AddResource(GetAsteroid().GetResource());
 				GetAsteroid().SetResource(null);
-				System.out.println("Asteroid mined!");
+				System.out.println("\t\t\tAsteroid mined!");
 			//}
 		//}
 		
@@ -55,7 +55,7 @@ public class Settler extends Creature{
 	
 	public void AddResource(Resource r) { 
 		//resources.add(r);
-		System.out.println("Resource added!");
+		System.out.println("\t\t\tResource added to settler!");
 	}
 	
 	public ArrayList<Resource> GetResources() {
@@ -87,7 +87,7 @@ public class Settler extends Creature{
 		}
 		System.out.println("Settler did not have this resource!");
 		*/
-		System.out.println("\t\tRemoveResource was called");
+		System.out.println("\t\tSettler RemoveResource was called");
 	}
 	
 	public void GiveUp() {
@@ -141,7 +141,7 @@ public class Settler extends Creature{
 	}
 	
 	public void PlaceTeleport(Asteroid a) {
-		if(teleports[0].GetAsteroid() == null && hasTpk == 2) {
+		/*if(teleports[0].GetAsteroid() == null && hasTpk == 2) {
 			teleports[0].SetAsteroid(a);
 			hasTpk--;
 			System.out.println("Teleport placed!");
@@ -154,6 +154,7 @@ public class Settler extends Creature{
 		}
 		else {
 			System.out.println("Settler doesn't have teleports!");
-		}
+		}*/
+		System.out.println("\tHow many teleports does the settler have? (0-2)");
 	} 
 }

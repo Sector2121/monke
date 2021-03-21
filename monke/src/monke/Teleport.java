@@ -6,16 +6,18 @@ public class Teleport implements Travel{
 	private Teleport pair;
 	
 	public Teleport() {
-		System.out.println("\t\t\tTeleport constructor was called");
+		System.out.println("\t\tTeleport constructor was called");
 	}
 	
 	public Teleport(int i, Teleport p){
+		System.out.println("\t\tTeleport constructor was called");
 		id = i;
 		asteroid = null;
 		pair = p;
 	}
 	
 	public void SetAsteroid(Asteroid a) {
+		System.out.println("\t\tTeleport set to asteroid!");
 		asteroid = a;
 	}
 	
@@ -24,6 +26,7 @@ public class Teleport implements Travel{
 	}
 	
 	public void SetPair(Teleport t) {
+		System.out.println("\t\tTeleport pair set!");
 		pair = t;
 	}
 	

@@ -11,6 +11,7 @@ public class Main {
 		Settler s = new Settler();
 		Resource r = new Resource();
 		Asteroid a = new Asteroid(r);
+		s.SetAsteroid(a);
 		a.AddCreature(s);
 		ArrayList<Asteroid> asteroids = new ArrayList<>();
 		asteroids.add(a);
@@ -67,9 +68,8 @@ public class Main {
 				a4.GetLayers();
 				int layer = Integer.parseInt(myObj.nextLine());
 				if(layer != 0) {
-					System.out.println("Asteroid can't be mined!");
+					System.out.println("\t\t\tAsteroid can't be mined!");
 				} else {
-					
 					s2.Mine();
 				}
 			} else if (cmd[0].equals("build")) {
@@ -82,18 +82,29 @@ public class Main {
 					s.BuildTeleport();
 				}
 			} else if (cmd[0].equals("place_teleport")) {
-				System.out.print("Enter amount of settler's teleports: ");
+				Settler s3 = new Settler();
+				Asteroid a5 = new Asteroid(r);
+				s3.SetAsteroid(a5);
+				a5.AddCreature(s3);
+				s.PlaceTeleport(a5);
 				int teleportCount = Integer.parseInt(myObj.nextLine());
 				if(teleportCount == 0) {
-					System.out.println("\tYou don't have a teleport to place!");
+					System.out.println("\t\tYou don't have a teleport to place!");
 				}
 				else if(teleportCount > 0 && teleportCount < 3) {
-					System.out.println("\tTeleport successfully placed!"); 
+					Teleport t = new Teleport();
+					if(teleportCount == 2) {
+						Teleport t2 = new Teleport();
+						t.SetPair(t2);
+						t2.SetPair(t);
+					}
+					t.SetAsteroid(a5);
+					System.out.println("\t\t\tTeleport successfully placed!"); 
 					teleportCount--;
-					System.out.println("\tRemaining teleports: " + teleportCount);
+					System.out.println("\t\t\tRemaining teleports: " + teleportCount);
 				}
 				else {
-					System.out.println("\tThat's not a valid number of teleports!");
+					System.out.println("\t\tThat's not a valid number of teleports!");
 				}
 			}
 			else if (cmd[0].equals("replace_resource")) {
