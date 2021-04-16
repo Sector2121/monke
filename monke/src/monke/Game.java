@@ -13,21 +13,31 @@ public class Game {
 		settlers = new ArrayList<>();
 	}
 	
-	public void RemoveAsteroid(Asteroid a) {}
-	public void RemoveSettler(Settler c) { //Törli a játékból a settlert
-		System.out.println("\t\t\t\t\tSettler removed from the game!");
-	}
-	public boolean CheckSettlerLifeLines() { //Megnézi van-e még élő játékos
-		return true;
-	}
-	public void EndGame() {
-		
-	}
-	public void StormActivate() {
-		
-	}
-	public void Start() {
-		
+	public void RemoveAsteroid(Asteroid a) { //Eltavolitja a kapott aszteroidat a jatekbol
+		asteroids.remove(a);
 	}
 	
+	public void RemoveSettler(Settler s) { //Eltavolitja a kapott settler-t a jatekbol
+		settlers.remove(s);
+	}
+	
+	public boolean CheckSettlerLifeLines() {
+		if(settlers.isEmpty() == true) {//Ha nem el tobb settler, akkor false-t ad
+			return false;
+		}
+		else {
+			return true; //Ha meg el valaki akkor true
+		}
+	}
+	
+	public void EndGame() {
+		if(CheckSettlerLifeLines() == true) { //Meghivodott ez a fuggveny es meg elnek telepesek, igy nyertek
+			System.out.println("A jateknak vege, a telepesek nyertek!");
+		}
+		else {//Meghivodott ez a fuggveny es nem elnek mar telepesek, igy vesztettek
+			System.out.println("A jateknak vege, a telepesek veszitettek!");
+		}
+	}
+	
+	public void Start() {}
 }

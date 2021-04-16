@@ -2,12 +2,10 @@ package monke;
 
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Scanner;
 
 public class Sun {
 	private ArrayList<Asteroid> asteroids;
 	private boolean sunStormNextRound;
-	
 	
 	public Sun(ArrayList<Asteroid> asteroids) { //Konstruktor
 		this.asteroids = asteroids;
@@ -43,7 +41,6 @@ public class Sun {
 	
 	public void SetCritical(Asteroid a) { //Beallitja a homersekletet critical-ra
 		a.SetWeather("critical");
-		
 	}
 	
 	public void SetNormal(Asteroid a) { //Beallitja a homersekletet normal-ra
