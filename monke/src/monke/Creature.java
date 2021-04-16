@@ -34,7 +34,7 @@ public class Creature {
 		asteroid = a;
 	}
 	
-	public ArrayList<Resource> GetResources() {
+	public ArrayList<Resource> GetResources() { //ezt hagyd been lecci Palya koszipuszi - vitya
 		return null;
 	}
 	
