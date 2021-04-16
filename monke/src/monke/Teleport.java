@@ -1,23 +1,33 @@
 package monke;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 public class Teleport implements Travel{
 	private int id;
 	private Asteroid asteroid;
 	private Teleport pair;
+	private boolean isMoving;
 	
 	public Teleport() { //Konstruktor
-		System.out.println("\t\tTeleport constructor was called");
+		id = 1; 															//Ez meg kell!!!!!!!!!!!!!!
+		asteroid = null;
+		pair = null;
+		isMoving = false;
 	}
 	
-	public Teleport(int i, Teleport p){ //Konstruktor
-		System.out.println("\t\tTeleport constructor was called");
-		id = i;
+	public Teleport(Teleport p){ //Konstruktor
+		id = 1; 															//Ez meg kell!!!!!!!!!!!!!!!!!!!
 		asteroid = null;
 		pair = p;
+		isMoving = false;
 	}
 	
-	public void SetAsteroid(Asteroid a) { //Beállítja a teleport aszteroidáját a megkapottra
-		System.out.println("\t\tTeleport set to asteroid!");
+	public Asteroid GetAsteroid() { //Visszaadja a teleport aszteroidajat
+		return asteroid;
+	}
+	
+	public void SetAsteroid(Asteroid a) { //Beallitja a teleport aszteroidajat a megkapottra
 		asteroid = a;
 	}
 	
@@ -25,32 +35,42 @@ public class Teleport implements Travel{
 		return pair;
 	}
 	
-	public void SetPair(Teleport t) { //Beállítja a teleport teleportpárját a megkapottra
-		System.out.println("\t\tTeleport pair set!");
+	public void SetPair(Teleport t) { //Beallitja a teleport teleportparjat a megkapottra
 		pair = t;
 	}
 	
-	public Asteroid GetAsteroid() { //Visszaadja a teleport aszteroidáját
-		System.out.println("\t\tGetAsteroid was called!");
-		return asteroid;
+	public void Accept(Creature c) { //Atkuldi az entitast a kapun es a maik kapu aszteroidajara rakja
+		if(pair.GetAsteroid() != null) {
+			pair.GetAsteroid().Accept(c);
+		}
 	}
 	
-	public void RemoveTpk() {
-		
+	public void Move(Travel t) {
+		if(asteroid != null)
+			asteroid.RemoveNeighbor(t);			//Most ugy van h at tudnak menni a mozgo teleportok mas teleportokon mert igy tudtam megcsinalni
+		t.AcceptTeleport(this);
 	}
 	
-	public void Accept(Creature c) { //Elfogadja azt ami rá akar lépni
-		System.out.println("\tTeleport accept was called!");
-		/*if(pair.GetAsteroid() != null) {
-			pair.GetAsteroid().AddCreature(c);;
-			c.SetAsteroid(pair.GetAsteroid());	
-		}*/
-		Resource r = new Resource();
-		Asteroid a = new Asteroid(r);
-		a=pair.GetAsteroid();
-		a.Accept1(c); //Meghívja az aszteroida acceptjét
-		//System.out.println("\tCreature accepted to asteroid");
-	
+	public void Step() {
+		if(isMoving) {
+			Random rand = new Random();
+			ArrayList<Travel> neighbors = asteroid.GetNeighbors();
+			Travel t = neighbors.get(rand.nextInt(neighbors.size()));
+			Move(t);
+		}
 	}
+	
+	@Override
+	public void AcceptTeleport(Teleport t) {
+		pair.GetAsteroid().AcceptTeleport(t);;
+	}
+	
+	@Override
+	public void SetIsMoving() {
+		isMoving = true;
+	}
+	
+	@Override
+	public void RemoveNeighbor(Travel t) {}
 	
 }
