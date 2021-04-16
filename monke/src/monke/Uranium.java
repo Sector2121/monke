@@ -1,7 +1,10 @@
 package monke;
 
 public class Uranium extends Resource{
+	
 	private int exposedCount;
+	
+	@Override
 	public void CloseToSun(Asteroid a) { //Napkozelseg eseten az uran miatt felrobban az aszteroida
 		System.out.println("\t\tUranium CloseToSun was called");
 		if(exposedCount == 3) {
