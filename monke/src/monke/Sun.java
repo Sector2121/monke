@@ -55,23 +55,23 @@ public class Sun {
 	}
 	
 	public void Step() { //Lep a Nap
-		if(sunStormNextRound == true) {
+		if(sunStormNextRound == true) { //Ha napvihar van, akkor mindegyik aszteroidajara meghivja a napvihart
 			SunStorm();
-			for(Asteroid a : asteroids) { //Minden napkozeli aszteroidat kritikusra allit
+			for(Asteroid a : asteroids) { //Visszaallitja hot-ra a napkozeli aszteroidakat
 				SetHot(a);
 			}
 		}
 		else {
 			Random rand = new Random();
 			int sz = rand.nextInt(100);
-			if(sz > 0 && sz < 10) {
+			if(sz > 0 && sz < 10) { //Veletlenszeruen igazra allitja a vihar ekorejelzot
 				sunStormNextRound = true;
-				for(Asteroid a : asteroids) { //Minden napkozeli aszteroidat kritikusra allit
+				for(Asteroid a : asteroids) { //Beallitja critical-ra a napkozeli aszteroidakat
 					SetCritical(a);
 				}
 			}
 			else {
-				GetNewAsteroids();
+				GetNewAsteroids(); //Frissiti a napkozeli aszteroidakat
 			}
 		}
 	}
