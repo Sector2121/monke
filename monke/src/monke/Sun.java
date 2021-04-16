@@ -1,6 +1,7 @@
 package monke;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Sun {
@@ -13,35 +14,65 @@ public class Sun {
 		this.sunStormNextRound = false;
 	}
 	
-	public void GetNewAsteroids(Asteroid asteroid) { //Megszerzi az új napközeli aszteroidát
-		System.out.println("Get new asteroid!");
-		asteroids.add(asteroid); //Hozzáadja a megkapott aszteroidát a nap aszteroidáihoz (napközeliekhez)
+	public void GetNewAsteroids() { //Megszerzi az uj napkozeli aszteroidat
+		int db = 0;
+		for(Asteroid a : asteroids) {
+			db++;
+		}
+		for(int i = 0; i < db; i++) {
+			if(asteroids.get(i).GetNeighbors() == null) {}
+			else {
+				for(Travel t : asteroids.get(i).GetNeighbors()) {
+					while(((Asteroid) t).GetWeather() != "hot") {
+						SetHot((Asteroid) t); //Beallitja hot-ra
+						asteroids.add((Asteroid) t); //Hozzaadja a megkapott aszteroidat a nap aszteroidaihoz (napkozeliekhez)
+						break;
+					}
+				}
+				SetNormal(asteroids.get(i));//Visszaallitja az eddigit normal-ra
+				asteroids.remove(asteroids.get(i));//Torli az aszteroidat a listarol
+			}
+		}
 	}
 	
 	public void SunStorm() {
-		System.out.println("SunStorm was called!");
-		asteroids.get(0).GetLayers();
-		Scanner myObj = new Scanner(System.in);
-		int ertek = Integer.parseInt(myObj.nextLine()); //Bekéri a köpeny méretét
-		if (ertek==0) {
-			System.out.println("\tEveryone save!"); //Nincs köpeny, így el tudnak bújni a telepesek és robotok
-			return;
-		}
-		else if(ertek>0) { //Van köpenye így meghívja az aszteroidára a napvihart
-			asteroids.get(0).SunStorm();
+		for(Asteroid a : asteroids) { //Minden napkozeli aszteroidara meghivja a napvihart 
+			a.SunStorm();
 		}
 	}
 	
-	public void SetCritical() { //Beállítja az időjárást kritikusra
-		System.out.println("Weather critical!");
+	public void SetCritical(Asteroid a) { //Beallitja a homersekletet critical-ra
+		a.SetWeather("critical");
 		
 	}
 	
-	public void SetNormal() { //Beállítja az időjárást normálisra
-		System.out.println("Weather normal!");
+	public void SetNormal(Asteroid a) { //Beallitja a homersekletet normal-ra
+		a.SetWeather("normal");
 	}
 	
-	public void Step() { //Lép a Nap
-		System.out.println("Sun stepped!");
+	public void SetHot(Asteroid a) { //Beallitja a homersekletet hot-ra
+		a.SetWeather("hot");
+	}
+	
+	public void Step() { //Lep a Nap
+		if(sunStormNextRound == true) {
+			SunStorm();
+			for(Asteroid a : asteroids) { //Minden napkozeli aszteroidat kritikusra allit
+				SetHot(a);
+			}
+		}
+		else {
+			Random rand = new Random();
+			int sz = rand.nextInt(100);
+			if(sz > 0 && sz < 10) {
+				sunStormNextRound = true;
+				for(Asteroid a : asteroids) { //Minden napkozeli aszteroidat kritikusra allit
+					SetCritical(a);
+				}
+			}
+			else {
+				GetNewAsteroids();
+			}
+		}
 	}
 }
