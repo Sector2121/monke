@@ -16,7 +16,7 @@ public class Asteroid implements Travel{
 	
 	/*private Scanner myObj = new Scanner(System.in);
 	private BufferedReader br = new BufferedReader(new InputStreamReader(System.in));*/
-	
+	//
 	
 	
 	public Asteroid(Resource resource) { //Konstruktor
