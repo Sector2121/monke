@@ -1,5 +1,6 @@
 package monke;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Creature {
@@ -28,27 +29,31 @@ public class Creature {
 		asteroid = a;
 	}
 	
-	public void SetAsteroid1(Asteroid a) { //Beállítja az entitás 
+	public void SetAsteroid1(Asteroid a) { //BeĂˇllĂ­tja az entitĂˇs 
 		System.out.println("\t\tSetAsteroid was called");
 		asteroid = a;
 	}
 	
-	public void Drill() { //Fúr az entitás
+	public ArrayList<Resource> GetResources() {
+		return null;
+	}
+	
+	public void Drill() { //FĂşr az entitĂˇs
 		System.out.println("Drill was called");
 		asteroid.GetLayers();
 		Scanner myObj = new Scanner(System.in);
-		int ertek = Integer.parseInt(myObj.nextLine()); //Bekéri, hogy mekkora az aszteroida köpenye
-		if (ertek<1) { //Ha nincs köpenye, nem történik semmi
+		int ertek = Integer.parseInt(myObj.nextLine()); //BekĂ©ri, hogy mekkora az aszteroida kĂ¶penye
+		if (ertek<1) { //Ha nincs kĂ¶penye, nem tĂ¶rtĂ©nik semmi
 			return;
 		}
 		asteroid.GetCloseToSun();
-		String napkozelseg = myObj.nextLine(); //Bekéri, hogy az aszteroida napközeli-e
-		if(ertek>0) { //Csökkenti a köpenyt
+		String napkozelseg = myObj.nextLine(); //BekĂ©ri, hogy az aszteroida napkĂ¶zeli-e
+		if(ertek>0) { //CsĂ¶kkenti a kĂ¶penyt
 			asteroid.ReduceLayers(asteroid,ertek,napkozelseg);
 		}		
 	}
 	
-	public void Die() { //Az entitás meghal
+	public void Die() { //Az entitĂˇs meghal
 		System.out.println("Die was called");
 	}
 	
