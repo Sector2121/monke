@@ -1,11 +1,11 @@
 package monke;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.Random;
 
 public class Asteroid implements Travel{
+	private Game game;
+	private int id;
 	private int layers;
 	private boolean closeToSun;
 	private String weather;
@@ -13,133 +13,155 @@ public class Asteroid implements Travel{
 	private ArrayList<Creature> creatures;
 	private Resource resource;
 	private ArrayList<Travel> neighbors;
+	private BillOfResources bill;
 	
-	/*private Scanner myObj = new Scanner(System.in);
-	private BufferedReader br = new BufferedReader(new InputStreamReader(System.in));*/
-	//
-	
-	
-	public Asteroid(Resource resource) { //Konstruktor
+	public Asteroid(Game g, Resource r) { //Konstruktor
+		game = g;
+		id = 1; 						//Ez meg kell!!!!!!!!!!!!!!!!!!!!!!!
+		Random rand = new Random();
+		layers = rand.nextInt(3) + 3;
+		closeToSun = false;
+		weather = "normal";
+		if(r == null)
+			isEmpty = true;
+		else
+			isEmpty = false;
 		creatures = new ArrayList<Creature>();
-		this.resource = resource;
+		resource = r;
 		neighbors = new ArrayList<Travel>();
+		bill = new BillOfResources();
 	}
 	
 	public boolean GetIsEmpty() {
 		return isEmpty;
 	}
 	
-	public ArrayList<Travel> GetNeighbors(){
-		return neighbors;
-	}
-	
-	public void AddCreature(Creature c){ //Hozzáadja az entitást az aszteroidához
-		creatures.add(c);
-	}	
-	
-	public void SetWeather(String w) { //Beállítja az időjárást a megkapottra
-		weather = w;
-		System.out.println("Weather set to " + w);
-	}
-	
-	public String GetWeather() { //Visszaadja az időjárást
-		System.out.println("Please set the weather of the asteroid (normal, hot, critical): "); //Lekéri milyen épp az időjárás
-		return weather;
-	}
-	
-	public void ReduceLayers(Asteroid asteroid, int ertek, String napkozelseg) { //Csökkenti az aszteroida köpenyét
-		System.out.println("\tLayers reduced!");
-		if(ertek==1 && napkozelseg.equals("yes")) { //Ha épp napközelben van, akkor ahhoz mérten meghívja a resourcetól függően a CloseToSun fv-t
-			resource.CloseToSun(asteroid);
-		}
-	}
-	
-	public void Remove(Creature c) { //Törli az aszteroidáról a megkapott entitást
-		System.out.println("\t\t\t\tCreature removed from asteroid!");
-	}
-	
-	public void Remove1(Creature c) { //A tabulálás miatt van még egy ilyen fv.
-		System.out.println("\tCreature removed from asteroid!");
-	}
-	
-	public void Accept(Creature c) { //Elfogadja a rálépő entitást
-		/*creatures.add(c);
-		c.SetAsteroid(this);*/
-		System.out.println("\tCreature accepted to asteroid!");
-	}
-	
-	public void Accept1(Creature c) { //Tabulálás miatt van még egy ilyen fv.
-		/*creatures.add(c);
-		c.SetAsteroid(this);*/
-		System.out.println("\t\tCreature accepted to asteroid!");
-	}
-	
-	public void CheckEnoughResources() { //Megnézi, hogy van-e összesen minden nyersanyagból három az aszteroidán lévő telepeseknél
-		System.out.println("\tCheckEnoughResources was called!");
-	}
-	
-	public boolean CheckNeighbor(Travel t) { //Megnézi, hogy a kapott aszteroida szomszédja-e annak az aszteroidának amire ez hívva van
-		System.out.println("\tThe asteroid/teleport is a neighbor!"); 
-		return true;
+	public void SetIsEmpty(boolean b) {
+		isEmpty = b;
 	}
 	
 	public int GetLayers() {
-		System.out.println("\tPlease enter layers"); //Megkérdi mekkora az aszteroida köpenye
 		return layers;
 	}
 	
-	public ArrayList<Creature> GetCreatures() {
-		/*System.out.println("Creatures on this asteroid: ");
-		for(Creature c : creatures){
-			System.out.println(c.GetName());
-		}*/
-		return creatures;
+	public void SetLayers(int l) {
+		layers = l;
 	}
 	
 	public Resource GetResource() {
 		return resource;
 	}
 	
-	public void SetResource(Resource r) { //Beállítja az aszteroida nyersanyagát a kapottra
-		System.out.println("\t\t\tAsteroid set resource!");
-		this.resource=r;
+	public void SetResource(Resource r) { //Beallitja az aszteroida nyersanyagat a kapottra
+		resource = r;
 	}
 	
-	public void SetResource1(Resource r) { //Tabulálás miatt van még egy ilyen fv.
-		System.out.println("\tAsteroid set resource!");
-		this.resource=r;
-	}
-	
-	public boolean GetCloseToSun() { 
-		System.out.println("\tPlease decide if the asteroid is close to sun or not (yes/no): "); //Megkérdezi a tesztelőtől, hogy napközelben van-e az aszteroida
+	public boolean GetCloseToSun() {
 		return closeToSun;
 	}
 	
-	public void SunStorm() {
-		System.out.println("\tSunstorm in asteroid started!");
-		Resource r = new Resource();
-		Asteroid a = new Asteroid(r);
-		Settler s = new Settler();
-	    Robot r1 = new Robot();
-		a.AddCreature(s);
-		a.AddCreature(r1);
-		s.SetAsteroid(a);
-		r1.SetAsteroid(a); //A teszthez szükséges tagok létrehozása és a köztük levő kapcsolat felállítása
-		s.Die();
-		r1.Die(); //Az aszteroidán tartózkodó példa robotra és settlerre meghívjuk a Die() fv-t
+	public void SetCloseToSun(boolean b) {
+		closeToSun = b;
 	}
 	
-	public void Explode() { //Felrobban asz aszteroida
-		System.out.println("\t\t\tAsteroi explode was called");
-		creatures.get(0).Die(); //A rajta lévő entitások meghalnak
+	public String GetWeather() { //Visszaadja az idojarast
+		return weather;
 	}
 	
-	public void AddNewNeighbor(Asteroid a) { //A megkapott aszteroida hozzáadódik az aszteroida szomszédai közé
-		System.out.println("New neighbor added!");
+	public void SetWeather(String w) { //Beallatja az idajarast a megkapottra
+		weather = w;
 	}
 	
-	public void RemoveNeighbor(Asteroid a) { //A megkapott aszteroida törlődik az aszteroida szomszédai közül
-		System.out.println("Neighbor removed!");
+	public ArrayList<Travel> GetNeighbors(){
+		return neighbors;
 	}
+	
+	public void AddNewNeighbor(Travel t) { //A megkapott aszteroida vagy teleport hozzaadodik az aszteroida szomszedaihoz
+		neighbors.add(t);
+	}
+	
+	public void RemoveNeighbor(Travel t) { //A megkapott aszteroida vagy teleport torlodik az aszteroida szomszedai kozul
+		neighbors.remove(t);
+	}
+	
+	public ArrayList<Creature> GetCreatures() {
+		return creatures;
+	}
+	
+	public void AddCreature(Creature c){ //Hozzaadja az entitast az aszteroidahoz
+		creatures.add(c);
+	}	
+	
+	public void Remove(Creature c) { //Torli az aszteroidarol a megkapott entitast
+		creatures.remove(c);
+	}
+	
+	public void ReduceLayers() { //Csokkenti az aszteroida kopenyet
+		if(layers == 1 && closeToSun) { //Ha epp napkozelben van, akkor meghivja a resource CloseToSun fuggvenyet
+			layers--;
+			resource.CloseToSun(this);
+		}
+		else if(layers > 0){
+			layers--;
+		}
+	}
+	
+	public boolean CheckNeighbor(Travel t) { //Megnezi, hogy a kapott aszteroida szomszedja-e annak az aszteroidanak amire ez hivva van
+		for(Travel tr : neighbors) {
+			if(tr == t)
+				return true;
+		}
+		return false;
+	}
+	
+	public void SunStorm() { //Napviharnal ha el tudnak bujni az entitasok nem csinal semmit, egyebkent pedig megoli az osszes entitast ami rajta van
+		if(layers == 0 && isEmpty);
+		else {
+			if(creatures != null)
+				for(Creature c : creatures)
+					c.Die();
+			if(neighbors != null)
+				for(Travel t : neighbors)
+					t.SetIsMoving();
+		}
+	}
+	
+	public void Explode() { //Felrobban az aszteroida
+		if(creatures != null)
+			for(Creature c : creatures)
+				c.Explode();
+		if(neighbors != null)
+			for(Travel t : neighbors)
+				t.RemoveNeighbor(this);
+	}
+	
+	public void CheckEnoughResources() { //Megnezi, hogy van-e osszesen minden nyersanyagbol harom az aszteroidan levo telepeseknel
+		ArrayList<Resource> all = new ArrayList<>();
+		for(Creature c : creatures) {
+			if(c.GetResources() != null) {
+				for(Resource r : c.GetResources()) {
+					all.add(r);
+				}
+			}
+		}
+		if(bill.CheckResourceBase(all)) {
+			game.EndGame();
+		}
+	}
+	
+	@Override
+	public void AcceptTeleport(Teleport t) {
+		t.SetAsteroid(this);
+		AddNewNeighbor(t);
+	}
+	
+	@Override
+	public void Accept(Creature c) { //Elfogadja a ralepo entitast
+		creatures.add(c);
+		c.SetAsteroid(this);
+	}
+	
+	@Override
+	public void SetIsMoving() {}
 	
 }
