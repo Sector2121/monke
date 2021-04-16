@@ -1,8 +1,6 @@
 package monke;
 
-public class Resource {
+abstract class Resource {
 
-	public void CloseToSun(Asteroid a) {
-		
-	}
+	abstract void CloseToSun(Asteroid a);
 }

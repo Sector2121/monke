@@ -1,5 +1,5 @@
 package monke;
 
-public class Carbon extends Resource{ //Nincs egyenlőre különleges tulajdonsága
+public class Carbon extends Resource{
 
 }
