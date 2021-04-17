@@ -110,20 +110,20 @@ public class Settler extends Creature{
 	
 	
 	@Override
-	public void Die() {
+	public void Die() {//Leveszi az aszteroidarol es kiveszi a jatekbol a telepest, ezzel megolve azt.
 		asteroid.Remove(this);
 		game.RemoveSettler(this);
 	}
 	
-	public void BuildTeleport() {
-		if(hasTpk >= 2) {
+	public void BuildTeleport() {//Megepit egy teleportkapu part, amiket behelyez a listajaba
+		if(hasTpk >= 2) {//Amennyiben tobb mint ketto teleportja van, visszater.
 			return;
 		}
-			if(billOfResources.CheckResource(resources, "Teleport")) {
+			if(billOfResources.CheckResource(resources, "Teleport")) {//Van-e eleg nyersanyaga egy tpk parhoz a nyersanyaglista alapjan
 				
-				RemoveResource(billOfResources.GetBillOfTpk());
+				RemoveResource(billOfResources.GetBillOfTpk());// Ha van, kiveszi az elhasznalt nyersanyagokat, megnoveli a teleportszamlalojat
 				hasTpk += 2;
-				Teleport t = new Teleport(tpid);
+				Teleport t = new Teleport(tpid);//Letrehoz ket teleportot, melyeket egymas parjanak allit, majd beleteszi a listajaba oket.
 				tpid++;
 				Teleport t2 = new Teleport(tpid);
 				tpid++;
@@ -137,9 +137,9 @@ public class Settler extends Creature{
 			}
 	}
 	
-	public void BuildRobot() {
-		if(billOfResources.CheckResource(resources, "Robot")) {
-			Robot r = new Robot(asteroid);
+	public void BuildRobot() {// Megepit egy robotot, amit lehelyez az aszteroidajara.
+		if(billOfResources.CheckResource(resources, "Robot")) {//Van-e eleg nyersanyaga egy robothoz a nyersanyaglista alapjan
+			Robot r = new Robot(asteroid);//Ha van, letrehoz egy uj robotot, majd meghivja a RemoveResource-ot, amivel a felhasznalt nyersanyagokat kiveszi.
 			RemoveResource(billOfResources.GetBillOfRobot());
 			System.out.println("The selected object got built!");
 		}else {
@@ -147,12 +147,13 @@ public class Settler extends Creature{
 		}
 	}
 	
-	public void PlaceTeleport(Asteroid a) {
-		if(hasTpk == 0) {
+	public void PlaceTeleport(Asteroid a) {// Lerakja a parameter aszteroidara a listaja elso teleportjat.
+		if(hasTpk == 0) {// Amennyiben nincs nala tpk, visszater
 			System.out.println("You don’t have any teleports!");
 			return;
 		}
-		Teleport t = teleports.get(0);
+		Teleport t = teleports.get(0);//Kulonben a teleports lista elso elemenek beallitja az aszteroidajat a parameterre, kiveszi a listabol
+		// es csokkenti a teleportszamlalo erteket.
 		t.SetAsteroid(a);
 		teleports.remove(0);
 		hasTpk--;
