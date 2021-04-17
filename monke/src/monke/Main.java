@@ -71,7 +71,17 @@ public class Main {
 					}
 				}
 			} else if (cmd[0].equals("List_neighbors")) {
-
+				int id = Integer.parseInt(cmd[1]);
+				ArrayList<Asteroid> list = new ArrayList<Asteroid>();
+				ArrayList<Travel> neighbors = new ArrayList<Travel>();
+				
+				list = game.GetAsteroid();
+				neighbors = list.get(id).GetNeighbors();
+				for(int i= 0; i<neighbors.size();i++) {
+					Asteroid a = new Asteroid(game, i, null);
+					a = (Asteroid)neighbors.get(i);
+					System.out.println(a.GetId());
+				}
 			} else if (cmd[0].equals("Drill")) {
 				for (Settler s : game.GetSettlers()) {
 					if(s.GetName()==cmd[1]) {
@@ -158,7 +168,11 @@ public class Main {
 			} else if (cmd[0].equals("Add_teleport")) {
 
 			} else if (cmd[0].equals("Set_neighbor")) {
-
+				int id1 = Integer.parseInt(cmd[1]);
+				int id2 = Integer.parseInt(cmd[2]);
+				ArrayList<Asteroid> list = new ArrayList<Asteroid>();
+				list = game.GetAsteroid();
+				list.get(id1).AddNewNeighbor(list.get(id2));
 			} else if (cmd[0].equals("Reset")) {
 
 			} else if (cmd[0].equals("Stat_asteroid")) {
