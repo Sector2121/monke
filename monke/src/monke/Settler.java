@@ -159,5 +159,13 @@ public class Settler extends Creature{
 		teleports.remove(0);
 		hasTpk--;
 		System.out.println("You've succesfully placed the teleport!");
-	} 
+	}
+	
+	//Ez új
+	public void ListAllResource() {
+		for(Resource r : resources) {
+			System.out.print(r + " ");
+		}
+		System.out.println();
+	}
 }

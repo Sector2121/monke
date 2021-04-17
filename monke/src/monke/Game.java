@@ -71,4 +71,10 @@ public class Game {
 	 * Jatek elinditasa.
 	 */
 	public void Start() {}
+	
+	//Ez új
+	public void Reset() {
+		asteroids.clear();
+		settlers.clear();
+	}
 }

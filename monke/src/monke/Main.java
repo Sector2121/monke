@@ -36,7 +36,7 @@ public class Main {
 					ufos.add(u);
 				}
 			} else if (cmd[0].equals("Create_asteroids")) {
-				for (int i=0;i<Integer.parseInt(cmd[1]);i++) {
+				for (int i=0;i<Integer.parseInt(cmd[1]);i++) { // <-------------- 0-tól indexlek geci szarok a tesztleírások de leszarom emrt fáradt vagyok
 					Random rand = new Random();
 					int random = rand.nextInt(4) + 1;
 					Resource r;
@@ -57,16 +57,16 @@ public class Main {
 				}
 			} else if (cmd[0].equals("Start_settlers")) {
 				for (Settler s : game.GetSettlers()) {
-					s.asteroid=game.GetAsteroid().get(Integer.parseInt(cmd[1]));
+					s.asteroid=game.GetAsteroid().get(Integer.parseInt(cmd[1])-1);
 				}
 			} else if (cmd[0].equals("Start_ufos")) {
 				for (Ufo u : ufos) {
-					u.asteroid=game.GetAsteroid().get(Integer.parseInt(cmd[1]));
+					u.asteroid=game.GetAsteroid().get(Integer.parseInt(cmd[1])-1);
 				}
 			} else if (cmd[0].equals("Move")) {
 				for (Settler s : game.GetSettlers()) {
 					if(s.GetName()==cmd[1]) {
-						s.asteroid=game.GetAsteroid().get(Integer.parseInt(cmd[2]));
+						s.asteroid=game.GetAsteroid().get(Integer.parseInt(cmd[2])-1);
 						break;
 					}
 				}
@@ -144,16 +144,70 @@ public class Main {
 			} else if (cmd[0].equals("Load_game")) {
 
 			} else if (cmd[0].equals("Stat")) {
-
+				for (Settler s : game.GetSettlers()) {
+					if(s.GetName().equals(cmd[1])) {
+						System.out.println("-------------------------------------------------------------------------------------");
+						System.out.println("Your settlers statistics are the following:");
+						System.out.println("Name: "+s.GetName());
+						System.out.print("Resources: ");
+						s.ListAllResource();
+						System.out.println("Asteroid ID: "+s.asteroid.GetId());
+						System.out.println("Core: "+s.asteroid.GetResource());
+						System.out.println("Weather: "+s.asteroid.GetWeather());
+						//System.out.prtinln("Teleport: "+s.asteroid.get) <---- Ezt most hirtelen nem tudom
+						System.out.println("Other creatures on your asteroid: "+s.asteroid.GetCreatures());
+						System.out.println("-------------------------------------------------------------------------------------");
+						break;
+					}
+				}
 			} else if (cmd[0].equals("Set_weather")) {
 				for(Asteroid a : game.GetAsteroid()) {
 					if(a.GetId() == Integer.parseInt(cmd[1])) {
 						a.SetWeather(cmd[2]);
+						break;
 					}
 				}
 			} else if (cmd[0].equals("Set_resource")) {
+				System.out.println(cmd[0]);
+				System.out.println(cmd[1]);
+				System.out.println(cmd[2]);
+				boolean cont = true;
+				Resource r;
+				if(cmd[2].equals("uranium")) {
+					System.out.println("buzivok");
+					r = new Uranium();
+				}
+				else if(cmd[2].equals("waterice")) {
+					r = new Waterice();
+				}
+				else if(cmd[2].equals("iron")) {
+					System.out.println("miafasz");
+					r = new Iron();
+				}
+				else if(cmd[2].equals("carbon")) {
+					r = new Carbon();
+				}
+				else {
+					r = null;
+					cont = false;
+					System.out.println("The command is invalid");
+				}
+				if(cont == true) {
+					for(Asteroid a : game.GetAsteroid()) {
+						if(a.GetId() == Integer.parseInt(cmd[1])) {
+							a.SetResource(r);
+							break;
+						}
+					}
+				}
 
 			} else if (cmd[0].equals("Set_layer")) {
+				for(Asteroid a : game.GetAsteroid()) {
+					if(a.GetId() == Integer.parseInt(cmd[1])) {
+						a.SetLayers(Integer.parseInt(cmd[2]));
+						break;
+					}
+				}
 
 			} else if (cmd[0].equals("Sunstorm")) {
 
@@ -174,9 +228,18 @@ public class Main {
 				list = game.GetAsteroid();
 				list.get(id1).AddNewNeighbor(list.get(id2));
 			} else if (cmd[0].equals("Reset")) {
-
+				game.Reset();
 			} else if (cmd[0].equals("Stat_asteroid")) {
-
+				for(Asteroid a : game.GetAsteroid()) {
+					if(a.GetId() == Integer.parseInt(cmd[1])) {
+						System.out.println("-------------------------------------------------------------------------------------");
+						System.out.println("Asteroid "+a.GetId()+" stat:");
+						System.out.println("Resource: "+a.GetResource());
+						System.out.println("Weather: "+a.GetWeather());
+						System.out.println("Creatures: "+a.GetCreatures());
+						System.out.println("-------------------------------------------------------------------------------------");
+					}
+				}
 			}
 			else {
 				System.out.println("'" + cmd[0] +"' is not recognized command");
