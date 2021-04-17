@@ -167,6 +167,9 @@ public class Main {
 				for(Asteroid a : game.GetAsteroid()) {
 					if(a.GetId() == Integer.parseInt(cmd[1])) {
 						a.SetWeather(cmd[2]);
+						if(cmd[2].equals("hot")) {
+							a.SetCloseToSun(true);
+						}
 						break;
 					}
 				}
