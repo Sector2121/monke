@@ -34,7 +34,7 @@ public class Teleport implements Travel{
 	
 	/**
 	 * Visszaadja a teleport aszteroidajat.
-	 * @return asteroid
+	 * @return A teleport aszteroidaja.
 	 */
 	public Asteroid GetAsteroid() {
 		return asteroid;
@@ -50,7 +50,7 @@ public class Teleport implements Travel{
 	
 	/**
 	 * Visszaadja a teleport teleportparjat.
-	 * @return pair
+	 * @return A teleport parja.
 	 */
 	public Teleport GetPair() {
 		return pair;
