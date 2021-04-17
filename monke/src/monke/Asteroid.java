@@ -249,4 +249,21 @@ public class Asteroid implements Travel{
 	@Override
 	public void SetIsMoving() {}
 	
+	//Innentõl minden új
+	public void GetOtherCreaturesName(Creature ask) {
+		for (Creature c : creatures) {
+			if(!c.GetName().equals(ask.GetName())) {
+				System.out.print(c.GetName()+" ");
+			}
+		}
+		System.out.println();
+	}
+	
+	
+	public void GetCreaturesName() {
+		for (Creature c : creatures) {
+			System.out.print(c.GetName()+" ");
+		}
+		System.out.println();
+	}
 }

@@ -36,7 +36,7 @@ public class Main {
 					ufos.add(u);
 				}
 			} else if (cmd[0].equals("Create_asteroids")) {
-				for (int i=0;i<Integer.parseInt(cmd[1]);i++) { // <-------------- 0-tól indexlek geci szarok a tesztleírások de leszarom emrt fáradt vagyok
+				for (int i=1;i<=Integer.parseInt(cmd[1]);i++) {
 					Random rand = new Random();
 					int random = rand.nextInt(4) + 1;
 					Resource r;
@@ -58,6 +58,7 @@ public class Main {
 			} else if (cmd[0].equals("Start_settlers")) {
 				for (Settler s : game.GetSettlers()) {
 					s.asteroid=game.GetAsteroid().get(Integer.parseInt(cmd[1])-1);
+					game.GetAsteroid().get(Integer.parseInt(cmd[1])-1).AddCreature(s);
 				}
 			} else if (cmd[0].equals("Start_ufos")) {
 				for (Ufo u : ufos) {
@@ -84,7 +85,7 @@ public class Main {
 				}
 			} else if (cmd[0].equals("Drill")) {
 				for (Settler s : game.GetSettlers()) {
-					if(s.GetName()==cmd[1]) {
+					if(s.GetName().equals(cmd[1])) {
 						s.Drill();
 						break;
 					}
@@ -152,10 +153,11 @@ public class Main {
 						System.out.print("Resources: ");
 						s.ListAllResource();
 						System.out.println("Asteroid ID: "+s.asteroid.GetId());
-						System.out.println("Core: "+s.asteroid.GetResource());
+						System.out.println("Core: "+s.asteroid.GetResource()); //<---- Gondolom ha kéreg 0 csak akkor látja de ezt most nincs kedvem kijavítani
 						System.out.println("Weather: "+s.asteroid.GetWeather());
 						//System.out.prtinln("Teleport: "+s.asteroid.get) <---- Ezt most hirtelen nem tudom
-						System.out.println("Other creatures on your asteroid: "+s.asteroid.GetCreatures());
+						System.out.print("Other creatures on your asteroid: ");
+						s.asteroid.GetOtherCreaturesName(s);
 						System.out.println("-------------------------------------------------------------------------------------");
 						break;
 					}
@@ -232,12 +234,13 @@ public class Main {
 			} else if (cmd[0].equals("Stat_asteroid")) {
 				for(Asteroid a : game.GetAsteroid()) {
 					if(a.GetId() == Integer.parseInt(cmd[1])) {
-						System.out.println("Mi a geci?");
 						System.out.println("-------------------------------------------------------------------------------------");
 						System.out.println("Asteroid "+a.GetId()+" stat:");
+						System.out.println("Layers: "+a.GetLayers());
 						System.out.println("Resource: "+a.GetResource());
 						System.out.println("Weather: "+a.GetWeather());
-						System.out.println("Creatures: "+a.GetCreatures());
+						System.out.print("Creatures: ");
+						a.GetCreaturesName();
 						System.out.println("-------------------------------------------------------------------------------------");
 					}
 				}
