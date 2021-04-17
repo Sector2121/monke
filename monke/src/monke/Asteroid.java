@@ -37,6 +37,13 @@ public class Asteroid implements Travel{
 		bill = new BillOfResources();
 	}
 	/**
+	 * Visszaadja az aszteroida id-jet.
+	 * @return Visszater az id-vel.
+	 */
+	public int GetId() {
+		return id;
+	}
+	/**
 	 * Visszaadja, hogy ures-e az aszteroida.
 	 * @return  Visszater az isEmpty-vel.
 	 */
