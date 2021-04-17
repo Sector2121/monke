@@ -170,24 +170,22 @@ public class Main {
 						if(cmd[2].equals("hot")) {
 							a.SetCloseToSun(true);
 						}
+						else {
+							a.SetCloseToSun(false);
+						}
 						break;
 					}
 				}
 			} else if (cmd[0].equals("Set_resource")) {
-				System.out.println(cmd[0]);
-				System.out.println(cmd[1]);
-				System.out.println(cmd[2]);
 				boolean cont = true;
 				Resource r;
 				if(cmd[2].equals("uranium")) {
-					System.out.println("buzivok");
 					r = new Uranium();
 				}
 				else if(cmd[2].equals("waterice")) {
 					r = new Waterice();
 				}
 				else if(cmd[2].equals("iron")) {
-					System.out.println("miafasz");
 					r = new Iron();
 				}
 				else if(cmd[2].equals("carbon")) {

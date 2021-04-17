@@ -271,11 +271,13 @@ public class Asteroid implements Travel{
 		Waterice w = new Waterice();
 		Carbon c = new Carbon();
 		Uranium u = new Uranium();*/
-		if(resource != null) {
-			resource.GetName();
-		}
-		else {
-			System.out.println("Empty");
+		if(layers == 0) {
+			if(resource != null) {
+				resource.GetName();
+			}
+			else {
+				System.out.println("Empty");
+			}
 		}
 		/*if(resource.getClass().equals(i)) {
 			System.out.print("Iron");
