@@ -19,19 +19,19 @@ public class Creature {
 		}
 	} 
 	
-	public String GetName() {
+	public String GetName() { //Visszaadja a creature nevet
 		return name;
 	}
 	
-	public void SetName(String name) {
+	public void SetName(String name) { //Beallitja a creature nevet
 		this.name = name;
 	}
 	
-	public Asteroid GetAsteroid() {
+	public Asteroid GetAsteroid() { //Visszaadja a creature aszteroidajat
 		return asteroid;
 	}
 	
-	public void SetAsteroid(Asteroid a) {
+	public void SetAsteroid(Asteroid a) { //Beallitja a creature aszteroidajat
 		asteroid = a;
 	}
 	
