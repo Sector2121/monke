@@ -32,7 +32,7 @@ public class Main {
 				}
 			} else if (cmd[0].equals("Create_ufos")) {
 				for (int i=1;i<cmd.length;i++) {
-					Ufo u = new Ufo();
+					Ufo u = new Ufo(cmd[i]);
 					ufos.add(u);
 				}
 			} else if (cmd[0].equals("Create_asteroids")) {

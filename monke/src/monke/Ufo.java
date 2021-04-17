@@ -7,7 +7,8 @@ public class Ufo extends Creature{
 	/**
 	*Konstruktor
 	*/
-	public Ufo() {
+	public Ufo(String name) {
+		this.SetName(name);
 	}
 	
 	/**
