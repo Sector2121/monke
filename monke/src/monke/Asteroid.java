@@ -17,7 +17,7 @@ public class Asteroid implements Travel{
 	
 	public Asteroid(Game g, int id, Resource r) { //Konstruktor
 		game = g;
-		this.id = id; 						//Ez meg kell!!!!!!!!!!!!!!!!!!!!!!!
+		this.id = id; 						/*Ez meg kell!!!!!!!!!!!!!!!!!!!!!!!*/
 		Random rand = new Random();
 		layers = rand.nextInt(3) + 3;
 		closeToSun = false;
@@ -32,35 +32,35 @@ public class Asteroid implements Travel{
 		bill = new BillOfResources();
 	}
 	 
-	public boolean GetIsEmpty() {
+	public boolean GetIsEmpty() { //Visszaadja az isEmpty booleant
 		return isEmpty;
 	}
 	
-	public void SetIsEmpty(boolean b) {
+	public void SetIsEmpty(boolean b) { //Beallitja az isEmpty booleant
 		isEmpty = b;
 	}
 	
-	public int GetLayers() {
+	public int GetLayers() { //Visszaadja a layers valtozot
 		return layers;
 	}
 	
-	public void SetLayers(int l) {
+	public void SetLayers(int l) { //Beallitja a layers valtozot
 		layers = l;
 	}
 	
-	public Resource GetResource() {
+	public Resource GetResource() { //Visszaadja a resource-t
 		return resource;
 	}
 	
-	public void SetResource(Resource r) { //Beallitja az aszteroida nyersanyagat a kapottra
+	public void SetResource(Resource r) { //Beallitja a a resource-t
 		resource = r;
 	}
 	
-	public boolean GetCloseToSun() {
+	public boolean GetCloseToSun() { //Visszaadja a closeToSun booleant
 		return closeToSun;
 	}
 	
-	public void SetCloseToSun(boolean b) {
+	public void SetCloseToSun(boolean b) { //Beallitja a closeToSun booleant
 		closeToSun = b;
 	}
 	
@@ -68,11 +68,11 @@ public class Asteroid implements Travel{
 		return weather;
 	}
 	
-	public void SetWeather(String w) { //Beallatja az idajarast a megkapottra
+	public void SetWeather(String w) { //Beallatja az idojarast
 		weather = w;
 	}
 	
-	public ArrayList<Travel> GetNeighbors(){
+	public ArrayList<Travel> GetNeighbors(){ //Visszaadja a szomszedok listajat
 		return neighbors;
 	}
 	
@@ -84,7 +84,7 @@ public class Asteroid implements Travel{
 		neighbors.remove(t);
 	}
 	
-	public ArrayList<Creature> GetCreatures() {
+	public ArrayList<Creature> GetCreatures() { //Visszaadja az aszteroidan tartozkodo creature-ok listajat
 		return creatures;
 	}
 	
@@ -150,13 +150,13 @@ public class Asteroid implements Travel{
 				}
 			}
 		}
-		if(bill.CheckResource(all, "Base")) {
+		if(bill.CheckResource(all, "Base")) { //Ha a telepesek osszegyujtottek eleg nyersanyagot, meghivja az EndGame()-et
 			game.EndGame();
 		}
 	}
 	
 	@Override
-	public void AcceptTeleport(Teleport t) {
+	public void AcceptTeleport(Teleport t) { //Teleport elfogadasa
 		t.SetAsteroid(this);
 		AddNewNeighbor(t);
 	}
@@ -168,6 +168,6 @@ public class Asteroid implements Travel{
 	}
 	
 	@Override
-	public void SetIsMoving() {}
+	public void SetIsMoving() {} //isMoving boolean beallitasa
 	
 }
