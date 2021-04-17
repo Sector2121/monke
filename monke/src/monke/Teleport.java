@@ -9,15 +9,15 @@ public class Teleport implements Travel{
 	private Teleport pair;
 	private boolean isMoving;
 	
-	public Teleport() { //Konstruktor
-		id = 1; 															//Ez meg kell!!!!!!!!!!!!!!
+	public Teleport(int id) { //Konstruktor
+		this.id = id; 															//Ez meg kell!!!!!!!!!!!!!!
 		asteroid = null;
 		pair = null;
 		isMoving = false;
 	}
 	
-	public Teleport(Teleport p){ //Konstruktor
-		id = 1; 															//Ez meg kell!!!!!!!!!!!!!!!!!!!
+	public Teleport(int id, Teleport p){ //Konstruktor
+		this.id = id; 															//Ez meg kell!!!!!!!!!!!!!!!!!!!
 		asteroid = null;
 		pair = p;
 		isMoving = false;

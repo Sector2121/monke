@@ -15,9 +15,9 @@ public class Asteroid implements Travel{
 	private ArrayList<Travel> neighbors;
 	private BillOfResources bill;
 	
-	public Asteroid(Game g, Resource r) { //Konstruktor
+	public Asteroid(Game g, int id, Resource r) { //Konstruktor
 		game = g;
-		id = 1; 						//Ez meg kell!!!!!!!!!!!!!!!!!!!!!!!
+		this.id = id; 						//Ez meg kell!!!!!!!!!!!!!!!!!!!!!!!
 		Random rand = new Random();
 		layers = rand.nextInt(3) + 3;
 		closeToSun = false;
