@@ -66,11 +66,11 @@ public class Settler extends Creature{
 				System.out.println("Successfully replaced resource!");
 			}
 			else {
-				System.out.println("“Replace unsuccessful!");
+				System.out.println("Replace unsuccessful!");
 			}
 		}
 		else {
-			System.out.println("“Replace unsuccessful!");
+			System.out.println("Replace unsuccessful!");
 			return;
 		}
 	}
