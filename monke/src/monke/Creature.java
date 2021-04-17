@@ -9,16 +9,16 @@ public class Creature {
 	
 	
 	public void Move(Travel t) { 
-			boolean tf;
-			tf = asteroid.CheckNeighbor(t); 
-				if(tf) { 
-					asteroid.Remove(this); 
-					t.Accept(this); 
-					System.out.println("Successfully moved!");
-				}else {
-					System.out.println("That asteroid is not a neighbor!");
-				}
-			}
+		boolean tf;
+		tf = asteroid.CheckNeighbor(t); 
+		if(tf) { 
+			asteroid.Remove(this); 
+			t.Accept(this); 
+			System.out.println("Successfully moved!");
+		}else {
+			System.out.println("That asteroid is not a neighbor!");
+		}
+	}
 	
 	
 	public String GetName() {
