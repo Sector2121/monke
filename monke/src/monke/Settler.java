@@ -240,7 +240,7 @@ public class Settler extends Creature{
 			r.GetName();
 		}
 	}
-	public void TesztString(String sz) throws IOException, Exception {
+	public void TesztString(String sz) throws Exception {
 		FileInputStream fajlbe = new FileInputStream("konzol");
 		ObjectInputStream be = new ObjectInputStream(fajlbe);
 		ArrayList<String> parancsok = (ArrayList<String>)be.readObject();
