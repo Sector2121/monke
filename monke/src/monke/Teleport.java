@@ -10,14 +10,14 @@ public class Teleport implements Travel{
 	private boolean isMoving;
 	
 	public Teleport(int id) { //Konstruktor
-		this.id = id; 															//Ez meg kell!!!!!!!!!!!!!!
+		this.id = id; 															/*Ez meg kell!!!!!!!!!!!!!!*/
 		asteroid = null;
 		pair = null;
 		isMoving = false;
 	}
 	
 	public Teleport(int id, Teleport p){ //Konstruktor
-		this.id = id; 															//Ez meg kell!!!!!!!!!!!!!!!!!!!
+		this.id = id; 															/*Ez meg kell!!!!!!!!!!!!!!!!!!!*/
 		asteroid = null;
 		pair = p;
 		isMoving = false;
@@ -31,7 +31,7 @@ public class Teleport implements Travel{
 		asteroid = a;
 	}
 	
-	public Teleport GetPair() {
+	public Teleport GetPair() { //Visszaadja a teleport teleportparjat
 		return pair;
 	}
 	
@@ -45,14 +45,14 @@ public class Teleport implements Travel{
 		}
 	}
 	
-	public void Move(Travel t) {
+	public void Move(Travel t) { //A teleport mozog
 		if(asteroid != null)
-			asteroid.RemoveNeighbor(t);			//Most ugy van h at tudnak menni a mozgo teleportok mas teleportokon mert igy tudtam megcsinalni
+			asteroid.RemoveNeighbor(t); /*Most ugy van h at tudnak menni a mozgo teleportok mas teleportokon mert igy tudtam megcsinalni*/
 		t.AcceptTeleport(this);
 	}
 	
-	public void Step() {
-		if(isMoving) {
+	public void Step() { //A teleport steppel
+		if(isMoving) { //Ha a teleport mozog, akkor atlep egy random szomszedra
 			Random rand = new Random();
 			ArrayList<Travel> neighbors = asteroid.GetNeighbors();
 			Travel t = neighbors.get(rand.nextInt(neighbors.size()));
@@ -61,16 +61,16 @@ public class Teleport implements Travel{
 	}
 	
 	@Override
-	public void AcceptTeleport(Teleport t) {
+	public void AcceptTeleport(Teleport t) { //
 		pair.GetAsteroid().AcceptTeleport(t);;
 	}
 	
 	@Override
-	public void SetIsMoving() {
+	public void SetIsMoving() { //Az isMoving booleant allitja
 		isMoving = true;
 	}
 	
 	@Override
-	public void RemoveNeighbor(Travel t) {}
+	public void RemoveNeighbor(Travel t) {} //
 	
 }
