@@ -10,7 +10,8 @@ public class Robot extends Creature{
 	 * Konstruktor.
 	 * @param a
 	 */
-	public Robot(Asteroid a) {
+	public Robot(Asteroid a, String name) {
+		SetName(name);
 		SetAsteroid(a);
 		a.Accept(this);
 	}

@@ -39,7 +39,6 @@ public class Main {
 				for (int i=0;i<Integer.parseInt(cmd[1]);i++) {
 					Random rand = new Random();
 					int random = rand.nextInt(4) + 1;
-					System.out.println(random);
 					Resource r;
 					if(random == 1) {
 						r = new Iron();
@@ -65,23 +64,68 @@ public class Main {
 					u.asteroid=game.GetAsteroid().get(Integer.parseInt(cmd[1]));
 				}
 			} else if (cmd[0].equals("Move")) {
-
+				for (Settler s : game.GetSettlers()) {
+					if(s.GetName()==cmd[1]) {
+						s.asteroid=game.GetAsteroid().get(Integer.parseInt(cmd[2]));
+						break;
+					}
+				}
 			} else if (cmd[0].equals("List_neighbors")) {
 
 			} else if (cmd[0].equals("Drill")) {
-				
+				for (Settler s : game.GetSettlers()) {
+					if(s.GetName()==cmd[1]) {
+						s.Drill();
+						break;
+					}
+				}
 			} else if (cmd[0].equals("Mine")) {
-				
+				boolean found = false;
+				for (Settler s : game.GetSettlers()) {
+					if(s.GetName()==cmd[1]) {
+						s.Mine();
+						found = true;
+						break;
+					}
+				}
+				if(found == false) {
+					for (Ufo u : ufos) {
+						if(u.GetName()==cmd[1]) {
+							u.Mine();
+							break;
+						}
+					}
+				}
 			} else if (cmd[0].equals("Build")) {
-			
+				for (Settler s : game.GetSettlers()) {
+					if(s.GetName()==cmd[1]) {
+						if(cmd[1]=="robot") {
+							
+						}
+						else if (cmd[1]=="teleport") {
+							
+						}
+						break;
+					}
+				}
 			} else if (cmd[0].equals("Place_teleport")) {
 
 			} else if (cmd[0].equals("Replace_resource")) {
 
 			} else if (cmd[0].equals("Skip")) {
-
+				for (Settler s : game.GetSettlers()) {
+					if(s.GetName()==cmd[1]) {
+						s.Skip();
+						break;
+					}
+				}
 			} else if (cmd[0].equals("Give_up")) {
-
+				for (Settler s : game.GetSettlers()) {
+					if(s.GetName()==cmd[1]) {
+						s.GiveUp();
+						break;
+					}
+				}
 			} else if (cmd[0].equals("Step")) {
 
 			} else if (cmd[0].equals("Save_game")) {

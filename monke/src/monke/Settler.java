@@ -12,17 +12,11 @@ public class Settler extends Creature{
 	private static BillOfResources billOfResources;
 	private ArrayList<Teleport> teleports;
 	private static int tpid= 0;
-	/**
-	 * A telepes parameter nelkuli konstruktora
-	 */
-	public Settler() {
+	
+	public Settler() {// A telepes parameter nelkuli konstruktora
 	}
-	/**
-	 * A telepes konstruktora
-	 * @param game
-	 * @param name
-	 */
-	public Settler(Game game, String name) {
+	
+	public Settler(Game game, String name) {// A telepes konstruktora
 		hasTpk = 0;
 		this.game = game;
 		resources = new ArrayList<Resource>();
@@ -32,58 +26,40 @@ public class Settler extends Creature{
 		this.asteroid = null;
 		System.out.println("Settler created!");
 	}
-	/**
-	 * Banyaszik egy aszteroidabol.
-	 * Ha az aszteroida kerge nagyobb nullanal, visszater.
-	 * Ha a nyersanyaglistajaban van meg hely, hozzaadja az aszteroidaban levo nyersanyagot, es az aszteroidat uresre allitja.
-	 * (Megnezi tudnak-e nyerni a telepesek)
-	 * Ha nincs, visszater.
-	 */
-	public void Mine() {
-		if(asteroid.GetLayers() > 0) {
+	
+	public void Mine() {//Banyaszik egy aszteroidabol
+		if(asteroid.GetLayers() > 0) {//Ha az aszteroida kerge nagyobb nullanal, visszater
 			return;
 		}
 		
 		int length = resources.size();
-		if(length < 10) {
+		if(length < 10) { //Ha a nyersanyaglistajaban van meg hely, hozzaadja az aszteroidaban levo nyersanyagot, es az aszteroidat uresre allitja.
 			AddResource(asteroid.GetResource());
 			asteroid.SetResource(null);
-			asteroid.CheckEnoughResources();
+			asteroid.CheckEnoughResources();//(Megnezi tudnak-e nyerni a telepesek)
 		}
-		else if(length == 10) {
+		else if(length == 10) {// Ha nincs, visszater.
 			return;
 		}
 	}
-	/**
-	 * Meghivja a reducelayerst az aszteroidara.
-	 */
-	public void Drill() {
+	
+	public void Drill() {//meghivja a reducelayerst az aszteroidara.
 		asteroid.ReduceLayers();
 	}
-	/**
-	 * Hozzaadja a parametert a nyersanyaglistajahoz
-	 * @param r
-	 */
-	public void AddResource(Resource r) {
+	
+	public void AddResource(Resource r) { //Hozzaadja a parametert a nyersanyaglistajahoz
 		resources.add(r);
 	}
-	/**
-	 * Visszaadja a nyersanyaglistat
-	 */
-	public ArrayList<Resource> GetResources() {
+	
+	public ArrayList<Resource> GetResources() {//Visszaadja a nyersanyaglistat
 		return resources;
 	}
-	/**
-	 * Visszarak egy parameterul kapott nyersanyagot az aszteroidajaba.
-	 * Amennyiben ures es teljesen atfurt az aszteroida, es a telepesnek van az adott nyersanyagbol, beallitja az aszteroida magjat ra,
-	 * illetve a RemoveResource-al elveszi magatol.
-	 * @param r
-	 */
-	public void PlaceResource(Resource r) {
-		if(asteroid.GetLayers() == 0 && asteroid.GetIsEmpty()) {
+	
+	public void PlaceResource(Resource r) {// Visszarak egy parameterul kapott nyersanyagot az aszteroidajaba.
+		if(asteroid.GetLayers() == 0 && asteroid.GetIsEmpty()) {// Amennyiben ures es teljesen atfurt az aszteroida
 			boolean hasr = CheckResource(r);
-			if(hasr == true) {									
-																
+			if(hasr == true) {									// es a telepesnek van az adott nyersanyagbol, beallitja az aszteroida magjat ra, 
+																//illetve a RemoveResource-al elveszi magatol.
 				asteroid.SetResource(r);
 				ArrayList<Resource> re = new ArrayList<>();
 				re.add(r);
@@ -99,12 +75,8 @@ public class Settler extends Creature{
 			return;
 		}
 	}
-	/**
-	 * True-val ter vissza ha a parameter benne van a nyersanyagai kozott, false-al ha nem.
-	 * @param r
-	 * @return true or false
-	 */
-	public boolean CheckResource(Resource r) {
+	
+	public boolean CheckResource(Resource r) {//True-val ter vissza ha a parameter benne van a nyersanyagai kozott, false-al ha nem.
 		for(Resource r2 : resources) {
 			if(r == r2) {
 				return true;
@@ -112,11 +84,8 @@ public class Settler extends Creature{
 		}
 		return false;
 	}
-	/**
-	 * A kapott nyersanyagokat kiveszi a telepes nyersanyagai kozul.
-	 * @param rem
-	 */
-	public void RemoveResource(ArrayList<Resource> rem) {
+	
+	public void RemoveResource(ArrayList<Resource> rem) {//A kapott nyersanyagokat kiveszi a telepes nyersanyagai kozul.
 		for(Resource re : rem) {
 			for(Resource r : resources) {
 				if(r == re) {
@@ -127,47 +96,35 @@ public class Settler extends Creature{
 		}
 		
 	}
-	/**
-	 * Meghivja a Die-t magara, ezzel feladva a jatekot.
-	 */
-	public void GiveUp() {
+	
+	public void GiveUp() {// Meghivja a Die-t magara, ezzel feladva a jatekot.
 		System.out.println("You gave up, your settler has commited suicide! Press F to continue. Thank you for playing our game!");
 		Die(); 
 	}
 	
 	
-	/**
-	 * A jatekos koret tovabb passzolja
-	 */
 	
-	public void Skip() {
+	
+	public void Skip() {//A jatekos koret tovabb passzolja
 		System.out.println("Successfully skipped!");
 	}
 	
-	/**
-	 * Leveszi az aszteroidarol es kiveszi a jatekbol a telepest, ezzel megolve azt.
-	 */
+	
 	@Override
-	public void Die() {
+	public void Die() {//Leveszi az aszteroidarol es kiveszi a jatekbol a telepest, ezzel megolve azt.
 		asteroid.Remove(this);
 		game.RemoveSettler(this);
 	}
-	/**
-	 * Megepit egy teleportkapu part, amiket behelyez a listajaba
-	 * Amennyiben tobb mint ketto teleportja van, visszater.
-	 * Ezutan megnezi, van-e eleg nyersanyaga egy tpk parhoz a nyersanyaglista alapjan.
-	 * Ha van, kiveszi az elhasznalt nyersanyagokat, megnoveli a teleportszamlalojat.
-	 * Vegul letrehoz ket teleportot, melyeket egymas parjanak allit, majd beleteszi a listajaba oket.
-	 */
-	public void BuildTeleport() {
-		if(hasTpk >= 2) {
+	
+	public void BuildTeleport() {//Megepit egy teleportkapu part, amiket behelyez a listajaba
+		if(hasTpk >= 2) {//Amennyiben tobb mint ketto teleportja van, visszater.
 			return;
 		}
-			if(billOfResources.CheckResource(resources, "Teleport")) {
+			if(billOfResources.CheckResource(resources, "Teleport")) {//Van-e eleg nyersanyaga egy tpk parhoz a nyersanyaglista alapjan
 				
-				RemoveResource(billOfResources.GetBillOfTpk());
+				RemoveResource(billOfResources.GetBillOfTpk());// Ha van, kiveszi az elhasznalt nyersanyagokat, megnoveli a teleportszamlalojat
 				hasTpk += 2;
-				Teleport t = new Teleport(tpid);
+				Teleport t = new Teleport(tpid);//Letrehoz ket teleportot, melyeket egymas parjanak allit, majd beleteszi a listajaba oket.
 				tpid++;
 				Teleport t2 = new Teleport(tpid);
 				tpid++;
@@ -180,15 +137,10 @@ public class Settler extends Creature{
 				System.out.println("You don’t have enough resources to complete this action!");
 			}
 	}
-	/**
-	 * Megepit egy robotot, amit lehelyez az aszteroidajara. 
-	 * Eloszor megnezi van-e eleg nyersanyaga egy robothoz a nyersanyaglista alapjan
-	 * Ha van, letrehoz egy uj robotot, majd meghivja a RemoveResource-ot, amivel a felhasznalt nyersanyagokat kiveszi.
-	 * 
-	 */
-	public void BuildRobot() { 
-		if(billOfResources.CheckResource(resources, "Robot")) {
-			Robot r = new Robot(asteroid);
+	
+	public void BuildRobot(String name) {// Megepit egy robotot, amit lehelyez az aszteroidajara.
+		if(billOfResources.CheckResource(resources, "Robot")) {//Van-e eleg nyersanyaga egy robothoz a nyersanyaglista alapjan
+			Robot r = new Robot(asteroid, name);//Ha van, letrehoz egy uj robotot, majd meghivja a RemoveResource-ot, amivel a felhasznalt nyersanyagokat kiveszi.
 			RemoveResource(billOfResources.GetBillOfRobot());
 			System.out.println("The selected object got built!");
 		}else {
@@ -196,21 +148,13 @@ public class Settler extends Creature{
 		}
 	}
 	
-	
-	
-	/**
-	 * Lerakja a parameter aszteroidara a listaja elso teleportjat.
-	 * Amennyiben nincs nala tpk, visszater.
-	 * Kulonben a teleports lista elso elemenek beallitja az aszteroidajat a parameterre, kiveszi a listabol 
-	 * es csokkenti a teleportszamlalo erteket.
-	 * @param a
-	 */
-	public void PlaceTeleport(Asteroid a) {
-		if(hasTpk == 0) {
+	public void PlaceTeleport(Asteroid a) {// Lerakja a parameter aszteroidara a listaja elso teleportjat.
+		if(hasTpk == 0) {// Amennyiben nincs nala tpk, visszater
 			System.out.println("You don’t have any teleports!");
 			return;
 		}
-		Teleport t = teleports.get(0);
+		Teleport t = teleports.get(0);//Kulonben a teleports lista elso elemenek beallitja az aszteroidajat a parameterre, kiveszi a listabol
+		// es csokkenti a teleportszamlalo erteket.
 		t.SetAsteroid(a);
 		teleports.remove(0);
 		hasTpk--;
