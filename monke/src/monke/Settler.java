@@ -36,6 +36,7 @@ public class Settler extends Creature{
 		if(length < 10) { //Ha a nyersanyaglistajaban van meg hely, hozzaadja az aszteroidaban levo nyersanyagot, es az aszteroidat uresre allitja.
 			AddResource(asteroid.GetResource());
 			asteroid.SetResource(null);
+			asteroid.SetIsEmpty(true);
 			asteroid.CheckEnoughResources();//(Megnezi tudnak-e nyerni a telepesek)
 		}
 		else if(length == 10) {// Ha nincs, visszater.
@@ -56,10 +57,14 @@ public class Settler extends Creature{
 	}
 	
 	public void PlaceResource(Resource r) {// Visszarak egy parameterul kapott nyersanyagot az aszteroidajaba.
+		System.out.println(r);
+		System.out.println(asteroid.GetLayers());
+		System.out.println(asteroid.GetIsEmpty());
 		if(asteroid.GetLayers() == 0 && asteroid.GetIsEmpty()) {// Amennyiben ures es teljesen atfurt az aszteroida
 			boolean hasr = CheckResource(r);
 			if(hasr == true) {									// es a telepesnek van az adott nyersanyagbol, beallitja az aszteroida magjat ra, 
 																//illetve a RemoveResource-al elveszi magatol.
+				System.out.println("ittvagyok");
 				asteroid.SetResource(r);
 				ArrayList<Resource> re = new ArrayList<>();
 				re.add(r);
@@ -77,6 +82,7 @@ public class Settler extends Creature{
 	}
 	
 	public boolean CheckResource(Resource r) {//True-val ter vissza ha a parameter benne van a nyersanyagai kozott, false-al ha nem.
+		System.out.println("mennyi nyersanyagod van?"+resources.size());
 		for(Resource r2 : resources) {
 			if(r == r2) {
 				return true;
@@ -86,14 +92,22 @@ public class Settler extends Creature{
 	}
 	
 	public void RemoveResource(ArrayList<Resource> rem) {//A kapott nyersanyagokat kiveszi a telepes nyersanyagai kozul.
+		System.out.println(rem.size());
+		System.out.println(resources.size());
+		System.out.println(rem.get(0) + " " + resources.get(0));
 		for(Resource re : rem) {
+			System.out.println("ittvagyok");
 			for(Resource r : resources) {
+				System.out.println("ittvagyok");
 				if(r == re) {
+					System.out.println("ittvagyok");
 					resources.remove(r);
-					continue;
+					System.out.println("ittvagyok4");
+					break;
 				}
 			}
 		}
+		System.out.println("befejezetd?");
 		
 	}
 	
