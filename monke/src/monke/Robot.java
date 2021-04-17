@@ -6,34 +6,46 @@ import java.util.Random;
 public class Robot extends Creature{
 	
 	private Random rand = new Random();
-	
-	public Robot(Asteroid a) { //Konstruktor
+	/**
+	*Konstruktor
+	*/
+	public Robot(Asteroid a) {
 		SetAsteroid(a);
 		a.Accept(this);
 	}
-	
-	public void Drill() { //A robot fur
+	/**
+	*A robot fur.
+	*/
+	public void Drill() {
 		asteroid.ReduceLayers();
 		System.out.println("Successful drill!");
 	}
-	
-	public void Step() { //A robot lep
-		if(GetAsteroid().GetLayers() == 0) { //Ha az aszteroidanak nincs kopenye akkor a robot atlep egy masik aszteroidara
+	/**
+	*A robot lep.
+	*Ha az aszteroidanak nincs kopenye akkor a robot atlep egy masik aszteroidara.
+	*Ha az aszteroidanak van kopenye akkor a robot fur.
+	*/
+	public void Step() { 
+		if(GetAsteroid().GetLayers() == 0) { 
 			ArrayList<Travel> neighbors = asteroid.GetNeighbors();
 			Move(neighbors.get(0));
 		}
-		if(asteroid.GetLayers() > 0) { //Ha az aszteroidanak van kopenye akkor a robot fur
+		if(asteroid.GetLayers() > 0) {
 			Drill();
 		}
 	}
-	
+	/**
+	*A robot aszteroidaja felrobban.
+	*Ha az aszteroidanak nincs szomszedja, a robot meghal.
+	*Ha az aszteroidanak van szomszedja, a robot atlep az egyikre.
+	*/
 	@Override
-	public void Explode() { //A robot aszteroidaja felrobban
+	public void Explode() { 
 		ArrayList<Travel> neighbors = asteroid.GetNeighbors();
-		if(neighbors == null) { //Ha az aszteroidanak nincs szomszedja, a robot meghal
+		if(neighbors == null) {
 			Die();
 		}
-		else { //Ha az aszteroidanak van szomszedja, a robot atlep az egyikre
+		else {
 			Move(neighbors.get(rand.nextInt(neighbors.size()))); 
 		}
 	}
