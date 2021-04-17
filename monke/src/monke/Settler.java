@@ -162,10 +162,9 @@ public class Settler extends Creature{
 	}
 	
 	//Ez új
-	public void ListAllResource() {
+	public void ListAllResourceName() {
 		for(Resource r : resources) {
-			System.out.print(r + " ");
+			r.GetName();
 		}
-		System.out.println();
 	}
 }

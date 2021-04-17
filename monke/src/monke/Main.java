@@ -63,6 +63,7 @@ public class Main {
 			} else if (cmd[0].equals("Start_ufos")) {
 				for (Ufo u : ufos) {
 					u.asteroid=game.GetAsteroid().get(Integer.parseInt(cmd[1])-1);
+					game.GetAsteroid().get(Integer.parseInt(cmd[1])-1).AddCreature(u);
 				}
 			} else if (cmd[0].equals("Move")) {
 				for (Settler s : game.GetSettlers()) {
@@ -100,7 +101,7 @@ public class Main {
 					}
 				}
 				if(found == false) {
-					for (Ufo u : ufos) {
+					for (Ufo u : ufos) { //És ha tárolnánk az ufokat nem kéne így rondán létrehozni csak egy listát a mian elején
 						if(u.GetName().equals(cmd[1])) {
 							u.Mine();
 							break;
@@ -109,11 +110,11 @@ public class Main {
 				}
 			} else if (cmd[0].equals("Build")) {
 				for (Settler s : game.GetSettlers()) {
-					if(s.GetName()==cmd[1]) {
-						if(cmd[1]=="robot") {
+					if(s.GetName().equals(cmd[1])) {
+						if(cmd[1].equals("robot")) {
 							s.BuildRobot(cmd[2]);
 						}
-						else if (cmd[1]=="teleport") {
+						else if (cmd[1].equals("teleport")) {
 							s.BuildTeleport();
 						}
 						break;
@@ -122,18 +123,43 @@ public class Main {
 			} else if (cmd[0].equals("Place_teleport")) {
 
 			} else if (cmd[0].equals("Replace_resource")) {
-				
-
+				boolean cont = true;
+				Resource r;
+				if(cmd[2].equals("uranium")) {
+					r = new Uranium();
+				}
+				else if(cmd[2].equals("waterice")) {
+					r = new Waterice();
+				}
+				else if(cmd[2].equals("iron")) {
+					r = new Iron();
+				}
+				else if(cmd[2].equals("carbon")) {
+					r = new Carbon();
+				}
+				else {
+					r = null;
+					cont = false;
+					System.out.println("The command is invalid");
+				}
+				if(cont == true) {
+					for (Settler s : game.GetSettlers()) {
+						if(s.GetName().equals(cmd[1])) {
+							s.PlaceResource(r);
+							break;
+						}
+					}
+				}
 			} else if (cmd[0].equals("Skip")) {
 				for (Settler s : game.GetSettlers()) {
-					if(s.GetName()==cmd[1]) {
+					if(s.GetName().equals(cmd[1])) {
 						s.Skip();
 						break;
 					}
 				}
 			} else if (cmd[0].equals("Give_up")) {
 				for (Settler s : game.GetSettlers()) {
-					if(s.GetName()==cmd[1]) {
+					if(s.GetName().equals(cmd[1])) {
 						s.GiveUp();
 						break;
 					}
@@ -151,7 +177,7 @@ public class Main {
 						System.out.println("Your settlers statistics are the following:");
 						System.out.println("Name: "+s.GetName());
 						System.out.print("Resources: ");
-						s.ListAllResource();
+						s.ListAllResourceName();
 						System.out.println("Asteroid ID: "+s.asteroid.GetId());
 						System.out.print("Core: "); //<---- Gondolom ha kéreg 0 csak akkor látja de ezt most nincs kedvem kijavítani
 						s.asteroid.GetResourceName();
@@ -204,7 +230,6 @@ public class Main {
 						}
 					}
 				}
-
 			} else if (cmd[0].equals("Set_layer")) {
 				for(Asteroid a : game.GetAsteroid()) {
 					if(a.GetId() == Integer.parseInt(cmd[1])) {
