@@ -82,7 +82,7 @@ public class Teleport implements Travel{
 			asteroid.RemoveNeighbor(t); 								/*Most ugy van h at tudnak menni a mozgo teleportok mas teleportokon mert igy tudtam megcsinalni*/
 		t.AcceptTeleport(this);
 	}
-	
+	 
 	/**
 	 * A teleport steppel.
 	 * Ha a teleport mozog, akkor atlep egy random szomszedra.
