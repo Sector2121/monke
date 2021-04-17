@@ -79,11 +79,11 @@ public class Settler extends Creature{
 	 * illetve a RemoveResource-al elveszi magatol.
 	 * @param r
 	 */
-	public void PlaceResource(Resource r) {// 
-		if(asteroid.GetLayers() == 0 && asteroid.GetIsEmpty()) {// 
+	public void PlaceResource(Resource r) {
+		if(asteroid.GetLayers() == 0 && asteroid.GetIsEmpty()) {
 			boolean hasr = CheckResource(r);
-			if(hasr == true) {									//  
-																//
+			if(hasr == true) {									
+																
 				asteroid.SetResource(r);
 				ArrayList<Resource> re = new ArrayList<>();
 				re.add(r);
@@ -160,7 +160,7 @@ public class Settler extends Creature{
 	 * Vegul letrehoz ket teleportot, melyeket egymas parjanak allit, majd beleteszi a listajaba oket.
 	 */
 	public void BuildTeleport() {
-		if(hasTpk >= 2) {//
+		if(hasTpk >= 2) {
 			return;
 		}
 			if(billOfResources.CheckResource(resources, "Teleport")) {
