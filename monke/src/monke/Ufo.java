@@ -4,28 +4,42 @@ import java.util.ArrayList;
 
 public class Ufo extends Creature{
 	
-	public Ufo(Asteroid a) { //Konstruktor
+	/**
+	*Konstruktor
+	*/
+	public Ufo(Asteroid a) {
 		SetAsteroid(a);
 		a.Accept(this);
 	}
 	
+	/**
+	*Az ufo banyaszik.
+	*/
 	public void Mine() { //Az ufo banyaszik
 		asteroid.SetResource(null);
 		System.out.println("Resource mined!");
 	}
 	
-	public void Step() { //Az ufo lep
-		if(asteroid.GetLayers() == 0) { //Ha az aszteroidanak nincs kopenye akkor az ufo kibanyassza a nyersanyagat
+	/**
+	 * Az ufo lep.
+	 * Ha az aszteroidanak nincs kopenye akkor az ufo kibanyassza a nyersanyagat.
+	 * Ha az aszteroidanak van kopenye akkor az ufo lep.
+	 */
+	public void Step() {
+		if(asteroid.GetLayers() == 0) {
 			Mine();
 		}
-		if(asteroid.GetLayers() > 0) { //Ha az aszteroidanak van kopenye akkor az ufo lep
+		if(asteroid.GetLayers() > 0) {
 			ArrayList<Travel> neighbors = asteroid.GetNeighbors();
 			Move(neighbors.get(0));
 		}
 	}
 	
+	/**
+	 * A robot aszteroidaja felrobban
+	 */
 	@Override
-	public void Explode() { //A robot aszteroidaja felrobban
+	public void Explode() {
 		Die();
 	}
 }
