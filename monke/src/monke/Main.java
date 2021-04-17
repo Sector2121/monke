@@ -149,6 +149,7 @@ public class Main {
 				for(Asteroid a : game.GetAsteroid()) {
 					if(a.GetId() == Integer.parseInt(cmd[1])) {
 						a.SetWeather(cmd[2]);
+						break;
 					}
 				}
 			} else if (cmd[0].equals("Set_resource")) {
