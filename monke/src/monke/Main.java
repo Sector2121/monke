@@ -100,10 +100,10 @@ public class Main {
 				for (Settler s : game.GetSettlers()) {
 					if(s.GetName()==cmd[1]) {
 						if(cmd[1]=="robot") {
-							
+							s.BuildRobot(cmd[2]);
 						}
 						else if (cmd[1]=="teleport") {
-							
+							s.BuildTeleport();
 						}
 						break;
 					}
