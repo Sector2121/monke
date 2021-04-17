@@ -31,7 +31,7 @@ public class Creature {
 		return asteroid;
 	}
 	
-	public void SetAsteroid(Asteroid a) { //
+	public void SetAsteroid(Asteroid a) {
 		asteroid = a;
 	}
 	
