@@ -144,7 +144,7 @@ public class Asteroid implements Travel{
 				}
 			}
 		}
-		if(bill.CheckResourceBase(all)) {
+		if(bill.CheckResource(all, "Base")) {
 			game.EndGame();
 		}
 	}
