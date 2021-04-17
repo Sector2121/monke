@@ -7,8 +7,9 @@ public class Robot extends Creature{
 	
 	private Random rand = new Random();
 	/**
-	*Konstruktor
-	*/
+	 * Konstruktor.
+	 * @param a
+	 */
 	public Robot(Asteroid a) {
 		SetAsteroid(a);
 		a.Accept(this);
