@@ -111,6 +111,7 @@ public class Main {
 			} else if (cmd[0].equals("Place_teleport")) {
 
 			} else if (cmd[0].equals("Replace_resource")) {
+				
 
 			} else if (cmd[0].equals("Skip")) {
 				for (Settler s : game.GetSettlers()) {
