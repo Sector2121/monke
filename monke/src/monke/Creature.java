@@ -20,7 +20,6 @@ public class Creature {
 		}
 	}
 	
-	
 	public String GetName() {
 		return name;
 	}
