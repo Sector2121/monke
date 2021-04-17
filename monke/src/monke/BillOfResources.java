@@ -12,6 +12,9 @@ public class BillOfResources {
 	private ArrayList<Resource> billOfBase;
 	
 	public BillOfResources() {
+		this.billOfTpk = new ArrayList<Resource>();
+		this.billOfRobot = new ArrayList<Resource>();
+		this.billOfBase = new ArrayList<Resource>();
 		Iron i = new Iron();
 		Carbon c = new Carbon();
 		Waterice w = new Waterice();

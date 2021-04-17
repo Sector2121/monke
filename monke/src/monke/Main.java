@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -34,10 +35,26 @@ public class Main {
 					game.GetSettlers().add(s);
 				}*/
 			} else if (cmd[0].equals("Create_asteroids")) {
-				/*for (int i=1;i<cmd.length;i++) {
-					Asteroid s = asteroid(game, cmd[i]);
-					game.GetSettlers().add(s);
-				}*/
+				for (int i=0;i<Integer.parseInt(cmd[1]);i++) {
+					Random rand = new Random();
+					int random = rand.nextInt(4) + 1;
+					System.out.println(random);
+					Resource r;
+					if(random == 1) {
+						r = new Iron();
+					}
+					else if (random == 2) {
+						r = new Carbon();
+					}
+					else if (random == 3) {
+						r = new Waterice();
+					}
+					else {
+						r = new Uranium();
+					}
+					Asteroid a = new Asteroid(game, i, r);
+					game.GetAsteroid().add(a);
+				}
 			} else if (cmd[0].equals("Start_settlers")) {
 
 			} else if (cmd[0].equals("Start_ufos")) {
