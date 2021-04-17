@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) {
+		Game game = new Game();
 		Scanner myObj = new Scanner(System.in);
 	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		while (true) {
@@ -23,11 +24,20 @@ public class Main {
 			else if (cmd[0].equals("exit")) {
 				break;
 			} else if (cmd[0].equals("Create_settlers")) {
-				
+				for (int i=1;i<cmd.length;i++) {
+					Settler s = new Settler(game, cmd[i]);
+					game.GetSettlers().add(s);
+				}
 			} else if (cmd[0].equals("Create_ufos")) {
-
+				/*for (int i=1;i<cmd.length;i++) {
+					Ufo s = new Settler(game, cmd[i]);
+					game.GetSettlers().add(s);
+				}*/
 			} else if (cmd[0].equals("Create_asteroids")) {
-
+				/*for (int i=1;i<cmd.length;i++) {
+					Asteroid s = asteroid(game, cmd[i]);
+					game.GetSettlers().add(s);
+				}*/
 			} else if (cmd[0].equals("Start_settlers")) {
 
 			} else if (cmd[0].equals("Start_ufos")) {
@@ -49,6 +59,8 @@ public class Main {
 			} else if (cmd[0].equals("Skip")) {
 
 			} else if (cmd[0].equals("Give_up")) {
+
+			} else if (cmd[0].equals("Step")) {
 
 			} else if (cmd[0].equals("Save_game")) {
 

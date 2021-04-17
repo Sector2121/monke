@@ -13,6 +13,14 @@ public class Game {
 		settlers = new ArrayList<>();
 	}
 	
+	public ArrayList<Settler> GetSettlers() {
+		return this.settlers;
+	}
+	
+	public ArrayList<Asteroid> GetAsteroid() {
+		return this.asteroids;
+	}
+	
 	public void RemoveAsteroid(Asteroid a) { //Eltavolitja a kapott aszteroidat a jatekbol
 		asteroids.remove(a);
 	}
