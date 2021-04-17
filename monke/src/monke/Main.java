@@ -232,6 +232,7 @@ public class Main {
 			} else if (cmd[0].equals("Stat_asteroid")) {
 				for(Asteroid a : game.GetAsteroid()) {
 					if(a.GetId() == Integer.parseInt(cmd[1])) {
+						System.out.println("Mi a geci?");
 						System.out.println("-------------------------------------------------------------------------------------");
 						System.out.println("Asteroid "+a.GetId()+" stat:");
 						System.out.println("Resource: "+a.GetResource());
