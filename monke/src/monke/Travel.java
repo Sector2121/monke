@@ -1,8 +1,8 @@
 package monke;
 
 public interface Travel {
-	public void Accept(Creature c);
-	public void SetIsMoving();
-	public void RemoveNeighbor(Travel t);
-	public void AcceptTeleport(Teleport t);
+	public void Accept(Creature c); //Creature elfogadasa
+	public void SetIsMoving(); //isMoving boolean beallitasa
+	public void RemoveNeighbor(Travel t); //Szomszed eltavolitasa
+	public void AcceptTeleport(Teleport t); //Teleport elfogadasa
 }
