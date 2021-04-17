@@ -14,6 +14,7 @@ public class Robot extends Creature{
 	
 	public void Drill() { //A robot fur
 		asteroid.ReduceLayers();
+		System.out.println("Successful drill!");
 	}
 	
 	public void Step() { //A robot lep

@@ -11,6 +11,7 @@ public class Ufo extends Creature{
 	
 	public void Mine() { //Az ufo banyaszik
 		asteroid.SetResource(null);
+		System.out.println("Resource mined!");
 	}
 	
 	public void Step() { //Az ufo lep
