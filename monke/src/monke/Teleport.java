@@ -61,8 +61,8 @@ public class Teleport implements Travel{
 	}
 	
 	@Override
-	public void AcceptTeleport(Teleport t) { //
-		pair.GetAsteroid().AcceptTeleport(t);;
+	public void AcceptTeleport(Teleport t) { //Teleportkapu elfogadása
+		pair.GetAsteroid().AcceptTeleport(t);
 	}
 	
 	@Override
@@ -71,6 +71,6 @@ public class Teleport implements Travel{
 	}
 	
 	@Override
-	public void RemoveNeighbor(Travel t) {} //
+	public void RemoveNeighbor(Travel t) {} //Szomszed eltavolitasa
 	
 }
