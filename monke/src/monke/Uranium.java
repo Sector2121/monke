@@ -14,4 +14,8 @@ public class Uranium extends Resource{
 			a.Explode();
 		}
 	}
+	
+	void GetName() {
+		System.out.println("Uranium");
+	}
 }

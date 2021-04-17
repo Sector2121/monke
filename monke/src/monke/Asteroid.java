@@ -271,7 +271,8 @@ public class Asteroid implements Travel{
 		Waterice w = new Waterice();
 		Carbon c = new Carbon();
 		Uranium u = new Uranium();
-		if(resource.getClass().equals(i)) {
+		resource.GetName();
+		/*if(resource.getClass().equals(i)) {
 			System.out.print("Iron");
 		}
 		else if(resource.getClass().equals(w)) {
@@ -282,6 +283,6 @@ public class Asteroid implements Travel{
 		}
 		else if(resource.getClass().equals(u)) {
 			System.out.print("Uranium");
-		}
+		}*/
 	}
 }

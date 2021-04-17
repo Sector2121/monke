@@ -237,7 +237,7 @@ public class Main {
 						System.out.println("-------------------------------------------------------------------------------------");
 						System.out.println("Asteroid "+a.GetId()+" stat:");
 						System.out.println("Layers: "+a.GetLayers());
-						System.out.println("Resource: ");
+						System.out.print("Resource: ");
 						a.GetResourceName();
 						System.out.println("Weather: "+a.GetWeather());
 						System.out.print("Creatures: ");

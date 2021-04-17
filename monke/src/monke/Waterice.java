@@ -9,4 +9,8 @@ public class Waterice extends Resource{
 	public void CloseToSun(Asteroid a) {
 		a.SetResource(null);
 	}
+	
+	void GetName() {
+		System.out.println("Waterice");
+	}
 }
