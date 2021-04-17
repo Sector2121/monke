@@ -72,7 +72,7 @@ public class Teleport implements Travel{
 			pair.GetAsteroid().Accept(c);
 		}
 	}
-	
+	 
 	/**
 	 * A teleport mozog.
 	 * @param t
