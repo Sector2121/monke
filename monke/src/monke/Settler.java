@@ -13,10 +13,10 @@ public class Settler extends Creature{
 	private ArrayList<Teleport> teleports;
 	private static int tpid= 0;
 	
-	public Settler() {
+	public Settler() {// A telepes parameter nelkuli konstruktora
 	}
 	
-	public Settler(Game game, String name) {
+	public Settler(Game game, String name) {// A telepes konstruktora
 		hasTpk = 0;
 		this.game = game;
 		resources = new ArrayList<Resource>();
@@ -27,38 +27,39 @@ public class Settler extends Creature{
 		System.out.println("Settler created!");
 	}
 	
-	public void Mine() {
-		if(asteroid.GetLayers() > 0) {
+	public void Mine() {//Banyaszik egy aszteroidabol
+		if(asteroid.GetLayers() > 0) {//Ha az aszteroida kerge nagyobb nullanal, visszater
 			return;
 		}
 		
 		int length = resources.size();
-		if(length < 10) { 
+		if(length < 10) { //Ha a nyersanyaglistajaban van meg hely, hozzaadja az aszteroidaban levo nyersanyagot, es az aszteroidat uresre allitja.
 			AddResource(asteroid.GetResource());
 			asteroid.SetResource(null);
-			asteroid.CheckEnoughResources();
+			asteroid.CheckEnoughResources();//(Megnezi tudnak-e nyerni a telepesek)
 		}
-		else if(length == 10) {
+		else if(length == 10) {// Ha nincs, visszater.
 			return;
 		}
 	}
 	
-	public void Drill() {
+	public void Drill() {//meghivja a reducelayerst az aszteroidara.
 		asteroid.ReduceLayers();
 	}
 	
-	public void AddResource(Resource r) { 
+	public void AddResource(Resource r) { //Hozzaadja a parametert a nyersanyaglistajahoz
 		resources.add(r);
 	}
 	
-	public ArrayList<Resource> GetResources() {
+	public ArrayList<Resource> GetResources() {//Visszaadja a nyersanyaglistat
 		return resources;
 	}
 	
-	public void PlaceResource(Resource r) {
-		if(asteroid.GetLayers() == 0 && asteroid.GetIsEmpty()) {
+	public void PlaceResource(Resource r) {// Visszarak egy parameterul kapott nyersanyagot az aszteroidajaba.
+		if(asteroid.GetLayers() == 0 && asteroid.GetIsEmpty()) {// Amennyiben ures es teljesen atfurt az aszteroida
 			boolean hasr = CheckResource(r);
-			if(hasr == true) {
+			if(hasr == true) {									// es a telepesnek van az adott nyersanyagbol, beallitja az aszteroida magjat ra, 
+																//illetve a RemoveResource-al elveszi magatol.
 				asteroid.SetResource(r);
 				ArrayList<Resource> re = new ArrayList<>();
 				re.add(r);
@@ -75,7 +76,7 @@ public class Settler extends Creature{
 		}
 	}
 	
-	public boolean CheckResource(Resource r) {
+	public boolean CheckResource(Resource r) {//True-val ter vissza ha a parameter benne van a nyersanyagai kozott, false-al ha nem.
 		for(Resource r2 : resources) {
 			if(r == r2) {
 				return true;
@@ -84,7 +85,7 @@ public class Settler extends Creature{
 		return false;
 	}
 	
-	public void RemoveResource(ArrayList<Resource> rem) {
+	public void RemoveResource(ArrayList<Resource> rem) {//A kapott nyersanyagokat kiveszi a telepes nyersanyagai kozul.
 		for(Resource re : rem) {
 			for(Resource r : resources) {
 				if(r == re) {
@@ -96,7 +97,7 @@ public class Settler extends Creature{
 		
 	}
 	
-	public void GiveUp() {
+	public void GiveUp() {// Meghivja a Die-t magara, ezzel feladva a jatekot.
 		System.out.println("You gave up, your settler has commited suicide! Press F to continue. Thank you for playing our game!");
 		Die(); 
 	}
@@ -104,7 +105,7 @@ public class Settler extends Creature{
 	
 	
 	
-	public void Skip() {
+	public void Skip() {//A jatekos koret tovabb passzolja
 		System.out.println("Successfully skipped!");
 	}
 	
