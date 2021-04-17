@@ -9,7 +9,7 @@ public class Settler extends Creature{
 	private int hasTpk;
 	private Game game;
 	private ArrayList<Resource> resources;
-	private static BillOfResources billOfResources = new BillOfResources();
+	private static BillOfResources billOfResources;
 	private ArrayList<Teleport> teleports;
 	private static int tpid= 0;
 	
@@ -17,44 +17,37 @@ public class Settler extends Creature{
 		//System.out.println("Settler created!");
 	}
 	
-	/*public Settler(Game game, BillOfResources bill, String name, Asteroid asteroid) {
+	public Settler(Game game, String name) {
 		hasTpk = 0;
 		this.game = game;
 		resources = new ArrayList<Resource>();
-		teleports = null;
-		billOfResources = bill;
+		teleports = new ArrayList<Teleport>();
+		billOfResources = new BillOfResources();
 		this.SetName(name);
-		this.asteroid = asteroid;
+		this.asteroid = null;
 		System.out.println("Settler created!");
-	}*/
+	}
 	
 	public void Mine() {
-		
-		if(asteroid.GetLayers()>0) {return;}
+		if(asteroid.GetLayers() > 0) {
+			return;
+		}
 		
 		int length = resources.size();
-		if(length<10) { 
-			AddResource(GetAsteroid().GetResource());
-			GetAsteroid().SetResource(null);
+		if(length < 10) { 
+			AddResource(asteroid.GetResource());
+			asteroid.SetResource(null);
 			asteroid.CheckEnoughResources();
 		}
-		else if(length==10) { 
-			System.out.println("\tYou can't mine");
+		else if(length == 10) {
 			return;
 		}
 	}
+	
 	public void Drill() {
-		
-		int layers = asteroid.GetLayers();
-		boolean closetosun = asteroid.GetCloseToSun();
-		if (layers<1) {
-			return;
-		}
-		
-		if(layers>0) {
-			asteroid.ReduceLayers();
-		}		
+		asteroid.ReduceLayers();
 	}
+	
 	public void AddResource(Resource r) { 
 		resources.add(r);
 	}
@@ -64,12 +57,13 @@ public class Settler extends Creature{
 	}
 	
 	public void PlaceResource(Resource r) {
-		
 		if(asteroid.GetLayers() == 0 && asteroid.GetIsEmpty()) {
 			boolean hasr = CheckResource(r);
 			if(hasr == true) {
 				asteroid.SetResource(r);
-				RemoveResource(r);
+				ArrayList<Resource> re = new ArrayList<>();
+				re.add(r);
+				RemoveResource(re);
 			}
 			else {
 				System.out.println("\tSettler doesn't have resource!");
@@ -79,7 +73,6 @@ public class Settler extends Creature{
 			System.out.println("\tCan't replace resource");
 			return;
 		}
-		
 	}
 	
 	public boolean CheckResource(Resource r) {
@@ -91,13 +84,13 @@ public class Settler extends Creature{
 		return false;
 	}
 	
-	public void RemoveResource(Resource rem) {
-		
-		for(Resource r : resources) {
-			if(r == rem) {
-				resources.remove(r);
-				System.out.println("Resource removed!");
-				return;
+	public void RemoveResource(ArrayList<Resource> rem) {
+		for(Resource re : rem) {
+			for(Resource r : resources) {
+				if(r == re) {
+					resources.remove(r);
+					continue;
+				}
 			}
 		}
 		
@@ -116,53 +109,44 @@ public class Settler extends Creature{
 	}
 	
 	
-	
-	
-	
 	@Override
 	public void Die() {
-		game = new Game();
 		asteroid.Remove(this);
 		game.RemoveSettler(this);
-		System.out.println("Settler died!");
 	}
 	
 	public void BuildTeleport() {
-		if(teleports.size() > 2) {
+		if(hasTpk >= 2) {
 			return;
 		}
-		
-		//Resource re = new Resource();
 			if(billOfResources.CheckResource(resources, "Teleport")) {
-				RemoveResource(re);
-				hasTpk = 2;
+				RemoveResource(billOfResources.GetBillOfTpk());
+				hasTpk += 2;
 				Teleport t = new Teleport(tpid);
 				tpid++;
 				Teleport t2 = new Teleport(tpid);
 				tpid++;
 				t.SetPair(t2);
-				t.SetPair(t);
+				t2.SetPair(t);
 				teleports.add(t);
 				teleports.add(t2);
 			}
 	}
 	
 	public void BuildRobot() {
-		//Resource re = new Resource();
-		if(billOfResources.CheckResourceRobot(resources)) {
+		if(billOfResources.CheckResource(resources, "Robot")) {
 			Robot r = new Robot(asteroid);
-			RemoveResource(re);
+			RemoveResource(billOfResources.GetBillOfRobot());
 		}
 	}
 	
 	public void PlaceTeleport(Asteroid a) {
-		if(teleports.size() == 0) {
+		if(hasTpk == 0) {
 			return;
 		}
 		Teleport t = teleports.get(0);
 		t.SetAsteroid(a);
 		teleports.remove(0);
-		
-		System.out.println("\tHow many teleports does the settler have? (0-2)"); //Megkérdi mennyi teleportja van a settlernek
+		hasTpk--;
 	} 
 }
