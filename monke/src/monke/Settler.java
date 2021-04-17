@@ -217,8 +217,7 @@ public class Settler extends Creature{
 	/**
 	 * Lerakja a parameter aszteroidara a listaja elso teleportjat.
 	 * Amennyiben nincs nala tpk, visszater.
-	 * Kulonben a teleports lista elso elemenek beallitja az aszteroidajat a parameterre, kiveszi a listabol
-	 * es csokkenti a teleportszamlalo erteket.
+	 * Kulonben a teleports lista elso elemenek beallitja az aszteroidajat a parameterre, kiveszi a listabol es csokkenti a teleportszamlalo erteket.
 	 * @param a
 	 */
 	public void PlaceTeleport(Asteroid a) {
