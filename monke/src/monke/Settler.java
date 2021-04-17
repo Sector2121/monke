@@ -63,13 +63,14 @@ public class Settler extends Creature{
 				ArrayList<Resource> re = new ArrayList<>();
 				re.add(r);
 				RemoveResource(re);
+				System.out.println("Successfully replaced resource!");
 			}
 			else {
-				System.out.println("\tSettler doesn't have resource!");
+				System.out.println("“Replace unsuccessful!");
 			}
 		}
 		else {
-			System.out.println("\tCan't replace resource");
+			System.out.println("“Replace unsuccessful!");
 			return;
 		}
 	}
@@ -119,6 +120,7 @@ public class Settler extends Creature{
 			return;
 		}
 			if(billOfResources.CheckResource(resources, "Teleport")) {
+				
 				RemoveResource(billOfResources.GetBillOfTpk());
 				hasTpk += 2;
 				Teleport t = new Teleport(tpid);
@@ -129,6 +131,9 @@ public class Settler extends Creature{
 				t2.SetPair(t);
 				teleports.add(t);
 				teleports.add(t2);
+				System.out.println("The selected object got built!");
+			}else {
+				System.out.println("You don’t have enough resources to complete this action!");
 			}
 	}
 	
@@ -136,16 +141,21 @@ public class Settler extends Creature{
 		if(billOfResources.CheckResource(resources, "Robot")) {
 			Robot r = new Robot(asteroid);
 			RemoveResource(billOfResources.GetBillOfRobot());
+			System.out.println("The selected object got built!");
+		}else {
+			System.out.println("You don’t have enough resources to complete this action!");
 		}
 	}
 	
 	public void PlaceTeleport(Asteroid a) {
 		if(hasTpk == 0) {
+			System.out.println("You don’t have any teleports!");
 			return;
 		}
 		Teleport t = teleports.get(0);
 		t.SetAsteroid(a);
 		teleports.remove(0);
 		hasTpk--;
+		System.out.println("You've succesfully placed the teleport!");
 	} 
 }
