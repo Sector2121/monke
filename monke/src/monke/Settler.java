@@ -97,7 +97,7 @@ public class Settler extends Creature{
 	}
 	
 	public void GiveUp() {
-		System.out.println("“You gave up, your settler has commited suicide! Press F to continue. Thank you for playing our game!");
+		System.out.println("You gave up, your settler has commited suicide! Press F to continue. Thank you for playing our game!");
 		Die(); 
 	}
 	

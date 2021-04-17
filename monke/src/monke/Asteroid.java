@@ -99,10 +99,15 @@ public class Asteroid implements Travel{
 	public void ReduceLayers() { //Csokkenti az aszteroida kopenyet
 		if(layers == 1 && closeToSun) { //Ha epp napkozelben van, akkor meghivja a resource CloseToSun fuggvenyet
 			layers--;
+			System.out.println("Successful drill!");
 			resource.CloseToSun(this);
 		}
 		else if(layers > 0){
 			layers--;
+			System.out.println("Successful drill!");
+		}
+		else {
+			System.out.println("The asteroid has no layers, drilling unsuccessful!");
 		}
 	}
 	
@@ -133,6 +138,7 @@ public class Asteroid implements Travel{
 		if(neighbors != null)
 			for(Travel t : neighbors)
 				t.RemoveNeighbor(this);
+		System.out.println("Asteroid exploded!");
 	}
 	
 	public void CheckEnoughResources() { //Megnezi, hogy van-e osszesen minden nyersanyagbol harom az aszteroidan levo telepeseknel
