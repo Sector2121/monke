@@ -18,7 +18,7 @@ public class Creature {
 		}else {
 			System.out.println("That asteroid is not a neighbor!");
 		}
-	}
+	} 
 	
 	public String GetName() {
 		return name;
