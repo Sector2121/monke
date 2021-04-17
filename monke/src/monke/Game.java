@@ -73,7 +73,8 @@ public class Game {
 	public void Start() {}
 	
 	//Ez új
-	public void Reset() {
+	public void Reset() { //Kéne tárolni az ufokat, robtokat, hogy resetnél õk is kitörlõdjenek vagy ha az aszteroidákat töröljük õk is eltûnnek?
+		//De ha most nem akkor amikor steppeljük õket, akkor is tárolni kéne õket valahol, nem?
 		asteroids.clear();
 		settlers.clear();
 	}

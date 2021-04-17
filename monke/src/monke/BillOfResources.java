@@ -1,10 +1,9 @@
 package monke;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+
 
 public class BillOfResources {
 	private ArrayList<Resource> billOfTpk;

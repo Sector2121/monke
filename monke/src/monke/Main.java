@@ -93,7 +93,7 @@ public class Main {
 			} else if (cmd[0].equals("Mine")) {
 				boolean found = false;
 				for (Settler s : game.GetSettlers()) {
-					if(s.GetName()==cmd[1]) {
+					if(s.GetName().equals(cmd[1])) {
 						s.Mine();
 						found = true;
 						break;
@@ -101,7 +101,7 @@ public class Main {
 				}
 				if(found == false) {
 					for (Ufo u : ufos) {
-						if(u.GetName()==cmd[1]) {
+						if(u.GetName().equals(cmd[1])) {
 							u.Mine();
 							break;
 						}
@@ -237,7 +237,8 @@ public class Main {
 						System.out.println("-------------------------------------------------------------------------------------");
 						System.out.println("Asteroid "+a.GetId()+" stat:");
 						System.out.println("Layers: "+a.GetLayers());
-						System.out.println("Resource: "+a.GetResource());
+						System.out.println("Resource: ");
+						a.GetResourceName();
 						System.out.println("Weather: "+a.GetWeather());
 						System.out.print("Creatures: ");
 						a.GetCreaturesName();
