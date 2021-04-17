@@ -31,32 +31,41 @@ public class BillOfResources {
 		}
 	}
 	
-	public void AddResource(Resource r) {
-		
+	public ArrayList<Resource> GetBillOfTpk() {
+		return this.billOfTpk;
 	}
 	
-	public void RemoveResource(Resource r) {
-		 
+	public ArrayList<Resource> GetBillOfRobot() {
+		return this.billOfRobot;
 	}
 	
-	/*public boolean CheckResourceTpk() {
-
-	}*/
+	public ArrayList<Resource> GetBillOfBase() {
+		return this.billOfBase;
+	}
 	
-	public boolean CheckResourceRobot(ArrayList<Resource> resources) {
-		int num=0;
+	public boolean CheckResource(ArrayList<Resource> resources, String valami) {
+		List<Resource> check = new ArrayList<Resource>();
+		if(valami == "Robot") {
+			check = this.billOfRobot;
+		}
+		else if(valami == "Teleport") {
+			check = this.billOfTpk;
+		}
+		else if(valami == "Base") {
+			check = this.billOfBase;
+		}
 		List<Resource> temporary = new ArrayList<Resource>();
 		boolean talalt = false;
-		for (Resource robot : this.billOfRobot) {
-			System.out.println("ezeket keress�k " + robot);
+		for (Resource robot : check) {
+			System.out.println("ezeket keressuk " + robot);
 			talalt=false;
 			for (Resource name : resources) {
 				System.out.println("ezekkkel " + name);
 				talalt=false;
 				if(robot.getClass().equals(name.getClass())==true) {
-					System.out.println("Ugyanaz az oszt�lyuk " + robot + " " + name);
+					System.out.println("Ugyanaz az osztalyuk " + robot + " " + name);
 					for (Resource temp : temporary) {
-						System.out.println("Volt-e m�r?");
+						System.out.println("Volt-e mar?");
 						if(temp.equals(name)==true) {
 							System.out.println("Igen " + temp + " " + name);
 							talalt = true;
@@ -72,19 +81,11 @@ public class BillOfResources {
 			}
 		}
 		System.out.println(temporary);
-		if(this.billOfRobot.size()==temporary.size())
-		{
+		if(check.size()==temporary.size()) {
 			return true;
 		}
 		else {
 			return false;
 		}
-		
 	}
-	
-	/*public boolean CheckResourceBase(ArrayList<Resource> r) {
-		
-		System.out.println("Base resource checked");
-		return true;
-	}*/
 }
