@@ -13,7 +13,7 @@ public class Asteroid implements Travel{
 	private ArrayList<Creature> creatures;
 	private Resource resource;
 	private ArrayList<Travel> neighbors;
-	private BillOfResources bill;
+	private static BillOfResources bill;
 	
 	public Asteroid(Game g, int id, Resource r) { //Konstruktor
 		game = g;
