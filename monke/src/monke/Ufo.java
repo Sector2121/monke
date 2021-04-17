@@ -7,9 +7,7 @@ public class Ufo extends Creature{
 	/**
 	*Konstruktor
 	*/
-	public Ufo(Asteroid a) {
-		SetAsteroid(a);
-		a.Accept(this);
+	public Ufo() {
 	}
 	
 	/**

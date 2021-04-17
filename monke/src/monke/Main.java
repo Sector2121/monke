@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class Main {
 	public static void main(String[] args) {
 		Game game = new Game();
+		ArrayList<Ufo> ufos = new ArrayList<Ufo>();
 		Scanner myObj = new Scanner(System.in);
 	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		while (true) {
@@ -30,10 +31,10 @@ public class Main {
 					game.GetSettlers().add(s);
 				}
 			} else if (cmd[0].equals("Create_ufos")) {
-				/*for (int i=1;i<cmd.length;i++) {
-					Ufo s = new Settler(game, cmd[i]);
-					game.GetSettlers().add(s);
-				}*/
+				for (int i=1;i<cmd.length;i++) {
+					Ufo u = new Ufo();
+					ufos.add(u);
+				}
 			} else if (cmd[0].equals("Create_asteroids")) {
 				for (int i=0;i<Integer.parseInt(cmd[1]);i++) {
 					Random rand = new Random();
@@ -56,9 +57,13 @@ public class Main {
 					game.GetAsteroid().add(a);
 				}
 			} else if (cmd[0].equals("Start_settlers")) {
-
+				for (Settler s : game.GetSettlers()) {
+					s.asteroid=game.GetAsteroid().get(Integer.parseInt(cmd[1]));
+				}
 			} else if (cmd[0].equals("Start_ufos")) {
-
+				for (Ufo u : ufos) {
+					u.asteroid=game.GetAsteroid().get(Integer.parseInt(cmd[1]));
+				}
 			} else if (cmd[0].equals("Move")) {
 
 			} else if (cmd[0].equals("List_neighbors")) {
