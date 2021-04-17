@@ -28,76 +28,71 @@ public class Settler extends Creature{
 		System.out.println("Settler created!");
 	}*/
 	
-	
-	public void Move(Travel t) { //Settler két aszteroida közötti mozgását valósítja meg
-		System.out.println("Move was called");
-			boolean tf;
-			tf = asteroid.CheckNeighbor(t); //Lekérdezi, hogy a megkapott aszteroida/teleport szomszédos-e azzal amin áll
-			if(tf) { 
-				asteroid.Remove1(this); //Mivel az, így eltávolítja az aszteroidáról magát
-				t.Accept(this); //Átáll az új aszteroidára
-				//System.out.println("You are now on a new asteroid!");
-			}else {
-				System.out.println("You unfortunately cant move to neighboring asteroid!"); //Nem szomszédosak
-			}
+	public void Mine() {
+		
+		if(asteroid.GetLayers()>0) {return;}
+		
+		int length = resources.size();
+		if(length<10) { 
+			AddResource(GetAsteroid().GetResource());
+			GetAsteroid().SetResource(null);
+			asteroid.CheckEnoughResources();
 		}
-	
-	
-	public void Mine() { //Settler bányászik
-		System.out.println("Mine was called");
-		System.out.println("\tAdd resource size");
-		Scanner myObj = new Scanner(System.in);
-		int ertek = Integer.parseInt(myObj.nextLine()); //Bekéri a tesztelőtől, hogy mennyi nyersanyag van a settlernél
-		if(ertek<10) { //Még tud bányászni, mert van nála még hely
-			AddResource(GetAsteroid().GetResource()); // Hozzáadódik az aszteroidában levő nyersanyag a Settler tárához
-			GetAsteroid().SetResource(null); //Az aszteroidában null-ra állítódik a nyersanyag, mivel kivette a settler
-			asteroid.CheckEnoughResources(); //Meghívja az aszteroidán levő nyersanyagok ellenőrző függvényét
-		}
-		else if(ertek==10) { 
+		else if(length==10) { 
 			System.out.println("\tYou can't mine"); // Van 10 nyersanyaga, ezért nem bányászhat
 			return;
 		}
 	}
-	
-	public void AddResource(Resource r) { //Hozzáadja a megkapott nyersanyagot a settlernél levőkhöz
-		System.out.println("\tResource added to settler!");
+	public void Drill() {
+		
+		int layers = asteroid.GetLayers();
+		boolean closetosun = asteroid.GetCloseToSun();
+		if (layers<1) {
+			return;
+		}
+		
+		if(layers>0) {
+			asteroid.ReduceLayers(asteroid,layers,closetosun);
+		}		
+	}
+	public void AddResource(Resource r) { 
+		resources.add(r);
 	}
 	
 	public ArrayList<Resource> GetResources() {
 		return resources;
 	}
 	
-	public void PlaceResource(Resource r) { //Lehelyez nyersanyagot
-		System.out.println("PlaceResorce was called!");
-		asteroid.GetLayers();
-		Scanner myObj = new Scanner(System.in);
-		int ertek = Integer.parseInt(myObj.nextLine()); //Bekéri a tesztelőtől, hogy mekkora az aszteroida köpenye amire a nyersanyagot tenni akarja
-		if(ertek==0) { // Nincs köpenye
-			boolean igaz_e = CheckResource(r); //Lekérdezi, hogy van-e a settlernek nyersanyaga
-			if(igaz_e == true) {
-				asteroid.SetResource1(r); //Beállítja az aszteroida új nyersanyagát
-				RemoveResource(r); //Törli a settler listájáról a letett nyersanyagot
+	public void PlaceResource(Resource r) {
+		
+		if(asteroid.GetLayers() == 0 && asteroid.GetIsEmpty()) {
+			boolean hasr = CheckResource(r);
+			if(hasr == true) {
+				asteroid.SetResource(r);
+				RemoveResource(r);
 			}
 			else {
-				System.out.println("\tSettler doesn't have resource!"); //Nincs a settlernél nyersanyag, így nincs mit letenni
+				System.out.println("\tSettler doesn't have resource!");
 			}
 		}
 		else {
-			System.out.println("\tCan't replace resource"); //Van köpenye, így nem tudja letenni a nyersanyagot
+			System.out.println("\tCan't replace resource");
 			return;
 		}
-		/*if(GetAsteroid().GetIsEmpty() && GetAsteroid().GetLayers() == 0) {
-		//}
-		//else System.out.println("The asteroid is not empty!");*/
+		
 	}
 	
-	public boolean CheckResource(Resource r) { //Visszaadja van-e a settlernél a megadott nyersanyag
-		System.out.println("\tSettler has this resource!");
-		return true;
+	public boolean CheckResource(Resource r) {
+		for(Resource r2 : resources) {
+			if(r == r2) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
-	public void RemoveResource(Resource rem) { //Törli a settler listájából a megadott nyersanyagot
-		/*
+	public void RemoveResource(Resource rem) {
+		
 		for(Resource r : resources) {
 			if(r == rem) {
 				resources.remove(r);
@@ -105,53 +100,63 @@ public class Settler extends Creature{
 				return;
 			}
 		}
-		System.out.println("Settler did not have this resource!");
-		*/
-		System.out.println("\tSettler RemoveResource was called!");
+		
 	}
 	
-	public void GiveUp() { //A játékos feladja
+	public void GiveUp() {
 		System.out.println("Settler gave up!");
-		Die(); //Meghal a telepese a játékosnak
+		Die(); 
 	}
 	
-	public void Skip() { //Játékos elpasszolja a kört
-		System.out.println("Settler skipped turn!");
+	
+	
+	
+	public void Skip() {
+		
 	}
+	
+	
+	
+	
 	
 	@Override
-	public void Die() { //Meghal a settler
+	public void Die() {
 		game = new Game();
-		asteroid.Remove(null); //Törli az aszteroidáról
-		game.RemoveSettler(null); //Törli a játékból
-		System.out.println("\t\t\t\t\t\tSettler died!");
+		asteroid.Remove(this);
+		game.RemoveSettler(this);
+		System.out.println("Settler died!");
 	}
 	
 	public void BuildTeleport() {
-		Scanner myObj = new Scanner(System.in);
-		System.out.println("BuildTeleport was called");
-		System.out.println("\tHow many teleports he has?");
-		int ertek = Integer.parseInt(myObj.nextLine()); //Bekéri mennyi teleportja van a settlernek
-		Resource re = new Resource();
-		if(ertek==0) { //Ha nincsen teleportja
-			if(billOfResources.CheckResourceTpk()) { //És ha van-e elég nyersanyaga, akkor építhet újat
-				RemoveResource(re); //Törli a settlertől a nyersanyagokat
-				hasTpk = 2;
-				Teleport t = new Teleport(); //Elkészíti a teleportot
-			}
+		if(teleports.length > 2) {
+			return;
 		}
+		
+		//Resource re = new Resource();
+			if(billOfResources.CheckResourceTpk(resources)) {
+				RemoveResource(re);
+				hasTpk = 2;
+				Teleport t = new Teleport();
+				teleports[teleports.length-1] = t;
+			}
 	}
 	
 	public void BuildRobot() {
-		System.out.println("BuildRobot was called");
-		Resource re = new Resource();
-		if(billOfResources.CheckResourceRobot()) { //Ha van-e elég nyersanyaga, akkor építhet újat
-			Robot r = new Robot(asteroid); //Elkészíti a robotot
-			RemoveResource(re); //Törli a settlertől a nyersanyagokat
+		//Resource re = new Resource();
+		if(billOfResources.CheckResourceRobot(resources)) {
+			Robot r = new Robot(asteroid);
+			RemoveResource(re);
 		}
 	}
 	
 	public void PlaceTeleport(Asteroid a) {
+		if(teleports.length == 0) {
+			return;
+		}
+		Teleport t = new Teleport();
+		t = teleports[teleports.length-1];
+		t.SetAsteroid(a);
+		teleports[teleports.length-1] = null;
 		/*if(teleports[0].GetAsteroid() == null && hasTpk == 2) {
 			teleports[0].SetAsteroid(a);
 			hasTpk--;
