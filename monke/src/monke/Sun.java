@@ -34,6 +34,7 @@ public class Sun {
 	}
 	
 	public void SunStorm() {
+		System.out.println("Sunstorm started!");
 		for(Asteroid a : asteroids) { //Minden napkozeli aszteroidara meghivja a napvihart 
 			a.SunStorm();
 		}
