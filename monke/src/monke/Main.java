@@ -91,7 +91,11 @@ public class Main {
 			} else if (cmd[0].equals("Stat")) {
 
 			} else if (cmd[0].equals("Set_weather")) {
-
+				for(Asteroid a : game.GetAsteroid()) {
+					if(a.GetId() == Integer.parseInt(cmd[1])) {
+						a.SetWeather(cmd[2]);
+					}
+				}
 			} else if (cmd[0].equals("Set_resource")) {
 
 			} else if (cmd[0].equals("Set_layer")) {
