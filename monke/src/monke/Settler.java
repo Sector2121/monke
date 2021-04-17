@@ -133,7 +133,7 @@ public class Settler extends Creature{
 		}
 		
 		//Resource re = new Resource();
-			if(billOfResources.CheckResourceTpk(resources)) {
+			if(billOfResources.CheckResource(resources, "Teleport")) {
 				RemoveResource(re);
 				hasTpk = 2;
 				Teleport t = new Teleport(tpid);
@@ -159,24 +159,10 @@ public class Settler extends Creature{
 		if(teleports.size() == 0) {
 			return;
 		}
-		Teleport t = new Teleport();
-		t = teleports.get(teleports.size()-1);
+		Teleport t = teleports.get(0);
 		t.SetAsteroid(a);
-		teleports.remove(teleports.size()-1);
-		/*if(teleports[0].GetAsteroid() == null && hasTpk == 2) {
-			teleports[0].SetAsteroid(a);
-			hasTpk--;
-			System.out.println("Teleport placed!");
-		}
-		else if(teleports[1].GetAsteroid() == null && hasTpk == 1) {
-			teleports[0].SetAsteroid(a);
-			hasTpk--;
-			teleports = null;
-			System.out.println("Teleport placed!");
-		}
-		else {
-			System.out.println("Settler doesn't have teleports!");
-		}*/
+		teleports.remove(0);
+		
 		System.out.println("\tHow many teleports does the settler have? (0-2)"); //Megkérdi mennyi teleportja van a settlernek
 	} 
 }
