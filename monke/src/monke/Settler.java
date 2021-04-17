@@ -14,7 +14,6 @@ public class Settler extends Creature{
 	private static int tpid= 0;
 	
 	public Settler() {
-		//System.out.println("Settler created!");
 	}
 	
 	public Settler(Game game, String name) {
@@ -97,7 +96,7 @@ public class Settler extends Creature{
 	}
 	
 	public void GiveUp() {
-		System.out.println("Settler gave up!");
+		System.out.println("“You gave up, your settler has commited suicide! Press F to continue. Thank you for playing our game!");
 		Die(); 
 	}
 	
@@ -105,7 +104,7 @@ public class Settler extends Creature{
 	
 	
 	public void Skip() {
-		
+		System.out.println("Successfully skipped!");
 	}
 	
 	

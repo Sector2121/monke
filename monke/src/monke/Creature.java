@@ -14,7 +14,9 @@ public class Creature {
 				if(tf) { 
 					asteroid.Remove(this); 
 					t.Accept(this); 
-					
+					System.out.println("Successfully moved!");
+				}else {
+					System.out.println("That asteroid is not a neighbor!");
 				}
 			}
 	
@@ -43,7 +45,8 @@ public class Creature {
 
 	
 	public void Die() { 
-		//placcs
+		asteroid.Remove(this);
+		System.out.println("R.I.P." + name);
 	}
 	
 	public void Explode() {}
