@@ -153,7 +153,8 @@ public class Main {
 						System.out.print("Resources: ");
 						s.ListAllResource();
 						System.out.println("Asteroid ID: "+s.asteroid.GetId());
-						System.out.println("Core: "+s.asteroid.GetResource()); //<---- Gondolom ha kéreg 0 csak akkor látja de ezt most nincs kedvem kijavítani
+						System.out.print("Core: "); //<---- Gondolom ha kéreg 0 csak akkor látja de ezt most nincs kedvem kijavítani
+						s.asteroid.GetResourceName();
 						System.out.println("Weather: "+s.asteroid.GetWeather());
 						//System.out.prtinln("Teleport: "+s.asteroid.get) <---- Ezt most hirtelen nem tudom
 						System.out.print("Other creatures on your asteroid: ");

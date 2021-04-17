@@ -267,10 +267,10 @@ public class Asteroid implements Travel{
 	}
 	
 	public void GetResourceName() {
-		Iron i = new Iron();
+		/*Iron i = new Iron();
 		Waterice w = new Waterice();
 		Carbon c = new Carbon();
-		Uranium u = new Uranium();
+		Uranium u = new Uranium();*/
 		resource.GetName();
 		/*if(resource.getClass().equals(i)) {
 			System.out.print("Iron");
