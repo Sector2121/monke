@@ -10,8 +10,8 @@ public class Settler extends Creature{
 	private Game game;
 	private ArrayList<Resource> resources;
 	private static BillOfResources billOfResources = new BillOfResources();
-	private Teleport[] teleports;
-	
+	private ArrayList<Teleport> teleports;
+	private static int tpid= 0;
 	
 	public Settler() {
 		//System.out.println("Settler created!");
@@ -39,7 +39,7 @@ public class Settler extends Creature{
 			asteroid.CheckEnoughResources();
 		}
 		else if(length==10) { 
-			System.out.println("\tYou can't mine"); // Van 10 nyersanyaga, ezért nem bányászhat
+			System.out.println("\tYou can't mine");
 			return;
 		}
 	}
@@ -52,7 +52,7 @@ public class Settler extends Creature{
 		}
 		
 		if(layers>0) {
-			asteroid.ReduceLayers(asteroid,layers,closetosun);
+			asteroid.ReduceLayers();
 		}		
 	}
 	public void AddResource(Resource r) { 
@@ -128,7 +128,7 @@ public class Settler extends Creature{
 	}
 	
 	public void BuildTeleport() {
-		if(teleports.length > 2) {
+		if(teleports.size() > 2) {
 			return;
 		}
 		
@@ -136,8 +136,14 @@ public class Settler extends Creature{
 			if(billOfResources.CheckResourceTpk(resources)) {
 				RemoveResource(re);
 				hasTpk = 2;
-				Teleport t = new Teleport();
-				teleports[teleports.length-1] = t;
+				Teleport t = new Teleport(tpid);
+				tpid++;
+				Teleport t2 = new Teleport(tpid);
+				tpid++;
+				t.SetPair(t2);
+				t.SetPair(t);
+				teleports.add(t);
+				teleports.add(t2);
 			}
 	}
 	
@@ -150,13 +156,13 @@ public class Settler extends Creature{
 	}
 	
 	public void PlaceTeleport(Asteroid a) {
-		if(teleports.length == 0) {
+		if(teleports.size() == 0) {
 			return;
 		}
 		Teleport t = new Teleport();
-		t = teleports[teleports.length-1];
+		t = teleports.get(teleports.size()-1);
 		t.SetAsteroid(a);
-		teleports[teleports.length-1] = null;
+		teleports.remove(teleports.size()-1);
 		/*if(teleports[0].GetAsteroid() == null && hasTpk == 2) {
 			teleports[0].SetAsteroid(a);
 			hasTpk--;
