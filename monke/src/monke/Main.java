@@ -8,7 +8,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException, Exception {
 		Game game = new Game();
 		ArrayList<Ufo> ufos = new ArrayList<Ufo>();
 		Scanner myObj = new Scanner(System.in);

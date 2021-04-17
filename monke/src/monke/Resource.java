@@ -6,6 +6,8 @@ abstract class Resource {
 		
 	}
 	
-	//név kiírás
+	/**
+	 * nev kiiras
+	 */
 	abstract void GetName();
 }
