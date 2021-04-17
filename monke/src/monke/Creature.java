@@ -27,7 +27,7 @@ public class Creature {
 	
 	/**
 	 * Visszaadja a creature nevet.
-	 * @return
+	 * @return A creature neve.
 	 */
 	public String GetName() {
 		return name;
@@ -43,7 +43,7 @@ public class Creature {
 	
 	/**
 	 * Visszaadja a creature aszteroidajat.
-	 * @return
+	 * @return A creature aszteroidaja.
 	 */
 	public Asteroid GetAsteroid() {
 		return asteroid;
