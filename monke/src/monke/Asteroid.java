@@ -31,7 +31,7 @@ public class Asteroid implements Travel{
 		neighbors = new ArrayList<Travel>();
 		bill = new BillOfResources();
 	}
-	
+	 
 	public boolean GetIsEmpty() {
 		return isEmpty;
 	}
