@@ -7,42 +7,74 @@ public class Creature {
 	protected Asteroid asteroid;
 	private String name;
 	
-	public void Move(Travel t) { //A creature mozog
+	/**
+	 * A creature mozog.
+	 * Ha egy szomszedra akar lepni, akkor atlep ra.
+	 * Ha nem szomszedra akar lepni, akkor nem lep.
+	 * @param t
+	 */
+	public void Move(Travel t) {
 		boolean tf;
 		tf = asteroid.CheckNeighbor(t); 
-		if(tf) { //Ha egy szomszedra akar lepni, akkor atlep ra
+		if(tf) {
 			asteroid.Remove(this); 
 			t.Accept(this); 
 			System.out.println("Successfully moved!");
-		}else { //Ha nem szomszedra akar lepni, akkor nem lep
+		}else {
 			System.out.println("That asteroid is not a neighbor!");
 		}
 	} 
 	
-	public String GetName() { //Visszaadja a creature nevet
+	/**
+	 * Visszaadja a creature nevet.
+	 * @return
+	 */
+	public String GetName() {
 		return name;
 	}
 	
-	public void SetName(String name) { //Beallitja a creature nevet
+	/**
+	 * Beallitja a creature nevet.
+	 * @param name
+	 */
+	public void SetName(String name) {
 		this.name = name;
 	}
 	
-	public Asteroid GetAsteroid() { //Visszaadja a creature aszteroidajat
+	/**
+	 * Visszaadja a creature aszteroidajat.
+	 * @return
+	 */
+	public Asteroid GetAsteroid() {
 		return asteroid;
 	}
 	
-	public void SetAsteroid(Asteroid a) { //Beallitja a creature aszteroidajat
+	/**
+	 * Beallitja a creature aszteroidajat.
+	 * @param a
+	 */
+	public void SetAsteroid(Asteroid a) {
 		asteroid = a;
 	}
 	
+	/**
+	 * Visszaad egy ures nyersanyaglistat.
+	 * @return null
+	 */
 	public ArrayList<Resource> GetResources() { /*ezt hagyd been lecci Palya koszipuszi - vitya*/
 		return null;
 	}
 	
-	public void Die() { //A creature meghal
+	/**
+	 * A creature meghal.
+	 */
+	public void Die() {
 		asteroid.Remove(this);
 		System.out.println("R.I.P." + name);
 	}
 	
-	public void Explode() {} //A creature aszteroidaja felrobban
+	/**
+	 * A creature aszteroidaja felrobban.
+	 */
+	public void Explode() {}
 }
