@@ -8,9 +8,8 @@ public class Sun {
 	private boolean sunStormNextRound;
 	
 	/**
-	 * 
-	 * @param asteroids
 	 * Konstruktor.
+	 * @param asteroids
 	 */
 	public Sun(ArrayList<Asteroid> asteroids) {
 		this.asteroids = asteroids;
