@@ -56,7 +56,8 @@ public class Game {
 				}
 				if(a.GetLayers() == 0 && a.GetCloseToSun()) {
 					int temp = asteroids.size();
-					a.GetResource().CloseToSun(a);
+					if(a.GetResource() != null)
+						a.GetResource().CloseToSun(a);
 					if(temp != asteroids.size()) {
 						break;
 					}
