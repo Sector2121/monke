@@ -77,6 +77,8 @@ public class Main {
 					}
 				}
 			} else if (cmd[0].equals("List_neighbors")) {
+				System.out.println("-------------------------------------------------------------------------------------");
+				System.out.println("Neighbors: ");
 				int id = Integer.parseInt(cmd[1]);
 				ArrayList<Asteroid> list = new ArrayList<Asteroid>();
 				ArrayList<Travel> neighbors = new ArrayList<Travel>();
@@ -86,8 +88,9 @@ public class Main {
 				for(int i= 0; i<neighbors.size();i++) {
 					Asteroid a = new Asteroid(game, i, null);
 					a = (Asteroid)neighbors.get(i);
-					System.out.println(a.GetId());
+					System.out.println("Asteroid " + a.GetId());
 				}
+				System.out.println("-------------------------------------------------------------------------------------");
 			} else if (cmd[0].equals("Drill")) {
 				for (Settler s : game.GetSettlers()) {
 					if(s.GetName().equals(cmd[1])) {
@@ -346,7 +349,7 @@ public class Main {
 						System.out.println("Asteroid "+a.GetId()+" stat:");
 						System.out.println("Layers: "+a.GetLayers());
 						System.out.print("Resource: ");
-						a.GetResourceName();
+						a.GetResourceNameForSure();
 						System.out.println("Weather: "+a.GetWeather());
 						System.out.print("Creatures: ");
 						a.GetCreaturesName();

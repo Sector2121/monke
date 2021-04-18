@@ -3,7 +3,7 @@ package monke;
 public class Carbon extends Resource{
 	
 	void GetName() {
-		System.out.print("Carbon ");
+		System.out.print("carbon ");
 	}
 
 }

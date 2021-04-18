@@ -276,11 +276,21 @@ public class Asteroid implements Travel{
 				System.out.println();
 			}
 			else {
-				System.out.println("Empty");
+				System.out.println("empty");
 			}
 		}
 		else {
-			System.out.println("Unknown");
+			System.out.println("unknown");
+		}
+	}
+	
+	public void GetResourceNameForSure() {
+		if(resource != null) {
+			resource.GetName();
+			System.out.println();
+		}
+		else {
+			System.out.println("empty");
 		}
 	}
 }

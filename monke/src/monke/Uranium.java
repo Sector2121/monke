@@ -16,6 +16,6 @@ public class Uranium extends Resource{
 	}
 	
 	void GetName() {
-		System.out.print("Uranium ");
+		System.out.print("uranium ");
 	}
 }
