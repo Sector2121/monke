@@ -4,12 +4,14 @@ import java.util.ArrayList;
 
 public class Ufo extends Creature{
 	
+	Ellenorzo el;
 	/**
 	*Konstruktor
 	*/
 	public Ufo(Game game, String name) {
 		this.SetName(name);
 		game.AddUfo(this);
+		el = new Ellenorzo();
 	}
 	
 	/**
@@ -19,9 +21,12 @@ public class Ufo extends Creature{
 		if(asteroid.GetResource() != null && asteroid.GetLayers() == 0) {
 			asteroid.SetResource(null);
 			System.out.println("Resource mined!");
+			el.SetOsszString("Resource mined!");
 		}
-		else
-			System.out.println("You are unable to mine!"); 
+		else {
+			System.out.println("You are unable to mine!");
+			el.SetOsszString("You are unable to mine!");
+		}
 	}
 	
 	

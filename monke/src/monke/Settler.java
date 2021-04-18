@@ -17,7 +17,7 @@ public class Settler extends Creature{
 	private static BillOfResources billOfResources;
 	private ArrayList<Teleport> teleports;
 	private static int tpid = 1;
-	Ellenorzo el = new Ellenorzo();
+	Ellenorzo el;
 	
 	/**
 	 * A telepes konstruktora.
@@ -35,6 +35,7 @@ public class Settler extends Creature{
 		this.SetName(name);
 		this.asteroid = null;
 		game.AddSettler(this);
+		el = new Ellenorzo();
 	}
 	/**
 	 * Banyaszik egy aszteroidabol.
@@ -47,12 +48,14 @@ public class Settler extends Creature{
 	public void Mine() {
 		if(asteroid.GetLayers() > 0 || asteroid.GetResource() == null) {
 			System.out.println("You are unable to mine!");
+			el.SetOsszString("You are unable to mine!");
 			return;
 		}
 		
 		int length = resources.size();
 		if(length < 10) {
 			System.out.println("Resource mined!");
+			el.SetOsszString("Resource mined!");
 			AddResource(asteroid.GetResource());
 			asteroid.SetResource(null);
 			asteroid.SetIsEmpty(true);
@@ -60,6 +63,7 @@ public class Settler extends Creature{
 		}
 		else if(length == 10) {
 			System.out.println("You are unable to mine!");
+			el.SetOsszString("You are unable to mine!");
 			return;
 		}
 	}
@@ -101,15 +105,18 @@ public class Settler extends Creature{
 				re.add(r);
 				RemoveResource(re);
 				System.out.println("Successfully replaced resource!");
+				el.SetOsszString("Successfully replaced resource!");
 				if(asteroid.GetCloseToSun())
 					r.CloseToSun(asteroid);
 			}
 			else {
 				System.out.println("Replace unsuccessful!");
+				el.SetOsszString("Replace unsuccessful!");
 			}
 		}
 		else {
 			System.out.println("Replace unsuccessful!");
+			el.SetOsszString("Replace unsuccessful!");
 			return;
 		}
 	}
@@ -145,6 +152,7 @@ public class Settler extends Creature{
 	 */
 	public void GiveUp() {
 		System.out.println("You gave up, your settler has commited suicide! Press F to continue. Thank you for playing our game!");
+		el.SetOsszString("You gave up, your settler has commited suicide! Press F to continue. Thank you for playing our game!");
 		Die(); 
 	}
 	/**
@@ -152,6 +160,7 @@ public class Settler extends Creature{
 	 */
 	public void Skip() {
 		System.out.println("Successfully skipped!");
+		el.SetOsszString("Successfully skipped!");
 	}
 	/**
 	 * Leveszi az aszteroidarol es kiveszi a jatekbol a telepest, ezzel megolve azt.
@@ -161,6 +170,7 @@ public class Settler extends Creature{
 		asteroid.Remove(this);
 		game.RemoveSettler(this);
 		System.out.println("R.I.P. " + GetName());
+		el.SetOsszString("R.I.P. " + GetName());
 	}
 	/**
 	 * Megepit egy teleportkapu part, amiket behelyez a listajaba.
@@ -172,6 +182,7 @@ public class Settler extends Creature{
 	public void BuildTeleport() {
 		if(hasTpk >= 2) {
 			System.out.println("You don’t have enough space!");
+			el.SetOsszString("You don’t have enough space!");
 		}
 		else {
 			if(billOfResources.CheckResource(resources, "Teleport")) {
@@ -187,8 +198,10 @@ public class Settler extends Creature{
 				teleports.add(t);
 				teleports.add(t2);
 				System.out.println("The selected object got built!");
+				el.SetOsszString("The selected object got built!");
 			}else {
 				System.out.println("You don’t have enough resources to complete this action!");
+				el.SetOsszString("You don’t have enough resources to complete this action!");
 			}
 		}
 	}
@@ -220,8 +233,10 @@ public class Settler extends Creature{
 			Robot r = new Robot(game, asteroid, name);
 			RemoveResource(billOfResources.GetBillOfRobot());
 			System.out.println("The selected object got built!");
+			el.SetOsszString("The selected object got built!");
 		}else {
 			System.out.println("You don’t have enough resources to complete this action!");
+			el.SetOsszString("You don’t have enough resources to complete this action!");
 		}
 	}
 	/**
@@ -233,6 +248,7 @@ public class Settler extends Creature{
 	public void PlaceTeleport(Asteroid a) {
 		if(hasTpk == 0) {
 			System.out.println("You don’t have any teleports!");
+			el.SetOsszString("You don’t have any teleports!");
 			return;
 		}
 		Teleport t = teleports.get(0);
@@ -242,6 +258,7 @@ public class Settler extends Creature{
 		teleports.remove(0);
 		hasTpk--;
 		System.out.println("You've succesfully placed the teleport!");
+		el.SetOsszString("You've succesfully placed the teleport!");
 	}
 	/**
 	 * Kilistazza a nyersanyagok neveit.
@@ -261,7 +278,8 @@ public class Settler extends Creature{
 			else if(r.GetName() == "waterice")
 				wa++;
 		}
-		System.out.println("[Iron: " + ir + ", Carbon: " + car + ", Uranium: " + ur + ", Waterice: " + wa + "]");
+		System.out.println("Resources: [Iron: " + ir + ", Carbon: " + car + ", Uranium: " + ur + ", Waterice: " + wa + "]");
+		el.SetOsszString("Resources: [Iron: " + ir + ", Carbon: " + car + ", Uranium: " + ur + ", Waterice: " + wa + "]");
 	}
 	
 	public void SetResources(int sz) {

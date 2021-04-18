@@ -9,6 +9,7 @@ public class Teleport implements Travel{
 	private Asteroid asteroid;
 	private Teleport pair;
 	private boolean isMoving;
+	Ellenorzo el;
 	
 	/**
 	 * Konstruktor.
@@ -20,6 +21,7 @@ public class Teleport implements Travel{
 		asteroid = null;
 		pair = null;
 		isMoving = false;
+		el = new Ellenorzo();
 	}
 	
 	/**
@@ -124,6 +126,7 @@ public class Teleport implements Travel{
 		pair.SetPair(null);
 		game.RemoveTeleport(this);
 		System.out.println("Teleport destroyed!");
+		el.SetOsszString("Teleport destroyed!");
 	}
 	
 	@Override
@@ -133,10 +136,14 @@ public class Teleport implements Travel{
 	
 	@Override
 	public void PrintNeighbor() {
-		if(pair.GetAsteroid() != null)
+		if(pair.GetAsteroid() != null) {
 			System.out.println("Teleport " + id + " - Asteroid " + pair.GetAsteroid().GetId());
-		else
+			el.SetOsszString("Teleport " + id + " - Asteroid " + pair.GetAsteroid().GetId());
+		}
+		else {
 			System.out.println("Teleport " + id + " - Asteroid null");
+			el.SetOsszString("Teleport " + id + " - Asteroid null");
+		}
 	}
 	
 	@Override

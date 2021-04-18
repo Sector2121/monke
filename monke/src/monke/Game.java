@@ -9,6 +9,7 @@ public class Game {
 	private ArrayList<Ufo> ufos;
 	private ArrayList<Robot> robots;
 	private ArrayList<Teleport> teleports;
+	Ellenorzo el;
 	/**
 	 * Konstruktor.
 	 */
@@ -19,6 +20,7 @@ public class Game {
 		ufos = new ArrayList<>();
 		robots = new ArrayList<>();
 		teleports = new ArrayList<>();
+		el = new Ellenorzo();
 	}
 	
 	public ArrayList<Ufo> GetUfos() {
@@ -31,6 +33,7 @@ public class Game {
 	
 	public void AddAsteroid(Asteroid a) {
 		System.out.println("Asteroid added!");
+		el.SetOsszString("Asteroid added!");
 		asteroids.add(a);
 	}
 	
@@ -43,6 +46,7 @@ public class Game {
 	 */
 	public void Step() {
 		System.out.println("Next round!");
+		el.SetOsszString("Next round!");
 		for(Robot r : robots)
 			r.Step();
 		for(Ufo u : ufos)
@@ -165,9 +169,11 @@ public class Game {
 	public void EndGame() {
 		if(CheckSettlerLifeLines() == true) {
 			System.out.println("A jateknak vege, a telepesek nyertek!");
+			el.SetOsszString("A jateknak vege, a telepesek nyertek!");
 		}
 		else {
 			System.out.println("A jateknak vege, a telepesek veszitettek!");
+			el.SetOsszString("A jateknak vege, a telepesek veszitettek!");
 		}
 	}
 	/**
@@ -177,7 +183,9 @@ public class Game {
 	
 	//Ez új
 	public void Reset() {
+		//el.GetOsszString().clear();
 		System.out.println("Reset was successfull!");
+		el.SetOsszString("Reset was successfull!");
 		asteroids.clear();
 		settlers.clear();
 		ufos.clear();

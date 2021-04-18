@@ -6,6 +6,7 @@ import java.util.Random;
 public class Sun {
 	private ArrayList<Asteroid> asteroids;
 	private boolean sunStormNextRound;
+	Ellenorzo el = new Ellenorzo();
 	
 	/**
 	 * Konstruktor.
@@ -46,6 +47,7 @@ public class Sun {
 	 */
 	public void SunStorm() {
 		System.out.println("Sunstorm started!");
+		el.SetOsszString("Sunstorm started!");
 		for(Asteroid a : asteroids) {
 			if(a.GetWeather().equals("critical"))
 			{
