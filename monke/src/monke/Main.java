@@ -61,7 +61,7 @@ public class Main {
 					game.GetAsteroid().get(Integer.parseInt(cmd[1])-1).AddCreature(s);
 				}
 			} else if (cmd[0].equals("Start_ufos")) {
-				for (Ufo u : ufos) {
+				for (Ufo u : game.GetUfos()) {
 					u.asteroid=game.GetAsteroid().get(Integer.parseInt(cmd[1])-1);
 					game.GetAsteroid().get(Integer.parseInt(cmd[1])-1).AddCreature(u);
 				}
@@ -104,11 +104,7 @@ public class Main {
 					}
 				}
 				if(found == false) {
-<<<<<<< HEAD
-					for (Ufo u : ufos) {
-=======
-					for (Ufo u : game.GetUfos()) { //És ha tárolnánk az ufokat nem kéne így rondán létrehozni csak egy listát a mian elején
->>>>>>> branch 'main' of https://github.com/Sector2121/monke.git
+					for (Ufo u : game.GetUfos()) { 
 						if(u.GetName().equals(cmd[1])) {
 							u.Mine();
 							break;
