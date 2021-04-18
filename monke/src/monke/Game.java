@@ -183,7 +183,7 @@ public class Game {
 	
 	//Ez új
 	public void Reset() {
-		//el.GetOsszString().clear();
+		el.GetOsszString().clear();
 		System.out.println("Reset was successfull!");
 		el.SetOsszString("Reset was successfull!");
 		asteroids.clear();
