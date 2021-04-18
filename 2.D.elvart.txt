@@ -10,7 +10,7 @@ Ufos start asteroid set!
 -------------------------------------------------------------------------------------
 Asteroid 1 stat:
 Layers: 1
-Resource: 
+Resource: iron
 Weather: normal
 Creatures: Emilio Martian_Manhunter 
 -------------------------------------------------------------------------------------

@@ -23,16 +23,11 @@ public class Ellenorzo {
 		}
 		raf.close();
 		boolean siker = true;
-		if(osszString.size() != elvart.size()) {
-			siker = false;
-		}
-		else{
-			for(int i = 0; i < elvart.size(); i++) {
-				if(osszString.get(i).equals(elvart.get(i))) {}
-				else {
-					siker = false;
-					break;
-				}
+		for(int i = 0; i < elvart.size(); i++) {
+			if(osszString.get(i).equals(elvart.get(i))) {}
+			else {
+				siker = false;
+				break;
 			}
 		}
 		if(siker == true) {
