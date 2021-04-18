@@ -229,6 +229,9 @@ public class Main {
 				else if(cmd[2].equals("carbon")) {
 					r = new Carbon();
 				}
+				else if(cmd[2].equals("null")) {
+					r = null;
+				}
 				else {
 					r = null;
 					cont = false;
