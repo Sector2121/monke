@@ -18,6 +18,7 @@ public class Settler extends Creature{
 	private static BillOfResources billOfResources;
 	private ArrayList<Teleport> teleports;
 	private static int tpid= 0;
+	Ellenorzo el = new Ellenorzo();
 	
 	/**
 	 * A telepes konstruktora.
@@ -35,7 +36,7 @@ public class Settler extends Creature{
 		this.SetName(name);
 		this.asteroid = null;
 		System.out.println("Settler created!");
-		TesztString("Settler created!");
+		el.SetOsszString("Settler created!");
 	}
 	/**
 	 * Banyaszik egy aszteroidabol.
@@ -45,7 +46,7 @@ public class Settler extends Creature{
 	 * Ha nincs, visszater.
 	 * @throws Exception 
 	 */
-	public void Mine() throws Exception {
+	public void Mine() {
 		if(asteroid.GetLayers() > 0) {
 			return;
 		}
@@ -72,10 +73,10 @@ public class Settler extends Creature{
 	 * @param r
 	 * @throws Exception 
 	 */
-	public void AddResource(Resource r) throws Exception {
+	public void AddResource(Resource r) {
 		resources.add(r);
 		System.out.println("Settler resource added succesfully!");
-		TesztString("Settler resource added succesfully!");
+		el.SetOsszString("Settler resource added succesfully!");
 	}
 	/**
 	 * Visszaadja a nyersanyaglistat.
@@ -185,10 +186,11 @@ public class Settler extends Creature{
 			if(billOfResources.CheckResource(resources, "Teleport")) {
 				
 				RemoveResource(billOfResources.GetBillOfTpk());
+				/*AddTeleport();*/
 				hasTpk += 2;
-				Teleport t = new Teleport(tpid);
+				Teleport t = new Teleport(game, tpid);
 				tpid++;
-				Teleport t2 = new Teleport(tpid);
+				Teleport t2 = new Teleport(game, tpid);
 				tpid++;
 				t.SetPair(t2);
 				t2.SetPair(t);
@@ -199,6 +201,23 @@ public class Settler extends Creature{
 				System.out.println("You don’t have enough resources to complete this action!");
 			}
 	}
+	/**
+    * Megnoveli a teleport szamlalojat.
+    * Letrehoz ket teleportot, melyeket egymas parjanak allit, majd beleteszi a listajaba oket.
+    */
+   public void AddTeleport(){
+       hasTpk += 2;
+       Teleport t = new Teleport(game, tpid);
+       tpid++;
+       Teleport t2 = new Teleport(game, tpid);
+       tpid++;
+       t.SetPair(t2);
+       t2.SetPair(t);
+       teleports.add(t);
+       teleports.add(t2);
+       System.out.println("Teleport added!");
+       el.SetOsszString("Teleport added!");
+   }
 	/**
 	 * Megepit egy robotot, amit lehelyez az aszteroidajara.
 	 * Megnezi van-e eleg nyersanyaga egy robothoz a nyersanyaglista alapjan.
@@ -243,24 +262,16 @@ public class Settler extends Creature{
 		}
 	}
 	
-	public void SetResources(int sz) throws Exception {
+	public void SetResources(int sz) {
 		for(int i = 0; i < sz; i++) {
 			Iron iron = new Iron();
 			resources.add(iron);
 		}
 		System.out.println("Settler resources set!");
-		TesztString("Settler resources set!");
+		el.SetOsszString("Settler resources set!");
 	}
 	
-	public void TesztString(String sz) throws Exception {
-		FileInputStream fajlbe = new FileInputStream("konzol");
-		ObjectInputStream be = new ObjectInputStream(fajlbe);
-		ArrayList<String> parancsok = (ArrayList<String>)be.readObject();
-		be.close();
-		parancsok.add(sz);
-		FileOutputStream fajlki = new FileOutputStream("konzol");
-		ObjectOutputStream ki = new ObjectOutputStream(fajlki);
-		ki.writeObject(parancsok);
-		ki.close();
+	public int GetHasTpk() {
+		return hasTpk;
 	}
 }

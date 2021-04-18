@@ -107,7 +107,7 @@ public class Main {
 					}
 				}
 				if(found == false) {
-					for (Ufo u : ufos) { //És ha tárolnánk az ufokat nem kéne így rondán létrehozni csak egy listát a mian elején
+					for (Ufo u : ufos) { //Ã‰s ha tÃ¡rolnÃ¡nk az ufokat nem kÃ©ne Ã­gy rondÃ¡n lÃ©trehozni csak egy listÃ¡t a mian elejÃ©n
 						if(u.GetName().equals(cmd[1])) {
 							u.Mine();
 							break;
@@ -127,7 +127,12 @@ public class Main {
 					}
 				}
 			} else if (cmd[0].equals("Place_teleport")) {
-
+				for (Settler s : game.GetSettlers()) {
+					if(s.GetName().equals(cmd[1])) {
+						s.PlaceTeleport(s.GetAsteroid());
+						break;
+					}
+				}
 			} else if (cmd[0].equals("Replace_resource")) {
 				boolean cont = true;
 				Resource r;
@@ -287,9 +292,32 @@ public class Main {
 			} else if (cmd[0].equals("Create_robot")) {
 
 			} else if (cmd[0].equals("Create_teleport")) {
-
+				Teleport t1 = new Teleport(game, 1);
+				Teleport t2 = new Teleport(game, 2);
+				t1.SetPair(t2);
+				t2.SetPair(t1);
+				for(Asteroid a : game.GetAsteroid()) {
+					if(a.GetId() == Integer.parseInt(cmd[1])) {
+						t1.SetAsteroid(a);
+					}
+					if(a.GetId() == Integer.parseInt(cmd[2])) {
+						t2.SetAsteroid(a);
+					}
+				}
+				System.out.println("Teleport successfully created!");
 			} else if (cmd[0].equals("Add_teleport")) {
-
+				for (Settler s : game.GetSettlers()) {
+					if(s.GetName().equals(cmd[1])) {
+						if(s.GetHasTpk() >= 2) {
+							break;
+						}
+						else {
+							s.AddTeleport();
+							break;
+						}
+					}
+				}
+				System.out.println("Teleport added!");
 			} else if (cmd[0].equals("Set_neighbor")) {
 				int id1 = Integer.parseInt(cmd[1]);
 				int id2 = Integer.parseInt(cmd[2]);

@@ -280,7 +280,7 @@ public class Asteroid implements Travel{
 			}
 		}
 		else {
-			System.out.println("unknown");
+			System.out.println("Unknown");
 		}
 		/*if(resource.getClass().equals(i)) {
 			System.out.print("Iron");

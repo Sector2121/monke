@@ -7,7 +7,11 @@ import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
 public class Ellenorzo {
-	public void Ellenorzo(String s) throws IOException, Exception {
+	static ArrayList<String> osszString;
+	public Ellenorzo() {
+		osszString = new ArrayList();
+	}
+	public void EllenorzoFv(String s) throws IOException, Exception {
 		FileInputStream fajlbe = new FileInputStream("konzol");
 		ObjectInputStream be = new ObjectInputStream(fajlbe);
 		ArrayList<String> parancsok = (ArrayList<String>)be.readObject();
@@ -29,5 +33,8 @@ public class Ellenorzo {
 		ArrayList<String> parancsok = (ArrayList<String>)be.readObject();
 		be.close();
 		return parancsok;
+	}
+	public void SetOsszString(String s) {
+		osszString.add(s);
 	}
 }

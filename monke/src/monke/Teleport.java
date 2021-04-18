@@ -16,7 +16,7 @@ public class Teleport implements Travel{
 	 */
 	public Teleport(Game game, int id) {
 		this.game = game;
-		this.id = id; 															/*Ez meg kell!!!!!!!!!!!!!!*/
+		this.id = id;
 		asteroid = null;
 		pair = null;
 		isMoving = false;
@@ -28,7 +28,7 @@ public class Teleport implements Travel{
 	 * @param p
 	 */
 	public Teleport(Game game, int id, Teleport p){
-		this.id = id; 															/*Ez meg kell!!!!!!!!!!!!!!!!!!!*/
+		this.id = id;
 		asteroid = null;
 		pair = p;
 		isMoving = false;
@@ -103,7 +103,9 @@ public class Teleport implements Travel{
 	 */
 	@Override
 	public void AcceptTeleport(Teleport t) {
-		pair.GetAsteroid().AcceptTeleport(t);
+		if(pair.GetAsteroid() != null) {
+			pair.GetAsteroid().AcceptTeleport(t);
+		}
 	}
 	
 	/**
