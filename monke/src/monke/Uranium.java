@@ -9,7 +9,6 @@ public class Uranium extends Resource{
 	 */
 	@Override
 	public void CloseToSun(Asteroid a) {
-		System.out.println("\t\tUranium CloseToSun was called");
 		if(exposedCount == 3) {
 			a.Explode();
 		}

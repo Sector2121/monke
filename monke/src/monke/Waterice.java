@@ -7,7 +7,6 @@ public class Waterice extends Resource{
  */
 	@Override
 	public void CloseToSun(Asteroid a) {
-		System.out.println("Meg lettem hívva");
 		a.SetResource(null);
 	}
 	
