@@ -358,7 +358,7 @@ public class Main {
 					}
 				}
 				if(found == false) {
-					System.out.print("That is not a valid parameter!");
+					System.out.println("That is not a valid parameter!");
 				}
 			}
 			else {
