@@ -157,7 +157,6 @@ public class Main {
 						if(s.GetName().equals(cmd[1])) {
 							for (Resource name : s.GetResources()) {
 								if(r.getClass().equals(name.getClass())) {
-									System.out.println(name);
 									s.PlaceResource(name);
 									break;
 								}
