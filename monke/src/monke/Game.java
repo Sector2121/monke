@@ -59,7 +59,7 @@ public class Game {
 					stillinside=false;
 				}
 					int temp = asteroids.size();
-					boolean stepped = asteroids.get(i).Step();
+					asteroids.get(i).Step();
 					if(temp != asteroids.size()) {
 						break;
 					}

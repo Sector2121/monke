@@ -38,12 +38,10 @@ public class Asteroid implements Travel{
 		g.GetSun().AddAsteroid(this);
 	}
 	
-	public boolean Step() {
+	public void Step() {
 		if(closeToSun && layers == 0 && resource != null) {
 			resource.CloseToSun(this);
-			return true;
 		}
-		return false;
 	}
 	/**
 	 * Visszaadja az aszteroida id-jet.
