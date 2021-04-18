@@ -272,7 +272,6 @@ public class Asteroid implements Travel{
 		Carbon c = new Carbon();
 		Uranium u = new Uranium();*/
 		if(layers == 0) {
-			System.out.print("Buzi");
 			if(resource != null) {
 				resource.GetName();
 			}
