@@ -45,7 +45,7 @@ public class Settler extends Creature{
 	 * @throws Exception 
 	 */
 	public void Mine() {
-		if(asteroid.GetLayers() > 0) {
+		if(asteroid.GetLayers() > 0 || asteroid.GetResource() == null) {
 			System.out.println("You are unable to mine!");
 			return;
 		}
@@ -158,6 +158,7 @@ public class Settler extends Creature{
 	public void Die() {
 		asteroid.Remove(this);
 		game.RemoveSettler(this);
+		System.out.println("R.I.P. " + GetName());
 	}
 	/**
 	 * Megepit egy teleportkapu part, amiket behelyez a listajaba.

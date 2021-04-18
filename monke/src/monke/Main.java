@@ -17,7 +17,7 @@ public class Main {
 			try {
 				cmd = br.readLine().split(" ");
 			} catch (IOException e) {
-				System.out.println(e);
+				System.out.println(e); 
 			}
 			if (cmd.length == 0 || cmd[0].equals("")) {
 			}	
@@ -253,7 +253,7 @@ public class Main {
 					}
 				}
 			} else if (cmd[0].equals("Sunstorm")) {
-				game.GetSun().SunStorm();
+				game.GetSun().TesztSunStorm();
 			} else if (cmd[0].equals("Add_resource")) {
 				boolean cont = true;
 				Resource r;
