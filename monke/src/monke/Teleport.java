@@ -103,7 +103,9 @@ public class Teleport implements Travel{
 	 */
 	@Override
 	public void AcceptTeleport(Teleport t) {
-		pair.GetAsteroid().AcceptTeleport(t);
+		if(pair.GetAsteroid() != null) {
+			pair.GetAsteroid().AcceptTeleport(t);
+		}
 	}
 	
 	/**
