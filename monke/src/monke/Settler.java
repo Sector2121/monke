@@ -18,11 +18,7 @@ public class Settler extends Creature{
 	private static BillOfResources billOfResources;
 	private ArrayList<Teleport> teleports;
 	private static int tpid= 0;
-	/**
-	 * A telepes parameter nelkuli konstruktora.
-	 */
-	public Settler() {
-	}
+	
 	/**
 	 * A telepes konstruktora.
 	 * @param game
@@ -30,7 +26,7 @@ public class Settler extends Creature{
 	 * @throws Exception 
 	 * @throws IOException 
 	 */
-	public Settler(Game game, String name) throws IOException, Exception {
+	public Settler(Game game, String name) throws Exception {
 		hasTpk = 0;
 		this.game = game;
 		resources = new ArrayList<Resource>();
@@ -47,8 +43,9 @@ public class Settler extends Creature{
 	 * Ha a nyersanyaglistajaban van meg hely, hozzaadja az aszteroidaban levo nyersanyagot, es az aszteroidat uresre allitja.
 	 * Megnezi tudnak-e nyerni a telepesek.
 	 * Ha nincs, visszater.
+	 * @throws Exception 
 	 */
-	public void Mine() {
+	public void Mine() throws Exception {
 		if(asteroid.GetLayers() > 0) {
 			return;
 		}
@@ -73,9 +70,12 @@ public class Settler extends Creature{
 	/**
 	 * Hozzaadja a parametert a nyersanyaglistajahoz.
 	 * @param r
+	 * @throws Exception 
 	 */
-	public void AddResource(Resource r) {
+	public void AddResource(Resource r) throws Exception {
 		resources.add(r);
+		System.out.println("Settler resource added succesfully!");
+		TesztString("Settler resource added succesfully!");
 	}
 	/**
 	 * Visszaadja a nyersanyaglistat.
@@ -208,6 +208,7 @@ public class Settler extends Creature{
 	public void BuildRobot(String name) {
 		if(billOfResources.CheckResource(resources, "Robot")) {
 			Robot r = new Robot(asteroid, name);
+			game.AddRobot(r);
 			RemoveResource(billOfResources.GetBillOfRobot());
 			System.out.println("The selected object got built!");
 		}else {
@@ -227,6 +228,7 @@ public class Settler extends Creature{
 		}
 		Teleport t = teleports.get(0);
 		t.SetAsteroid(a);
+		game.AddTeleport(t);
 		teleports.remove(0);
 		hasTpk--;
 		System.out.println("You've succesfully placed the teleport!");
@@ -240,6 +242,13 @@ public class Settler extends Creature{
 			r.GetName();
 		}
 	}
+	
+	public void SetResources(int sz) {
+		for(int i = 0; i < sz; i++) {
+			//resources.add();
+		}
+	}
+	
 	public void TesztString(String sz) throws Exception {
 		FileInputStream fajlbe = new FileInputStream("konzol");
 		ObjectInputStream be = new ObjectInputStream(fajlbe);
