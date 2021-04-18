@@ -2,7 +2,7 @@ Reset was successfull!
 Asteroids successfully created!
 Settlers successfully created!
 Settlers start asteroid set!
-You donâ€™t have enough resources to complete this action!
+You don’t have enough resources to complete this action!
 -------------------------------------------------------------------------------------
 Your settlers statistics are the following:
 Name: Leopoldo

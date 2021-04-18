@@ -14,6 +14,7 @@ public class Main {
 		Scanner myObj = new Scanner(System.in);
 	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	    String[] cmd = new String[5];
+	    int teleportCount = 1;
 	    System.out.println("Adja meg milyen fajta tesztelest szeretne csinalni(kezi, kesz): ");
 		try {
 			cmd[0] = br.readLine();
@@ -334,8 +335,8 @@ public class Main {
 					System.out.println("Robot successfully created!");
 					ell.SetOsszString("Robot successfully created!");
 				} else if (cmd[0].equals("Create_teleport")) {
-					Teleport t1 = new Teleport(game, 1);
-					Teleport t2 = new Teleport(game, 2);
+					Teleport t1 = new Teleport(game, teleportCount++);
+					Teleport t2 = new Teleport(game, teleportCount++);
 					t1.SetPair(t2);
 					t2.SetPair(t1);
 					for(Asteroid a : game.GetAsteroid()) {
@@ -374,6 +375,7 @@ public class Main {
 					list.get(id1-1).AddNewNeighbor(list.get(id2-1));
 					list.get(id2-1).AddNewNeighbor(list.get(id1-1));
 				} else if (cmd[0].equals("Reset")) {
+					teleportCount = 1;
 					game.Reset();
 				} else if (cmd[0].equals("Stat_asteroid")) {
 					boolean found = false;
@@ -716,8 +718,8 @@ public class Main {
 					System.out.println("Robot successfully created!");
 					ell.SetOsszString("Robot successfully created!");
 				} else if (cmd[0].equals("Create_teleport")) {
-					Teleport t1 = new Teleport(game, 1);
-					Teleport t2 = new Teleport(game, 2);
+					Teleport t1 = new Teleport(game, teleportCount++);
+					Teleport t2 = new Teleport(game, teleportCount++);
 					t1.SetPair(t2);
 					t2.SetPair(t1);
 					for(Asteroid a : game.GetAsteroid()) {
@@ -756,6 +758,7 @@ public class Main {
 					list.get(id1-1).AddNewNeighbor(list.get(id2-1));
 					list.get(id2-1).AddNewNeighbor(list.get(id1-1));
 				} else if (cmd[0].equals("Reset")) {
+					teleportCount = 1;
 					game.Reset();
 				} else if (cmd[0].equals("Stat_asteroid")) {
 					boolean found = false;
