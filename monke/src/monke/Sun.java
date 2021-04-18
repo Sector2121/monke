@@ -95,7 +95,7 @@ public class Sun {
 		else {
 			Random rand = new Random();
 			int sz = rand.nextInt(100);
-			if(sz > 0 && sz < 10) {
+			if(sz <= 10) {
 				sunStormNextRound = true;
 				for(Asteroid a : asteroids) {
 					if(a.GetWeather() == "hot")
