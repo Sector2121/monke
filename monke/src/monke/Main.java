@@ -182,8 +182,10 @@ public class Main {
 			} else if (cmd[0].equals("Step")) {
 				game.Step();
 			} else if (cmd[0].equals("Stat")) {
+				boolean found = false;
 				for (Settler s : game.GetSettlers()) {
 					if(s.GetName().equals(cmd[1])) {
+						found = true;
 						System.out.println("-------------------------------------------------------------------------------------");
 						System.out.println("Your settlers statistics are the following:");
 						System.out.println("Name: "+s.GetName());
@@ -199,6 +201,9 @@ public class Main {
 						System.out.println("-------------------------------------------------------------------------------------");
 						break;
 					}
+				}
+				if(found == false) {
+					System.out.println("That is not a valid parameter!");
 				}
 			} else if (cmd[0].equals("Set_weather")) {
 				for(Asteroid a : game.GetAsteroid()) {
