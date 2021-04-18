@@ -201,7 +201,7 @@ public class Settler extends Creature{
 				el.SetOsszString("The selected object got built!");
 			}else {
 				System.out.println("You don't have enough resources to complete this action!");
-				el.SetOsszString("You don't have enough resources to complete this action!");
+				el.SetOsszString("You don't have enough resources to complete this action!"); 
 			}
 		}
 	}
