@@ -181,10 +181,6 @@ public class Main {
 				}
 			} else if (cmd[0].equals("Step")) {
 				game.Step();
-			} else if (cmd[0].equals("Save_game")) {
-
-			} else if (cmd[0].equals("Load_game")) {
-
 			} else if (cmd[0].equals("Stat")) {
 				for (Settler s : game.GetSettlers()) {
 					if(s.GetName().equals(cmd[1])) {
@@ -253,7 +249,7 @@ public class Main {
 					}
 				}
 			} else if (cmd[0].equals("Sunstorm")) {
-
+				game.GetSun().Step();
 			} else if (cmd[0].equals("Add_resource")) {
 				boolean cont = true;
 				Resource r;

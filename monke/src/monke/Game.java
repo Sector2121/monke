@@ -25,6 +25,10 @@ public class Game {
 		return ufos;
 	}
 	
+	public Sun GetSun() {
+		return sun;
+	}
+	
 	/**
 	 * Lepteti az osszes leptetheto dolgot.
 	 */
