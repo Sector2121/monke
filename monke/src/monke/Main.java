@@ -26,10 +26,7 @@ public class Main {
 			} else if (cmd[0].equals("Create_settlers")) {
 				System.out.println("Settlers successfully created!");
 				for (int i=1;i<cmd.length;i++) {
-					try {
-						Settler s = new Settler(game, cmd[i]);
-					}
-					catch (Exception e) {}
+					Settler s = new Settler(game, cmd[i]);
 				}
 			} else if (cmd[0].equals("Create_ufos")) {
 				System.out.println("The Ufos have been created!");
@@ -102,10 +99,7 @@ public class Main {
 				boolean found = false;
 				for (Settler s : game.GetSettlers()) {
 					if(s.GetName().equals(cmd[1])) {
-						try {
-							s.Mine();
-						}
-						catch (Exception e) {}
+						s.Mine();
 						found = true;
 						break;
 					}

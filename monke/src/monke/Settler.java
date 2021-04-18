@@ -26,7 +26,7 @@ public class Settler extends Creature{
 	 * @throws Exception 
 	 * @throws IOException 
 	 */
-	public Settler(Game game, String name) throws Exception {
+	public Settler(Game game, String name) {
 		hasTpk = 0;
 		this.game = game;
 		resources = new ArrayList<Resource>();
