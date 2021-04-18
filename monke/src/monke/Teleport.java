@@ -81,7 +81,7 @@ public class Teleport implements Travel{
 	 */
 	public void Move(Travel t) {
 		if(asteroid != null)
-			asteroid.RemoveNeighbor(t); 								/*Most ugy van h at tudnak menni a mozgo teleportok mas teleportokon mert igy tudtam megcsinalni*/
+			asteroid.RemoveNeighbor(t);
 		t.AcceptTeleport(this);
 	}
 	 
