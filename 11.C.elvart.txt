@@ -16,7 +16,11 @@ Asteroid exploded!
 That is not a valid parameter!
 -------------------------------------------------------------------------------------
 Asteroid 2 stat:
+<<<<<<< HEAD
 Layers: 4
+=======
+Layers: 3
+>>>>>>> branch 'main' of https://github.com/Sector2121/monke.git
 Resource: waterice
 Weather: normal
 Creatures: 

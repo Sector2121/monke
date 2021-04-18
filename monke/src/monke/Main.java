@@ -414,6 +414,35 @@ public class Main {
 				System.out.println(e);
 			}
 	    }else if(cmd[0].equals("kezi")) {
+	    	System.out.println("Create_settlers <settler name> <settler name>...");
+	    	System.out.println("Create_settlers <settler name> <settler name>...");
+			System.out.println("Create_ufos <ufo name> <ufo name>...");
+			System.out.println("Create_asteroids <asteroid number>");
+			System.out.println("Start_settlers <aszteroida id>");
+			System.out.println("Start_ufos <aszteroida id>");
+			System.out.println("Move <settler/robot/ufo name> <aszteroida id>");
+			System.out.println("List_neighbors <asteroid id>");
+			System.out.println("Drill <settler/robot name>");
+			System.out.println("Mine <settler/ufo name>");
+			System.out.println("Build <settler name> <object> <name, if robot>");
+			System.out.println("Place_teleport <settler name>");
+			System.out.println("Replace_resource <settler name> <resource type>");
+			System.out.println("Skip <settler name>");
+			System.out.println("Give_up <settler name>");
+			System.out.println("Step");
+			System.out.println("Set_weather <asteroid id> <temperature>");
+			System.out.println("Set_resource <asteroid id> <resource type>");
+			System.out.println("Set_layer <asteroid id> <number>");
+			System.out.println("Sunstorm");
+			System.out.println("Add_resource <settler name> <resource type>");
+			System.out.println("Set_resource_settler <settler name > <number>");
+			System.out.println("Create_robot <asteroid id> <robot id>");
+			System.out.println("Create_teleport <asteroid id> <asteroid id>");
+			System.out.println("Add_teleport <settler name>");
+			System.out.println("Set_neighbor <asteroid id> <asteroid id>");
+			System.out.println("Reset");
+			System.out.println("Stat_asteroid <asteroid id>");
+			System.out.println("List_commands");
 			while (true) {
 				try {
 					cmd = br.readLine().split(" ");
@@ -424,6 +453,35 @@ public class Main {
 				}	
 				if (cmd[0].equals("exit")) {
 					break;
+				} else if (cmd[0].equals("List_commands")) {
+					System.out.println("Create_settlers <settler name> <settler name>...");
+					System.out.println("Create_ufos <ufo name> <ufo name>...");
+					System.out.println("Create_asteroids <asteroid number>");
+					System.out.println("Start_settlers <aszteroida id>");
+					System.out.println("Start_ufos <aszteroida id>");
+					System.out.println("Move <settler/robot/ufo name> <aszteroida id>");
+					System.out.println("List_neighbors <asteroid id>");
+					System.out.println("Drill <settler/robot name>");
+					System.out.println("Mine <settler/ufo name>");
+					System.out.println("Build <settler name> <object> <name, if robot>");
+					System.out.println("Place_teleport <settler name>");
+					System.out.println("Replace_resource <settler name> <resource type>");
+					System.out.println("Skip <settler name>");
+					System.out.println("Give_up <settler name>");
+					System.out.println("Step");
+					System.out.println("Set_weather <asteroid id> <temperature>");
+					System.out.println("Set_resource <asteroid id> <resource type>");
+					System.out.println("Set_layer <asteroid id> <number>");
+					System.out.println("Sunstorm");
+					System.out.println("Add_resource <settler name> <resource type>");
+					System.out.println("Set_resource_settler <settler name > <number>");
+					System.out.println("Create_robot <asteroid id> <robot id>");
+					System.out.println("Create_teleport <asteroid id> <asteroid id>");
+					System.out.println("Add_teleport <settler name>");
+					System.out.println("Set_neighbor <asteroid id> <asteroid id>");
+					System.out.println("Reset");
+					System.out.println("Stat_asteroid <asteroid id>");
+					System.out.println("List_commands");
 				} else if (cmd[0].equals("Create_settlers")) {
 					System.out.println("Settlers successfully created!");
 					ell.SetOsszString("Settlers successfully created!");
