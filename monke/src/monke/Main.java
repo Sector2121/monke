@@ -197,7 +197,7 @@ public class Main {
 						System.out.print("Core: ");
 						s.asteroid.GetResourceName();
 						System.out.println("Weather: "+s.asteroid.GetWeather());
-						//System.out.prtinln("Teleport: "+s.asteroid.get) <---- Ezt most hirtelen nem tudom
+						System.out.println("Teleport: "+s.GetHasTpk());
 						System.out.print("Other creatures on your asteroid: ");
 						s.asteroid.GetOtherCreaturesName(s);
 						System.out.println("-------------------------------------------------------------------------------------");

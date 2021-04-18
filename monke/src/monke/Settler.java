@@ -244,11 +244,11 @@ public class Settler extends Creature{
 	/**
 	 * Kilistazza a nyersanyagok neveit.
 	 */
-	//Ez uj
 	public void ListAllResourceName() {
 		for(Resource r : resources) {
 			r.GetName();
 		}
+		System.out.println();
 	}
 	
 	public void SetResources(int sz) {
