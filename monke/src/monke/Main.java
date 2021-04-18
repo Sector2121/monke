@@ -17,7 +17,7 @@ public class Main {
 			try {
 				cmd = br.readLine().split(" ");
 			} catch (IOException e) {
-				System.out.println(e);
+				System.out.println(e); 
 			}
 			if (cmd.length == 0 || cmd[0].equals("")) {
 			}	
