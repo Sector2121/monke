@@ -47,7 +47,10 @@ public class Sun {
 	public void SunStorm() {
 		System.out.println("Sunstorm started!");
 		for(Asteroid a : asteroids) {
-			a.SunStorm();
+			if(a.GetWeather() == "critical")
+			{
+				a.SunStorm();
+			}
 		}
 	}
 	/**
@@ -56,10 +59,16 @@ public class Sun {
 	public void TesztSunStorm() {
 		System.out.println("Sunstorm started!");
 		for(Asteroid a : asteroids) {
-			a.SunStorm();
+			if(a.GetWeather() == "critical")
+			{
+				a.SunStorm();
+			}
 		}
 		for(Asteroid a : asteroids) {
-			SetHot(a);
+			if(a.GetWeather() == "critical")
+			{
+				SetHot(a);
+			}
 		}
 	}
 	
