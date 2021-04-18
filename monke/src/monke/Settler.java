@@ -158,6 +158,7 @@ public class Settler extends Creature{
 	public void Die() {
 		asteroid.Remove(this);
 		game.RemoveSettler(this);
+		System.out.println("R.I.P. " + GetName());
 	}
 	/**
 	 * Megepit egy teleportkapu part, amiket behelyez a listajaba.
