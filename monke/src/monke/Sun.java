@@ -91,12 +91,6 @@ public class Sun {
 		if(sunStormNextRound == true) {
 			SunStorm();
 			sunStormNextRound = false;
-			for(Asteroid a : asteroids) {
-				if(a.GetWeather() == "critical")
-				{
-					SetHot(a);
-				}
-			}
 		}
 		else {
 			Random rand = new Random();
