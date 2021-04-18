@@ -4,6 +4,7 @@ Neighbor successfully set!
 Asteroid layer set successfully!
 Asteroid layer set successfully!
 Asteroid resource set successfully!
+Asteroid resource set successfully!
 Settlers successfully created!
 Settlers start asteroid set!
 Settler resource added succesfully!
@@ -49,7 +50,7 @@ Creatures: Boba-feta
 -------------------------------------------------------------------------------------
 Asteroid 2 stat:
 Layers: 2
-Resource: waterice
+Resource: iron
 Weather: normal
 Creatures: R2D2 
 -------------------------------------------------------------------------------------
@@ -60,7 +61,7 @@ Successful drill!
 -------------------------------------------------------------------------------------
 Asteroid 2 stat:
 Layers: 0
-Resource: waterice
+Resource: iron
 Weather: normal
 Creatures: R2D2 
 -------------------------------------------------------------------------------------
