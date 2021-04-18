@@ -219,8 +219,8 @@ public class Main {
 								System.out.println("Name: "+s.GetName());
 								ell.SetOsszString("Name: "+s.GetName());
 								s.ListAllResourceName();
-								System.out.println("Asteroid ID: "+s.asteroid.GetId());
-								ell.SetOsszString("Asteroid ID: "+s.asteroid.GetId());
+								System.out.println("Asteroid ID: "+s.GetAsteroid().GetId());
+								ell.SetOsszString("Asteroid ID: "+s.GetAsteroid().GetId());
 								s.asteroid.GetResourceName();
 								System.out.println("Weather: "+s.asteroid.GetWeather());
 								ell.SetOsszString("Weather: "+s.asteroid.GetWeather());
@@ -665,8 +665,8 @@ public class Main {
 							System.out.println("Name: "+s.GetName());
 							ell.SetOsszString("Name: "+s.GetName());
 							s.ListAllResourceName();
-							System.out.println("Asteroid ID: "+s.asteroid.GetId());
-							ell.SetOsszString("Asteroid ID: "+s.asteroid.GetId());
+							System.out.println("Asteroid ID: "+s.GetAsteroid().GetId());
+							ell.SetOsszString("Asteroid ID: "+s.GetAsteroid().GetId());
 							s.asteroid.GetResourceName();
 							System.out.println("Weather: "+s.asteroid.GetWeather());
 							ell.SetOsszString("Weather: "+s.asteroid.GetWeather());
