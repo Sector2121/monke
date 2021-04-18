@@ -6,7 +6,7 @@ Weather set successfully!
 Settlers successfully created!
 Settler resource added succesfully!
 Settlers start asteroid set!
-Replace unsuccesull!
+Replace unsuccessful!
 -------------------------------------------------------------------------------------
 Your settlers statistics are the following:
 Name: Batir
@@ -15,12 +15,12 @@ Asteroid ID: 1
 Core: unknown
 Weather: normal
 Teleport: 0
-Other creatures on your asteroid:
+Other creatures on your asteroid: 
 -------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------
 Asteroid 1 stat:
 Layers: 2
 Resource: empty
 Weather: normal
-Creatures: Batir
+Creatures: Batir 
 -------------------------------------------------------------------------------------
