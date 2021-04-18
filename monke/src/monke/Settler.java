@@ -34,8 +34,6 @@ public class Settler extends Creature{
 		billOfResources = new BillOfResources();
 		this.SetName(name);
 		this.asteroid = null;
-		System.out.println("Settler created!");
-		el.SetOsszString("Settler created!");
 		game.AddSettler(this);
 	}
 	/**
