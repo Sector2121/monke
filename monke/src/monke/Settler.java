@@ -169,25 +169,26 @@ public class Settler extends Creature{
 	 */
 	public void BuildTeleport() {
 		if(hasTpk >= 2) {
+			System.out.println("You don’t have enough space!");
 			return;
 		}
-			if(billOfResources.CheckResource(resources, "Teleport")) {
-				
-				RemoveResource(billOfResources.GetBillOfTpk());
-				/*AddTeleport();*/
-				hasTpk += 2;
-				Teleport t = new Teleport(game, tpid);
-				tpid++;
-				Teleport t2 = new Teleport(game, tpid);
-				tpid++;
-				t.SetPair(t2);
-				t2.SetPair(t);
-				teleports.add(t);
-				teleports.add(t2);
-				System.out.println("The selected object got built!");
-			}else {
-				System.out.println("You don’t have enough resources to complete this action!");
-			}
+		if(billOfResources.CheckResource(resources, "Teleport")) {
+			
+			RemoveResource(billOfResources.GetBillOfTpk());
+			/*AddTeleport();*/
+			hasTpk += 2;
+			Teleport t = new Teleport(game, tpid);
+			tpid++;
+			Teleport t2 = new Teleport(game, tpid);
+			tpid++;
+			t.SetPair(t2);
+			t2.SetPair(t);
+			teleports.add(t);
+			teleports.add(t2);
+			System.out.println("The selected object got built!");
+		}else {
+			System.out.println("You don’t have enough resources to complete this action!");
+		}
 	}
 	/**
     * Megnoveli a teleport szamlalojat.
