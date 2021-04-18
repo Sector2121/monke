@@ -15,7 +15,7 @@ public class Main {
 	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	    String[] cmd = new String[5];
 	    int teleportCount = 1;
-	    System.out.println("Adja meg milyen fajta tesztelest szeretne csinalni(kezi, kesz, kilep): ");
+	    System.out.println("Adja meg milyen fajta tesztelest szeretne csinalni(kezi, kesz, exit): ");
 		try {
 			cmd[0] = br.readLine();
 		} catch (IOException e) {
@@ -858,8 +858,8 @@ public class Main {
 				}
 			}
 	    }
-	    else if(cmd[0].equals("kilep")) {
-	    	System.out.println("On kilepett!");
+	    else if(cmd[0].equals("exit")) {
+	    	System.out.println("Adios amigo!");
 	    }
 	}
 }
