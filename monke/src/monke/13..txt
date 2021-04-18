@@ -1,0 +1,24 @@
+Reset
+Create_asteroids 2
+Create_ufos UfoPeti
+Start_ufos 2
+Create_robot 1 R2D2
+Set_neighbor 1 2
+Set_layer 1 3
+Set_layer 2 4
+Set_resource 1 iron
+Set_resource 2 waterice
+List_neighbors 1
+List_neighbors 2
+Step
+Stat_asteroid 1
+Stat_asteroid 2
+Step
+Stat_asteroid 1
+Stat_asteroid 2
+Step
+Stat_asteroid 1
+Stat_asteroid 2
+Step
+Stat_asteroid 1
+Stat_asteroid 2

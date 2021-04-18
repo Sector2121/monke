@@ -1,0 +1,10 @@
+Reset
+Create_asteroids 1
+Create_settlers Carmelita
+Start_settlers 1
+Add_resource Carmelita iron
+Add_resource Carmelita iron
+Add_resource Carmelita waterice
+Add_resource Carmelita uranium
+Build Carmelita teleport
+Stat Carmelita

@@ -1,0 +1,10 @@
+Reset
+Create_asteroids 1
+Set_layer 1 1
+Set_weather 1 hot
+Set_resource 1 waterice
+Create_settlers Boba-feta Tra-pista
+Start_settlers 1
+Drill Boba-feta
+Stat Boba-feta
+Stat_asteroid 1

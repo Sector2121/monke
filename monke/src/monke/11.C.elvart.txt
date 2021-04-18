@@ -1,0 +1,27 @@
+Reset was successfull!
+Asteroids successfully created!
+Asteroid layer set successfully!
+Asteroid layer set successfully!
+Asteroid resource set successfully!
+Asteroid resource set successfully!
+Weather set successfully!
+Robot successfully created!
+Next round!
+Weather set successfully!
+Next round!
+Weather set successfully!
+Next round!
+R.I.P.R2D2
+Asteroid exploded!
+That is not a valid parameter!
+-------------------------------------------------------------------------------------
+Asteroid 2 stat:
+<<<<<<< HEAD
+Layers: 4
+=======
+Layers: 3
+>>>>>>> branch 'main' of https://github.com/Sector2121/monke.git
+Resource: waterice
+Weather: normal
+Creatures: 
+-------------------------------------------------------------------------------------

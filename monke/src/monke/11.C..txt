@@ -1,0 +1,16 @@
+Reset
+Create_asteroids 2
+Set_layer 1 0
+Set_layer 2 4
+Set_resource 1 uranium
+Set_resource 2 waterice
+Set_weather 1 hot
+Create_robot 1 R2D2
+Step
+Set_weather 1 hot
+Step
+Set_weather 1 hot
+Step
+Set_weather 1 hot
+Stat_asteroid 1
+Stat_asteroid 2

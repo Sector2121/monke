@@ -1,0 +1,6 @@
+Reset
+Create_asteroids 1
+Create_settlers Palya1 Palya2
+Start_settlers 1
+Skip Palya1
+Stat Palya1

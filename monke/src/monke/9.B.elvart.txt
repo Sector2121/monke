@@ -1,0 +1,24 @@
+Reset was successfull!
+Asteroids successfully created!
+Asteroid layer set successfully!
+Asteroid resource set successfully!
+Weather set successfully!
+Settlers successfully created!
+The Ufos have been created!
+Robot successfully created!
+Teleport created and set!
+Settlers start asteroid set!
+Ufos start asteroid set!
+Sunstorm started!
+R.I.P.Beatriz
+R.I.P. Ricardo
+R.I.P.Silvestre
+Weather set successfully!
+That is not a valid parameter!
+-------------------------------------------------------------------------------------
+Asteroid 1 stat:
+Layers: 1
+Resource: iron
+Weather: hot
+Creatures: 
+-------------------------------------------------------------------------------------

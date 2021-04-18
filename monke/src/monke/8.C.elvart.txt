@@ -1,0 +1,15 @@
+Reset was successfull!
+Asteroids successfully created!
+Settlers successfully created!
+Settlers start asteroid set!
+You don't have enough resources to complete this action!
+-------------------------------------------------------------------------------------
+Your settlers statistics are the following:
+Name: Carmelita
+Resources: [Iron: 0, Carbon: 0, Uranium: 0, Waterice: 0]
+Asteroid ID: 1
+Core: unknown
+Weather: normal
+Teleport: 0
+Other creatures on your asteroid: 
+-------------------------------------------------------------------------------------

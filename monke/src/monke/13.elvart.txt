@@ -1,0 +1,87 @@
+Reset was successfull!
+Asteroids successfully created!
+The Ufos have been created!
+Ufos start asteroid set!
+Robot successfully created!
+Neighbor successfully set!
+Asteroid layer set successfully!
+Asteroid layer set successfully!
+Asteroid resource set successfully!
+Asteroid resource set successfully!
+-------------------------------------------------------------------------------------
+Neighbors: 
+Asteroid 2
+-------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+Neighbors: 
+Asteroid 1
+-------------------------------------------------------------------------------------
+Next round!
+Successful drill!
+Successfully moved!
+-------------------------------------------------------------------------------------
+Asteroid 1 stat:
+Layers: 2
+Resource: iron
+Weather: normal
+Creatures: R2D2 UfoPeti 
+-------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+Asteroid 2 stat:
+Layers: 4
+Resource: waterice
+Weather: normal
+Creatures: 
+-------------------------------------------------------------------------------------
+Next round!
+Successful drill!
+Successfully moved!
+-------------------------------------------------------------------------------------
+Asteroid 1 stat:
+Layers: 1
+Resource: iron
+Weather: normal
+Creatures: R2D2 
+-------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+Asteroid 2 stat:
+Layers: 4
+Resource: waterice
+Weather: normal
+Creatures: UfoPeti 
+-------------------------------------------------------------------------------------
+Next round!
+Successful drill!
+Successfully moved!
+-------------------------------------------------------------------------------------
+Asteroid 1 stat:
+Layers: 0
+Resource: iron
+Weather: normal
+Creatures: R2D2 UfoPeti 
+-------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+Asteroid 2 stat:
+Layers: 4
+Resource: waterice
+Weather: normal
+Creatures: 
+-------------------------------------------------------------------------------------
+Next round!
+Successfully moved!
+Asteroid resource set successfully!
+Resource mined!
+-------------------------------------------------------------------------------------
+Asteroid 1 stat:
+Layers: 0
+Resource: empty
+Weather: normal
+Creatures: UfoPeti 
+-------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+Asteroid 2 stat:
+Layers: 4
+Resource: waterice
+Weather: normal
+Creatures: R2D2 
+-------------------------------------------------------------------------------------

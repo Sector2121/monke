@@ -1,0 +1,16 @@
+Reset
+Create_asteroids 1
+Set_layer 1 1
+Set_resource 1 uranium
+Set_weather 1 hot
+Create_settlers Batir
+Start_settlers 1
+Drill Batir
+Step
+Set_weather 1 hot
+Mine Batir
+Stat Batir
+Replace_resource Batir uranium
+Step
+Set_weather 1 hot
+Stat_asteroid 1

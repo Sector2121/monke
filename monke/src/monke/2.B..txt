@@ -1,0 +1,14 @@
+Reset
+Create_asteroids 1
+Set_layer 1 0
+Set_resource 1 iron
+Set_weather 1 normal
+Create_settlers Ernesto
+Create_ufos Francisco
+Set_resource_settler Ernesto 10
+Start_settlers 1
+Start_ufos 1
+Mine Ernesto
+Mine Francisco
+Stat Ernesto
+Stat_asteroid 1

@@ -1,0 +1,6 @@
+Reset
+Create_asteroids 1
+Create_settlers Carmelita
+Start_settlers 1
+Build Carmelita teleport
+Stat Carmelita

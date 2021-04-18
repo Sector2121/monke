@@ -1,0 +1,67 @@
+Reset was successfull!
+Asteroids successfully created!
+Neighbor successfully set!
+Asteroid layer set successfully!
+Asteroid layer set successfully!
+Asteroid resource set successfully!
+Asteroid resource set successfully!
+Settlers successfully created!
+Settlers start asteroid set!
+Settler resource added succesfully!
+Settler resource added succesfully!
+Successful drill!
+Resource mined!
+Settler resource added succesfully!
+Asteroid resource set successfully!
+-------------------------------------------------------------------------------------
+Your settlers statistics are the following:
+Name: Boba-feta
+Resources: [Iron: 1, Carbon: 1, Uranium: 1, Waterice: 0]
+Asteroid ID: 1
+Core: empty
+Weather: normal
+Teleport: 0
+Other creatures on your asteroid: 
+-------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+Neighbors: 
+Asteroid 2
+-------------------------------------------------------------------------------------
+The selected object got built!
+-------------------------------------------------------------------------------------
+Your settlers statistics are the following:
+Name: Boba-feta
+Resources: [Iron: 0, Carbon: 0, Uranium: 0, Waterice: 0]
+Asteroid ID: 1
+Core: empty
+Weather: normal
+Teleport: 0
+Other creatures on your asteroid: R2D2 
+-------------------------------------------------------------------------------------
+Next round!
+Successfully moved!
+-------------------------------------------------------------------------------------
+Asteroid 1 stat:
+Layers: 0
+Resource: empty
+Weather: normal
+Creatures: Boba-feta 
+-------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+Asteroid 2 stat:
+Layers: 2
+Resource: iron
+Weather: normal
+Creatures: R2D2 
+-------------------------------------------------------------------------------------
+Next round!
+Successful drill!
+Next round!
+Successful drill!
+-------------------------------------------------------------------------------------
+Asteroid 2 stat:
+Layers: 0
+Resource: iron
+Weather: normal
+Creatures: R2D2 
+-------------------------------------------------------------------------------------

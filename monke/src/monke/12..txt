@@ -1,0 +1,23 @@
+Reset
+Create_asteroids 2
+Set_neighbor 1 2
+Set_layer 1 1
+Set_layer 2 2
+Set_resource 1 uranium
+Set_resource 2 iron
+Create_settlers Boba-feta
+Start_settlers 1
+Add_resource Boba-feta iron
+Add_resource Boba-feta carbon
+Drill Boba-feta
+Mine Boba-feta
+Stat Boba-feta
+List_neighbors 1
+Build Boba-feta robot R2D2
+Stat Boba-feta
+Step
+Stat_asteroid 1
+Stat_asteroid 2
+Step
+Step
+Stat_asteroid 2

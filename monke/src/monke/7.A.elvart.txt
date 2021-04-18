@@ -1,0 +1,20 @@
+Reset was successfull!
+Asteroids successfully created!
+Settlers successfully created!
+Teleport added!
+Settlers start asteroid set!
+You've succesfully placed the teleport!
+-------------------------------------------------------------------------------------
+Your settlers statistics are the following:
+Name: Carmelita
+Resources: [Iron: 0, Carbon: 0, Uranium: 0, Waterice: 0]
+Asteroid ID: 1
+Core: unknown
+Weather: normal
+Teleport: 1
+Other creatures on your asteroid: 
+-------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+Neighbors: 
+Teleport 1 - Asteroid null
+-------------------------------------------------------------------------------------
