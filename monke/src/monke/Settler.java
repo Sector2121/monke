@@ -226,7 +226,7 @@ public class Settler extends Creature{
 	 */
 	public void BuildRobot(String name) {
 		if(billOfResources.CheckResource(resources, "Robot")) {
-			Robot r = new Robot(asteroid, name);
+			Robot r = new Robot(game, asteroid, name);
 			game.AddRobot(r);
 			RemoveResource(billOfResources.GetBillOfRobot());
 			System.out.println("The selected object got built!");
