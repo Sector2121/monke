@@ -16,7 +16,7 @@ Asteroid exploded!
 That is not a valid parameter!
 -------------------------------------------------------------------------------------
 Asteroid 2 stat:
-Layers: 5
+Layers: 4
 Resource: waterice
 Weather: normal
 Creatures: 
