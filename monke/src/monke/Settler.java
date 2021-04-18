@@ -48,17 +48,20 @@ public class Settler extends Creature{
 	 */
 	public void Mine() {
 		if(asteroid.GetLayers() > 0) {
+			System.out.println("You are unable to mine!");
 			return;
 		}
 		
 		int length = resources.size();
 		if(length < 10) {
+			System.out.println("Resource mined!");
 			AddResource(asteroid.GetResource());
 			asteroid.SetResource(null);
 			asteroid.SetIsEmpty(true);
 			asteroid.CheckEnoughResources();
 		}
 		else if(length == 10) {
+			System.out.println("You are unable to mine!");
 			return;
 		}
 	}
@@ -92,13 +95,9 @@ public class Settler extends Creature{
 	 * @param r
 	 */
 	public void PlaceResource(Resource r) {
-		System.out.println(r);
-		System.out.println(asteroid.GetLayers());
-		System.out.println(asteroid.GetIsEmpty());
 		if(asteroid.GetLayers() == 0 && asteroid.GetIsEmpty()) {
 			boolean hasr = CheckResource(r);
 			if(hasr == true) {
-				System.out.println("ittvagyok");
 				asteroid.SetResource(r);
 				ArrayList<Resource> re = new ArrayList<>();
 				re.add(r);

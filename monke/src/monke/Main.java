@@ -13,7 +13,6 @@ public class Main {
 		Scanner myObj = new Scanner(System.in);
 	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		while (true) {
-			System.out.print("Enter command: ");
 			String[] cmd = null;
 			try {
 				cmd = br.readLine().split(" ");
@@ -25,6 +24,7 @@ public class Main {
 			else if (cmd[0].equals("exit")) {
 				break;
 			} else if (cmd[0].equals("Create_settlers")) {
+				System.out.println("Settlers successfully created!");
 				for (int i=1;i<cmd.length;i++) {
 					try {
 						Settler s = new Settler(game, cmd[i]);
@@ -32,10 +32,12 @@ public class Main {
 					catch (Exception e) {}
 				}
 			} else if (cmd[0].equals("Create_ufos")) {
+				System.out.println("The Ufos have been created!");
 				for (int i=1;i<cmd.length;i++) {
 					Ufo u = new Ufo(game, cmd[i]);
 				}
 			} else if (cmd[0].equals("Create_asteroids")) {
+				System.out.println("Asteroids successfully created!");
 				for (int i=1;i<=Integer.parseInt(cmd[1]);i++) {
 					Random rand = new Random();
 					int random = rand.nextInt(4) + 1;
@@ -56,11 +58,13 @@ public class Main {
 					game.GetAsteroid().add(a);
 				}
 			} else if (cmd[0].equals("Start_settlers")) {
+				System.out.println("Settlers start asteroid set!");
 				for (Settler s : game.GetSettlers()) {
 					s.asteroid=game.GetAsteroid().get(Integer.parseInt(cmd[1])-1);
 					game.GetAsteroid().get(Integer.parseInt(cmd[1])-1).AddCreature(s);
 				}
 			} else if (cmd[0].equals("Start_ufos")) {
+				System.out.println("Ufos start asteroid set!");
 				for (Ufo u : game.GetUfos()) {
 					u.asteroid=game.GetAsteroid().get(Integer.parseInt(cmd[1])-1);
 					game.GetAsteroid().get(Integer.parseInt(cmd[1])-1).AddCreature(u);
@@ -120,6 +124,9 @@ public class Main {
 						}
 						else if (cmd[2].equals("teleport")) {
 							s.BuildTeleport();
+						}
+						else {
+							System.out.println("You can only build teleport or robot!");
 						}
 						break;
 					}
@@ -294,6 +301,7 @@ public class Main {
 				String nev = cmd[2];
 				int id = Integer.parseInt(cmd[1]);
 				Robot robi = new Robot(game, game.GetAsteroid().get(id-1), nev);
+				System.out.println("Robot successfully created!");
 			} else if (cmd[0].equals("Create_teleport")) {
 				Teleport t1 = new Teleport(game, 1);
 				Teleport t2 = new Teleport(game, 2);
@@ -322,6 +330,7 @@ public class Main {
 				}
 				System.out.println("Teleport added!");
 			} else if (cmd[0].equals("Set_neighbor")) {
+				System.out.println("Neighbor successfully set!");
 				int id1 = Integer.parseInt(cmd[1]);
 				int id2 = Integer.parseInt(cmd[2]);
 				ArrayList<Asteroid> list = new ArrayList<Asteroid>();

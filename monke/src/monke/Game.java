@@ -33,6 +33,7 @@ public class Game {
 	 * Lepteti az osszes leptetheto dolgot.
 	 */
 	public void Step() {
+		System.out.println("Next round!");
 		for(Robot r : robots)
 			r.Step();
 		for(Ufo u : ufos)

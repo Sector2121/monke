@@ -69,6 +69,7 @@ public class Asteroid implements Travel{
 	 * @param l
 	 */
 	public void SetLayers(int l) {
+		System.out.println("Asteroida layer set successfully!");
 		layers = l;
 	}
 	/**
@@ -83,6 +84,7 @@ public class Asteroid implements Travel{
 	 * @param r
 	 */
 	public void SetResource(Resource r) {
+		System.out.println("Asteroid resource set successfully!");
 		resource = r;
 	}
 	/**
@@ -111,6 +113,7 @@ public class Asteroid implements Travel{
 	 * @param w
 	 */
 	public void SetWeather(String w) {
+		System.out.println("Weather set successfully!");
 		weather = w;
 	}
 	/**
