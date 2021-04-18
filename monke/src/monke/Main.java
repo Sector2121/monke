@@ -248,7 +248,7 @@ public class Main {
 					}
 				}
 			} else if (cmd[0].equals("Sunstorm")) {
-				game.GetSun().Step();
+				game.GetSun().TesztSunStorm();
 			} else if (cmd[0].equals("Add_resource")) {
 				boolean cont = true;
 				Resource r;
