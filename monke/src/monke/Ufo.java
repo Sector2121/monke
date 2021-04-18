@@ -21,7 +21,7 @@ public class Ufo extends Creature{
 			System.out.println("Resource mined!");
 		}
 		else
-			System.out.println("You are unable to mine!");
+			System.out.println("You are unable to mine!"); 
 	}
 	
 	

@@ -157,7 +157,7 @@ public class Asteroid implements Travel{
 	 * Torli az aszteroidarol a megkapott entitast.
 	 * @param c
 	 */
-	public void Remove(Creature c) {
+	public void Remove(Creature c) { 
 		creatures.remove(c);
 	}
 	/**
