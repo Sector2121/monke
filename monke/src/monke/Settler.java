@@ -36,7 +36,7 @@ public class Settler extends Creature{
 		this.SetName(name);
 		this.asteroid = null;
 		System.out.println("Settler created!");
-		//el.SetString("Settler created!");
+		el.SetOsszString("Settler created!");
 	}
 	/**
 	 * Banyaszik egy aszteroidabol.
@@ -76,7 +76,7 @@ public class Settler extends Creature{
 	public void AddResource(Resource r) {
 		resources.add(r);
 		System.out.println("Settler resource added succesfully!");
-		//el.SetString("Settler resource added succesfully!");
+		el.SetOsszString("Settler resource added succesfully!");
 	}
 	/**
 	 * Visszaadja a nyersanyaglistat.
@@ -216,7 +216,7 @@ public class Settler extends Creature{
        teleports.add(t);
        teleports.add(t2);
        System.out.println("Teleport added!");
-       //el.SetString("Teleport added!");
+       el.SetOsszString("Teleport added!");
    }
 	/**
 	 * Megepit egy robotot, amit lehelyez az aszteroidajara.
@@ -268,7 +268,7 @@ public class Settler extends Creature{
 			resources.add(iron);
 		}
 		System.out.println("Settler resources set!");
-		//el.SetString("Settler resources set!");
+		el.SetOsszString("Settler resources set!");
 	}
 	
 	public int GetHasTpk() {
