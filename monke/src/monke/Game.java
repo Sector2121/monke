@@ -29,6 +29,14 @@ public class Game {
 		return sun;
 	}
 	
+	public void AddAsteroid(Asteroid a) {
+		asteroids.add(a);
+	}
+	
+	public void SunStorm() {
+		sun.SunStorm();
+	}
+	
 	/**
 	 * Lepteti az osszes leptetheto dolgot.
 	 */

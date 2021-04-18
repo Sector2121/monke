@@ -143,4 +143,7 @@ public class Teleport implements Travel{
 		return pair.GetAsteroid();
 	}
 	
+	@Override
+	public void SetWeather(String w) {}
+	
 }

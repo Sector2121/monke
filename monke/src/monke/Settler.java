@@ -118,7 +118,7 @@ public class Settler extends Creature{
 	 */
 	public boolean CheckResource(Resource r) {
 		for(Resource r2 : resources) {
-			if(r == r2) {
+			if(r.GetName().equals(r2.GetName())) {
 				return true;
 			}
 		}

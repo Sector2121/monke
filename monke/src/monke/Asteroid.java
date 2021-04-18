@@ -35,6 +35,8 @@ public class Asteroid implements Travel{
 		resource = r;
 		neighbors = new ArrayList<Travel>();
 		bill = new BillOfResources();
+		g.AddAsteroid(this);
+		g.GetSun().AddAsteroid(this);
 	}
 	/**
 	 * Visszaadja az aszteroida id-jet.
@@ -194,11 +196,12 @@ public class Asteroid implements Travel{
 	 * Napviharnal ha el tudnak bujni az entitasok nem csinal semmit, egyebkent pedig megoli az osszes entitast ami rajta van.
 	 */
 	public void SunStorm() {
+		int size = creatures.size();
 		if(layers == 0 && isEmpty);
 		else {
 			if(creatures != null)
-				for(int i = creatures.size(); i >= 0; i--)
-					creatures.get(i).Die();
+				while(creatures.size() > 0)
+					creatures.get(0).Die();
 			if(neighbors != null)
 				for(Travel t : neighbors)
 					t.SetIsMoving();
@@ -284,8 +287,7 @@ public class Asteroid implements Travel{
 	public void GetResourceName() {
 		if(layers == 0) {
 			if(resource != null) {
-				resource.GetName();
-				System.out.println();
+				System.out.println(resource.GetName());
 			}
 			else {
 				System.out.println("empty");
@@ -298,8 +300,7 @@ public class Asteroid implements Travel{
 	
 	public void GetResourceNameForSure() {
 		if(resource != null) {
-			resource.GetName();
-			System.out.println();
+			System.out.println(resource.GetName());
 		}
 		else {
 			System.out.println("empty");

@@ -16,6 +16,10 @@ public class Sun {
 		this.sunStormNextRound = false;
 	}
 	
+	public void AddAsteroid(Asteroid a) {
+		asteroids.add(a);
+	}
+	
 	/**
 	 * Beallitja az uj napkozeli aszteroidat.
 	 * Beallitja hot-ra.
@@ -24,19 +28,15 @@ public class Sun {
 	 * Torli az eddigi aszteroidat a listarol.
 	 */
 	public void GetNewAsteroids() {
-		for(int i = 0; i < asteroids.size(); i++) {
-			if(asteroids.get(i).GetNeighbors() == null) {}
-			else {
-				for(Travel t : asteroids.get(i).GetNeighbors()) {
-					if(t.GetWeather() != null)
-						while(t.GetWeather() != "hot") {
-							SetHot((Asteroid) t);
-							asteroids.add((Asteroid) t);
-							break;
-						}
+		for(Asteroid a : asteroids) {
+			if(a.GetWeather() == "hot") {
+				for(Travel t : a.GetNeighbors()) {
+					if(t.GetWeather() != "hot") {
+						t.SetWeather("hot");
+						a.SetWeather("normal");
+						break;
+					}
 				}
-				SetNormal(asteroids.get(i));
-				asteroids.remove(asteroids.get(i));
 			}
 		}
 	}
@@ -47,26 +47,9 @@ public class Sun {
 	public void SunStorm() {
 		System.out.println("Sunstorm started!");
 		for(Asteroid a : asteroids) {
-			if(a.GetWeather() == "critical")
+			if(a.GetWeather().equals("critical"))
 			{
 				a.SunStorm();
-			}
-		}
-	}
-	/**
-	 * Minden napkozeli aszteroidara meghivja a napvihart.
-	 */
-	public void TesztSunStorm() {
-		System.out.println("Sunstorm started!");
-		for(Asteroid a : asteroids) {
-			if(a.GetWeather() == "critical")
-			{
-				a.SunStorm();
-			}
-		}
-		for(Asteroid a : asteroids) {
-			if(a.GetWeather() == "critical")
-			{
 				SetHot(a);
 			}
 		}
@@ -107,17 +90,18 @@ public class Sun {
 	public void Step() {
 		if(sunStormNextRound == true) {
 			SunStorm();
-			for(Asteroid a : asteroids) {
-				SetHot(a);
-			}
+			sunStormNextRound = false;
 		}
 		else {
 			Random rand = new Random();
 			int sz = rand.nextInt(100);
-			if(sz > 0 && sz < 10) {
+			if(sz <= 10) {
 				sunStormNextRound = true;
 				for(Asteroid a : asteroids) {
-					SetCritical(a);
+					if(a.GetWeather() == "hot")
+					{
+						SetCritical(a);
+					}
 				}
 			}
 			else {
