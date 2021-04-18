@@ -35,7 +35,6 @@ public class Game {
 			u.Step();
 		for(Teleport t : teleports)
 			t.Step();
-		sun.Step();
 	}
 	/**
 	 * Hozzaad a jatekhoz egy teleportot.

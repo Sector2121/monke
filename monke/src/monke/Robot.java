@@ -33,7 +33,7 @@ public class Robot extends Creature{
 			ArrayList<Travel> neighbors = asteroid.GetNeighbors();
 			Move(neighbors.get(0));
 		}
-		if(asteroid.GetLayers() > 0) {
+		else if(asteroid.GetLayers() > 0) {
 			System.out.println("buzi");
 			Drill();
 		}
