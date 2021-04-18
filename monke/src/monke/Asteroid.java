@@ -39,7 +39,7 @@ public class Asteroid implements Travel{
 	}
 	
 	public boolean Step() {
-		if(closeToSun && layers == 0) {
+		if(closeToSun && layers == 0 && resource != null) {
 			resource.CloseToSun(this);
 			return true;
 		}
