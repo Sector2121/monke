@@ -177,7 +177,7 @@ public class Main {
 					}
 				}
 			} else if (cmd[0].equals("Step")) {
-
+				game.Step();
 			} else if (cmd[0].equals("Save_game")) {
 
 			} else if (cmd[0].equals("Load_game")) {
@@ -191,7 +191,7 @@ public class Main {
 						System.out.print("Resources: ");
 						s.ListAllResourceName();
 						System.out.println("Asteroid ID: "+s.asteroid.GetId());
-						System.out.print("Core: "); //<---- Gondolom ha kéreg 0 csak akkor látja de ezt most nincs kedvem kijavítani
+						System.out.print("Core: ");
 						s.asteroid.GetResourceName();
 						System.out.println("Weather: "+s.asteroid.GetWeather());
 						//System.out.prtinln("Teleport: "+s.asteroid.get) <---- Ezt most hirtelen nem tudom

@@ -12,6 +12,6 @@ public class Waterice extends Resource{
 	}
 	
 	void GetName() {
-		System.out.println("Waterice");
+		System.out.print("Waterice ");
 	}
 }
