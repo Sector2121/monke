@@ -414,6 +414,7 @@ public class Main {
 				System.out.println(e);
 			}
 	    }else if(cmd[0].equals("kezi")) {
+	    	System.out.println("-------------------------------------------------------------------------------------");
 	    	System.out.println("Create_settlers <settler name> <settler name>...");
 	    	System.out.println("Create_settlers <settler name> <settler name>...");
 			System.out.println("Create_ufos <ufo name> <ufo name>...");
@@ -443,6 +444,7 @@ public class Main {
 			System.out.println("Reset");
 			System.out.println("Stat_asteroid <asteroid id>");
 			System.out.println("List_commands");
+			System.out.println("-------------------------------------------------------------------------------------");
 			while (true) {
 				try {
 					cmd = br.readLine().split(" ");
@@ -454,6 +456,7 @@ public class Main {
 				if (cmd[0].equals("exit")) {
 					break;
 				} else if (cmd[0].equals("List_commands")) {
+					System.out.println("-------------------------------------------------------------------------------------");
 					System.out.println("Create_settlers <settler name> <settler name>...");
 					System.out.println("Create_ufos <ufo name> <ufo name>...");
 					System.out.println("Create_asteroids <asteroid number>");
@@ -482,6 +485,7 @@ public class Main {
 					System.out.println("Reset");
 					System.out.println("Stat_asteroid <asteroid id>");
 					System.out.println("List_commands");
+					System.out.println("-------------------------------------------------------------------------------------");
 				} else if (cmd[0].equals("Create_settlers")) {
 					System.out.println("Settlers successfully created!");
 					ell.SetOsszString("Settlers successfully created!");
