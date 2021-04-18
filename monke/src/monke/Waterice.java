@@ -11,6 +11,6 @@ public class Waterice extends Resource{
 	}
 	
 	String GetName() {
-		return "waterice ";
+		return "waterice";
 	}
 }

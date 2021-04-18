@@ -15,6 +15,6 @@ public class Uranium extends Resource{
 	}
 	
 	String GetName() {
-		return "uranium ";
+		return "uranium";
 	}
 }
