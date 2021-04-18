@@ -133,23 +133,14 @@ public class Settler extends Creature{
 	 * @param rem
 	 */
 	public void RemoveResource(ArrayList<Resource> rem) {
-		System.out.println(rem.size());
-		System.out.println(resources.size());
-		System.out.println(rem.get(0) + " " + resources.get(0));
 		for(Resource re : rem) {
-			System.out.println("ittvagyok");
 			for(Resource r : resources) {
-				System.out.println("ittvagyok");
-				if(r == re) {
-					System.out.println("ittvagyok");
+				if(r.getClass().equals(re.getClass())) {
 					resources.remove(r);
-					System.out.println("ittvagyok");
 					break;
 				}
 			}
 		}
-		System.out.println("befejezed?");
-		
 	}
 	/**
 	 * Meghivja a Die-t magara, ezzel feladva a jatekot.

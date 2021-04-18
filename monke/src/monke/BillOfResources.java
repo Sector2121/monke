@@ -75,30 +75,30 @@ public class BillOfResources {
 		List<Resource> temporary = new ArrayList<Resource>();
 		boolean talalt = false;
 		for (Resource robot : check) {
-			System.out.println("ezeket keressuk " + robot);
+			//System.out.println("ezeket keressuk " + robot);
 			talalt=false;
 			for (Resource name : resources) {
-				System.out.println("ezekkkel " + name);
+				//System.out.println("ezekkkel " + name);
 				talalt=false;
 				if(robot.getClass().equals(name.getClass())==true) {
-					System.out.println("Ugyanaz az osztalyuk " + robot + " " + name);
+					//System.out.println("Ugyanaz az osztalyuk " + robot + " " + name);
 					for (Resource temp : temporary) {
-						System.out.println("Volt-e mar?");
+						//System.out.println("Volt-e mar?");
 						if(temp.equals(name)==true) {
-							System.out.println("Igen " + temp + " " + name);
+							//System.out.println("Igen " + temp + " " + name);
 							talalt = true;
 							break;
 						}
 					}
 					if (talalt==false) {
-						System.out.println("Nem");
+						//System.out.println("Nem");
 						temporary.add(name);
 						break;
 					}
 				}
 			}
 		}
-		System.out.println(temporary);
+		//System.out.println(temporary);
 		if(check.size()==temporary.size()) {
 			return true;
 		}

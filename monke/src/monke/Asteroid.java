@@ -267,13 +267,10 @@ public class Asteroid implements Travel{
 	}
 	
 	public void GetResourceName() {
-		/*Iron i = new Iron();
-		Waterice w = new Waterice();
-		Carbon c = new Carbon();
-		Uranium u = new Uranium();*/
 		if(layers == 0) {
 			if(resource != null) {
 				resource.GetName();
+				System.out.println();
 			}
 			else {
 				System.out.println("Empty");
@@ -282,17 +279,5 @@ public class Asteroid implements Travel{
 		else {
 			System.out.println("Unknown");
 		}
-		/*if(resource.getClass().equals(i)) {
-			System.out.print("Iron");
-		}
-		else if(resource.getClass().equals(w)) {
-			System.out.print("Waterice");
-		} 
-		else if(resource.getClass().equals(c)) {
-			System.out.print("Carbon");
-		}
-		else if(resource.getClass().equals(u)) {
-			System.out.print("Uranium");
-		}*/
 	}
 }

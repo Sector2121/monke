@@ -29,13 +29,12 @@ public class Robot extends Creature{
 	*Ha az aszteroidanak van kopenye akkor a robot fur.
 	*/
 	public void Step() { 
-		if(GetAsteroid().GetLayers() == 0) { 
+		if(asteroid.GetLayers() > 0) {
+			Drill();
+		}
+		else if(GetAsteroid().GetLayers() == 0) { 
 			ArrayList<Travel> neighbors = asteroid.GetNeighbors();
 			Move(neighbors.get(0));
-		}
-		else if(asteroid.GetLayers() > 0) {
-			System.out.println("buzi");
-			Drill();
 		}
 	}
 	/**
