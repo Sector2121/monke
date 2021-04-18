@@ -30,7 +30,7 @@ public class Main {
 				System.out.println(e);
 			}
 			String tesztnev = cmd[0];
-			ArrayList<String> parancsok = new ArrayList();
+			ArrayList<String> parancsok = new ArrayList<>();
 			try {
 		    	parancsok = ell.TesztBeolvaso(cmd[0]);
 			} catch (Exception e) {

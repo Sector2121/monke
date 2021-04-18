@@ -8,9 +8,9 @@ import java.io.RandomAccessFile;
 import java.util.ArrayList;
 
 public class Ellenorzo {
-	static ArrayList<String> osszString;
+	private static ArrayList<String> osszString = new ArrayList<>();
 	public Ellenorzo() {
-		osszString = new ArrayList<>();
+		
 	}
 	public void EllenorzoFv(String s) throws Exception {
 		/*FileInputStream fajlbeelvart = new FileInputStream(s);
@@ -30,9 +30,6 @@ public class Ellenorzo {
 		raf.close();
 		boolean siker = true;
 		for(String str : osszString) {
-			System.out.println(str);
-		}
-		for(String str : elvart) {
 			System.out.println(str);
 		}
 		if(osszString.size() != elvart.size()) {
