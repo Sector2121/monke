@@ -77,15 +77,12 @@ public class Main {
 				System.out.println("-------------------------------------------------------------------------------------");
 				System.out.println("Neighbors: ");
 				int id = Integer.parseInt(cmd[1]);
-				ArrayList<Asteroid> list = new ArrayList<Asteroid>();
+				ArrayList<Asteroid> list = game.GetAsteroid();
 				ArrayList<Travel> neighbors = new ArrayList<Travel>();
-				
-				list = game.GetAsteroid();
+
 				neighbors = list.get(id-1).GetNeighbors();
-				for(int i= 0; i<neighbors.size();i++) {
-					Asteroid a = new Asteroid(game, i, null);
-					a = (Asteroid)neighbors.get(i);
-					System.out.println("Asteroid " + a.GetId());
+				for(Travel t : neighbors) {
+					t.PrintNeighbor();
 				}
 				System.out.println("-------------------------------------------------------------------------------------");
 			} else if (cmd[0].equals("Drill")) {
@@ -312,7 +309,7 @@ public class Main {
 						t2.SetAsteroid(a);
 					}
 				}
-				System.out.println("Teleport successfully created!");
+				System.out.println("Teleport created and set!");
 			} else if (cmd[0].equals("Add_teleport")) {
 				for (Settler s : game.GetSettlers()) {
 					if(s.GetName().equals(cmd[1])) {
@@ -325,7 +322,6 @@ public class Main {
 						}
 					}
 				}
-				System.out.println("Teleport added!");
 			} else if (cmd[0].equals("Set_neighbor")) {
 				System.out.println("Neighbor successfully set!");
 				int id1 = Integer.parseInt(cmd[1]);

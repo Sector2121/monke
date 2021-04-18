@@ -293,4 +293,9 @@ public class Asteroid implements Travel{
 			System.out.println("empty");
 		}
 	}
+	
+	@Override
+	public void PrintNeighbor() {
+		System.out.println("Asteroid " + id);
+	}
 }

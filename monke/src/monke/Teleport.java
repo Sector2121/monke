@@ -130,4 +130,9 @@ public class Teleport implements Travel{
 		return null;
 	}
 	
+	@Override
+	public void PrintNeighbor() {
+		System.out.println("Teleport " + id + " - Asteroid " + pair.GetAsteroid().GetId());
+	}
+	
 }

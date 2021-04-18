@@ -28,4 +28,6 @@ public interface Travel {
 	 * Homersekletet visszaadja
 	 */
 	public String GetWeather();
+	
+	public void PrintNeighbor();
 }
