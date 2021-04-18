@@ -112,11 +112,11 @@ public class Main {
 				}
 			} else if (cmd[0].equals("Build")) {
 				for (Settler s : game.GetSettlers()) {
-					if(s.GetName().equals(cmd[2])) {
-						if(cmd[1].equals("robot")) {
+					if(s.GetName().equals(cmd[1])) {
+						if(cmd[2].equals("robot")) {
 							s.BuildRobot(cmd[3]);
 						}
-						else if (cmd[1].equals("teleport")) {
+						else if (cmd[2].equals("teleport")) {
 							s.BuildTeleport();
 						}
 						else {
