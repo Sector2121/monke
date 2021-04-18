@@ -33,6 +33,7 @@ public class Robot extends Creature{
 			Move(neighbors.get(0));
 		}
 		if(asteroid.GetLayers() > 0) {
+			System.out.println("buzi");
 			Drill();
 		}
 	}

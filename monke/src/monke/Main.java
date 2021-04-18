@@ -29,7 +29,6 @@ public class Main {
 				for (int i=1;i<cmd.length;i++) {
 					try {
 						Settler s = new Settler(game, cmd[i]);
-						game.GetSettlers().add(s);
 					}
 					catch (Exception e) {}
 				}
@@ -81,7 +80,7 @@ public class Main {
 				ArrayList<Travel> neighbors = new ArrayList<Travel>();
 				
 				list = game.GetAsteroid();
-				neighbors = list.get(id).GetNeighbors();
+				neighbors = list.get(id-1).GetNeighbors();
 				for(int i= 0; i<neighbors.size();i++) {
 					Asteroid a = new Asteroid(game, i, null);
 					a = (Asteroid)neighbors.get(i);
@@ -107,7 +106,7 @@ public class Main {
 					}
 				}
 				if(found == false) {
-					for (Ufo u : ufos) { //És ha tárolnánk az ufokat nem kéne így rondán létrehozni csak egy listát a mian elején
+					for (Ufo u : ufos) {
 						if(u.GetName().equals(cmd[1])) {
 							u.Mine();
 							break;
@@ -332,7 +331,8 @@ public class Main {
 				int id2 = Integer.parseInt(cmd[2]);
 				ArrayList<Asteroid> list = new ArrayList<Asteroid>();
 				list = game.GetAsteroid();
-				list.get(id1).AddNewNeighbor(list.get(id2));
+				list.get(id1-1).AddNewNeighbor(list.get(id2-1));
+				list.get(id2-1).AddNewNeighbor(list.get(id1-1));
 			} else if (cmd[0].equals("Reset")) {
 				game.Reset();
 			} else if (cmd[0].equals("Stat_asteroid")) {

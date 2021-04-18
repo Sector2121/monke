@@ -24,11 +24,7 @@ public class Sun {
 	 * Torli az eddigi aszteroidat a listarol.
 	 */
 	public void GetNewAsteroids() {
-		int db = 0;
-		for(Asteroid a : asteroids) {
-			db++;
-		}
-		for(int i = 0; i < db; i++) {
+		for(int i = 0; i < asteroids.size(); i++) {
 			if(asteroids.get(i).GetNeighbors() == null) {}
 			else {
 				for(Travel t : asteroids.get(i).GetNeighbors()) {

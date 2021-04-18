@@ -20,6 +20,11 @@ public class Game {
 		robots = new ArrayList<>();
 		teleports = new ArrayList<>();
 	}
+	
+	public ArrayList<Ufo> GetUfos() {
+		return ufos;
+	}
+	
 	/**
 	 * Lepteti az osszes leptetheto dolgot.
 	 */
