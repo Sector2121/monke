@@ -135,4 +135,9 @@ public class Teleport implements Travel{
 		System.out.println("Teleport " + id + " - Asteroid " + pair.GetAsteroid().GetId());
 	}
 	
+	@Override
+	public Asteroid GetOtherAsteroid() {
+		return pair.GetAsteroid();
+	}
+	
 }

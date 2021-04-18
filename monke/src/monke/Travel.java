@@ -30,4 +30,6 @@ public interface Travel {
 	public String GetWeather();
 	
 	public void PrintNeighbor();
+	
+	public Asteroid GetOtherAsteroid();
 }

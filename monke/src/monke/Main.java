@@ -68,7 +68,7 @@ public class Main {
 				}
 			} else if (cmd[0].equals("Move")) {
 				for (Settler s : game.GetSettlers()) {
-					if(s.GetName()==cmd[1]) {
+					if(s.GetName().equals(cmd[1])) {
 						for(Asteroid a : game.GetAsteroid())
 						
 						//s.Move();
