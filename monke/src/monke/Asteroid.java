@@ -35,6 +35,7 @@ public class Asteroid implements Travel{
 		resource = r;
 		neighbors = new ArrayList<Travel>();
 		bill = new BillOfResources();
+		g.GetSun().AddAsteroid(this);
 	}
 	/**
 	 * Visszaadja az aszteroida id-jet.

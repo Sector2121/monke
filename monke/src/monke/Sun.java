@@ -16,6 +16,10 @@ public class Sun {
 		this.sunStormNextRound = false;
 	}
 	
+	public void AddAsteroid(Asteroid a) {
+		asteroids.add(a);
+	}
+	
 	/**
 	 * Beallitja az uj napkozeli aszteroidat.
 	 * Beallitja hot-ra.
@@ -103,8 +107,12 @@ public class Sun {
 	public void Step() {
 		if(sunStormNextRound == true) {
 			SunStorm();
+			sunStormNextRound = false;
 			for(Asteroid a : asteroids) {
-				SetHot(a);
+				if(a.GetWeather() == "critical")
+				{
+					SetHot(a);
+				}
 			}
 		}
 		else {
@@ -113,7 +121,10 @@ public class Sun {
 			if(sz > 0 && sz < 10) {
 				sunStormNextRound = true;
 				for(Asteroid a : asteroids) {
-					SetCritical(a);
+					if(a.GetWeather() == "hot")
+					{
+						SetCritical(a);
+					}
 				}
 			}
 			else {
