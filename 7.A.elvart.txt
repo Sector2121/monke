@@ -12,9 +12,9 @@ Asteroid ID: 1
 Core: unknown
 Weather: normal
 Teleport: 1
-Other creatures on your asteroid:
+Other creatures on your asteroid: 
 -------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------
-Neighbors:
-Teleport 1 – Asteroid null
+Neighbors: 
+Teleport 1 - Asteroid null
 -------------------------------------------------------------------------------------

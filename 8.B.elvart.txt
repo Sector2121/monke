@@ -15,5 +15,5 @@ Asteroid ID: 1
 Core: unknown
 Weather: normal
 Teleport: 2
-Other creatures on your asteroid:
+Other creatures on your asteroid: 
 -------------------------------------------------------------------------------------

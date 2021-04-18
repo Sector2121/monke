@@ -12,7 +12,7 @@ Your settlers statistics are the following:
 Name: Batir
 Resources: [Iron: 0, Carbon: 1, Uranium: 0, Waterice: 0]
 Asteroid ID: 1
-Core: iron
+iron
 Weather: normal
 Teleport: 0
 Other creatures on your asteroid: 

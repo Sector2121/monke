@@ -2,7 +2,7 @@ Reset was successfull!
 Asteroids successfully created!
 Settlers successfully created!
 Settlers start asteroid set!
-You don’t have any teleports!
+You don't have any teleports!
 -------------------------------------------------------------------------------------
 Your settlers statistics are the following:
 Name: Carmelita
@@ -11,8 +11,8 @@ Asteroid ID: 1
 Core: unknown
 Weather: normal
 Teleport: 0
-Other creatures on your asteroid:
+Other creatures on your asteroid: 
 -------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------
-Neighbors:
+Neighbors: 
 -------------------------------------------------------------------------------------

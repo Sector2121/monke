@@ -101,6 +101,8 @@ public class Settler extends Creature{
 			boolean hasr = CheckResource(r);
 			if(hasr == true) {
 				asteroid.SetResource(r);
+				if(asteroid.GetCloseToSun())
+					r.CloseToSun(asteroid);
 				ArrayList<Resource> re = new ArrayList<>();
 				re.add(r);
 				RemoveResource(re);
@@ -181,8 +183,8 @@ public class Settler extends Creature{
 	 */
 	public void BuildTeleport() {
 		if(hasTpk >= 2) {
-			System.out.println("You don’t have enough space!");
-			el.SetOsszString("You don’t have enough space!");
+			System.out.println("You don't have enough space!");
+			el.SetOsszString("You don't have enough space!");
 		}
 		else {
 			if(billOfResources.CheckResource(resources, "Teleport")) {
@@ -200,8 +202,8 @@ public class Settler extends Creature{
 				System.out.println("The selected object got built!");
 				el.SetOsszString("The selected object got built!");
 			}else {
-				System.out.println("You don’t have enough resources to complete this action!");
-				el.SetOsszString("You don’t have enough resources to complete this action!");
+				System.out.println("You don't have enough resources to complete this action!");
+				el.SetOsszString("You don't have enough resources to complete this action!"); 
 			}
 		}
 	}
@@ -235,8 +237,8 @@ public class Settler extends Creature{
 			System.out.println("The selected object got built!");
 			el.SetOsszString("The selected object got built!");
 		}else {
-			System.out.println("You don’t have enough resources to complete this action!");
-			el.SetOsszString("You don’t have enough resources to complete this action!");
+			System.out.println("You don't have enough resources to complete this action!");
+			el.SetOsszString("You don't have enough resources to complete this action!");
 		}
 	}
 	/**
@@ -247,8 +249,8 @@ public class Settler extends Creature{
 	 */
 	public void PlaceTeleport(Asteroid a) {
 		if(hasTpk == 0) {
-			System.out.println("You don’t have any teleports!");
-			el.SetOsszString("You don’t have any teleports!");
+			System.out.println("You don't have any teleports!");
+			el.SetOsszString("You don't have any teleports!");
 			return;
 		}
 		Teleport t = teleports.get(0);

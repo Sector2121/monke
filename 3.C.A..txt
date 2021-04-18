@@ -11,4 +11,6 @@ Set_weather 1 hot
 Mine Batir
 Stat Batir
 Replace_resource Batir uranium
+Step
+Set_weather 1 hot
 Stat_asteroid 1
