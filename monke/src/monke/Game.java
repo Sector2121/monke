@@ -6,6 +6,9 @@ public class Game {
 	private Sun sun;
 	private ArrayList<Asteroid> asteroids;
 	private ArrayList<Settler> settlers;
+	private ArrayList<Ufo> ufos;
+	private ArrayList<Robot> robots;
+	private ArrayList<Teleport> teleports;
 	/**
 	 * Konstruktor.
 	 */
@@ -13,6 +16,49 @@ public class Game {
 		asteroids = new ArrayList<>();
 		sun = new Sun(asteroids);
 		settlers = new ArrayList<>();
+		ufos = new ArrayList<>();
+		robots = new ArrayList<>();
+		teleports = new ArrayList<>();
+	}
+	/**
+	 * Lepteti az osszes leptetheto dolgot.
+	 */
+	public void Step() {
+		for(Robot r : robots)
+			r.Step();
+		for(Ufo u : ufos)
+			u.Step();
+		for(Teleport t : teleports)
+			t.Step();
+		sun.Step();
+	}
+	/**
+	 * Hozzaad a jatekhoz egy teleportot.
+	 * @param t
+	 */
+	public void AddTeleport(Teleport t) {
+		teleports.add(t);
+	}
+	/**
+	 * Hozzaad a jatekhoz egy robotot.
+	 * @param r
+	 */
+	public void AddRobot(Robot r) {
+		robots.add(r);
+	}
+	/**
+	 * Hozzaad a jatekhoz egy ufot.
+	 * @param u
+	 */
+	public void AddUfo(Ufo u) {
+		ufos.add(u);
+	}
+	/**
+	 * Hozzaad a jatekhoz egy settlert.
+	 * @param s
+	 */
+	public void AddSettler(Settler s) {
+		settlers.add(s);
 	}
 	/**
 	 * Visszaadja a jatek settlereinek listajat.
@@ -41,6 +87,20 @@ public class Game {
 	 */
 	public void RemoveSettler(Settler s) {
 		settlers.remove(s);
+	}
+	/**
+	 * Eltavolitja a kapott robotot a jatekbol.
+	 * @param r
+	 */
+	public void RemoveRobot(Robot r) {
+		robots.remove(r);
+	}
+	/**
+	 * Eltavolitja a kapott ufot a jatekbol.
+	 * @param u
+	 */
+	public void RemoveUfo(Ufo u) {
+		ufos.remove(u);
 	}
 	/**
 	 * Ellenorzi, hogy el-e meg settler.
@@ -77,5 +137,8 @@ public class Game {
 		//De ha most nem akkor amikor steppeljük õket, akkor is tárolni kéne õket valahol, nem?
 		asteroids.clear();
 		settlers.clear();
+		ufos.clear();
+		robots.clear();
+		teleports.clear();
 	}
 }
