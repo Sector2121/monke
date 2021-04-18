@@ -69,7 +69,7 @@ public class Asteroid implements Travel{
 	 * @param l
 	 */
 	public void SetLayers(int l) {
-		System.out.println("Asteroida layer set successfully!");
+		System.out.println("Asteroid layer set successfully!");
 		layers = l;
 	}
 	/**
