@@ -117,7 +117,6 @@ public class Settler extends Creature{
 	 * @return True-val ter vissza ha benne van, false-al ha nem.
 	 */
 	public boolean CheckResource(Resource r) {
-		System.out.println("mennyi nyersanyagod van?"+resources.size());
 		for(Resource r2 : resources) {
 			if(r == r2) {
 				return true;
@@ -169,10 +168,10 @@ public class Settler extends Creature{
 	 */
 	public void BuildTeleport() {
 		if(hasTpk >= 2) {
-			return;
+			System.out.println("You don’t have enough space!");
 		}
+		else {
 			if(billOfResources.CheckResource(resources, "Teleport")) {
-				
 				RemoveResource(billOfResources.GetBillOfTpk());
 				/*AddTeleport();*/
 				hasTpk += 2;
@@ -188,6 +187,7 @@ public class Settler extends Creature{
 			}else {
 				System.out.println("You don’t have enough resources to complete this action!");
 			}
+		}
 	}
 	/**
     * Megnoveli a teleport szamlalojat.
@@ -235,6 +235,7 @@ public class Settler extends Creature{
 		Teleport t = teleports.get(0);
 		t.SetAsteroid(a);
 		game.AddTeleport(t);
+		asteroid.AddNewNeighbor(t);
 		teleports.remove(0);
 		hasTpk--;
 		System.out.println("You've succesfully placed the teleport!");

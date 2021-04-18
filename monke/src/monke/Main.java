@@ -68,7 +68,10 @@ public class Main {
 				}
 			} else if (cmd[0].equals("Move")) {
 				for (Settler s : game.GetSettlers()) {
-					if(s.GetName()==cmd[1]) {
+					if(s.GetName().equals(cmd[1])) {
+						for(Asteroid a : game.GetAsteroid())
+						
+						//s.Move();
 						s.asteroid=game.GetAsteroid().get(Integer.parseInt(cmd[2])-1);
 						break;
 					}
@@ -111,12 +114,11 @@ public class Main {
 				}
 			} else if (cmd[0].equals("Build")) {
 				for (Settler s : game.GetSettlers()) {
-					if(s.GetName().equals(cmd[1])) {
-						if(cmd[2].equals("robot")) {
-							System.out.println("buzi");
+					if(s.GetName().equals(cmd[2])) {
+						if(cmd[1].equals("robot")) {
 							s.BuildRobot(cmd[3]);
 						}
-						else if (cmd[2].equals("teleport")) {
+						else if (cmd[1].equals("teleport")) {
 							s.BuildTeleport();
 						}
 						else {
@@ -306,9 +308,13 @@ public class Main {
 				for(Asteroid a : game.GetAsteroid()) {
 					if(a.GetId() == Integer.parseInt(cmd[1])) {
 						t1.SetAsteroid(a);
+						game.AddTeleport(t1);
+						a.AddNewNeighbor(t1);
 					}
 					if(a.GetId() == Integer.parseInt(cmd[2])) {
 						t2.SetAsteroid(a);
+						game.AddTeleport(t2);
+						a.AddNewNeighbor(t2);
 					}
 				}
 				System.out.println("Teleport created and set!");

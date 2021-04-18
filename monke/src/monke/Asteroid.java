@@ -86,6 +86,9 @@ public class Asteroid implements Travel{
 	public void SetResource(Resource r) {
 		System.out.println("Asteroid resource set successfully!");
 		resource = r;
+		if(resource == null) {
+			isEmpty = true;
+		}
 	}
 	/**
 	 * Visszaadja, hogy az aszteroida napkozelben van-e.
@@ -182,7 +185,7 @@ public class Asteroid implements Travel{
 	 */
 	public boolean CheckNeighbor(Travel t) {
 		for(Travel tr : neighbors) {
-			if(tr == t)
+			if(tr.GetOtherAsteroid() == t.GetOtherAsteroid())
 				return true;
 		}
 		return false;
@@ -297,5 +300,10 @@ public class Asteroid implements Travel{
 	@Override
 	public void PrintNeighbor() {
 		System.out.println("Asteroid " + id);
+	}
+	
+	@Override
+	public Asteroid GetOtherAsteroid() {
+		return this;
 	}
 }
