@@ -33,6 +33,10 @@ public class Game {
 		asteroids.add(a);
 	}
 	
+	public void SunStorm() {
+		sun.TesztSunStorm();
+	}
+	
 	/**
 	 * Lepteti az osszes leptetheto dolgot.
 	 */
