@@ -101,6 +101,9 @@ public class Settler extends Creature{
 				re.add(r);
 				RemoveResource(re);
 				System.out.println("Successfully replaced resource!");
+				if(asteroid.GetCloseToSun())
+					r.CloseToSun(asteroid);
+					
 			}
 			else {
 				System.out.println("Replace unsuccessful!");
