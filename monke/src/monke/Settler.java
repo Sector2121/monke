@@ -168,13 +168,12 @@ public class Settler extends Creature{
 	 * Letrehoz ket teleportot, melyeket egymas parjanak allit, majd beleteszi a listajaba oket.
 	 */
 	public void BuildTeleport() {
+		System.out.println("You don’t have enough space!");
 		if(hasTpk >= 2) {
 			System.out.println("You don’t have enough space!");
-			return;
 		}
 		else {
 			if(billOfResources.CheckResource(resources, "Teleport")) {
-				
 				RemoveResource(billOfResources.GetBillOfTpk());
 				/*AddTeleport();*/
 				hasTpk += 2;
