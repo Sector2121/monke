@@ -243,10 +243,13 @@ public class Settler extends Creature{
 		}
 	}
 	
-	public void SetResources(int sz) {
+	public void SetResources(int sz) throws Exception {
 		for(int i = 0; i < sz; i++) {
-			//resources.add();
+			Iron iron = new Iron();
+			resources.add(iron);
 		}
+		System.out.println("Settler resources set!");
+		TesztString("Settler resources set!");
 	}
 	
 	public void TesztString(String sz) throws Exception {
