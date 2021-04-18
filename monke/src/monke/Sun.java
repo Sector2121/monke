@@ -47,27 +47,9 @@ public class Sun {
 	public void SunStorm() {
 		System.out.println("Sunstorm started!");
 		for(Asteroid a : asteroids) {
-			if(a.GetWeather() == "critical")
+			if(a.GetWeather().equals("critical"))
 			{
 				a.SunStorm();
-			}
-		}
-	}
-	/**
-	 * Minden napkozeli aszteroidara meghivja a napvihart.
-	 */
-	public void TesztSunStorm() {
-		System.out.println("Sunstorm started!");
-		for(Asteroid a : asteroids) {
-			if(a.GetWeather() == "critical")
-			{
-				a.SunStorm();
-			}
-		}
-		for(Asteroid a : asteroids) {
-			if(a.GetWeather() == "critical")
-			{
-				SetHot(a);
 			}
 		}
 	}

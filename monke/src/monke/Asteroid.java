@@ -196,11 +196,12 @@ public class Asteroid implements Travel{
 	 * Napviharnal ha el tudnak bujni az entitasok nem csinal semmit, egyebkent pedig megoli az osszes entitast ami rajta van.
 	 */
 	public void SunStorm() {
+		int size = creatures.size();
 		if(layers == 0 && isEmpty);
 		else {
 			if(creatures != null)
-				for(Creature c : creatures)
-					c.Die();
+				while(creatures.size() > 0)
+					creatures.get(0).Die();
 			if(neighbors != null)
 				for(Travel t : neighbors)
 					t.SetIsMoving();

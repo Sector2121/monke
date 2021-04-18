@@ -178,6 +178,7 @@ public class Main {
 			} else if (cmd[0].equals("Step")) {
 				game.Step();
 			} else if (cmd[0].equals("Stat")) {
+				boolean found = false;
 				for (Settler s : game.GetSettlers()) {
 					if(s.GetName().equals(cmd[1])) {
 						System.out.println("-------------------------------------------------------------------------------------");
@@ -193,8 +194,12 @@ public class Main {
 						System.out.print("Other creatures on your asteroid: ");
 						s.asteroid.GetOtherCreaturesName(s);
 						System.out.println("-------------------------------------------------------------------------------------");
+						found = true;
 						break;
 					}
+				}
+				if(found == false) {
+					System.out.println("That is not a valid parameter!");
 				}
 			} else if (cmd[0].equals("Set_weather")) {
 				for(Asteroid a : game.GetAsteroid()) {
