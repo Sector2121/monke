@@ -278,8 +278,7 @@ public class Asteroid implements Travel{
 	public void GetResourceName() {
 		if(layers == 0) {
 			if(resource != null) {
-				resource.GetName();
-				System.out.println();
+				System.out.println(resource.GetName());
 			}
 			else {
 				System.out.println("empty");
