@@ -24,4 +24,8 @@ public interface Travel {
 	 * @param t
 	 */
 	public void AcceptTeleport(Teleport t);
+	/**
+	 * Homersekletet visszaadja
+	 */
+	public String GetWeather();
 }

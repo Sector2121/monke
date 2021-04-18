@@ -10,7 +10,6 @@ import java.util.Scanner;
 public class Main {
 	public static void main(String[] args) {
 		Game game = new Game();
-		ArrayList<Ufo> ufos = new ArrayList<Ufo>();
 		Scanner myObj = new Scanner(System.in);
 	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		while (true) {
@@ -34,8 +33,7 @@ public class Main {
 				}
 			} else if (cmd[0].equals("Create_ufos")) {
 				for (int i=1;i<cmd.length;i++) {
-					Ufo u = new Ufo(cmd[i]);
-					ufos.add(u);
+					Ufo u = new Ufo(game, cmd[i]);
 				}
 			} else if (cmd[0].equals("Create_asteroids")) {
 				for (int i=1;i<=Integer.parseInt(cmd[1]);i++) {
@@ -106,7 +104,11 @@ public class Main {
 					}
 				}
 				if(found == false) {
+<<<<<<< HEAD
 					for (Ufo u : ufos) {
+=======
+					for (Ufo u : game.GetUfos()) { //És ha tárolnánk az ufokat nem kéne így rondán létrehozni csak egy listát a mian elején
+>>>>>>> branch 'main' of https://github.com/Sector2121/monke.git
 						if(u.GetName().equals(cmd[1])) {
 							u.Mine();
 							break;
@@ -298,7 +300,7 @@ public class Main {
 			} else if (cmd[0].equals("Create_robot")) {
 				String nev = cmd[2];
 				int id = Integer.parseInt(cmd[1]);
-				Robot robi = new Robot(game.GetAsteroid().get(id-1), nev);
+				Robot robi = new Robot(game, game.GetAsteroid().get(id-1), nev);
 			} else if (cmd[0].equals("Create_teleport")) {
 				Teleport t1 = new Teleport(game, 1);
 				Teleport t2 = new Teleport(game, 2);

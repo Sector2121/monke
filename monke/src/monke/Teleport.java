@@ -125,4 +125,9 @@ public class Teleport implements Travel{
 		game.RemoveTeleport(this);
 	}
 	
+	@Override
+	public String GetWeather() {
+		return null;
+	}
+	
 }

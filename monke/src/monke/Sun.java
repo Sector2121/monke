@@ -28,11 +28,12 @@ public class Sun {
 			if(asteroids.get(i).GetNeighbors() == null) {}
 			else {
 				for(Travel t : asteroids.get(i).GetNeighbors()) {
-					while(((Asteroid) t).GetWeather() != "hot") {
-						SetHot((Asteroid) t);
-						asteroids.add((Asteroid) t);
-						break;
-					}
+					if(t.GetWeather() != null)
+						while(t.GetWeather() != "hot") {
+							SetHot((Asteroid) t);
+							asteroids.add((Asteroid) t);
+							break;
+						}
 				}
 				SetNormal(asteroids.get(i));
 				asteroids.remove(asteroids.get(i));
