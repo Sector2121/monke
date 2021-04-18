@@ -10,7 +10,7 @@ public class Waterice extends Resource{
 		a.SetResource(null);
 	}
 	
-	void GetName() {
-		System.out.print("waterice ");
+	String GetName() {
+		return "waterice ";
 	}
 }

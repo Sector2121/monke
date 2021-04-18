@@ -9,5 +9,5 @@ abstract class Resource {
 	/**
 	 * nev kiiras
 	 */
-	abstract void GetName();
+	abstract String GetName();
 }
