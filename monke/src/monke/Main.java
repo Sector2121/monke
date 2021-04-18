@@ -70,10 +70,9 @@ public class Main {
 				for (Settler s : game.GetSettlers()) {
 					if(s.GetName().equals(cmd[1])) {
 						for(Asteroid a : game.GetAsteroid())
-						
-						//s.Move();
-						s.asteroid=game.GetAsteroid().get(Integer.parseInt(cmd[2])-1);
-						break;
+							if(a.GetId() == Integer.parseInt(cmd[2]))
+							s.Move(a);
+							break;
 					}
 				}
 			} else if (cmd[0].equals("List_neighbors")) {
@@ -254,7 +253,7 @@ public class Main {
 					}
 				}
 			} else if (cmd[0].equals("Sunstorm")) {
-				game.GetSun().Step();
+				game.GetSun().SunStorm();
 			} else if (cmd[0].equals("Add_resource")) {
 				boolean cont = true;
 				Resource r;
