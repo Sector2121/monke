@@ -292,8 +292,7 @@ public class Asteroid implements Travel{
 	
 	public void GetResourceNameForSure() {
 		if(resource != null) {
-			resource.GetName();
-			System.out.println();
+			System.out.println(resource.GetName());
 		}
 		else {
 			System.out.println("empty");
