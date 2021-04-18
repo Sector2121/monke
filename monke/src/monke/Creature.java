@@ -20,7 +20,7 @@ public class Creature {
 		if(tf) {
 			asteroid.Remove(this); 
 			t.Accept(this); 
-			System.out.println("Successfully moved!");
+			System.out.print("Successfully moved!");
 		}else {
 			System.out.println("That asteroid is not a neighbor!");
 		}
