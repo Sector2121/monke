@@ -45,7 +45,7 @@ public class Settler extends Creature{
 	 * @throws Exception 
 	 */
 	public void Mine() {
-		if(asteroid.GetLayers() > 0) {
+		if(asteroid.GetLayers() > 0 || asteroid.GetResource() == null) {
 			System.out.println("You are unable to mine!");
 			return;
 		}
