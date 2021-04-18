@@ -81,14 +81,14 @@ public class Main {
 						System.out.println("Settlers start asteroid set!");
 						ell.SetOsszString("Settlers start asteroid set!");
 						for (Settler s : game.GetSettlers()) {
-							s.asteroid=game.GetAsteroid().get(Integer.parseInt(cmd[1])-1);
+							s.SetAsteroid(game.GetAsteroid().get(Integer.parseInt(cmd[1])-1));
 							game.GetAsteroid().get(Integer.parseInt(cmd[1])-1).AddCreature(s);
 						}
 					} else if (cmd[0].equals("Start_ufos")) {
 						System.out.println("Ufos start asteroid set!");
 						ell.SetOsszString("Ufos start asteroid set!");
 						for (Ufo u : game.GetUfos()) {
-							u.asteroid=game.GetAsteroid().get(Integer.parseInt(cmd[1])-1);
+							u.SetAsteroid(game.GetAsteroid().get(Integer.parseInt(cmd[1])-1));
 							game.GetAsteroid().get(Integer.parseInt(cmd[1])-1).AddCreature(u);
 						}
 					} else if (cmd[0].equals("Move")) {
@@ -527,14 +527,14 @@ public class Main {
 					System.out.println("Settlers start asteroid set!");
 					ell.SetOsszString("Settlers start asteroid set!");
 					for (Settler s : game.GetSettlers()) {
-						s.asteroid=game.GetAsteroid().get(Integer.parseInt(cmd[1])-1);
+						s.SetAsteroid(game.GetAsteroid().get(Integer.parseInt(cmd[1])-1));
 						game.GetAsteroid().get(Integer.parseInt(cmd[1])-1).AddCreature(s);
 					}
 				} else if (cmd[0].equals("Start_ufos")) {
 					System.out.println("Ufos start asteroid set!");
 					ell.SetOsszString("Ufos start asteroid set!");
 					for (Ufo u : game.GetUfos()) {
-						u.asteroid=game.GetAsteroid().get(Integer.parseInt(cmd[1])-1);
+						u.SetAsteroid(game.GetAsteroid().get(Integer.parseInt(cmd[1])-1));
 						game.GetAsteroid().get(Integer.parseInt(cmd[1])-1).AddCreature(u);
 					}
 				} else if (cmd[0].equals("Move")) {
