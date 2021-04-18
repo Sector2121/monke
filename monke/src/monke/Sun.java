@@ -50,6 +50,18 @@ public class Sun {
 			a.SunStorm();
 		}
 	}
+	/**
+	 * Minden napkozeli aszteroidara meghivja a napvihart.
+	 */
+	public void TesztSunStorm() {
+		System.out.println("Sunstorm started!");
+		for(Asteroid a : asteroids) {
+			a.SunStorm();
+		}
+		for(Asteroid a : asteroids) {
+			SetHot(a);
+		}
+	}
 	
 	/**
 	 * Beallitja a homersekletet critical-ra.
