@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Teleport implements Travel{
+	private Game game;
 	private int id;
 	private Asteroid asteroid;
 	private Teleport pair;
@@ -13,7 +14,8 @@ public class Teleport implements Travel{
 	 * Konstruktor.
 	 * @param id
 	 */
-	public Teleport(int id) {
+	public Teleport(Game game, int id) {
+		this.game = game;
 		this.id = id; 															/*Ez meg kell!!!!!!!!!!!!!!*/
 		asteroid = null;
 		pair = null;
@@ -25,7 +27,7 @@ public class Teleport implements Travel{
 	 * @param id
 	 * @param p
 	 */
-	public Teleport(int id, Teleport p){
+	public Teleport(Game game, int id, Teleport p){
 		this.id = id; 															/*Ez meg kell!!!!!!!!!!!!!!!!!!!*/
 		asteroid = null;
 		pair = p;
@@ -116,6 +118,9 @@ public class Teleport implements Travel{
 	 * Szomszed eltavolitasa.
 	 */
 	@Override
-	public void RemoveNeighbor(Travel t) {}
+	public void RemoveNeighbor(Travel t) {
+		pair.SetPair(null);
+		game.RemoveTeleport(this);
+	}
 	
 }

@@ -82,6 +82,13 @@ public class Game {
 		asteroids.remove(a);
 	}
 	/**
+	 * Eltavolitja a kapott teleportot a jatekbol.
+	 * @param t
+	 */
+	public void RemoveTeleport(Teleport t) {
+		teleports.remove(t);
+	}
+	/**
 	 * Eltavolitja a kapott settler-t a jatekbol.
 	 * @param s
 	 */
