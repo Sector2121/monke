@@ -13,7 +13,6 @@ import java.util.Scanner;
 
 public class Settler extends Creature{
 	private int hasTpk;
-	private Game game;
 	private ArrayList<Resource> resources;
 	private static BillOfResources billOfResources;
 	private ArrayList<Teleport> teleports;
@@ -37,6 +36,7 @@ public class Settler extends Creature{
 		this.asteroid = null;
 		System.out.println("Settler created!");
 		el.SetOsszString("Settler created!");
+		game.AddSettler(this);
 	}
 	/**
 	 * Banyaszik egy aszteroidabol.

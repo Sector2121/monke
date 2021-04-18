@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Creature {
+	protected Game game;
 	protected Asteroid asteroid;
 	private String name;
 	
