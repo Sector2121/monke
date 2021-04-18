@@ -12,4 +12,5 @@ Weather set successfully!
 Next round!
 R.I.P. Batir
 Asteroid exploded!
-That is not a valid parameter!That is not a valid parameter!
+That is not a valid parameter!
+That is not a valid parameter!

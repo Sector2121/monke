@@ -2,10 +2,10 @@ Reset was successfull!
 Asteroids successfully created!
 Settlers successfully created!
 Settlers start asteroid set!
-Teleports created and set!
+Teleport created and set!
 -------------------------------------------------------------------------------------
-Neighbors:
-Teleport 1 – Asteroid 2
+Neighbors: 
+Teleport 1 - Asteroid 2
 -------------------------------------------------------------------------------------
 Successfully moved!
 -------------------------------------------------------------------------------------
@@ -15,6 +15,6 @@ Resources: [Iron: 0, Carbon: 0, Uranium: 0, Waterice: 0]
 Asteroid ID: 2
 Core: unknown
 Weather: normal
-Teleports: 0
-Other creatures on your asteroid:
+Teleport: 0
+Other creatures on your asteroid: 
 -------------------------------------------------------------------------------------
