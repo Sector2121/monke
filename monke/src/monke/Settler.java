@@ -244,10 +244,21 @@ public class Settler extends Creature{
 	 * Kilistazza a nyersanyagok neveit.
 	 */
 	public void ListAllResourceName() {
+		int ir = 0;
+		int car = 0;
+		int ur = 0;
+		int wa = 0;
 		for(Resource r : resources) {
-			r.GetName();
+			if(r.GetName() == "iron")
+				ir++;
+			else if(r.GetName() == "carbon")
+				car++;
+			else if(r.GetName() == "uranium")
+				ur++;
+			else if(r.GetName() == "waterice")
+				wa++;
 		}
-		System.out.println();
+		System.out.println("[Iron: " + ir + ", Carbon: " + car + ", Uranium: " + ur + ", Waterice: " + wa + "]");
 	}
 	
 	public void SetResources(int sz) {
