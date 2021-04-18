@@ -1,0 +1,12 @@
+Reset
+Create_asteroids 1
+Set_layer 1 0
+Set_resource 1 null
+Set_weather 1 normal
+Create_settlers Batir
+Add_resource Batir carbon
+Start_settlers 1
+Stat_asteroid 1
+Replace_resource Batir carbon
+Stat Batir
+Stat_asteroid 1

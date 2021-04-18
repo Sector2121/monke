@@ -13,25 +13,16 @@ public class Ellenorzo {
 		
 	}
 	public void EllenorzoFv(String s) throws Exception {
-		/*FileInputStream fajlbeelvart = new FileInputStream(s);
-		ObjectInputStream bee = new ObjectInputStream(fajlbeelvart);
-		ArrayList<String> parancsokelvart = (ArrayList<String>)bee.readObject();
-		bee.close();*/
 		RandomAccessFile raf;
 		String sor;
 		ArrayList<String> elvart = new ArrayList<String>();
-		 
 		raf = new RandomAccessFile(s + ".txt","r");
-   
 		for( sor = raf.readLine(); sor != null; sor = raf.readLine() )
 		{
 			elvart.add(sor);
 		}
 		raf.close();
 		boolean siker = true;
-		for(String str : osszString) {
-			System.out.println(str);
-		}
 		if(osszString.size() != elvart.size()) {
 			siker = false;
 		}
@@ -55,9 +46,7 @@ public class Ellenorzo {
 		RandomAccessFile raf;
 	    String sor;
 	    ArrayList<String> parancsok = new ArrayList<String>();
-	 
 		raf = new RandomAccessFile(s+ ".txt","r");
-	       
 	      for( sor = raf.readLine(); sor != null; sor = raf.readLine() )
 	      {
 	    	 parancsok.add(sor);

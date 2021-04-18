@@ -1,0 +1,25 @@
+Reset was successfull!
+Asteroids successfully created!
+Asteroid layer set successfully!
+Weather set successfully!
+Asteroid resource set successfully!
+Settlers successfully created!
+Settlers start asteroid set!
+Successful drill!
+-------------------------------------------------------------------------------------
+Your settlers statistics are the following:
+Name: Boba-feta
+Resources: [Iron: 0, Carbon: 0, Uranium: 0, Waterice: 0]
+Asteroid ID: 1
+Core: uranium
+Weather: hot
+Teleport: 0
+Other creatures on your asteroid: Tra-pista
+-------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+Asteroid 1 stat:
+Layers: 0
+Resource: uranium
+Weather: hot
+Creatures: Boba-feta, Tra-pista
+-------------------------------------------------------------------------------------

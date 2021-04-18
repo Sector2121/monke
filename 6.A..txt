@@ -1,0 +1,6 @@
+Reset
+Create_asteroids 1
+Create_settlers Leopoldo
+Start_settlers 1
+Build Leopoldo robot Miguel
+Stat Leopoldo

@@ -1,0 +1,21 @@
+Reset was successfull!
+Asteroids successfully created!
+Asteroid layer set successfully!
+Asteroid resource set successfully!
+Weather set successfully!
+Robot successfully created!
+Next round!
+Weather set successfully!
+Next round!
+Weather set successfully!
+Next round!
+R.I.P.R2D2
+Asteroid exploded!
+That is not a valid parameter!
+-------------------------------------------------------------------------------------
+Asteroid 2 stat:
+Layers: 4
+Resource: waterice
+Weather: normal
+Creatures: 
+-------------------------------------------------------------------------------------

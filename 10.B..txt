@@ -1,0 +1,11 @@
+Reset
+Create_asteroids 2
+Set_neighbor 1 2
+Create_settlers Batir
+Create_ufos Allen_the_Alien
+Start_settlers 1
+Start_ufos 2
+List_neighbors 1
+Move Batir 2
+Step
+Stat Batir

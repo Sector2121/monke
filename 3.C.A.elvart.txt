@@ -1,0 +1,28 @@
+Reset was successfull!
+Asteroids successfully created!
+Asteroid layer set successfully!
+Asteroid resource set successfully!
+Weather set successfully!
+Settlers successfully created!
+Settlers start asteroid set!
+Successful drill!
+Next round!
+Weather set successfully!
+Resource mined!
+Settler resource added succesfully!
+Asteroid resource set successfully!
+-------------------------------------------------------------------------------------
+Your settlers statistics are the following:
+Name: Batir
+Resources: [Iron: 0, Carbon: 0, Uranium: 1, Waterice: 0]
+Asteroid ID: 1
+Core: empty
+Weather: hot
+Teleport: 0
+Other creatures on your asteroid: 
+-------------------------------------------------------------------------------------
+Asteroid resource set successfully!
+Successfully replaced resource!
+R.I.P. Batir
+Asteroid exploded!
+That is not a valid parameter!

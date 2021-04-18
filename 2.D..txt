@@ -1,0 +1,13 @@
+Reset
+Create_asteroids 1
+Set_layer 1 1
+Set_resource 1 iron
+Set_weather 1 normal
+Create_settlers Emilio
+Start_settlers 1
+Create_ufos Martian_Manhunter
+Start_ufos 1
+Stat_asteroid 1
+Mine Emilio
+Mine Martian_Manhunter
+Stat Emilio

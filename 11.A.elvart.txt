@@ -1,0 +1,15 @@
+Reset was successfull!
+Asteroids successfully created!
+Asteroid layer set successfully!
+Asteroid resource set successfully!
+Weather set successfully!
+Settlers successfully created!
+Settlers start asteroid set!
+Next round!
+Weather set successfully!
+Next round!
+Weather set successfully!
+Next round!
+R.I.P. Batir
+Asteroid exploded!
+That is not a valid parameter!That is not a valid parameter!

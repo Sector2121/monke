@@ -1,0 +1,34 @@
+Reset was successfull!
+Asteroids successfully created!
+Asteroid layer set successfully!
+Asteroid resource set successfully!
+Weather set successfully!
+Settlers successfully created!
+Settler resource added succesfully!
+Settlers start asteroid set!
+-------------------------------------------------------------------------------------
+Asteroid 1 stat:
+Layers: 0
+Resource: empty
+Weather: normal
+Creatures: Batir 
+-------------------------------------------------------------------------------------
+Asteroid resource set successfully!
+Successfully replaced resource!
+-------------------------------------------------------------------------------------
+Your settlers statistics are the following:
+Name: Batir
+Resources: [Iron: 0, Carbon: 0, Uranium: 0, Waterice: 0]
+Asteroid ID: 1
+Core: carbon
+Weather: normal
+Teleport: 0
+Other creatures on your asteroid: 
+-------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+Asteroid 1 stat:
+Layers: 0
+Resource: carbon
+Weather: normal
+Creatures: Batir 
+-------------------------------------------------------------------------------------
