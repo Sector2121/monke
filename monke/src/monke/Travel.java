@@ -29,6 +29,8 @@ public interface Travel {
 	 */
 	public String GetWeather();
 	
+	public void SetWeather(String w);
+	
 	public void PrintNeighbor();
 	
 	public Asteroid GetOtherAsteroid();

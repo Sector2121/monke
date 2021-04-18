@@ -24,19 +24,15 @@ public class Sun {
 	 * Torli az eddigi aszteroidat a listarol.
 	 */
 	public void GetNewAsteroids() {
-		for(int i = 0; i < asteroids.size(); i++) {
-			if(asteroids.get(i).GetNeighbors() == null) {}
-			else {
-				for(Travel t : asteroids.get(i).GetNeighbors()) {
-					if(t.GetWeather() != null)
-						while(t.GetWeather() != "hot") {
-							SetHot((Asteroid) t);
-							asteroids.add((Asteroid) t);
-							break;
-						}
+		for(Asteroid a : asteroids) {
+			if(a.GetWeather() == "hot") {
+				for(Travel t : a.GetNeighbors()) {
+					if(t.GetWeather() != "hot") {
+						t.SetWeather("hot");
+						a.SetWeather("normal");
+						break;
+					}
 				}
-				SetNormal(asteroids.get(i));
-				asteroids.remove(asteroids.get(i));
 			}
 		}
 	}

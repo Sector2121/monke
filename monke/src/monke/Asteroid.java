@@ -197,8 +197,8 @@ public class Asteroid implements Travel{
 		if(layers == 0 && isEmpty);
 		else {
 			if(creatures != null)
-				for(int i = creatures.size(); i >= 0; i--)
-					creatures.get(i).Die();
+				for(Creature c : creatures)
+					c.Die();
 			if(neighbors != null)
 				for(Travel t : neighbors)
 					t.SetIsMoving();
