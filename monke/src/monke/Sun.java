@@ -50,6 +50,7 @@ public class Sun {
 			if(a.GetWeather().equals("critical"))
 			{
 				a.SunStorm();
+				SetHot(a);
 			}
 		}
 	}
