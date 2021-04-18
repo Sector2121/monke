@@ -16,7 +16,7 @@ public class Settler extends Creature{
 	private ArrayList<Resource> resources;
 	private static BillOfResources billOfResources;
 	private ArrayList<Teleport> teleports;
-	private static int tpid= 0;
+	private static int tpid = 1;
 	Ellenorzo el = new Ellenorzo();
 	
 	/**
