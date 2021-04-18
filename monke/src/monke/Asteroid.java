@@ -35,6 +35,7 @@ public class Asteroid implements Travel{
 		resource = r;
 		neighbors = new ArrayList<Travel>();
 		bill = new BillOfResources();
+		g.AddAsteroid(this);
 		g.GetSun().AddAsteroid(this);
 	}
 	/**
