@@ -17,7 +17,7 @@ public class Main {
 			try {
 				cmd = br.readLine().split(" ");
 			} catch (IOException e) {
-				System.out.println(e); 
+				System.out.println(e);
 			}
 			if (cmd.length == 0 || cmd[0].equals("")) {
 			}	
@@ -68,11 +68,12 @@ public class Main {
 				}
 			} else if (cmd[0].equals("Move")) {
 				for (Settler s : game.GetSettlers()) {
-					if(s.GetName().equals(cmd[1])) {
+					if(s.GetName()==cmd[1]) {
 						for(Asteroid a : game.GetAsteroid())
-							if(a.GetId() == Integer.parseInt(cmd[2]))
-							s.Move(a);
-							break;
+						
+						//s.Move();
+						s.asteroid=game.GetAsteroid().get(Integer.parseInt(cmd[2])-1);
+						break;
 					}
 				}
 			} else if (cmd[0].equals("List_neighbors")) {
@@ -156,12 +157,7 @@ public class Main {
 				if(cont == true) {
 					for (Settler s : game.GetSettlers()) {
 						if(s.GetName().equals(cmd[1])) {
-							for (Resource name : s.GetResources()) {
-								if(r.getClass().equals(name.getClass())) {
-									s.PlaceResource(name);
-									break;
-								}
-							}
+							s.PlaceResource(r);
 							break;
 						}
 					}
@@ -253,7 +249,7 @@ public class Main {
 					}
 				}
 			} else if (cmd[0].equals("Sunstorm")) {
-				game.GetSun().TesztSunStorm();
+				game.GetSun().Step();
 			} else if (cmd[0].equals("Add_resource")) {
 				boolean cont = true;
 				Resource r;
