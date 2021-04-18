@@ -86,6 +86,9 @@ public class Asteroid implements Travel{
 	public void SetResource(Resource r) {
 		System.out.println("Asteroid resource set successfully!");
 		resource = r;
+		if(resource == null) {
+			isEmpty = true;
+		}
 	}
 	/**
 	 * Visszaadja, hogy az aszteroida napkozelben van-e.
