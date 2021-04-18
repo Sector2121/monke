@@ -123,6 +123,7 @@ public class Teleport implements Travel{
 	public void RemoveNeighbor(Travel t) {
 		pair.SetPair(null);
 		game.RemoveTeleport(this);
+		System.out.println("Teleport destroyed!");
 	}
 	
 	@Override

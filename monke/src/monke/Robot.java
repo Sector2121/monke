@@ -33,7 +33,8 @@ public class Robot extends Creature{
 		}
 		else if(GetAsteroid().GetLayers() == 0) { 
 			ArrayList<Travel> neighbors = asteroid.GetNeighbors();
-			Move(neighbors.get(0));
+			if(neighbors.size() > 0)
+				Move(neighbors.get(0));
 		}
 	}
 	/**
@@ -44,7 +45,7 @@ public class Robot extends Creature{
 	@Override
 	public void Explode() { 
 		ArrayList<Travel> neighbors = asteroid.GetNeighbors();
-		if(neighbors == null) {
+		if(neighbors.size() == 0) {
 			Die();
 		}
 		else {
