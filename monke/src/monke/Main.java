@@ -52,7 +52,6 @@ public class Main {
 						r = new Uranium();
 					}
 					Asteroid a = new Asteroid(game, i, r);
-					game.GetAsteroid().add(a);
 				}
 			} else if (cmd[0].equals("Start_settlers")) {
 				System.out.println("Settlers start asteroid set!");

@@ -22,7 +22,7 @@ public class Asteroid implements Travel{
 	 */
 	public Asteroid(Game g, int id, Resource r) {
 		game = g;
-		this.id = id; 						/*Ez meg kell!!!!!!!!!!!!!!!!!!!!!!!*/
+		this.id = id;
 		Random rand = new Random();
 		layers = rand.nextInt(3) + 3;
 		closeToSun = false;
@@ -35,8 +35,15 @@ public class Asteroid implements Travel{
 		resource = r;
 		neighbors = new ArrayList<Travel>();
 		bill = new BillOfResources();
-		g.AddAsteroid(this);
 		g.GetSun().AddAsteroid(this);
+	}
+	
+	public boolean Step() {
+		if(closeToSun && layers == 0) {
+			resource.CloseToSun(this);
+			return true;
+		}
+		return false;
 	}
 	/**
 	 * Visszaadja az aszteroida id-jet.

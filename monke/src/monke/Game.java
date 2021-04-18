@@ -30,6 +30,7 @@ public class Game {
 	}
 	
 	public void AddAsteroid(Asteroid a) {
+		System.out.println("Asteroid added!");
 		asteroids.add(a);
 	}
 	
@@ -49,19 +50,21 @@ public class Game {
 		for(Teleport t : teleports)
 			t.Step();
 		boolean stillinside = true;
+		int j = 0;
+		int p;
 		while(stillinside) {
-			for(Asteroid a : asteroids) {
-				if(a==asteroids.get(asteroids.size()-1)) {
+			p = j;
+			for(int i = p; i < asteroids.size(); i++) {
+				if(i == asteroids.size()-1) {
 					stillinside=false;
 				}
-				if(a.GetLayers() == 0 && a.GetCloseToSun()) {
 					int temp = asteroids.size();
-					if(a.GetResource() != null)
-						a.GetResource().CloseToSun(a);
+					boolean stepped = asteroids.get(i).Step();
 					if(temp != asteroids.size()) {
 						break;
 					}
-				}
+				
+				j++;
 			}
 		}
 	}
