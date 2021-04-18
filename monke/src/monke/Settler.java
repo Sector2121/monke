@@ -235,6 +235,7 @@ public class Settler extends Creature{
 		Teleport t = teleports.get(0);
 		t.SetAsteroid(a);
 		game.AddTeleport(t);
+		asteroid.AddNewNeighbor(t);
 		teleports.remove(0);
 		hasTpk--;
 		System.out.println("You've succesfully placed the teleport!");

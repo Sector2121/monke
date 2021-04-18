@@ -306,9 +306,13 @@ public class Main {
 				for(Asteroid a : game.GetAsteroid()) {
 					if(a.GetId() == Integer.parseInt(cmd[1])) {
 						t1.SetAsteroid(a);
+						game.AddTeleport(t1);
+						a.AddNewNeighbor(t1);
 					}
 					if(a.GetId() == Integer.parseInt(cmd[2])) {
 						t2.SetAsteroid(a);
+						game.AddTeleport(t2);
+						a.AddNewNeighbor(t2);
 					}
 				}
 				System.out.println("Teleport created and set!");
