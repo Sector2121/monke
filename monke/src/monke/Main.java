@@ -155,12 +155,7 @@ public class Main {
 				if(cont == true) {
 					for (Settler s : game.GetSettlers()) {
 						if(s.GetName().equals(cmd[1])) {
-							for (Resource name : s.GetResources()) {
-								if(r.getClass().equals(name.getClass())) {
-									s.PlaceResource(name);
-									break;
-								}
-							}
+							s.PlaceResource(r);
 							break;
 						}
 					}
