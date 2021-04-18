@@ -1,6 +1,8 @@
 Reset was successfull!
 Asteroids successfully created!
 Asteroid layer set successfully!
+Asteroid layer set successfully!
+Asteroid resource set successfully!
 Asteroid resource set successfully!
 Weather set successfully!
 Robot successfully created!
