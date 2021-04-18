@@ -23,6 +23,7 @@ Other creatures on your asteroid:
 -------------------------------------------------------------------------------------
 Asteroid resource set successfully!
 Successfully replaced resource!
+Next round!
 R.I.P. Batir
 Asteroid exploded!
 That is not a valid parameter!

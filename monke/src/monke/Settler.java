@@ -101,6 +101,8 @@ public class Settler extends Creature{
 			boolean hasr = CheckResource(r);
 			if(hasr == true) {
 				asteroid.SetResource(r);
+				if(asteroid.GetCloseToSun())
+					r.CloseToSun(asteroid);
 				ArrayList<Resource> re = new ArrayList<>();
 				re.add(r);
 				RemoveResource(re);
