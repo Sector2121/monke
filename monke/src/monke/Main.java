@@ -222,8 +222,8 @@ public class Main {
 								System.out.println("Asteroid ID: "+s.GetAsteroid().GetId());
 								ell.SetOsszString("Asteroid ID: "+s.GetAsteroid().GetId());
 								s.asteroid.GetResourceName();
-								System.out.println("Weather: "+s.asteroid.GetWeather());
-								ell.SetOsszString("Weather: "+s.asteroid.GetWeather());
+								System.out.println("Weather: "+s.GetAsteroid().GetWeather());
+								ell.SetOsszString("Weather: "+s.GetAsteroid().GetWeather());
 								System.out.println("Teleport: "+s.GetHasTpk());
 								ell.SetOsszString("Teleport: "+s.GetHasTpk());
 								s.asteroid.GetOtherCreaturesName(s);
@@ -668,8 +668,8 @@ public class Main {
 							System.out.println("Asteroid ID: "+s.GetAsteroid().GetId());
 							ell.SetOsszString("Asteroid ID: "+s.GetAsteroid().GetId());
 							s.asteroid.GetResourceName();
-							System.out.println("Weather: "+s.asteroid.GetWeather());
-							ell.SetOsszString("Weather: "+s.asteroid.GetWeather());
+							System.out.println("Weather: "+s.GetAsteroid().GetWeather());
+							ell.SetOsszString("Weather: "+s.GetAsteroid().GetWeather());
 							System.out.println("Teleport: "+s.GetHasTpk());
 							ell.SetOsszString("Teleport: "+s.GetHasTpk());
 							s.asteroid.GetOtherCreaturesName(s);
