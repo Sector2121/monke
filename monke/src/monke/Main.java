@@ -288,9 +288,18 @@ public class Main {
 					}
 				}
 			} else if (cmd[0].equals("Set_resource_settler")) {
-
+				String nev = cmd[1];
+				int n = Integer.parseInt(cmd[2]);
+				for(Settler s : game.GetSettlers()) {
+					if(s.GetName().equals(cmd[1]) ) {
+						s.SetResources(n);
+						break;
+					}
+				}
 			} else if (cmd[0].equals("Create_robot")) {
-
+				String nev = cmd[2];
+				int id = Integer.parseInt(cmd[1]);
+				Robot robi = new Robot(game.GetAsteroid().get(id-1), nev);
 			} else if (cmd[0].equals("Create_teleport")) {
 				Teleport t1 = new Teleport(game, 1);
 				Teleport t2 = new Teleport(game, 2);
