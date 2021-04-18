@@ -346,6 +346,7 @@ public class Main {
 						System.out.print("Creatures: ");
 						a.GetCreaturesName();
 						System.out.println("-------------------------------------------------------------------------------------");
+						break;
 					}
 				}
 			}
