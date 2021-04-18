@@ -209,11 +209,20 @@ public class Asteroid implements Travel{
 	 */
 	public void Explode() {
 		if(creatures != null)
-			for(Creature c : creatures)
-				c.Explode();
+			while(creatures.size() > 0) {
+				creatures.get(0).Explode();
+			}
 		if(neighbors != null)
 			for(Travel t : neighbors)
 				t.RemoveNeighbor(this);
+		int count=0;
+		for(Asteroid a : game.GetAsteroid()) {
+			count++;
+			if(a.GetId() == this.GetId()) {
+				game.GetAsteroid().remove(count-1);
+				break;
+			}
+		}
 		System.out.println("Asteroid exploded!");
 	}
 	/**

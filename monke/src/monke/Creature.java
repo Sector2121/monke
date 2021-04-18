@@ -3,7 +3,7 @@ package monke;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Creature {
+abstract class Creature {
 	protected Game game;
 	protected Asteroid asteroid;
 	private String name;
@@ -77,5 +77,5 @@ public class Creature {
 	/**
 	 * A creature aszteroidaja felrobban.
 	 */
-	public void Explode() {}
+	abstract void Explode();
 }

@@ -40,6 +40,21 @@ public class Game {
 			u.Step();
 		for(Teleport t : teleports)
 			t.Step();
+		boolean stillinside = true;
+		while(stillinside) {
+			for(Asteroid a : asteroids) {
+				if(a==asteroids.get(asteroids.size()-1)) {
+					stillinside=false;
+				}
+				if(a.GetLayers() == 0 && a.GetCloseToSun()) {
+					int temp = asteroids.size();
+					a.GetResource().CloseToSun(a);
+					if(temp != asteroids.size()) {
+						break;
+					}
+				}
+			}
+		}
 	}
 	/**
 	 * Hozzaad a jatekhoz egy teleportot.

@@ -274,4 +274,8 @@ public class Settler extends Creature{
 	public int GetHasTpk() {
 		return hasTpk;
 	}
+	
+	public void Explode() {
+		Die();
+	}
 }

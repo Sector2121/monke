@@ -340,18 +340,26 @@ public class Main {
 			} else if (cmd[0].equals("Reset")) {
 				game.Reset();
 			} else if (cmd[0].equals("Stat_asteroid")) {
-				for(Asteroid a : game.GetAsteroid()) {
-					if(a.GetId() == Integer.parseInt(cmd[1])) {
-						System.out.println("-------------------------------------------------------------------------------------");
-						System.out.println("Asteroid "+a.GetId()+" stat:");
-						System.out.println("Layers: "+a.GetLayers());
-						System.out.print("Resource: ");
-						a.GetResourceNameForSure();
-						System.out.println("Weather: "+a.GetWeather());
-						System.out.print("Creatures: ");
-						a.GetCreaturesName();
-						System.out.println("-------------------------------------------------------------------------------------");
+				boolean found = false;
+				if(game.GetAsteroid()!=null) {
+					for(Asteroid a : game.GetAsteroid()) {
+						if(a.GetId() == Integer.parseInt(cmd[1])) {
+							found = true;
+							System.out.println("-------------------------------------------------------------------------------------");
+							System.out.println("Asteroid "+a.GetId()+" stat:");
+							System.out.println("Layers: "+a.GetLayers());
+							System.out.print("Resource: ");
+							a.GetResourceNameForSure();
+							System.out.println("Weather: "+a.GetWeather());
+							System.out.print("Creatures: ");
+							a.GetCreaturesName();
+							System.out.println("-------------------------------------------------------------------------------------");
+							break;
+						}
 					}
+				}
+				if(found == false) {
+					System.out.print("That is not a valid parameter!");
 				}
 			}
 			else {

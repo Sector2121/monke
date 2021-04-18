@@ -9,6 +9,7 @@ public class Uranium extends Resource{
 	 */
 	@Override
 	public void CloseToSun(Asteroid a) {
+		exposedCount++;
 		if(exposedCount == 3) {
 			a.Explode();
 		}
