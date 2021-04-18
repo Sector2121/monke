@@ -117,9 +117,6 @@ public class Settler extends Creature{
 	 * @return True-val ter vissza ha benne van, false-al ha nem.
 	 */
 	public boolean CheckResource(Resource r) {
-		if(resources.size() == 0) {
-			return false;
-		}
 		for(Resource r2 : resources) {
 			if(r == r2) {
 				return true;
