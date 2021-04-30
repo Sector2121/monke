@@ -1,5 +1,6 @@
 package monke;
 
+import java.awt.Image;
 import java.util.ArrayList;
 
 public class Game {
@@ -9,6 +10,8 @@ public class Game {
 	private ArrayList<Ufo> ufos;
 	private ArrayList<Robot> robots;
 	private ArrayList<Teleport> teleports;
+	private ArrayList<String> players;
+	Image img;
 	Ellenorzo el;
 	/**
 	 * Konstruktor.
@@ -21,6 +24,8 @@ public class Game {
 		robots = new ArrayList<>();
 		teleports = new ArrayList<>();
 		el = new Ellenorzo();
+		this.players = players;
+		//image cucc
 	}
 	
 	public ArrayList<Ufo> GetUfos() {
