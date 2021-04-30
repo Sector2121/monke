@@ -55,9 +55,9 @@ public class Options extends JFrame{
 		p2.add(l1);
 		p2.add(name);
 		p2.add(add);
-		this.add(p2);
 		AddButtonActionListener addl = new AddButtonActionListener();
 		add.addActionListener(addl);
+		this.add(p2);
 		
 		l2 = new JLabel("Players: " + players.size());
 		JPanel p3 = new JPanel();
@@ -67,10 +67,9 @@ public class Options extends JFrame{
 		JButton ok = new JButton("Ok");
 		JPanel p4 = new JPanel();
 		p4.add(ok);
-		this.add(p4);
 		OkButtonActionListener okl = new OkButtonActionListener();
 		ok.addActionListener(okl);
-		
+		this.add(p4);
 	}
 	
 	public void SetInvis() {
