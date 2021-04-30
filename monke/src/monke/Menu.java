@@ -66,7 +66,7 @@ private static final long serialVersionUID = 1L;
 	
 	private class OptionsButtonActionListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
-			
+			new Options();
 		}
 	}
 	
