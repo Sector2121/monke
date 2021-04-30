@@ -1,9 +1,0 @@
-Reset
-Create_asteroids 1
-Create_settlers Dorotea
-Add_resource Dorotea iron
-Add_resource Dorotea carbon
-Add_resource Dorotea uranium
-Start_settlers 1
-Build Dorotea robot Juanita
-Stat Dorotea

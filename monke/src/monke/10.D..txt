@@ -1,7 +1,0 @@
-Reset
-Create_asteroids 2
-Create_settlers Batir
-Start_settlers 1
-List_neighbors 1
-Move Batir 2
-Stat Batir
