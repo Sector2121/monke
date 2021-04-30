@@ -28,7 +28,7 @@ public class Options extends JFrame{
 		setLocationRelativeTo(null);
 		setResizable(false);
 		setVisible(true);
-		setLayout(new GridLayout(3,1));
+		setLayout(new GridLayout(4,1));
 		JPanel p1 = new JPanel();
 		p1.add(imgs);
 		this.add(p1);
@@ -46,6 +46,11 @@ public class Options extends JFrame{
 		JPanel p3 = new JPanel();
 		p3.add(l2);
 		this.add(p3);
+		
+		JButton ok = new JButton("Ok");
+		JPanel p4 = new JPanel();
+		p4.add(ok);
+		this.add(p4);
 		
 		
 	}
