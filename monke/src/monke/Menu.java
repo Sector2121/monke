@@ -19,8 +19,6 @@ private static final long serialVersionUID = 1L;
 	private JButton options;
 	private JButton exit;
 	
-	private Image img;
-	private String[] players;
 	private Options op = new Options();
 	
 	public Menu() {
