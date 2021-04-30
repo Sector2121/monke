@@ -58,10 +58,6 @@ private static final long serialVersionUID = 1L;
 		add(p3);
 	}
 	
-	public void playGame(int width, int height, int dots, int dot_size, int speed, int players, int diff) {
-		
-	}
-	
 	private class PlayButtonActionListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			
