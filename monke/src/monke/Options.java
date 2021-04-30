@@ -13,7 +13,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class Options extends JFrame{
-
+	private static final long serialVersionUID = 1L;
+	
 	private String[] images = new String[5];
 	private ArrayList<String> players;
 	private String selectedimg;
