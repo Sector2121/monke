@@ -1,6 +1,9 @@
 package monke;
 
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -12,37 +15,50 @@ import javax.swing.JTextField;
 public class Options extends JFrame{
 
 	private String[] images = new String[5];
-	private String[] players;
+	private ArrayList<String> players;
+	private String selectedimg;
 	JComboBox<String> imgs;
+	private JTextField name;
+	private JLabel l2;
+	
+	public ArrayList<String> GetPlayers() {
+		return players;
+	}
+	
+	public String GetSelectedImage() {
+		return selectedimg;
+	}
 	
 	public Options(){
-		images[0] = "Boba-fett";
+		images[0] = "Boba-feta";
 		images[1] = "Darth Vader";
 		images[2] = "Steve";
 		images[3] = "Private";
 		images[4] = "Sweety Belle";
 		
-		players = new String[10];
+		players = new ArrayList<String>();
 		imgs = new JComboBox<String>(images);
 		setSize(600, 300);
 		setLocationRelativeTo(null);
 		setResizable(false);
-		setVisible(true);
+		setVisible(false);
 		setLayout(new GridLayout(4,1));
 		JPanel p1 = new JPanel();
 		p1.add(imgs);
 		this.add(p1);
 		
-		JLabel l1 = new JLabel("Enter player name");
-		JTextField name = new JTextField(15);
+		JLabel l1 = new JLabel("Enter player name: ");
+		name = new JTextField(15);
 		JButton add = new JButton("Add");
 		JPanel p2 = new JPanel();
 		p2.add(l1);
 		p2.add(name);
 		p2.add(add);
 		this.add(p2);
+		AddButtonActionListener addl = new AddButtonActionListener();
+		add.addActionListener(addl);
 		
-		JLabel l2 = new JLabel("Players: " + players.length);
+		l2 = new JLabel("Players: " + players.size());
 		JPanel p3 = new JPanel();
 		p3.add(l2);
 		this.add(p3);
@@ -51,7 +67,33 @@ public class Options extends JFrame{
 		JPanel p4 = new JPanel();
 		p4.add(ok);
 		this.add(p4);
+		OkButtonActionListener okl = new OkButtonActionListener();
+		ok.addActionListener(okl);
 		
-		
+	}
+	
+	public void SetInvis() {
+		this.setVisible(false);
+	}
+	
+	public void SetVis() {
+		this.setVisible(true);
+	}
+	
+	private class OkButtonActionListener implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			selectedimg = (String)imgs.getSelectedItem();
+			SetInvis();
+		}
+	}
+	
+	private class AddButtonActionListener implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			if(!name.getText().equals("")) {
+				players.add(name.getText());
+				name.setText("");
+				l2.setText("Players: " + players.size());
+			}
+		}
 	}
 }

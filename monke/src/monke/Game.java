@@ -13,7 +13,7 @@ public class Game {
 	/**
 	 * Konstruktor.
 	 */
-	public Game(){
+	public Game(String img, ArrayList<String> players){
 		asteroids = new ArrayList<>();
 		sun = new Sun(asteroids);
 		settlers = new ArrayList<>();

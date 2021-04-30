@@ -21,7 +21,7 @@ private static final long serialVersionUID = 1L;
 	
 	private Image img;
 	private String[] players;
-	//private Options op = new Options(img, players);
+	private Options op = new Options();
 	
 	public Menu() {
 		super("Menu");
@@ -60,13 +60,13 @@ private static final long serialVersionUID = 1L;
 	
 	private class PlayButtonActionListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
-			
+			Game game = new Game(op.GetSelectedImage(), op.GetPlayers());
 		}
 	}
 	
 	private class OptionsButtonActionListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
-			new Options();
+			op.SetVis();
 		}
 	}
 	
