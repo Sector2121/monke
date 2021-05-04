@@ -17,7 +17,6 @@ public class Settler extends Creature{
 	private static BillOfResources billOfResources;
 	private ArrayList<Teleport> teleports;
 	private static int tpid = 1;
-	Ellenorzo el;
 	
 	/**
 	 * A telepes konstruktora.
@@ -35,7 +34,6 @@ public class Settler extends Creature{
 		this.SetName(name);
 		this.asteroid = null;
 		game.AddSettler(this);
-		el = new Ellenorzo();
 	}
 	/**
 	 * Banyaszik egy aszteroidabol.
@@ -45,33 +43,26 @@ public class Settler extends Creature{
 	 * Ha nincs, visszater.
 	 * @throws Exception 
 	 */
-	public void Mine() {
+	public boolean Mine() {
 		if(asteroid.GetLayers() > 0 || asteroid.GetResource() == null) {
-			System.out.println("You are unable to mine!");
-			el.SetOsszString("You are unable to mine!");
-			return;
+			return false;
 		}
 		
 		int length = resources.size();
 		if(length < 10) {
-			System.out.println("Resource mined!");
-			el.SetOsszString("Resource mined!");
 			AddResource(asteroid.GetResource());
 			asteroid.SetResource(null);
 			asteroid.SetIsEmpty(true);
 			asteroid.CheckEnoughResources();
+			return true;
 		}
-		else if(length == 10) {
-			System.out.println("You are unable to mine!");
-			el.SetOsszString("You are unable to mine!");
-			return;
-		}
+		return false;
 	}
 	/**
 	 * Meghivja a reducelayerst az aszteroidara.
 	 */
-	public void Drill() {
-		asteroid.ReduceLayers();
+	public boolean Drill() {
+		return asteroid.ReduceLayers();
 	}
 	/**
 	 * Hozzaadja a parametert a nyersanyaglistajahoz.
@@ -81,7 +72,6 @@ public class Settler extends Creature{
 	public void AddResource(Resource r) {
 		resources.add(r);
 		System.out.println("Settler resource added succesfully!");
-		el.SetOsszString("Settler resource added succesfully!");
 	}
 	/**
 	 * Visszaadja a nyersanyaglistat.
@@ -96,7 +86,7 @@ public class Settler extends Creature{
 	 * illetve a RemoveResource-al elveszi magatol.
 	 * @param r
 	 */
-	public void PlaceResource(Resource r) {
+	public boolean PlaceResource(Resource r) {
 		if(asteroid.GetLayers() == 0 && asteroid.GetIsEmpty()) {
 			boolean hasr = CheckResource(r);
 			if(hasr == true) {
@@ -106,21 +96,12 @@ public class Settler extends Creature{
 				ArrayList<Resource> re = new ArrayList<>();
 				re.add(r);
 				RemoveResource(re);
-				System.out.println("Successfully replaced resource!");
-				el.SetOsszString("Successfully replaced resource!");
 				if(asteroid.GetCloseToSun())
 					r.CloseToSun(asteroid);
-			}
-			else {
-				System.out.println("Replace unsuccessful!");
-				el.SetOsszString("Replace unsuccessful!");
+				return true;
 			}
 		}
-		else {
-			System.out.println("Replace unsuccessful!");
-			el.SetOsszString("Replace unsuccessful!");
-			return;
-		}
+		return false;
 	}
 	/**
 	 * Megnezi, hogy a parameter benne van-e a nyersanyagai kozott.
@@ -152,17 +133,15 @@ public class Settler extends Creature{
 	/**
 	 * Meghivja a Die-t magara, ezzel feladva a jatekot.
 	 */
-	public void GiveUp() {
-		System.out.println("You gave up, your settler has commited suicide! Press F to continue. Thank you for playing our game!");
-		el.SetOsszString("You gave up, your settler has commited suicide! Press F to continue. Thank you for playing our game!");
-		Die(); 
+	public boolean GiveUp() {
+		Die();
+		return true;
 	}
 	/**
 	 * A jatekos a koret tovabb passzolja.
 	 */
-	public void Skip() {
-		System.out.println("Successfully skipped!");
-		el.SetOsszString("Successfully skipped!");
+	public boolean Skip() {
+		return true;
 	}
 	/**
 	 * Leveszi az aszteroidarol es kiveszi a jatekbol a telepest, ezzel megolve azt.
@@ -172,7 +151,6 @@ public class Settler extends Creature{
 		asteroid.Remove(this);
 		game.RemoveSettler(this);
 		System.out.println("R.I.P. " + GetName());
-		el.SetOsszString("R.I.P. " + GetName());
 	}
 	/**
 	 * Megepit egy teleportkapu part, amiket behelyez a listajaba.
@@ -181,15 +159,13 @@ public class Settler extends Creature{
 	 * Ha van, kiveszi az elhasznalt nyersanyagokat, megnoveli a teleportszamlalojat.
 	 * Letrehoz ket teleportot, melyeket egymas parjanak allit, majd beleteszi a listajaba oket.
 	 */
-	public void BuildTeleport() {
+	public boolean BuildTeleport() {
 		if(hasTpk >= 2) {
-			System.out.println("You don't have enough space!");
-			el.SetOsszString("You don't have enough space!");
+			return false;
 		}
 		else {
 			if(billOfResources.CheckResource(resources, "Teleport")) {
 				RemoveResource(billOfResources.GetBillOfTpk());
-				/*AddTeleport();*/
 				hasTpk += 2;
 				Teleport t = new Teleport(game, tpid);
 				tpid++;
@@ -199,13 +175,10 @@ public class Settler extends Creature{
 				t2.SetPair(t);
 				teleports.add(t);
 				teleports.add(t2);
-				System.out.println("The selected object got built!");
-				el.SetOsszString("The selected object got built!");
-			}else {
-				System.out.println("You don't have enough resources to complete this action!");
-				el.SetOsszString("You don't have enough resources to complete this action!"); 
+				return true;
 			}
 		}
+		return false;
 	}
 	/**
     * Megnoveli a teleport szamlalojat.
@@ -222,7 +195,6 @@ public class Settler extends Creature{
        teleports.add(t);
        teleports.add(t2);
        System.out.println("Teleport added!");
-       el.SetOsszString("Teleport added!");
    }
 	/**
 	 * Megepit egy robotot, amit lehelyez az aszteroidajara.
@@ -230,16 +202,13 @@ public class Settler extends Creature{
 	 * Ha van, letrehoz egy uj robotot, majd meghivja a RemoveResource-ot, amivel a felhasznalt nyersanyagokat kiveszi.
 	 * @param name
 	 */
-	public void BuildRobot(String name) {
+	public boolean BuildRobot(String name) {
 		if(billOfResources.CheckResource(resources, "Robot")) {
 			Robot r = new Robot(game, asteroid, name);
 			RemoveResource(billOfResources.GetBillOfRobot());
-			System.out.println("The selected object got built!");
-			el.SetOsszString("The selected object got built!");
-		}else {
-			System.out.println("You don't have enough resources to complete this action!");
-			el.SetOsszString("You don't have enough resources to complete this action!");
+			return true;
 		}
+		return false;
 	}
 	/**
 	 * Lerakja a parameter aszteroidara a listaja elso teleportjat.
@@ -247,11 +216,9 @@ public class Settler extends Creature{
 	 * Kulonben a teleports lista elso elemenek beallitja az aszteroidajat a parameterre, kiveszi a listabol es csokkenti a teleportszamlalo erteket.
 	 * @param a
 	 */
-	public void PlaceTeleport(Asteroid a) {
+	public boolean PlaceTeleport(Asteroid a) {
 		if(hasTpk == 0) {
-			System.out.println("You don't have any teleports!");
-			el.SetOsszString("You don't have any teleports!");
-			return;
+			return false;
 		}
 		Teleport t = teleports.get(0);
 		t.SetAsteroid(a);
@@ -259,8 +226,7 @@ public class Settler extends Creature{
 		asteroid.AddNewNeighbor(t);
 		teleports.remove(0);
 		hasTpk--;
-		System.out.println("You've succesfully placed the teleport!");
-		el.SetOsszString("You've succesfully placed the teleport!");
+		return true;
 	}
 	/**
 	 * Kilistazza a nyersanyagok neveit.
@@ -281,7 +247,6 @@ public class Settler extends Creature{
 				wa++;
 		}
 		System.out.println("Resources: [Iron: " + ir + ", Carbon: " + car + ", Uranium: " + ur + ", Waterice: " + wa + "]");
-		el.SetOsszString("Resources: [Iron: " + ir + ", Carbon: " + car + ", Uranium: " + ur + ", Waterice: " + wa + "]");
 	}
 	
 	public void SetResources(int sz) {
@@ -290,7 +255,6 @@ public class Settler extends Creature{
 			resources.add(iron);
 		}
 		System.out.println("Settler resources set!");
-		el.SetOsszString("Settler resources set!");
 	}
 	
 	public int GetHasTpk() {

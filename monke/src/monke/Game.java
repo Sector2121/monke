@@ -1,7 +1,9 @@
 package monke;
 
-import java.awt.Image;
 import java.util.ArrayList;
+import java.util.Random;
+
+import javax.swing.ImageIcon;
 
 public class Game {
 	private Sun sun;
@@ -11,21 +13,118 @@ public class Game {
 	private ArrayList<Robot> robots;
 	private ArrayList<Teleport> teleports;
 	private ArrayList<String> players;
-	Image img;
-	Ellenorzo el;
+	private ImageIcon playerimg;
+	private View view;
 	/**
 	 * Konstruktor.
 	 */
 	public Game(String img, ArrayList<String> players){
+		sun = new Sun();
 		asteroids = new ArrayList<>();
-		sun = new Sun(asteroids);
 		settlers = new ArrayList<>();
 		ufos = new ArrayList<>();
 		robots = new ArrayList<>();
 		teleports = new ArrayList<>();
-		el = new Ellenorzo();
 		this.players = players;
-		//image cucc
+		if(img == "Steve")
+			playerimg = new ImageIcon("steve.png");
+		if(img == "Darth Vader")
+			playerimg = new ImageIcon("darth vader.png");
+		if(img == "Sweetie Belle")
+			playerimg = new ImageIcon("sweetie belle.png");
+		if(img == "Boba-feta")
+			playerimg = new ImageIcon("boba fett.png");
+		if(img == "Private")
+			playerimg = new ImageIcon("private.png");
+		view = new View();
+		Init();
+	}
+	
+	public void Init(){
+		int asteroidCount = players.size() * 4;
+		Random rand = new Random();
+		for(int i=1;i<=asteroidCount;i++) {
+			int r = rand.nextInt(5);
+			Iron ir = new Iron();
+			Carbon c = new Carbon();
+			Uranium u = new Uranium();
+			Waterice w = new Waterice();
+			if(r == 0)
+				asteroids.add(new Asteroid(this, i, ir));
+			else if(r == 1)
+				asteroids.add(new Asteroid(this, i, c));
+			else if(r == 2)
+				asteroids.add(new Asteroid(this, i, u));
+			else if(r == 3)
+				asteroids.add(new Asteroid(this, i, w));
+			else if(r == 4)
+				asteroids.add(new Asteroid(this, i, null));
+		}
+		
+		sun.Init(asteroids);
+		boolean b;
+		while(true) {
+			b = true;
+			for(int i=0;i<asteroidCount;i++) {
+				Asteroid a = asteroids.get(i);
+				if(a.GetNeighbors().size() < 3) {
+					b = false;
+				}
+			}
+			if(!b) {
+				for(int i=0;i<asteroidCount;i++) {
+					Asteroid a = asteroids.get(i);
+					Asteroid a2 = asteroids.get(rand.nextInt(asteroidCount));
+					if(a != a2 && !a.CheckNeighbor(a2)) {
+						a.AddNewNeighbor(a2);
+						a2.AddNewNeighbor(a);
+					}
+				}
+			}
+			else {
+				break;
+			}
+		}
+		
+		for(int i=0;i<players.size();i++) {
+			settlers.add(new Settler(this, players.get(i)));
+			int j = i + 1;
+			String ufoname = "Ufo-" + j;
+			ufos.add(new Ufo(this, ufoname));
+		}
+		
+		for(int i=0;i<settlers.size();i++) {
+			asteroids.get(0).AddCreature(settlers.get(i));
+			asteroids.get(asteroidCount-1).AddCreature(ufos.get(i));
+		}
+		
+
+		for(Asteroid a : asteroids) {
+			int r = rand.nextInt(4);
+			if(r == 0)
+				a.SetWeather("hot");
+		}
+		
+		
+	}
+	
+	public void Play() {
+		while(true) {
+			for(int i=0;i<settlers.size();i++) {
+				if(settlers.get(i) == null)
+					continue;
+				boolean finished = false;
+				Settler s = settlers.get(i);
+				while(!finished) {
+					//GUIView
+					
+				}
+				continue;
+			}
+			Step();
+			if(settlers.size() == 0)
+				break;
+		}
 	}
 	
 	public ArrayList<Ufo> GetUfos() {
@@ -38,7 +137,6 @@ public class Game {
 	
 	public void AddAsteroid(Asteroid a) {
 		System.out.println("Asteroid added!");
-		el.SetOsszString("Asteroid added!");
 		asteroids.add(a);
 	}
 	
@@ -51,7 +149,6 @@ public class Game {
 	 */
 	public void Step() {
 		System.out.println("Next round!");
-		el.SetOsszString("Next round!");
 		for(Robot r : robots)
 			r.Step();
 		for(Ufo u : ufos)
@@ -174,11 +271,9 @@ public class Game {
 	public void EndGame() {
 		if(CheckSettlerLifeLines() == true) {
 			System.out.println("A jateknak vege, a telepesek nyertek!");
-			el.SetOsszString("A jateknak vege, a telepesek nyertek!");
 		}
 		else {
 			System.out.println("A jateknak vege, a telepesek veszitettek!");
-			el.SetOsszString("A jateknak vege, a telepesek veszitettek!");
 		}
 	}
 	/**
@@ -188,9 +283,7 @@ public class Game {
 	
 	//Ez új
 	public void Reset() {
-		el.GetOsszString().clear();
 		System.out.println("Reset was successfull!");
-		el.SetOsszString("Reset was successfull!");
 		asteroids.clear();
 		settlers.clear();
 		ufos.clear();

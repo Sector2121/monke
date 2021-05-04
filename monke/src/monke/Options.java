@@ -35,7 +35,7 @@ public class Options extends JFrame{
 		images[1] = "Darth Vader";
 		images[2] = "Steve";
 		images[3] = "Private";
-		images[4] = "Sweety Belle";
+		images[4] = "Sweetie Belle";
 		
 		players = new ArrayList<String>();
 		imgs = new JComboBox<String>(images);

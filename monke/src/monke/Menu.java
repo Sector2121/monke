@@ -58,7 +58,7 @@ private static final long serialVersionUID = 1L;
 	
 	private class PlayButtonActionListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
-			new Game(op.GetSelectedImage(), op.GetPlayers());
+			Game g = new Game(op.GetSelectedImage(), op.GetPlayers());
 		}
 	}
 	

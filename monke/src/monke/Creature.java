@@ -7,7 +7,6 @@ abstract class Creature {
 	protected Game game;
 	protected Asteroid asteroid;
 	private String name;
-	Ellenorzo el = new Ellenorzo();;
 	
 	/**
 	 * A creature mozog.
@@ -15,18 +14,15 @@ abstract class Creature {
 	 * Ha nem szomszedra akar lepni, akkor nem lep.
 	 * @param t
 	 */
-	public void Move(Travel t) {
+	public boolean Move(Travel t) {
 		boolean tf;
 		tf = asteroid.CheckNeighbor(t); 
 		if(tf) {
 			asteroid.Remove(this); 
 			t.Accept(this); 
-			System.out.println("Successfully moved!");
-			el.SetOsszString("Successfully moved!");
-		}else {
-			System.out.println("That asteroid is not a neighbor!");
-			el.SetOsszString("That asteroid is not a neighbor!");
+			return true;
 		}
+		return false;
 	} 
 	
 	/**
@@ -75,7 +71,6 @@ abstract class Creature {
 	public void Die() {
 		asteroid.Remove(this);
 		System.out.println("R.I.P." + name);
-		el.SetOsszString("R.I.P." + name);
 	}
 	
 	/**

@@ -6,13 +6,14 @@ import java.util.Random;
 public class Sun {
 	private ArrayList<Asteroid> asteroids;
 	private boolean sunStormNextRound;
-	Ellenorzo el = new Ellenorzo();
 	
 	/**
 	 * Konstruktor.
 	 * @param asteroids
 	 */
-	public Sun(ArrayList<Asteroid> asteroids) {
+	public Sun() {}
+	
+	public void Init(ArrayList<Asteroid> asteroids) {
 		this.asteroids = asteroids;
 		this.sunStormNextRound = false;
 	}
@@ -47,7 +48,6 @@ public class Sun {
 	 */
 	public void SunStorm() {
 		System.out.println("Sunstorm started!");
-		el.SetOsszString("Sunstorm started!");
 		for(Asteroid a : asteroids) {
 			if(a.GetWeather().equals("critical"))
 			{

@@ -14,7 +14,6 @@ public class Asteroid implements Travel{
 	private Resource resource;
 	private ArrayList<Travel> neighbors;
 	private static BillOfResources bill;
-	Ellenorzo el;
 	/**
 	 * Konstruktor.
 	 * @param g
@@ -36,8 +35,6 @@ public class Asteroid implements Travel{
 		resource = r;
 		neighbors = new ArrayList<Travel>();
 		bill = new BillOfResources();
-		g.GetSun().AddAsteroid(this);
-		el = new Ellenorzo();
 	}
 	
 	public void Step() {
@@ -78,8 +75,6 @@ public class Asteroid implements Travel{
 	 * @param l
 	 */
 	public void SetLayers(int l) {
-		System.out.println("Asteroid layer set successfully!");
-		el.SetOsszString("Asteroid layer set successfully!");
 		layers = l;
 	}
 	/**
@@ -94,8 +89,6 @@ public class Asteroid implements Travel{
 	 * @param r
 	 */
 	public void SetResource(Resource r) {
-		System.out.println("Asteroid resource set successfully!");
-		el.SetOsszString("Asteroid resource set successfully!");
 		resource = r;
 		if(resource == null) {
 			isEmpty = true;
@@ -127,8 +120,6 @@ public class Asteroid implements Travel{
 	 * @param w
 	 */
 	public void SetWeather(String w) {
-		System.out.println("Weather set successfully!");
-		el.SetOsszString("Weather set successfully!");
 		weather = w;
 	}
 	/**
@@ -176,22 +167,17 @@ public class Asteroid implements Travel{
 	 * Csokkenti az aszteroida kopenyet.
 	 * Ha epp napkozelben van, akkor meghivja a resource CloseToSun fuggvenyet.
 	 */
-	public void ReduceLayers() {
+	public boolean ReduceLayers() {
 		if(layers == 1 && closeToSun) {
 			layers--;
-			System.out.println("Successful drill!");
-			el.SetOsszString("Successful drill!");
 			resource.CloseToSun(this);
+			return true;
 		}
 		else if(layers > 0){
 			layers--;
-			System.out.println("Successful drill!");
-			el.SetOsszString("Successful drill!");
+			return true;
 		}
-		else {
-			System.out.println("The asteroid has no layers, drilling unsuccessful!");
-			el.SetOsszString("The asteroid has no layers, drilling unsuccessful!");
-		}
+		return false;
 	}
 	/**
 	 * Megnezi, hogy a kapott travel szomszedja-e annak a travelnek amire ez hivva van.
@@ -239,8 +225,6 @@ public class Asteroid implements Travel{
 				break;
 			}
 		}
-		System.out.println("Asteroid exploded!");
-		el.SetOsszString("Asteroid exploded!");
 	}
 	/**
 	 * Megnezi, hogy van-e osszesen minden nyersanyagbol harom az aszteroidan levo telepeseknel.
@@ -282,7 +266,7 @@ public class Asteroid implements Travel{
 	public void SetIsMoving() {}
 	
 	//Innentõl minden új
-	public void GetOtherCreaturesName(Creature ask) {
+	/*public void GetOtherCreaturesName(Creature ask) {
 		String seged = new String();
 		seged = "Other creatures on your asteroid: ";
 		System.out.print("Other creatures on your asteroid: ");
@@ -293,7 +277,6 @@ public class Asteroid implements Travel{
 			}
 		}
 		System.out.println();
-		el.SetOsszString(seged);
 	}
 	
 	public void GetCreaturesName() {
@@ -305,41 +288,34 @@ public class Asteroid implements Travel{
 			seged = seged + c.GetName()+" ";
 		}
 		System.out.println();
-		el.SetOsszString(seged);
 	}
 	
 	public void GetResourceName() {
 		if(layers == 0) {
 			if(resource != null) {
 				System.out.println(resource.GetName());
-				el.SetOsszString(resource.GetName());
 			}
 			else {
 				System.out.println("Core: empty");
-				el.SetOsszString("Core: empty");
 			}
 		}
 		else {
 			System.out.println("Core: unknown");
-			el.SetOsszString("Core: unknown");
 		}
 	}
 	
 	public void GetResourceNameForSure() {
 		if(resource != null) {
 			System.out.println("Resource: " + resource.GetName());
-			el.SetOsszString("Resource: " + resource.GetName());
 		}
 		else {
 			System.out.println("Resource: empty");
-			el.SetOsszString("Resource: empty");
 		}
-	}
+	}*/
 	
 	@Override
 	public void PrintNeighbor() {
 		System.out.println("Asteroid " + id);
-		el.SetOsszString("Asteroid " + id);
 	}
 	
 	@Override
