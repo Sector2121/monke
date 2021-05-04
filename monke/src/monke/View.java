@@ -30,11 +30,6 @@ public class View extends JFrame{
 			
 		p = new JPanel();
 		this.add(p);
-		JButton move = new JButton("Move");
-		//move.setBounds(50, 850, 150, 100);
-		move.setLocation(new Point(50, 850));
-		p.add(move);
-		
 	}
 	
 	public void paint(Graphics g) {
