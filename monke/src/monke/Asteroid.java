@@ -14,13 +14,15 @@ public class Asteroid implements Travel{
 	private Resource resource;
 	private ArrayList<Travel> neighbors;
 	private static BillOfResources bill;
+	private AsteroidView aview;
 	/**
 	 * Konstruktor.
 	 * @param g
 	 * @param id
 	 * @param r
 	 */
-	public Asteroid(Game g, int id, Resource r) {
+	public Asteroid(Game g, int id, Resource r, int x, int y,View view) {
+		aview = new AsteroidView(x,y,view);
 		game = g;
 		this.id = id;
 		Random rand = new Random();
@@ -35,6 +37,10 @@ public class Asteroid implements Travel{
 		resource = r;
 		neighbors = new ArrayList<Travel>();
 		bill = new BillOfResources();
+	}
+	
+	public AsteroidView GetView() {
+		return aview;
 	}
 	
 	public void Step() {

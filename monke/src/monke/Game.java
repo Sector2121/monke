@@ -43,22 +43,29 @@ public class Game {
 	public void Init(){
 		int asteroidCount = players.size() * 4;
 		Random rand = new Random();
+		int x=10;
+		int y=40;
 		for(int i=1;i<=asteroidCount;i++) {
+			x+=(i-1)*60;
+			if(x > 1850) {
+				x-=1850;
+				y+=60;
+			}
 			int r = rand.nextInt(5);
 			Iron ir = new Iron();
 			Carbon c = new Carbon();
 			Uranium u = new Uranium();
 			Waterice w = new Waterice();
 			if(r == 0)
-				asteroids.add(new Asteroid(this, i, ir));
+				asteroids.add(new Asteroid(this, i, ir, x, y, view));
 			else if(r == 1)
-				asteroids.add(new Asteroid(this, i, c));
+				asteroids.add(new Asteroid(this, i, c, x, y, view));
 			else if(r == 2)
-				asteroids.add(new Asteroid(this, i, u));
+				asteroids.add(new Asteroid(this, i, u, x, y, view));
 			else if(r == 3)
-				asteroids.add(new Asteroid(this, i, w));
+				asteroids.add(new Asteroid(this, i, w, x, y, view));
 			else if(r == 4)
-				asteroids.add(new Asteroid(this, i, null));
+				asteroids.add(new Asteroid(this, i, null, x, y, view));
 		}
 		
 		sun.Init(asteroids);

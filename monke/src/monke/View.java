@@ -9,6 +9,7 @@ import java.awt.GridLayout;
 import java.awt.Point;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -25,8 +26,10 @@ public class View extends JFrame{
 	protected JButton back;
 	private JPanel p;
 	private GUIView gui;
+	private ArrayList<Drawable> dbs;
 	
 	public View() {
+		dbs = new ArrayList<Drawable>();
 		gui = new GUIView(this);
 		this.setTitle("Game");
 		this.setContentPane(new JLabel(new ImageIcon("Background.png")));
@@ -35,35 +38,21 @@ public class View extends JFrame{
         label.setIcon(new ImageIcon("private.png"));
         label.setBounds(800,800,400,400);
         this.add(label);
-        /*JLabel valami = new JLabel();
-        valami.setIcon(new ImageIcon("cyan.png"));
-        valami.setBounds(0,700,900,380);
-        this.add(valami);*/
-		/*JButton kaka = new JButton("faszom");
-		kaka.setBounds(50,50,300,300);
-        this.add(kaka);
-		his.first = new JButton("Back");
-		this.second = new JButton("Back");
-		this.third = new JButton("Back");
-		this.back = new JButton("Back");
-		this.first.setBounds(150,150,50,50);
-		this.second.setBounds(300,220,200,40);
-		this.third.setBounds(300,280,200,40);
-		this.back.setBounds(300,460,200,40);
-		this.add(this.first);
-		this.add(this.second);
-		this.add(this.third);
-		this.add(this.back);*/
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(1920,1080);
 		this.setLayout(null);
 		this.setVisible(true);
 		gui.Draw();
+		DrawAll();
 	}
 	
-	public void DrawAll() {}
+	public void DrawAll() {
+		
+	}
 	
 	public void RemoveDrawable(Drawable d) {}
 	
-	public void AddDrawable(Drawable d) {}
+	public void AddDrawable(Drawable d) {
+		dbs.add(d);
+	}
 }
