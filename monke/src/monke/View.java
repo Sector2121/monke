@@ -51,11 +51,11 @@ public class View extends JFrame{
 		p = new JPanel();
 		this.add(p);*/
 		this.setTitle("Game");
-		this.setContentPane(new JLabel(new ImageIcon("test.png")));
+		this.setContentPane(new JLabel(new ImageIcon("Background.png")));
 		this.setResizable(false);
 		JLabel label = new JLabel();  
-        label.setIcon(new ImageIcon("asteroid.png"));
-        label.setBounds(400,400,200,200);
+        label.setIcon(new ImageIcon("private.png"));
+        label.setBounds(800,800,400,400);
         this.add(label);
 		JButton kaka = new JButton("faszom");
 		kaka.setBounds(50,50,300,300);
@@ -64,7 +64,7 @@ public class View extends JFrame{
 		this.second = new JButton("Back");
 		this.third = new JButton("Back");
 		this.back = new JButton("Back");
-		this.first.setBounds(200,200,200,40);
+		this.first.setBounds(150,150,50,50);
 		this.second.setBounds(300,220,200,40);
 		this.third.setBounds(300,280,200,40);
 		this.back.setBounds(300,460,200,40);
@@ -74,7 +74,7 @@ public class View extends JFrame{
 		this.add(this.back);
 		this.back.setVisible(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(800,700);
+		this.setSize(1920,1080);
 		this.setLayout(null);
 		this.setVisible(true);
 	}
