@@ -27,7 +27,7 @@ public class GUIView extends JFrame implements Drawable{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLayout(new GridLayout(5, 1));
 		
-		Init();
+		Init();  
 	}
 	
 	public void Init() {
