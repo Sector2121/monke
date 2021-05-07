@@ -27,29 +27,7 @@ public class View extends JFrame{
 	private GUIView gui;
 	
 	public View() {
-		/*this.setTitle("Game");
-		this.setResizable(true);
-		this.setVisible(true);
-		this.setSize(1900, 800);
-		this.setLocation(10, 10);
-		this.setContentPane(new JLabel(new ImageIcon("test.png")));
-		
-		JLabel label = new JLabel();  
-        label.setIcon(new ImageIcon("asteroid.png"));
-        label.setBounds(50,50,200,40);
-        this.add(label);
-        
-        JButton first = new JButton("faszom");
-        first.setBounds(50,50,300,300);
-        this.add(first);
-        
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setLayout(new GridBagLayout());
-		
 		gui = new GUIView(this);
-			
-		p = new JPanel();
-		this.add(p);*/
 		this.setTitle("Game");
 		this.setContentPane(new JLabel(new ImageIcon("Background.png")));
 		this.setResizable(false);
@@ -57,10 +35,14 @@ public class View extends JFrame{
         label.setIcon(new ImageIcon("private.png"));
         label.setBounds(800,800,400,400);
         this.add(label);
-		JButton kaka = new JButton("faszom");
+        /*JLabel valami = new JLabel();
+        valami.setIcon(new ImageIcon("cyan.png"));
+        valami.setBounds(0,700,900,380);
+        this.add(valami);*/
+		/*JButton kaka = new JButton("faszom");
 		kaka.setBounds(50,50,300,300);
         this.add(kaka);
-		this.first = new JButton("Back");
+		his.first = new JButton("Back");
 		this.second = new JButton("Back");
 		this.third = new JButton("Back");
 		this.back = new JButton("Back");
@@ -71,18 +53,13 @@ public class View extends JFrame{
 		this.add(this.first);
 		this.add(this.second);
 		this.add(this.third);
-		this.add(this.back);
-		this.back.setVisible(false);
+		this.add(this.back);*/
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(1920,1080);
 		this.setLayout(null);
 		this.setVisible(true);
+		gui.Draw();
 	}
-	
-	/*public void paint(Graphics g) {
-        g.setColor(Color.BLACK);
-        g.fillRect(0, 0, 1900, 1000);
-	}*/
 	
 	public void DrawAll() {}
 	
