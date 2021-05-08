@@ -21,14 +21,18 @@ public class Asteroid implements Travel{
 	 * @param id
 	 * @param r
 	 */
-	public Asteroid(Game g, int id, Resource r, int x, int y,View view) {
+	public Asteroid(Game g, int id, Resource r, int x, int y, View view) {
 		aview = new AsteroidView(x,y,view);
 		game = g;
 		this.id = id;
 		Random rand = new Random();
 		layers = rand.nextInt(3) + 3;
 		closeToSun = false;
-		weather = "normal";
+		int ra = rand.nextInt(4);
+		if(ra == 0)
+			weather = "hot";
+		else
+			weather = "normal";
 		if(r == null)
 			isEmpty = true;
 		else

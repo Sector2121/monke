@@ -4,18 +4,27 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Robot extends Creature{
+	private RobotView view;
+	private View v;
 	
 	private Random rand = new Random();
 	/**
 	 * Konstruktor.
 	 * @param a
 	 */
-	public Robot(Game game, Asteroid a, String name) {
+	public Robot(Game game, Asteroid a, String name, int x, int y, View view) {
+		v = view;
+		this.view = new RobotView(x, y, view);
 		SetName(name);
 		SetAsteroid(a);
 		a.Accept(this);
 		game.AddRobot(this);
 	}
+	
+	public Drawable GetView() {
+		return view;
+	}
+	
 	/**
 	*A robot fur.
 	*/
@@ -33,9 +42,20 @@ public class Robot extends Creature{
 		}
 		else if(GetAsteroid().GetLayers() == 0) { 
 			ArrayList<Travel> neighbors = asteroid.GetNeighbors();
+			Random rand = new Random();
+			int r = 0;
 			if(neighbors.size() > 0)
-				Move(neighbors.get(0));
+				r = rand.nextInt(neighbors.size()-1);
+				Move(neighbors.get(r));
 		}
+	}
+	
+	@Override
+	public void Die() {
+		asteroid.Remove(this);
+		game.RemoveRobot(this);
+		v.RemoveDrawable(this.GetView());
+		System.out.println("R.I.P. " + GetName());
 	}
 	/**
 	*A robot aszteroidaja felrobban.

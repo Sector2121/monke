@@ -6,6 +6,11 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -18,6 +23,9 @@ public class GUIView implements Drawable{
 	private JButton[] buttons;
 	private JLabel[] labels;
 	private JLabel[] pictures;
+	String thermo;
+	private boolean inMove = false;
+	private boolean inPlace = false;
 	
 	public GUIView(View v) {
 		view = v;
@@ -34,6 +42,21 @@ public class GUIView implements Drawable{
 		buttons[4] = new JButton("Build");
 		buttons[5] = new JButton("Skip");
 		buttons[6] = new JButton("Give up");
+		
+		MoveListener movel = new MoveListener();
+		DrillListener drilll = new DrillListener();
+		MineListener minel = new MineListener();
+		ReplaceListener replacel = new ReplaceListener();
+		BuildListener buildl = new BuildListener();
+		SkipListener skipl = new SkipListener();
+		GiveUpListener giveupl = new GiveUpListener();
+		buttons[0].addActionListener(movel);
+		buttons[1].addActionListener(drilll);
+		buttons[2].addActionListener(minel);
+		buttons[3].addActionListener(replacel);
+		buttons[4].addActionListener(buildl);
+		buttons[5].addActionListener(skipl);
+		buttons[6].addActionListener(giveupl);
 		
 		labels = new JLabel[8];
 		labels[0] = new JLabel(": 1");
@@ -61,7 +84,7 @@ public class GUIView implements Drawable{
 		labels[6].setForeground(Color.white);
 		labels[7].setForeground(Color.white);
 		
-		String thermo="thermometer1.png";
+		thermo = "thermometer1.png";
 		pictures = new JLabel[5];
 		pictures[0] = new JLabel();
 		pictures[1] = new JLabel();
@@ -73,6 +96,79 @@ public class GUIView implements Drawable{
         pictures[2].setIcon(new ImageIcon("uranium.png"));	
         pictures[3].setIcon(new ImageIcon("waterice.png"));
         pictures[4].setIcon(new ImageIcon(thermo));
+        
+        MouseListener mousel = new MouseListener();
+        MouseListener2 mousel2 = new MouseListener2();
+        view.addMouseListener(mousel);
+        view.addMouseListener(mousel2);
+	}
+	
+	public void SetPlayer(Settler s) {
+		labels[4].setText(s.GetName());
+		
+		Iron ir = new Iron();
+		Carbon ca = new Carbon();
+		Uranium ur = new Uranium();
+		Waterice wi = new Waterice();
+		int irc = 0;
+		int cac = 0;
+		int urc = 0;
+		int wic = 0;
+		for(Resource r : s.GetResources()) {
+			if(r.getClass() == ir.getClass()) {
+				irc++;
+			}
+			else if(r.getClass() == ca.getClass()) {
+				cac++;
+			}
+			else if(r.getClass() == ur.getClass()) {
+				urc++;
+			}
+			else if(r.getClass() == wi.getClass()) {
+				wic++;
+			}
+		}
+		labels[0].setText(": " + irc);
+		labels[1].setText(": " + cac);
+		labels[2].setText(": " + urc);
+		labels[3].setText(": " + wic);
+		
+		labels[5].setText("Asteroid: " + s.GetAsteroid().GetId());
+		
+		String resource = "unknown";
+		if(s.GetAsteroid().GetLayers() == 0)
+			if(s.GetAsteroid().GetResource() == null)
+				resource = "empty";
+			else if(s.GetAsteroid().GetResource().getClass() == ir.getClass())
+				resource = "iron";
+			else if(s.GetAsteroid().GetResource().getClass() == ca.getClass())
+				resource = "carbon";
+			else if(s.GetAsteroid().GetResource().getClass() == ur.getClass())
+				resource = "uranium";
+			else if(s.GetAsteroid().GetResource().getClass() == wi.getClass())
+				resource = "waterice";
+				
+			
+		String names = "";
+		ArrayList<Creature> creatures = s.GetAsteroid().GetCreatures();
+		for(Creature c : creatures) {
+			if(!c.GetName().equals(s.GetName()))
+				names = names + "  " + c.GetName();
+		}
+		labels[7].setText("Other creatures:" + names);
+		labels[6].setText("Resource: " + resource);
+		
+		if(s.GetAsteroid().GetWeather() == "normal") {
+			thermo = "thermometer1.png";
+		}
+		else if(s.GetAsteroid().GetWeather() == "hot") {
+			thermo = "thermometer2.png";
+		}
+		else if(s.GetAsteroid().GetWeather() == "critical") {
+			thermo = "thermometer3.png";
+		}
+		pictures[4].setIcon(new ImageIcon(thermo));
+		
 	}
 	
 	public void Draw() {
@@ -97,6 +193,152 @@ public class GUIView implements Drawable{
 			labels[i].setBounds(50, 850+n*50, 700, 50);
 			n++;
 			view.add(labels[i]);
+		}
+	}
+	
+	public void SetGrayAsteroids() {
+		Settler s = view.GetGame().GetOnTurn();
+		for(Travel t : s.GetAsteroid().GetNeighbors()) {
+			t.GetOtherAsteroid().GetView().SetColor(0);
+		}
+		view.DrawAll();
+	}
+	
+	@Override
+	public void SetCoord(Asteroid a) {}
+	
+	private class MoveListener implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			inPlace = false;
+			Settler s = view.GetGame().GetOnTurn();
+			inMove = true;
+			for(Travel t : s.GetAsteroid().GetNeighbors()) {
+				t.GetOtherAsteroid().GetView().SetColor(1);
+			}
+			view.DrawAll();
+		}
+	}
+	
+	private class MouseListener extends MouseAdapter {
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			boolean moved = false;
+			if(inMove) {
+				Settler s = view.GetGame().GetOnTurn();
+				SetPlayer(s);
+				int x = e.getX();
+				int y = e.getY();
+				
+				for(Travel t : s.GetAsteroid().GetNeighbors()) {
+					int asx = t.GetOtherAsteroid().GetView().GetX() + 50;
+					int asy = t.GetOtherAsteroid().GetView().GetY() + 50;
+					if(x <= asx + 40 && x >= asx -40 && y <= asy + 40 && y >= asy - 40) {
+						SetGrayAsteroids();
+						moved = s.Move(t);
+						break;
+					}
+				}
+			}
+			inMove = false;
+			if(!moved) {
+				inMove = true;
+			}
+			else {
+				view.GetGame().NextPlayer();
+				SetPlayer(view.GetGame().GetOnTurn());
+			}
+			view.DrawAll();
+		}
+	}
+	
+	private class DrillListener implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			inPlace = false;
+			inMove = false;
+			SetGrayAsteroids();
+			Settler s = view.GetGame().GetOnTurn();
+			if(s.Drill())
+				view.GetGame().NextPlayer();
+			SetPlayer(view.GetGame().GetOnTurn());
+			view.DrawAll();
+		}
+	}
+	private class MineListener implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			inPlace = false;
+			inMove = false;
+			SetGrayAsteroids();
+			Settler s = view.GetGame().GetOnTurn();
+			if(s.Mine())
+				view.GetGame().NextPlayer();
+			SetPlayer(view.GetGame().GetOnTurn());
+			view.DrawAll();
+		}
+	}
+	private class ReplaceListener implements ActionListener{
+		public void actionPerformed(ActionEvent e) {;
+			inMove = false;
+			inPlace = true;
+			SetGrayAsteroids();
+		}
+	}
+	
+	private class MouseListener2 extends MouseAdapter {
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			boolean placed = false;
+			if(inPlace) {
+				Settler s = view.GetGame().GetOnTurn();
+				SetPlayer(s);
+				int x = e.getX();
+				int y = e.getY();
+				
+				if(x > 280 && x < 400 && y > 720 && y < 810) {
+					placed = s.PlaceResource(new Iron());
+				}
+				else if(x > 400 && x < 520 && y > 720 && y < 810) {
+					placed = s.PlaceResource(new Carbon());
+				}
+				else if(x > 520 && x < 640 && y > 720 && y < 810) {
+					placed = s.PlaceResource(new Uranium());
+				}
+				else if(x > 640 && x < 760 && y > 720 && y < 810) {
+					placed = s.PlaceResource(new Waterice());
+				}
+			}
+			inPlace = false;
+			if(!placed) {
+				inPlace = true;
+			}
+			else {
+				view.GetGame().NextPlayer();
+				SetPlayer(view.GetGame().GetOnTurn());
+			}
+			view.DrawAll();
+		}
+	}
+	
+	private class BuildListener implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			SetGrayAsteroids();
+		}
+	}
+	private class SkipListener implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			SetGrayAsteroids();
+			view.GetGame().NextPlayer();
+			SetPlayer(view.GetGame().GetOnTurn());
+			view.DrawAll();
+		}
+	}
+	private class GiveUpListener implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			SetGrayAsteroids();
+			Settler s = view.GetGame().GetOnTurn();
+			s.Die();
+			//view.GetGame().NextPlayer();
+			SetPlayer(view.GetGame().GetOnTurn());
+			view.DrawAll();
 		}
 	}
 }

@@ -1,15 +1,23 @@
 package monke;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Ufo extends Creature{
-	
+	private UfoView view;
+	private View v;
 	/**
 	*Konstruktor
 	*/
-	public Ufo(Game game, String name) {
+	public Ufo(Game game, String name, int x, int y, View view) {
+		v = view;
+		this.view = new UfoView(x, y, view);
 		this.SetName(name);
 		game.AddUfo(this);
+	}
+	
+	public Drawable GetView() {
+		return view;
 	}
 	
 	/**
@@ -21,6 +29,13 @@ public class Ufo extends Creature{
 		}
 	}
 	
+	@Override
+	public void Die() {
+		asteroid.Remove(this);
+		game.RemoveUfo(this);
+		v.RemoveDrawable(this.GetView());
+		System.out.println("R.I.P. " + GetName());
+	}
 	
 	/**
 	 * Az ufo lep.
@@ -31,9 +46,13 @@ public class Ufo extends Creature{
 		if(asteroid.GetLayers() == 0 && asteroid.GetResource() != null) {
 			Mine();
 		}
-		if(asteroid.GetLayers() > 0) {
+		else if(asteroid.GetLayers() > 0 || asteroid.GetResource() == null) {
 			ArrayList<Travel> neighbors = asteroid.GetNeighbors();
-			Move(neighbors.get(0));
+			Random rand = new Random();
+			int r = 0;
+			if(neighbors.size() > 0)
+				r = rand.nextInt(neighbors.size()-1);
+				Move(neighbors.get(r));
 		}
 	}
 	

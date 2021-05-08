@@ -20,15 +20,13 @@ import javax.swing.JPanel;
 
 
 public class View extends JFrame{
-	protected JButton first;
-	protected JButton second;
-	protected JButton third;
-	protected JButton back;
-	private JPanel p;
+	
+	private Game game;
 	private GUIView gui;
 	private ArrayList<Drawable> dbs;
 	
-	public View() {
+	public View(Game g) {
+		game = g;
 		dbs = new ArrayList<Drawable>();
 		gui = new GUIView(this);
 		this.setTitle("Game");
@@ -42,15 +40,32 @@ public class View extends JFrame{
 		this.setSize(1920,1080);
 		this.setLayout(null);
 		this.setVisible(true);
-		gui.Draw();
+		
 		DrawAll();
 	}
 	
-	public void DrawAll() {
-		
+	public Game GetGame() {
+		return game;
 	}
 	
-	public void RemoveDrawable(Drawable d) {}
+	public GUIView GetGUI() {
+		return gui;
+	}
+	
+	public void DrawAll() {
+		gui.Draw();
+		for(Drawable d : dbs) {
+			d.Draw();
+		}
+	}
+	
+	public void SetPlayer(Settler s) {
+		gui.SetPlayer(s);
+	}
+	
+	public void RemoveDrawable(Drawable d) {
+		dbs.remove(d);
+	}
 	
 	public void AddDrawable(Drawable d) {
 		dbs.add(d);

@@ -10,24 +10,38 @@ public class AsteroidView implements Drawable{
 	private JLabel[] pictures;
 	private JLabel label;
 	
+	public int GetX() {
+		return x;
+	}
+	
+	public int GetY() {
+		return y;
+	}
+	
 	AsteroidView(int x, int y, View v) {
 		this.x=x;
 		this.y=y;
 		this.v=v;
 		pictures = new JLabel[2];
-		pictures[0] = new JLabel();
-		pictures[1] = new JLabel();
-		pictures[0].setIcon(new ImageIcon("asteroid.png"));	
-        pictures[1].setIcon(new ImageIcon("asteroid2.png"));
-        label = pictures[0];
+		label = new JLabel();
+		label.setIcon(new ImageIcon("asteroid.png"));	
+	}
+	
+	public void SetColor(int id) {
+		if(id == 0)
+			label.setIcon(new ImageIcon("asteroid.png"));
+		else
+			label.setIcon(new ImageIcon("asteroid2.png"));
 	}
 
 	@Override
 	public void Draw() {
+		v.remove(label);
 		label.setBounds(x, y, 50, 50);
 		v.add(label);
-		
 	}
 	
+	@Override
+	public void SetCoord(Asteroid a) {}
 	
 }

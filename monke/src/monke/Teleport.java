@@ -9,17 +9,23 @@ public class Teleport implements Travel{
 	private Asteroid asteroid;
 	private Teleport pair;
 	private boolean isMoving;
+	private TeleportView view;
 	
 	/**
 	 * Konstruktor.
 	 * @param id
 	 */
-	public Teleport(Game game, int id) {
+	public Teleport(Game game, int id, int x, int y, View view) {
+		this.view = new TeleportView(x, y, view);
 		this.game = game;
 		this.id = id;
 		asteroid = null;
 		pair = null;
 		isMoving = false;
+	}
+	
+	public TeleportView GetView() {
+		return view;
 	}
 	
 	/**

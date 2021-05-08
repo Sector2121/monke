@@ -20,10 +20,13 @@ abstract class Creature {
 		if(tf) {
 			asteroid.Remove(this); 
 			t.Accept(this); 
+			this.GetView().SetCoord(t.GetOtherAsteroid());
 			return true;
 		}
 		return false;
 	} 
+	
+	public abstract Drawable GetView();
 	
 	/**
 	 * Visszaadja a creature nevet.
@@ -61,17 +64,14 @@ abstract class Creature {
 	 * Visszaad egy ures nyersanyaglistat.
 	 * @return null
 	 */
-	public ArrayList<Resource> GetResources() { /*ezt hagyd been lecci Palya koszipuszi - vitya*/
+	public ArrayList<Resource> GetResources() {
 		return null;
 	}
 	
 	/**
 	 * A creature meghal.
 	 */
-	public void Die() {
-		asteroid.Remove(this);
-		System.out.println("R.I.P." + name);
-	}
+	public void Die() {}
 	
 	/**
 	 * A creature aszteroidaja felrobban.

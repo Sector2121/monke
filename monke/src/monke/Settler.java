@@ -17,6 +17,8 @@ public class Settler extends Creature{
 	private static BillOfResources billOfResources;
 	private ArrayList<Teleport> teleports;
 	private static int tpid = 1;
+	private SettlerView view;
+	private View v;
 	
 	/**
 	 * A telepes konstruktora.
@@ -25,7 +27,9 @@ public class Settler extends Creature{
 	 * @throws Exception 
 	 * @throws IOException 
 	 */
-	public Settler(Game game, String name) {
+	public Settler(Game game, String name, int x, int y, View view, String which) {
+		this.view = new SettlerView(x, y, view, which);
+		v = view;
 		hasTpk = 0;
 		this.game = game;
 		resources = new ArrayList<Resource>();
@@ -35,6 +39,11 @@ public class Settler extends Creature{
 		this.asteroid = null;
 		game.AddSettler(this);
 	}
+	
+	public Drawable GetView() {
+		return view;
+	}
+	
 	/**
 	 * Banyaszik egy aszteroidabol.
 	 * Ha az aszteroida kerge nagyobb nullanal, visszater.
@@ -150,6 +159,7 @@ public class Settler extends Creature{
 	public void Die() {
 		asteroid.Remove(this);
 		game.RemoveSettler(this);
+		v.RemoveDrawable(this.GetView());
 		System.out.println("R.I.P. " + GetName());
 	}
 	/**
@@ -167,9 +177,11 @@ public class Settler extends Creature{
 			if(billOfResources.CheckResource(resources, "Teleport")) {
 				RemoveResource(billOfResources.GetBillOfTpk());
 				hasTpk += 2;
-				Teleport t = new Teleport(game, tpid);
+				Teleport t = new Teleport(game, tpid, -30, -30, v);
 				tpid++;
-				Teleport t2 = new Teleport(game, tpid);
+				Teleport t2 = new Teleport(game, tpid, -30, -30, v);
+				v.AddDrawable(t.GetView());
+				v.AddDrawable(t2.GetView());
 				tpid++;
 				t.SetPair(t2);
 				t2.SetPair(t);
@@ -184,8 +196,9 @@ public class Settler extends Creature{
     * Megnoveli a teleport szamlalojat.
     * Letrehoz ket teleportot, melyeket egymas parjanak allit, majd beleteszi a listajaba oket.
     */
-   public void AddTeleport(){
+   /*public void AddTeleport(){
        hasTpk += 2;
+       
        Teleport t = new Teleport(game, tpid);
        tpid++;
        Teleport t2 = new Teleport(game, tpid);
@@ -194,8 +207,7 @@ public class Settler extends Creature{
        t2.SetPair(t);
        teleports.add(t);
        teleports.add(t2);
-       System.out.println("Teleport added!");
-   }
+   }*/
 	/**
 	 * Megepit egy robotot, amit lehelyez az aszteroidajara.
 	 * Megnezi van-e eleg nyersanyaga egy robothoz a nyersanyaglista alapjan.
@@ -204,7 +216,11 @@ public class Settler extends Creature{
 	 */
 	public boolean BuildRobot(String name) {
 		if(billOfResources.CheckResource(resources, "Robot")) {
-			Robot r = new Robot(game, asteroid, name);
+			int x = asteroid.GetView().GetX();
+			int y = asteroid.GetView().GetY();
+			Robot r = new Robot(game, asteroid, name, x, y, v);
+			v.AddDrawable(r.GetView());
+			v.DrawAll();
 			RemoveResource(billOfResources.GetBillOfRobot());
 			return true;
 		}
@@ -224,7 +240,9 @@ public class Settler extends Creature{
 		t.SetAsteroid(a);
 		game.AddTeleport(t);
 		asteroid.AddNewNeighbor(t);
+		t.GetView().SetCoord(a);
 		teleports.remove(0);
+		
 		hasTpk--;
 		return true;
 	}

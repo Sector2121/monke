@@ -13,12 +13,15 @@ public class Game {
 	private ArrayList<Robot> robots;
 	private ArrayList<Teleport> teleports;
 	private ArrayList<String> players;
-	private ImageIcon playerimg;
+	private String playerimg;
 	private View view;
+	private Settler onTurn;
+	private int whichPlayer;
 	/**
 	 * Konstruktor.
 	 */
 	public Game(String img, ArrayList<String> players){
+		whichPlayer = 0;
 		sun = new Sun();
 		asteroids = new ArrayList<>();
 		settlers = new ArrayList<>();
@@ -26,46 +29,60 @@ public class Game {
 		robots = new ArrayList<>();
 		teleports = new ArrayList<>();
 		this.players = players;
-		if(img == "Steve")
-			playerimg = new ImageIcon("steve.png");
-		if(img == "Darth Vader")
-			playerimg = new ImageIcon("darth vader.png");
-		if(img == "Sweetie Belle")
-			playerimg = new ImageIcon("sweetie belle.png");
-		if(img == "Boba-feta")
-			playerimg = new ImageIcon("boba fett.png");
-		if(img == "Private")
-			playerimg = new ImageIcon("private.png");
-		view = new View();
+		playerimg = img;
+		view = new View(this);
 		Init();
 	}
 	
 	public void Init(){
 		int asteroidCount = players.size() * 4;
+		double inc = (double)(240 / (double)((double)players.size() * 0.2));
+		if(inc < 60) inc = 60;
+		double incy = 200;
 		Random rand = new Random();
-		int x=10;
+		int x=0;
 		int y=40;
 		for(int i=1;i<=asteroidCount;i++) {
-			x+=(i-1)*60;
+			x += inc ;
 			if(x > 1850) {
 				x-=1850;
-				y+=60;
+				y += incy;
 			}
 			int r = rand.nextInt(5);
 			Iron ir = new Iron();
 			Carbon c = new Carbon();
 			Uranium u = new Uranium();
 			Waterice w = new Waterice();
-			if(r == 0)
-				asteroids.add(new Asteroid(this, i, ir, x, y, view));
-			else if(r == 1)
-				asteroids.add(new Asteroid(this, i, c, x, y, view));
-			else if(r == 2)
-				asteroids.add(new Asteroid(this, i, u, x, y, view));
-			else if(r == 3)
-				asteroids.add(new Asteroid(this, i, w, x, y, view));
-			else if(r == 4)
-				asteroids.add(new Asteroid(this, i, null, x, y, view));
+			if(r == 0) {
+				Asteroid temp = new Asteroid(this, i, ir, x, y, view);
+				asteroids.add(temp);
+				view.AddDrawable(temp.GetView());
+			}
+				
+			else if(r == 1) {
+				Asteroid temp = new Asteroid(this, i, c, x, y, view);
+				asteroids.add(temp);
+				view.AddDrawable(temp.GetView());
+			}
+				
+			else if(r == 2) {
+				Asteroid temp = new Asteroid(this, i, u, x, y, view);
+				asteroids.add(temp);
+				view.AddDrawable(temp.GetView());
+			}
+				
+			else if(r == 3) {
+				Asteroid temp = new Asteroid(this, i, w, x, y, view);
+				asteroids.add(temp);
+				view.AddDrawable(temp.GetView());
+			}
+				
+			else if(r == 4) {
+				Asteroid temp = new Asteroid(this, i, null, x, y, view);
+				asteroids.add(temp);
+				view.AddDrawable(temp.GetView());
+			}
+			view.DrawAll();	
 		}
 		
 		sun.Init(asteroids);
@@ -93,16 +110,27 @@ public class Game {
 			}
 		}
 		
+		int x0 = asteroids.get(0).GetView().GetX();
+		int y0 = asteroids.get(0).GetView().GetY();
+		
+		int x1 = asteroids.get(asteroidCount-1).GetView().GetX();
+		int y1 = asteroids.get(asteroidCount-1).GetView().GetY();
+		
 		for(int i=0;i<players.size();i++) {
-			settlers.add(new Settler(this, players.get(i)));
+			Settler temps = new Settler(this, players.get(i), x0, y0, view, playerimg);
+			view.AddDrawable(temps.GetView());
+			
 			int j = i + 1;
 			String ufoname = "Ufo-" + j;
-			ufos.add(new Ufo(this, ufoname));
+			Ufo tempu = new Ufo(this, ufoname, x1, y1, view);
+			view.AddDrawable(tempu.GetView());
 		}
+		onTurn = settlers.get(0);
+		whichPlayer = 0;
 		
 		for(int i=0;i<settlers.size();i++) {
-			asteroids.get(0).AddCreature(settlers.get(i));
-			asteroids.get(asteroidCount-1).AddCreature(ufos.get(i));
+			asteroids.get(0).Accept(settlers.get(i));
+			asteroids.get(asteroidCount-1).Accept(ufos.get(i));
 		}
 		
 
@@ -111,27 +139,44 @@ public class Game {
 			if(r == 0)
 				a.SetWeather("hot");
 		}
-		
-		
+		view.SetPlayer(settlers.get(0));
+		view.DrawAll();	
+		Play();
+	}
+	
+	public void NextPlayer() { 
+		if(whichPlayer == settlers.size()-1) {
+			whichPlayer = -1;
+			Step();
+		}
+			
+		onTurn = settlers.get(++whichPlayer);
+		view.GetGUI().SetPlayer(onTurn);
 	}
 	
 	public void Play() {
-		while(true) {
-			for(int i=0;i<settlers.size();i++) {
+		//while(true) {
+			/*for(int i=0;i<settlers.size();i++) {
 				if(settlers.get(i) == null)
 					continue;
 				boolean finished = false;
-				Settler s = settlers.get(i);
-				while(!finished) {
-					//GUIView
-					
-				}
-				continue;
-			}
-			Step();
-			if(settlers.size() == 0)
-				break;
-		}
+				onTurn = settlers.get(i);
+				whichPlayer = i;*/
+				//while(!finished) {
+					//view.GetGUI().SetPlayer(onTurn);				
+					//finished = true;
+				//}
+				/*view.DrawAll();
+				continue;*/
+			//}
+			//Step();
+			//if(settlers.size() == 0);
+				//break;
+		//}
+	}
+	
+	public Settler GetOnTurn() {
+		return onTurn;
 	}
 	
 	public ArrayList<Ufo> GetUfos() {
@@ -155,6 +200,7 @@ public class Game {
 	 * Lepteti az osszes leptetheto dolgot.
 	 */
 	public void Step() {
+		view.GetGUI().SetPlayer(onTurn);
 		System.out.println("Next round!");
 		for(Robot r : robots)
 			r.Step();
