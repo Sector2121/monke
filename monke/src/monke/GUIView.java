@@ -27,12 +27,19 @@ public class GUIView implements Drawable{
 	private boolean inMove = false;
 	private boolean inPlace = false;
 	
+	/**
+	*Konstruktor
+	*@param v
+	*/
 	public GUIView(View v) {
 		view = v;
 		
 		Init();  
 	}
 	
+	/**
+	*Inicializalja a kezelofeluletet.
+	*/
 	public void Init() {
 		buttons = new JButton[9];
 		buttons[0] = new JButton("Move");
@@ -114,6 +121,10 @@ public class GUIView implements Drawable{
         view.addMouseListener(mousel2);
 	}
 	
+	/**
+	*Beallitja a telepes jelenlegi helyzete alapjan a kezelofeluletet.
+	*@param s
+	*/
 	public void SetPlayer(Settler s) {
 		labels[4].setText(s.GetName());
 		
@@ -183,6 +194,9 @@ public class GUIView implements Drawable{
 		
 	}
 	
+	/**
+	*Kirajzolja a kezelofeluletet.
+	*/
 	public void Draw() {
 		for(int i=0;i<4;i++) {
 			pictures[i].setBounds(300+i*120, 700, 100, 50);
@@ -215,6 +229,9 @@ public class GUIView implements Drawable{
 		}
 	}
 	
+	/**
+	*Befesti szurkere az aszteroidakat
+	*/
 	public void SetGrayAsteroids() {
 		Settler s = view.GetGame().GetOnTurn();
 		for(Travel t : s.GetAsteroid().GetNeighbors()) {
@@ -227,6 +244,9 @@ public class GUIView implements Drawable{
 	@Override
 	public void SetCoord(Asteroid a) {}
 	
+	/**
+	*Move gomb lenyomasa altal bekovetkezett esemenyert felelos osztaly.
+	*/
 	private class MoveListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			if(view.GetGame().GetInGame()) {
@@ -238,11 +258,13 @@ public class GUIView implements Drawable{
 						t.GetOtherAsteroid().GetView().SetColor(1);
 				}
 				view.DrawAll();
-			}
-			
+			}	
 		}
 	}
 	
+	/**
+	*Move gomb lenyomasa utan az eger altal bekovetkezett esemenyert felelos osztaly.
+	*/
 	private class MouseListener extends MouseAdapter {
 		@Override
 		public void mouseClicked(MouseEvent e) {
@@ -282,6 +304,9 @@ public class GUIView implements Drawable{
 		}
 	}
 	
+	/**
+	*Drill gomb lenyomasa altal bekovetkezett esemenyert felelos osztaly.
+	*/
 	private class DrillListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			if(view.GetGame().GetInGame()) {
@@ -296,6 +321,10 @@ public class GUIView implements Drawable{
 			}
 		}
 	}
+	
+	/**
+	*Mine gomb lenyomasa altal bekovetkezett esemenyert felelos osztaly.
+	*/
 	private class MineListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			if(view.GetGame().GetInGame()) {
@@ -314,6 +343,9 @@ public class GUIView implements Drawable{
 		}
 	}
 	
+	/**
+	*Replace gomb lenyomasa altal bekovetkezett esemenyert felelos osztaly.
+	*/
 	private class ReplaceListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			if(view.GetGame().GetInGame()) {
@@ -324,6 +356,9 @@ public class GUIView implements Drawable{
 		}
 	}
 	
+	/**
+	*Replace gomb lenyomasa utan az eger altal bekovetkezett esemenyert felelos osztaly.
+	*/
 	private class MouseListener2 extends MouseAdapter {
 		@Override
 		public void mouseClicked(MouseEvent e) {
@@ -368,6 +403,9 @@ public class GUIView implements Drawable{
 		}
 	}
 	
+	/**
+	*Build Tpk gomb lenyomasa altal bekovetkezett esemenyert felelos osztaly.
+	*/
 	private class BuildTpkListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			if(view.GetGame().GetInGame()) {
@@ -387,6 +425,9 @@ public class GUIView implements Drawable{
 		}
 	}
 	
+	/**
+	*Place Tpk gomb lenyomasa altal bekovetkezett esemenyert felelos osztaly.
+	*/
 	private class PlaceTpkListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			if(view.GetGame().GetInGame()) {
@@ -406,6 +447,9 @@ public class GUIView implements Drawable{
 		}
 	}
 	
+	/**
+	*Build Robot gomb lenyomasa altal bekovetkezett esemenyert felelos osztaly.
+	*/
 	private class BuildRobotListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			if(view.GetGame().GetInGame()) {
@@ -426,6 +470,9 @@ public class GUIView implements Drawable{
 		}
 	}
 	
+	/**
+	*Skip gomb lenyomasa altal bekovetkezett esemenyert felelos osztaly.
+	*/
 	private class SkipListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			if(view.GetGame().GetInGame()) {
@@ -438,6 +485,10 @@ public class GUIView implements Drawable{
 			}
 		}
 	}
+	
+	/**
+	*Give Up gomb lenyomasa altal bekovetkezett esemenyert felelos osztaly.
+	*/
 	private class GiveUpListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			if(view.GetGame().GetInGame()) {

@@ -6,6 +6,7 @@ import java.util.Random;
 public class Ufo extends Creature{
 	private UfoView view;
 	private View v;
+	
 	/**
 	*Konstruktor
 	*/
@@ -17,6 +18,10 @@ public class Ufo extends Creature{
 		this.game = game;
 	}
 	
+	/**
+	*Visszadja az ufo kirajzolsahoz szukseges interfeszt
+	*@return view
+	*/
 	public Drawable GetView() {
 		return view;
 	}
@@ -30,13 +35,16 @@ public class Ufo extends Creature{
 		}
 	}
 	
+	
+	/**
+	*Az ufo meghal.
+	*/
 	@Override
 	public void Die() {
 		asteroid.Remove(this);
 		game.RemoveUfo(this);
 		v.RemoveDrawable(this.GetView());
 		view.SetTomb();
-		System.out.println("R.I.P. " + GetName());
 	}
 	
 	/**
@@ -59,7 +67,7 @@ public class Ufo extends Creature{
 	}
 	
 	/**
-	 * A robot aszteroidaja felrobban
+	 * Az ufo aszteroidaja felrobban
 	 */
 	@Override
 	public void Explode() {

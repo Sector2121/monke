@@ -9,7 +9,6 @@ public class Waterice extends Resource{
 	@Override
 	public void CloseToSun(Asteroid a) {
 		a.SetResource(null);
-		System.out.println("Waterice sublimated!");
 	}
 	
 	String GetName() {

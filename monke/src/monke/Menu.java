@@ -21,6 +21,9 @@ private static final long serialVersionUID = 1L;
 	
 	private Options op = new Options();
 	
+	/**
+	*Konstruktor
+	*/
 	public Menu() {
 		super("Menu");
 		setSize(400, 280);
@@ -56,6 +59,9 @@ private static final long serialVersionUID = 1L;
 		add(p3);
 	}
 	
+	/**
+	*Play gomb lenyomasa altal bekovetkezett esemenyert felelos osztaly.
+	*/
 	private class PlayButtonActionListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			Game g;
@@ -64,12 +70,18 @@ private static final long serialVersionUID = 1L;
 		}
 	}
 	
+	/**
+	*Options gomb lenyomasa altal bekovetkezett esemenyert felelos osztaly.
+	*/
 	private class OptionsButtonActionListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			op.SetVis();
 		}
 	}
 	
+	/**
+	*Exit gomb lenyomasa altal bekovetkezett esemenyert felelos osztaly.
+	*/
 	private class ExitButtonActionListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			System.exit(0);

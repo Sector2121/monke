@@ -20,18 +20,22 @@ public interface Travel {
 	public void RemoveNeighbor(Travel t);
 	
 	/**
-	 * Teleport elfogadasa
+	 * Teleport elfogadasa.
 	 * @param t
 	 */
 	public void AcceptTeleport(Teleport t);
 	/**
-	 * Homersekletet visszaadja
+	 * Homersekletet visszaadja.
 	 */
 	public String GetWeather();
 	
+	/**
+	 * Homerseklet beallitasa.
+	 */
 	public void SetWeather(String w);
 	
-	public void PrintNeighbor();
-	
+	/**
+	 * Visszadja a masik aszteroidat, amivel ossze van kotve.
+	 */
 	public Asteroid GetOtherAsteroid();
 }

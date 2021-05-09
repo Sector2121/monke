@@ -30,17 +30,6 @@ public class Sun {
 	 * Torli az eddigi aszteroidat a listarol.
 	 */
 	public void GetNewAsteroids() {
-		/*for(Asteroid a : asteroids) {
-			if(a.GetWeather().equals("hot")) {
-				for(Travel t : a.GetNeighbors()) {
-					if(t.GetWeather() != "hot" && t.GetWeather() != null) {
-						t.SetWeather("hot");
-						a.SetWeather("normal");
-						break;
-					}
-				}
-			}
-		}*/
 		for(Asteroid a : asteroids) {
 			SetNormal(a);
 		}
@@ -57,7 +46,6 @@ public class Sun {
 	 * Minden napkozeli aszteroidara meghivja a napvihart.
 	 */
 	public void SunStorm() {
-		System.out.println("Sunstorm started!");
 		for(Asteroid a : asteroids) {
 			if(a.GetWeather().equals("critical"))
 			{
