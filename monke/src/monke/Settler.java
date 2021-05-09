@@ -98,7 +98,9 @@ public class Settler extends Creature{
 		if(asteroid.GetLayers() == 0 && asteroid.GetIsEmpty()) {
 			if(CheckResource(r)) {
 				asteroid.SetResource(r);
-				resources.remove(r);
+				ArrayList<Resource> re = new ArrayList<>();
+				re.add(r);
+				RemoveResource(re);
 				return true;
 			}
 		}
