@@ -29,5 +29,7 @@ public class TeleportView implements Drawable {
 		x = a.GetView().GetX();
 		y = a.GetView().GetY();
 	}
-
+	
+	@Override
+	public void SetTomb() {}
 }

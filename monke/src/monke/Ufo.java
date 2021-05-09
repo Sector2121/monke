@@ -34,6 +34,7 @@ public class Ufo extends Creature{
 		asteroid.Remove(this);
 		game.RemoveUfo(this);
 		v.RemoveDrawable(this.GetView());
+		this.GetView().SetTomb();
 		System.out.println("R.I.P. " + GetName());
 	}
 	

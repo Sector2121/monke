@@ -29,4 +29,9 @@ public class RobotView implements Drawable{
 		label.setBounds(x + 20, y - 25, 30, 30);
 		v.add(label);
 	}
+	
+	@Override
+	public void SetTomb() {
+		label.setIcon(new ImageIcon("tombstone.png"));
+	}
 }

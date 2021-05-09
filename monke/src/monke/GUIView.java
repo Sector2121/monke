@@ -34,36 +34,42 @@ public class GUIView implements Drawable{
 	}
 	
 	public void Init() {
-		buttons = new JButton[7];
+		buttons = new JButton[9];
 		buttons[0] = new JButton("Move");
 		buttons[1] = new JButton("Drill");
 		buttons[2] = new JButton("Mine");
 		buttons[3] = new JButton("Replace");
-		buttons[4] = new JButton("Build");
+		buttons[4] = new JButton("Build Tpk");
 		buttons[5] = new JButton("Skip");
 		buttons[6] = new JButton("Give up");
+		buttons[7] = new JButton("Build Robot");
+		buttons[8] = new JButton("Place tpk");
 		
 		MoveListener movel = new MoveListener();
 		DrillListener drilll = new DrillListener();
 		MineListener minel = new MineListener();
 		ReplaceListener replacel = new ReplaceListener();
-		BuildListener buildl = new BuildListener();
+		PlaceTpkListener placetpkl = new PlaceTpkListener();
+		BuildTpkListener buildtpkl = new BuildTpkListener();
+		BuildRobotListener buildrobotl = new BuildRobotListener();
 		SkipListener skipl = new SkipListener();
 		GiveUpListener giveupl = new GiveUpListener();
 		buttons[0].addActionListener(movel);
 		buttons[1].addActionListener(drilll);
 		buttons[2].addActionListener(minel);
 		buttons[3].addActionListener(replacel);
-		buttons[4].addActionListener(buildl);
+		buttons[4].addActionListener(buildtpkl);
 		buttons[5].addActionListener(skipl);
 		buttons[6].addActionListener(giveupl);
+		buttons[7].addActionListener(buildrobotl);
+		buttons[8].addActionListener(placetpkl);
 		
 		labels = new JLabel[8];
-		labels[0] = new JLabel(": 1");
-		labels[1] = new JLabel(": 2");
+		labels[0] = new JLabel(": 0");
+		labels[1] = new JLabel(": 0");
 		labels[2] = new JLabel(": 0");
-		labels[3] = new JLabel(": 3");
-		labels[4] = new JLabel("Boba-feta");
+		labels[3] = new JLabel(": 0");
+		labels[4] = new JLabel("No one");
 		labels[5] = new JLabel("Asteroid: ");
 		labels[6] = new JLabel("Resource: ");
 		labels[7] = new JLabel("Other creatures: ");
@@ -184,6 +190,13 @@ public class GUIView implements Drawable{
 			buttons[i].setBounds(50+i*120, 780, 100, 50);
 			view.add(buttons[i]);
 		}
+		buttons[4].setBounds(530, 780, 100, 25);
+		buttons[7].setBounds(530, 805, 100, 25);
+		view.add(buttons[7]);
+		buttons[3].setBounds(410, 780, 100, 25);
+		buttons[8].setBounds(410, 805, 100, 25);
+		view.add(buttons[8]);
+		
 		labels[4].setBounds(50, 700, 200, 50);
 		view.add(labels[4]);
 		pictures[4].setBounds(775, 835, 200, 200);
@@ -275,6 +288,7 @@ public class GUIView implements Drawable{
 			view.DrawAll();
 		}
 	}
+	
 	private class ReplaceListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {;
 			inMove = false;
@@ -318,13 +332,44 @@ public class GUIView implements Drawable{
 		}
 	}
 	
-	private class BuildListener implements ActionListener{
+	private class BuildTpkListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			SetGrayAsteroids();
+			inMove = false;
+			inPlace = true;
 		}
 	}
+	
+	private class PlaceTpkListener implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			SetGrayAsteroids();
+			inMove = false;
+			inPlace = true;
+		}
+	}
+	
+	private class BuildRobotListener implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			SetGrayAsteroids();
+			inMove = false;
+			inPlace = true;
+			Settler s = view.GetGame().GetOnTurn();
+			SetPlayer(s);
+			boolean built = s.BuildRobot("Robot-" + view.GetGame().GetRobotCount());
+			
+			if(built) {
+				view.GetGame().AddRobotCount();
+				view.GetGame().NextPlayer();
+				SetPlayer(view.GetGame().GetOnTurn());
+				view.DrawAll();
+			}	
+		}
+	}
+	
 	private class SkipListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
+			inMove = false;
+			inPlace = true;
 			SetGrayAsteroids();
 			view.GetGame().NextPlayer();
 			SetPlayer(view.GetGame().GetOnTurn());
@@ -333,12 +378,17 @@ public class GUIView implements Drawable{
 	}
 	private class GiveUpListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
+			inMove = false;
+			inPlace = true;
 			SetGrayAsteroids();
 			Settler s = view.GetGame().GetOnTurn();
 			s.Die();
-			//view.GetGame().NextPlayer();
+			view.GetGame().NextPlayer();
 			SetPlayer(view.GetGame().GetOnTurn());
 			view.DrawAll();
 		}
 	}
+	
+	@Override
+	public void SetTomb() {}
 }

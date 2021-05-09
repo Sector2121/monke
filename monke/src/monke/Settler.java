@@ -160,6 +160,9 @@ public class Settler extends Creature{
 		asteroid.Remove(this);
 		game.RemoveSettler(this);
 		v.RemoveDrawable(this.GetView());
+		this.GetView().SetTomb();
+		if(!game.CheckSettlerLifeLines())
+			game.EndGame();
 		System.out.println("R.I.P. " + GetName());
 	}
 	/**

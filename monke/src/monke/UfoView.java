@@ -29,4 +29,9 @@ public class UfoView implements Drawable {
 		label.setBounds(x - 10, y - 15, 30, 30);
 		v.add(label);
 	}
+	
+	@Override
+	public void SetTomb() {
+		label.setIcon(new ImageIcon("tombstone.png"));
+	}
 }

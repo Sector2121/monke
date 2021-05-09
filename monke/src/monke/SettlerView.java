@@ -35,6 +35,11 @@ public class SettlerView implements Drawable{
 			label = pictures[4];
 	}
 	
+	public void SetTomb() {
+		label.setBounds(x + 10, y - 10, 30, 30);
+		label.setIcon(new ImageIcon("tombstone.png"));
+	}
+	
 	@Override
 	public void SetCoord(Asteroid a) {
 		x = a.GetView().GetX();

@@ -55,6 +55,7 @@ public class Robot extends Creature{
 		asteroid.Remove(this);
 		game.RemoveRobot(this);
 		v.RemoveDrawable(this.GetView());
+		this.GetView().SetTomb();
 		System.out.println("R.I.P. " + GetName());
 	}
 	/**

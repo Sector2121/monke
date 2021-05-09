@@ -17,6 +17,7 @@ public class Game {
 	private View view;
 	private Settler onTurn;
 	private int whichPlayer;
+	private int robotCount = 1;
 	/**
 	 * Konstruktor.
 	 */
@@ -144,14 +145,25 @@ public class Game {
 		Play();
 	}
 	
+	public int GetRobotCount() {
+		return robotCount;
+	}
+	
+	public void AddRobotCount() {
+		robotCount++;
+	}
+	
 	public void NextPlayer() { 
-		if(whichPlayer == settlers.size()-1) {
-			whichPlayer = -1;
-			Step();
+		if(settlers.size() > 0) {
+			if(whichPlayer >= settlers.size()-1) {
+				whichPlayer = -1;
+				Step();
+			}
+				
+			onTurn = settlers.get(++whichPlayer);
+			view.GetGUI().SetPlayer(onTurn);
 		}
-			
-		onTurn = settlers.get(++whichPlayer);
-		view.GetGUI().SetPlayer(onTurn);
+		
 	}
 	
 	public void Play() {
@@ -309,11 +321,11 @@ public class Game {
 	 * @return Ha nem el tobb settler, akkor false-t ad, ha meg el valaki akkor true.
 	 */
 	public boolean CheckSettlerLifeLines() {
-		if(settlers.isEmpty() == true) {
-			return false;
+		if(settlers.size() > 0) {
+			return true;
 		}
 		else {
-			return true;
+			return false;
 		}
 	}
 	/**
@@ -328,6 +340,7 @@ public class Game {
 		else {
 			System.out.println("A jateknak vege, a telepesek veszitettek!");
 		}
+		view.dispose();
 	}
 	/**
 	 * Jatek elinditasa.

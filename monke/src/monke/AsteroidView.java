@@ -44,4 +44,7 @@ public class AsteroidView implements Drawable{
 	@Override
 	public void SetCoord(Asteroid a) {}
 	
+	@Override
+	public void SetTomb() {}
+	
 }
