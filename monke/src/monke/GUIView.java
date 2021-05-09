@@ -119,7 +119,7 @@ public class GUIView implements Drawable{
 		
 		Iron ir = new Iron();
 		Carbon ca = new Carbon();
-		Uranium ur = new Uranium();
+		Uranium ur = new Uranium(0);
 		Waterice wi = new Waterice();
 		int irc = 0;
 		int cac = 0;
@@ -342,7 +342,14 @@ public class GUIView implements Drawable{
 						placed = s.PlaceResource(new Carbon());
 					}
 					else if(x > 520 && x < 640 && y > 720 && y < 810) {
-						placed = s.PlaceResource(new Uranium());
+						Uranium u = new Uranium(0);
+						for(Resource r : s.GetResources()) {
+							if(r.getClass() == u.getClass()) {
+								u = (Uranium)r;
+								break;
+							}
+						}
+						placed = s.PlaceResource(u);
 					}
 					else if(x > 640 && x < 760 && y > 720 && y < 810) {
 						placed = s.PlaceResource(new Waterice());

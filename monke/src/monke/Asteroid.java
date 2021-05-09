@@ -45,6 +45,10 @@ public class Asteroid implements Travel{
 		bill = new BillOfResources();
 	}
 	
+	/**
+	 * Megnezi, hogy van-e osszesen minden nyersanyagbol harom az aszteroidan levo telepeseknel.
+	 * Ha a telepesek osszegyujtottek eleg nyersanyagot, meghivja az EndGame()-et.
+	 */
 	public boolean CheckWin() {
 		if(creatures.size() > 0) {
 			ArrayList<Resource> resources = new ArrayList<>();
@@ -252,23 +256,7 @@ public class Asteroid implements Travel{
 		v.RemoveDrawable(aview);
 		aview.SetExploded();
 	}
-	/**
-	 * Megnezi, hogy van-e osszesen minden nyersanyagbol harom az aszteroidan levo telepeseknel.
-	 * Ha a telepesek osszegyujtottek eleg nyersanyagot, meghivja az EndGame()-et.
-	 */
-	public void CheckEnoughResources() {
-		ArrayList<Resource> all = new ArrayList<>();
-		for(Creature c : creatures) {
-			if(c.GetResources() != null) {
-				for(Resource r : c.GetResources()) {
-					all.add(r);
-				}
-			}
-		}
-		if(bill.CheckResource(all, "Base")) {
-			game.EndGame();
-		}
-	}
+	
 	/**
 	 * Teleport elfogadasa.
 	 */

@@ -38,6 +38,8 @@ public class Settler extends Creature{
 		this.SetName(name);
 		this.asteroid = null;
 		game.AddSettler(this);
+		
+		resources.add(new Uranium(0));
 	}
 	
 	public Drawable GetView() {
@@ -62,7 +64,6 @@ public class Settler extends Creature{
 			AddResource(asteroid.GetResource());
 			asteroid.SetResource(null);
 			asteroid.SetIsEmpty(true);
-			asteroid.CheckEnoughResources();
 			return true;
 		}
 		return false;
@@ -99,9 +100,7 @@ public class Settler extends Creature{
 		if(asteroid.GetLayers() == 0 && asteroid.GetIsEmpty()) {
 			if(CheckResource(r)) {
 				asteroid.SetResource(r);
-				ArrayList<Resource> re = new ArrayList<>();
-				re.add(r);
-				RemoveResource(re);
+				resources.remove(r);
 				return true;
 			}
 		}

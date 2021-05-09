@@ -19,7 +19,7 @@ public class BillOfResources {
 		Iron i = new Iron();
 		Carbon c = new Carbon();
 		Waterice w = new Waterice();
-		Uranium u = new Uranium();
+		Uranium u = new Uranium(0);
 		this.billOfTpk.add(i);
 		this.billOfTpk.add(i);
 		this.billOfTpk.add(w);
