@@ -18,10 +18,12 @@ public class Game {
 	private Settler onTurn;
 	private int whichPlayer;
 	private int robotCount = 1;
+	private boolean inGame;
 	/**
 	 * Konstruktor.
 	 */
 	public Game(String img, ArrayList<String> players){
+		inGame = true;
 		whichPlayer = 0;
 		sun = new Sun();
 		asteroids = new ArrayList<>();
@@ -50,30 +52,26 @@ public class Game {
 				y += incy;
 			}
 			int r = rand.nextInt(5);
-			Iron ir = new Iron();
-			Carbon c = new Carbon();
-			Uranium u = new Uranium();
-			Waterice w = new Waterice();
 			if(r == 0) {
-				Asteroid temp = new Asteroid(this, i, ir, x, y, view);
+				Asteroid temp = new Asteroid(this, i, new Iron(), x, y, view);
 				asteroids.add(temp);
 				view.AddDrawable(temp.GetView());
 			}
 				
 			else if(r == 1) {
-				Asteroid temp = new Asteroid(this, i, c, x, y, view);
+				Asteroid temp = new Asteroid(this, i, new Carbon(), x, y, view);
 				asteroids.add(temp);
 				view.AddDrawable(temp.GetView());
 			}
 				
 			else if(r == 2) {
-				Asteroid temp = new Asteroid(this, i, u, x, y, view);
+				Asteroid temp = new Asteroid(this, i, new Uranium(), x, y, view);
 				asteroids.add(temp);
 				view.AddDrawable(temp.GetView());
 			}
 				
 			else if(r == 3) {
-				Asteroid temp = new Asteroid(this, i, w, x, y, view);
+				Asteroid temp = new Asteroid(this, i, new Waterice(), x, y, view);
 				asteroids.add(temp);
 				view.AddDrawable(temp.GetView());
 			}
@@ -142,7 +140,10 @@ public class Game {
 		}
 		view.SetPlayer(settlers.get(0));
 		view.DrawAll();	
-		Play();
+	}
+	
+	public boolean GetInGame() {
+		return inGame;
 	}
 	
 	public int GetRobotCount() {
@@ -157,34 +158,15 @@ public class Game {
 		if(settlers.size() > 0) {
 			if(whichPlayer >= settlers.size()-1) {
 				whichPlayer = -1;
+				onTurn = settlers.get(++whichPlayer);
+				view.GetGUI().SetPlayer(onTurn);
 				Step();
 			}
-				
-			onTurn = settlers.get(++whichPlayer);
-			view.GetGUI().SetPlayer(onTurn);
+			else {
+				onTurn = settlers.get(++whichPlayer);
+				view.GetGUI().SetPlayer(onTurn);
+			}
 		}
-		
-	}
-	
-	public void Play() {
-		//while(true) {
-			/*for(int i=0;i<settlers.size();i++) {
-				if(settlers.get(i) == null)
-					continue;
-				boolean finished = false;
-				onTurn = settlers.get(i);
-				whichPlayer = i;*/
-				//while(!finished) {
-					//view.GetGUI().SetPlayer(onTurn);				
-					//finished = true;
-				//}
-				/*view.DrawAll();
-				continue;*/
-			//}
-			//Step();
-			//if(settlers.size() == 0);
-				//break;
-		//}
 	}
 	
 	public Settler GetOnTurn() {
@@ -214,12 +196,15 @@ public class Game {
 	public void Step() {
 		view.GetGUI().SetPlayer(onTurn);
 		System.out.println("Next round!");
-		for(Robot r : robots)
-			r.Step();
-		for(Ufo u : ufos)
-			u.Step();
-		for(Teleport t : teleports)
-			t.Step();
+		if(robots.size() > 0)
+			for(Robot r : robots)
+				r.Step();
+		if(ufos.size() > 0)
+			for(Ufo u : ufos)
+				u.Step();
+		if(teleports.size() > 0)
+			for(Teleport t : teleports)
+				t.Step();
 		boolean stillinside = true;
 		int j = 0;
 		int p;
@@ -238,6 +223,7 @@ public class Game {
 				j++;
 			}
 		}
+		sun.Step();
 	}
 	/**
 	 * Hozzaad a jatekhoz egy teleportot.
@@ -328,19 +314,33 @@ public class Game {
 			return false;
 		}
 	}
+	
+	public boolean CheckWin() {
+		if(asteroids.size() > 0) {
+			for(Asteroid a : asteroids) {
+				if(a.CheckWin()) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
 	/**
 	 * Jatek befejezese.
 	 * Meghivodott ez a fuggveny es meg elnek telepesek, igy nyertek.
 	 * Meghivodott ez a fuggveny es nem elnek mar telepesek, igy vesztettek.
 	 */
 	public void EndGame() {
+		inGame = false;
 		if(CheckSettlerLifeLines() == true) {
 			System.out.println("A jateknak vege, a telepesek nyertek!");
+			view.Win();
 		}
 		else {
 			System.out.println("A jateknak vege, a telepesek veszitettek!");
+			view.Lose();
 		}
-		view.dispose();
 	}
 	/**
 	 * Jatek elinditasa.

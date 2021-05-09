@@ -14,6 +14,7 @@ public class Ufo extends Creature{
 		this.view = new UfoView(x, y, view);
 		this.SetName(name);
 		game.AddUfo(this);
+		this.game = game;
 	}
 	
 	public Drawable GetView() {
@@ -34,7 +35,7 @@ public class Ufo extends Creature{
 		asteroid.Remove(this);
 		game.RemoveUfo(this);
 		v.RemoveDrawable(this.GetView());
-		this.GetView().SetTomb();
+		view.SetTomb();
 		System.out.println("R.I.P. " + GetName());
 	}
 	

@@ -3,6 +3,7 @@ package monke;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -50,6 +51,22 @@ public class View extends JFrame{
 	
 	public GUIView GetGUI() {
 		return gui;
+	}
+	
+	public void Win() {
+		JLabel win = new JLabel("You won!");
+		win.setFont(new Font("Serif", Font.PLAIN, 50));
+		win.setForeground(Color.white);
+		win.setBounds(800,500,300,50);
+		this.add(win);
+	}
+	
+	public void Lose() {
+		JLabel lose = new JLabel("You lost!");
+		lose.setFont(new Font("Serif", Font.PLAIN, 50));
+		lose.setForeground(Color.white);
+		lose.setBounds(800,500,300,50);
+		this.add(lose);
 	}
 	
 	public void DrawAll() {

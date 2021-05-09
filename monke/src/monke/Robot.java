@@ -19,6 +19,7 @@ public class Robot extends Creature{
 		SetAsteroid(a);
 		a.Accept(this);
 		game.AddRobot(this);
+		this.game = game;
 	}
 	
 	public Drawable GetView() {
@@ -55,7 +56,7 @@ public class Robot extends Creature{
 		asteroid.Remove(this);
 		game.RemoveRobot(this);
 		v.RemoveDrawable(this.GetView());
-		this.GetView().SetTomb();
+		view.SetTomb();
 		System.out.println("R.I.P. " + GetName());
 	}
 	/**

@@ -38,6 +38,13 @@ public class Settler extends Creature{
 		this.SetName(name);
 		this.asteroid = null;
 		game.AddSettler(this);
+		
+		//teszteléshez
+		//resources.add(new Iron());
+		resources.add(new Iron());
+		resources.add(new Waterice());
+		resources.add(new Uranium());
+		resources.add(new Carbon());
 	}
 	
 	public Drawable GetView() {
@@ -97,16 +104,11 @@ public class Settler extends Creature{
 	 */
 	public boolean PlaceResource(Resource r) {
 		if(asteroid.GetLayers() == 0 && asteroid.GetIsEmpty()) {
-			boolean hasr = CheckResource(r);
-			if(hasr == true) {
+			if(CheckResource(r)) {
 				asteroid.SetResource(r);
-				if(asteroid.GetCloseToSun())
-					r.CloseToSun(asteroid);
 				ArrayList<Resource> re = new ArrayList<>();
 				re.add(r);
 				RemoveResource(re);
-				if(asteroid.GetCloseToSun())
-					r.CloseToSun(asteroid);
 				return true;
 			}
 		}
@@ -160,7 +162,7 @@ public class Settler extends Creature{
 		asteroid.Remove(this);
 		game.RemoveSettler(this);
 		v.RemoveDrawable(this.GetView());
-		this.GetView().SetTomb();
+		view.SetTomb();
 		if(!game.CheckSettlerLifeLines())
 			game.EndGame();
 		System.out.println("R.I.P. " + GetName());

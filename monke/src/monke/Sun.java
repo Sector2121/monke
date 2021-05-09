@@ -30,16 +30,26 @@ public class Sun {
 	 * Torli az eddigi aszteroidat a listarol.
 	 */
 	public void GetNewAsteroids() {
-		for(Asteroid a : asteroids) {
-			if(a.GetWeather() == "hot") {
+		/*for(Asteroid a : asteroids) {
+			if(a.GetWeather().equals("hot")) {
 				for(Travel t : a.GetNeighbors()) {
-					if(t.GetWeather() != "hot") {
+					if(t.GetWeather() != "hot" && t.GetWeather() != null) {
 						t.SetWeather("hot");
 						a.SetWeather("normal");
 						break;
 					}
 				}
 			}
+		}*/
+		for(Asteroid a : asteroids) {
+			SetNormal(a);
+		}
+		Random rand = new Random();
+		int r;
+		for(Asteroid a : asteroids) {
+			r = rand.nextInt(4);
+			if(r == 0)
+				SetHot(a);
 		}
 	}
 	
@@ -97,10 +107,10 @@ public class Sun {
 		else {
 			Random rand = new Random();
 			int sz = rand.nextInt(100);
-			if(sz <= 10) {
+			if(sz < 10) {
 				sunStormNextRound = true;
 				for(Asteroid a : asteroids) {
-					if(a.GetWeather() == "hot")
+					if(a.GetWeather().equals("hot"))
 					{
 						SetCritical(a);
 					}

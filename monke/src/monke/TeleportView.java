@@ -20,7 +20,7 @@ public class TeleportView implements Drawable {
 	
 	@Override
 	public void Draw() {
-		label.setBounds(x + 10, y - 10, 30, 30);
+		label.setBounds(x + 10, y + 40, 30, 30);
 		v.add(label);
 	}
 

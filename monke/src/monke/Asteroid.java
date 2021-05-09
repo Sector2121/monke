@@ -15,6 +15,7 @@ public class Asteroid implements Travel{
 	private ArrayList<Travel> neighbors;
 	private static BillOfResources bill;
 	private AsteroidView aview;
+	private View v;
 	/**
 	 * Konstruktor.
 	 * @param g
@@ -22,6 +23,7 @@ public class Asteroid implements Travel{
 	 * @param r
 	 */
 	public Asteroid(Game g, int id, Resource r, int x, int y, View view) {
+		v = view;
 		aview = new AsteroidView(x,y,view);
 		game = g;
 		this.id = id;
@@ -30,9 +32,9 @@ public class Asteroid implements Travel{
 		closeToSun = false;
 		int ra = rand.nextInt(4);
 		if(ra == 0)
-			weather = "hot";
+			SetWeather("hot");
 		else
-			weather = "normal";
+			SetWeather("normal");
 		if(r == null)
 			isEmpty = true;
 		else
@@ -41,6 +43,19 @@ public class Asteroid implements Travel{
 		resource = r;
 		neighbors = new ArrayList<Travel>();
 		bill = new BillOfResources();
+	}
+	
+	public boolean CheckWin() {
+		if(creatures.size() > 0) {
+			ArrayList<Resource> resources = new ArrayList<>();
+			for(Creature c : creatures) {
+				if(c.GetResources() != null) {
+					resources.addAll(c.GetResources());
+				}
+			}
+			return bill.CheckResource(resources, "Base");
+		}
+		return false;
 	}
 	
 	public AsteroidView GetView() {
@@ -131,6 +146,10 @@ public class Asteroid implements Travel{
 	 */
 	public void SetWeather(String w) {
 		weather = w;
+		if(w.equals("normal"))
+			closeToSun = false;
+		else 
+			closeToSun = true;
 	}
 	/**
 	 * Visszaadja a szomszedos aszteroidak es teleportok listajat
@@ -178,12 +197,7 @@ public class Asteroid implements Travel{
 	 * Ha epp napkozelben van, akkor meghivja a resource CloseToSun fuggvenyet.
 	 */
 	public boolean ReduceLayers() {
-		if(layers == 1 && closeToSun) {
-			layers--;
-			resource.CloseToSun(this);
-			return true;
-		}
-		else if(layers > 0){
+		if(layers > 0){
 			layers--;
 			return true;
 		}
@@ -227,7 +241,7 @@ public class Asteroid implements Travel{
 		if(neighbors != null)
 			for(Travel t : neighbors)
 				t.RemoveNeighbor(this);
-		int count=0;
+		int count = 0;
 		for(Asteroid a : game.GetAsteroid()) {
 			count++;
 			if(a.GetId() == this.GetId()) {
@@ -235,6 +249,8 @@ public class Asteroid implements Travel{
 				break;
 			}
 		}
+		v.RemoveDrawable(aview);
+		aview.SetExploded();
 	}
 	/**
 	 * Megnezi, hogy van-e osszesen minden nyersanyagbol harom az aszteroidan levo telepeseknel.
@@ -274,54 +290,6 @@ public class Asteroid implements Travel{
 	 */
 	@Override
 	public void SetIsMoving() {}
-	
-	//Innentõl minden új
-	/*public void GetOtherCreaturesName(Creature ask) {
-		String seged = new String();
-		seged = "Other creatures on your asteroid: ";
-		System.out.print("Other creatures on your asteroid: ");
-		for (Creature c : creatures) {
-			if(!c.GetName().equals(ask.GetName())) {
-				System.out.print(c.GetName()+" ");
-				seged = seged + c.GetName()+" ";
-			}
-		}
-		System.out.println();
-	}
-	
-	public void GetCreaturesName() {
-		String seged = new String();
-		seged = "Creatures: ";
-		System.out.print("Creatures: ");
-		for (Creature c : creatures) {
-			System.out.print(c.GetName()+" ");
-			seged = seged + c.GetName()+" ";
-		}
-		System.out.println();
-	}
-	
-	public void GetResourceName() {
-		if(layers == 0) {
-			if(resource != null) {
-				System.out.println(resource.GetName());
-			}
-			else {
-				System.out.println("Core: empty");
-			}
-		}
-		else {
-			System.out.println("Core: unknown");
-		}
-	}
-	
-	public void GetResourceNameForSure() {
-		if(resource != null) {
-			System.out.println("Resource: " + resource.GetName());
-		}
-		else {
-			System.out.println("Resource: empty");
-		}
-	}*/
 	
 	@Override
 	public void PrintNeighbor() {

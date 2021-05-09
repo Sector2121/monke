@@ -33,6 +33,10 @@ public class AsteroidView implements Drawable{
 		else
 			label.setIcon(new ImageIcon("asteroid2.png"));
 	}
+	
+	public void SetExploded() {
+		label.setIcon(new ImageIcon("explosion.png"));
+	}
 
 	@Override
 	public void Draw() {
