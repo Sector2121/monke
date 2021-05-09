@@ -119,17 +119,17 @@ public class Game {
 			Settler temps = new Settler(this, players.get(i), x0, y0, view, playerimg);
 			view.AddDrawable(temps.GetView());
 			
-			/*int j = i + 1;
+			int j = i + 1;
 			String ufoname = "Ufo-" + j;
 			Ufo tempu = new Ufo(this, ufoname, x1, y1, view);
-			view.AddDrawable(tempu.GetView());*/
+			view.AddDrawable(tempu.GetView());
 		}
 		onTurn = settlers.get(0);
 		whichPlayer = 0;
 		
 		for(int i=0;i<settlers.size();i++) {
 			asteroids.get(0).Accept(settlers.get(i));
-			//asteroids.get(asteroidCount-1).Accept(ufos.get(i));
+			asteroids.get(asteroidCount-1).Accept(ufos.get(i));
 		}
 		
 

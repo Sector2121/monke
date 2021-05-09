@@ -38,8 +38,6 @@ public class Settler extends Creature{
 		this.SetName(name);
 		this.asteroid = null;
 		game.AddSettler(this);
-		
-		resources.add(new Uranium(0));
 	}
 	
 	public Drawable GetView() {
