@@ -38,10 +38,10 @@ public class Game {
 	}
 	
 	public void Init(){
-		int asteroidCount = players.size() * 4;
-		double inc = (double)(240 / (double)((double)players.size() * 0.2));
+		int asteroidCount = players.size() * 6;
+		double inc = (double)(240 / (double)((double)players.size() * 1.5 * 0.2));
 		if(inc < 60) inc = 60;
-		double incy = 200;
+		double incy = 190;
 		Random rand = new Random();
 		int x=0;
 		int y=40;
@@ -334,11 +334,9 @@ public class Game {
 	public void EndGame() {
 		inGame = false;
 		if(CheckSettlerLifeLines() == true) {
-			System.out.println("A jateknak vege, a telepesek nyertek!");
 			view.Win();
 		}
 		else {
-			System.out.println("A jateknak vege, a telepesek veszitettek!");
 			view.Lose();
 		}
 	}
@@ -346,14 +344,5 @@ public class Game {
 	 * Jatek elinditasa.
 	 */
 	public void Start() {}
-	
-	//Ez új
-	public void Reset() {
-		System.out.println("Reset was successfull!");
-		asteroids.clear();
-		settlers.clear();
-		ufos.clear();
-		robots.clear();
-		teleports.clear();
-	}
+
 }

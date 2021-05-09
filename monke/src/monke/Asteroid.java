@@ -225,10 +225,10 @@ public class Asteroid implements Travel{
 			if(creatures != null)
 				while(creatures.size() > 0)
 					creatures.get(0).Die();
-			if(neighbors != null)
-				for(Travel t : neighbors)
-					t.SetIsMoving();
 		}
+		if(neighbors != null)
+			for(Travel t : neighbors)
+				t.SetIsMoving();
 	}
 	/**
 	 * Felrobban az aszteroida.
@@ -276,6 +276,7 @@ public class Asteroid implements Travel{
 	public void AcceptTeleport(Teleport t) {
 		t.SetAsteroid(this);
 		AddNewNeighbor(t);
+		t.GetView().SetCoord(this);
 	}
 	/**
 	 * Elfogadja a ralepo entitast.

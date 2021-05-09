@@ -45,9 +45,10 @@ public class Robot extends Creature{
 			ArrayList<Travel> neighbors = asteroid.GetNeighbors();
 			Random rand = new Random();
 			int r = 0;
-			if(neighbors.size() > 0)
+			if(neighbors.size() > 0) {
 				r = rand.nextInt(neighbors.size()-1);
 				Move(neighbors.get(r));
+			}
 		}
 	}
 	

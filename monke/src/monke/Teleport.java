@@ -100,6 +100,8 @@ public class Teleport implements Travel{
 			Random rand = new Random();
 			ArrayList<Travel> neighbors = asteroid.GetNeighbors();
 			Travel t = neighbors.get(rand.nextInt(neighbors.size()));
+			while(t.GetOtherAsteroid() == this.GetOtherAsteroid())
+				t = neighbors.get(rand.nextInt(neighbors.size()));
 			Move(t);
 		}
 	}
@@ -149,7 +151,9 @@ public class Teleport implements Travel{
 	
 	@Override
 	public Asteroid GetOtherAsteroid() {
-		return pair.GetAsteroid();
+		if(pair != null)
+			return pair.GetAsteroid();
+		return null;
 	}
 	
 	@Override

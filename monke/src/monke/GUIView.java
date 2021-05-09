@@ -255,13 +255,16 @@ public class GUIView implements Drawable{
 					int y = e.getY();
 					
 					for(Travel t : s.GetAsteroid().GetNeighbors()) {
-						int asx = t.GetOtherAsteroid().GetView().GetX() + 50;
-						int asy = t.GetOtherAsteroid().GetView().GetY() + 50;
-						if(x <= asx + 40 && x >= asx -40 && y <= asy + 40 && y >= asy - 40) {
+						if(t.GetOtherAsteroid() != null) {
+							int asx = t.GetOtherAsteroid().GetView().GetX() + 50;
+							int asy = t.GetOtherAsteroid().GetView().GetY() + 50;
+							if(x <= asx + 40 && x >= asx -40 && y <= asy + 40 && y >= asy - 40) {
 							SetGrayAsteroids();
 							moved = s.Move(t);
 							break;
+							}
 						}
+						
 					}
 				}
 				inMove = false;

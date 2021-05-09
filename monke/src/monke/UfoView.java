@@ -32,6 +32,6 @@ public class UfoView implements Drawable {
 	
 	@Override
 	public void SetTomb() {
-		label.setIcon(new ImageIcon("tombstone.png"));
+		label.setIcon(new ImageIcon("semmi.png"));
 	}
 }
