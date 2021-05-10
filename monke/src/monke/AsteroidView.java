@@ -27,6 +27,10 @@ public class AsteroidView implements Drawable{
 		label.setIcon(new ImageIcon("asteroid.png"));	
 	}
 	
+	/**
+	 * Beállítja az aszeroida képét (szürke vagy sárga kör)
+	 * @param id
+	 */
 	public void SetColor(int id) {
 		if(id == 0)
 			label.setIcon(new ImageIcon("asteroid.png"));
@@ -34,10 +38,16 @@ public class AsteroidView implements Drawable{
 			label.setIcon(new ImageIcon("asteroid2.png"));
 	}
 	
+	/**
+	 * Beállítja az aszeroida képét egy robbanásra
+	 */
 	public void SetExploded() {
 		label.setIcon(new ImageIcon("explosion.png"));
 	}
 
+	/**
+	 * Kirajzolja az aszeroidát
+	 */
 	@Override
 	public void Draw() {
 		v.remove(label);
