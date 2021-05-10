@@ -22,14 +22,23 @@ public class Options extends JFrame{
 	private JTextField name;
 	private JLabel l2;
 	
+	/**
+	*Visszadja a jatekosok listajat
+	*/
 	public ArrayList<String> GetPlayers() {
 		return players;
 	}
 	
+	/**
+	*Play gomb lenyomasa utan az eger altal bekovetkezett esemenyert felelos osztaly.
+	*/
 	public String GetSelectedImage() {
 		return selectedimg;
 	}
 	
+	/**
+	*Konstruktor
+	*/
 	public Options(){
 		images[0] = "Boba-feta";
 		images[1] = "Darth Vader";
@@ -80,6 +89,9 @@ public class Options extends JFrame{
 		this.setVisible(true);
 	}
 	
+	/**
+	*Ok gomb lenyomasa altal bekovetkezett esemenyert felelos osztaly.
+	*/
 	private class OkButtonActionListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			selectedimg = (String)imgs.getSelectedItem();
@@ -87,6 +99,9 @@ public class Options extends JFrame{
 		}
 	}
 	
+	/**
+	*Add gomb lenyomasa altal bekovetkezett esemenyert felelos osztaly.
+	*/
 	private class AddButtonActionListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			if(!name.getText().equals("")) {

@@ -3,11 +3,11 @@ package monke;
 public class Uranium extends Resource{
 	
 	private int exposedCount = 0;
+	
 	/**
 	 * Napkozelseg eseten az uran miatt felrobban az aszteroida.
 	 * Meghivodik az aszteroidara a felrobban fuggveny.
 	 */
-	
 	public Uranium(int c) {
 		exposedCount = c;
 	}

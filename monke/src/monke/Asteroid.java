@@ -65,7 +65,7 @@ public class Asteroid implements Travel{
 	public AsteroidView GetView() {
 		return aview;
 	}
-	
+
 	public void Step() {
 		if(closeToSun && layers == 0 && resource != null) {
 			resource.CloseToSun(this);

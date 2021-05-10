@@ -10,7 +10,12 @@ public class Robot extends Creature{
 	private Random rand = new Random();
 	/**
 	 * Konstruktor.
+	 * @param game
 	 * @param a
+	 * @param name
+	 * @param x
+	 * @param gamy
+	 * @param view
 	 */
 	public Robot(Game game, Asteroid a, String name, int x, int y, View view) {
 		v = view;
@@ -22,6 +27,9 @@ public class Robot extends Creature{
 		this.game = game;
 	}
 	
+	/**
+	*Visszadja a kirajzolashoz szukseges interfeszt.
+	*/
 	public Drawable GetView() {
 		return view;
 	}
@@ -32,6 +40,7 @@ public class Robot extends Creature{
 	public void Drill() {
 		asteroid.ReduceLayers();
 	}
+	
 	/**
 	*A robot lep.
 	*Ha az aszteroidanak nincs kopenye akkor a robot atlep egy masik aszteroidara.
@@ -52,6 +61,9 @@ public class Robot extends Creature{
 		}
 	}
 	
+	/**
+	*A robot meghal.
+	*/
 	@Override
 	public void Die() {
 		asteroid.Remove(this);
@@ -59,6 +71,7 @@ public class Robot extends Creature{
 		v.RemoveDrawable(this.GetView());
 		view.SetTomb();
 	}
+	
 	/**
 	*A robot aszteroidaja felrobban.
 	*Ha az aszteroidanak nincs szomszedja, a robot meghal.

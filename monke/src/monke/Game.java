@@ -37,6 +37,9 @@ public class Game {
 		Init();
 	}
 	
+	/**
+	 * Inicializalja a jatekot.
+	 */
 	public void Init(){
 		int asteroidCount = players.size() * 6;
 		double inc = (double)(240 / (double)((double)players.size() * 1.5 * 0.2));
@@ -141,19 +144,32 @@ public class Game {
 		view.SetPlayer(settlers.get(0));
 		view.DrawAll();	
 	}
-	
+	/**
+	 * Visszadja, hogy jatekban vagyunk-e
+	 * @return inGame
+	 */
 	public boolean GetInGame() {
 		return inGame;
 	}
 	
+	/**
+	 * Visszadja a robotok szamat.
+	 * @return robotCount
+	 */
 	public int GetRobotCount() {
 		return robotCount;
 	}
 	
+	/**
+	 * Eggyel egnöveli a robotok szamat.
+	 */
 	public void AddRobotCount() {
 		robotCount++;
 	}
 	
+	/**
+	 * Következõ jatekost allitja be.
+	 */
 	public void NextPlayer() { 
 		if(settlers.size() > 0) {
 			if(whichPlayer >= settlers.size()-1) {
@@ -169,18 +185,41 @@ public class Game {
 		}
 	}
 	
+	/**
+	 * Visszadja, hogy a telepes van-e soron.
+	 * @return onTurn
+	 */
 	public Settler GetOnTurn() {
 		return onTurn;
 	}
 	
+	/**
+	 * Visszadja az ufok listajat.
+	 * @return ufos
+	 */
 	public ArrayList<Ufo> GetUfos() {
 		return ufos;
 	}
 	
+	/**
+	 * Visszadja a Napot.
+	 * @return sun
+	 */
 	public Sun GetSun() {
 		return sun;
 	}
 	
+	/**
+	 * Hozzad egy aszteroidat a jatekhoz.
+	 * @param a
+	 */
+	public void AddAsteroid(Asteroid a) {
+		asteroids.add(a);
+	}
+	
+	/**
+	 * Meghivja a napvihart.
+	 */
 	public void SunStorm() {
 		sun.SunStorm();
 	}
@@ -219,6 +258,7 @@ public class Game {
 		}
 		sun.Step();
 	}
+	
 	/**
 	 * Hozzaad a jatekhoz egy teleportot.
 	 * @param t
@@ -226,6 +266,7 @@ public class Game {
 	public void AddTeleport(Teleport t) {
 		teleports.add(t);
 	}
+	
 	/**
 	 * Hozzaad a jatekhoz egy robotot.
 	 * @param r
@@ -233,6 +274,7 @@ public class Game {
 	public void AddRobot(Robot r) {
 		robots.add(r);
 	}
+	
 	/**
 	 * Hozzaad a jatekhoz egy ufot.
 	 * @param u
@@ -240,6 +282,7 @@ public class Game {
 	public void AddUfo(Ufo u) {
 		ufos.add(u);
 	}
+	
 	/**
 	 * Hozzaad a jatekhoz egy settlert.
 	 * @param s
@@ -247,6 +290,7 @@ public class Game {
 	public void AddSettler(Settler s) {
 		settlers.add(s);
 	}
+	
 	/**
 	 * Visszaadja a jatek settlereinek listajat.
 	 * @return Jatek settler listaja.
@@ -254,6 +298,7 @@ public class Game {
 	public ArrayList<Settler> GetSettlers() {
 		return this.settlers;
 	}
+	
 	/**
 	 * Visszaadja a jatek aszteroidainak listajat.
 	 * @return Jatek aszteroida listaja.
@@ -261,6 +306,7 @@ public class Game {
 	public ArrayList<Asteroid> GetAsteroid() {
 		return this.asteroids;
 	}
+	
 	/**
 	 * Eltavolitja a kapott aszteroidat a jatekbol.
 	 * @param a
@@ -268,6 +314,7 @@ public class Game {
 	public void RemoveAsteroid(Asteroid a) {
 		asteroids.remove(a);
 	}
+	
 	/**
 	 * Eltavolitja a kapott teleportot a jatekbol.
 	 * @param t
@@ -275,6 +322,7 @@ public class Game {
 	public void RemoveTeleport(Teleport t) {
 		teleports.remove(t);
 	}
+	
 	/**
 	 * Eltavolitja a kapott settler-t a jatekbol.
 	 * @param s
@@ -282,6 +330,7 @@ public class Game {
 	public void RemoveSettler(Settler s) {
 		settlers.remove(s);
 	}
+	
 	/**
 	 * Eltavolitja a kapott robotot a jatekbol.
 	 * @param r
@@ -289,6 +338,7 @@ public class Game {
 	public void RemoveRobot(Robot r) {
 		robots.remove(r);
 	}
+	
 	/**
 	 * Eltavolitja a kapott ufot a jatekbol.
 	 * @param u
@@ -296,6 +346,7 @@ public class Game {
 	public void RemoveUfo(Ufo u) {
 		ufos.remove(u);
 	}
+	
 	/**
 	 * Ellenorzi, hogy el-e meg settler.
 	 * @return Ha nem el tobb settler, akkor false-t ad, ha meg el valaki akkor true.
@@ -309,6 +360,9 @@ public class Game {
 		}
 	}
 	
+	/**
+	 * Ellenorzi, hogy nyertunk-e.
+	 */
 	public boolean CheckWin() {
 		if(asteroids.size() > 0) {
 			for(Asteroid a : asteroids) {
@@ -334,9 +388,4 @@ public class Game {
 			view.Lose();
 		}
 	}
-	/**
-	 * Jatek elinditasa.
-	 */
-	public void Start() {}
-
 }

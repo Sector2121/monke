@@ -13,7 +13,11 @@ public class Teleport implements Travel{
 	
 	/**
 	 * Konstruktor.
+	 * @param GAme
 	 * @param id
+	 * @param x
+	 * @param y
+	 * @param view
 	 */
 	public Teleport(Game game, int id, int x, int y, View view) {
 		this.view = new TeleportView(x, y, view);
@@ -24,6 +28,10 @@ public class Teleport implements Travel{
 		isMoving = false;
 	}
 	
+	/**
+	 * Visszadja a nezete.
+	 * @return view
+	 */
 	public TeleportView GetView() {
 		return view;
 	}
@@ -31,6 +39,7 @@ public class Teleport implements Travel{
 	/**
 	 * Konstruktor.
 	 * @param id
+	 * @param p
 	 * @param p
 	 */
 	public Teleport(Game game, int id, Teleport p){
@@ -133,11 +142,19 @@ public class Teleport implements Travel{
 		game.RemoveTeleport(this);
 	}
 	
+	/**
+	 * Visszadja a homersekletet.
+	 */
 	@Override
 	public String GetWeather() {
 		return null;
 	}
 	
+	/**
+	 * Visszadja az aszteroidat amivel ossze van kotve.
+	 * @return ha ossze van kotve teleportkapuval akkor azt adja vissza, ha nem akkor nullt
+	 */
+
 	@Override
 	public Asteroid GetOtherAsteroid() {
 		if(pair != null)
@@ -145,6 +162,10 @@ public class Teleport implements Travel{
 		return null;
 	}
 	
+	/**
+	 * Beallitja a homersekletet.
+	 * @param w
+	 */
 	@Override
 	public void SetWeather(String w) {}
 	

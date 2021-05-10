@@ -205,6 +205,7 @@ public class Settler extends Creature{
 		}
 		return false;
 	}
+	
 	/**
 	 * Lerakja a parameter aszteroidara a listaja elso teleportjat.
 	 * Amennyiben nincs nala tpk, visszater.
@@ -225,7 +226,26 @@ public class Settler extends Creature{
 		hasTpk--;
 		return true;
 	}
-
+	
+	/**
+	 * Kilistazza a nyersanyagok neveit.
+	 */
+	public void ListAllResourceName() {
+		int ir = 0;
+		int car = 0;
+		int ur = 0;
+		int wa = 0;
+		for(Resource r : resources) {
+			if(r.GetName() == "iron")
+				ir++;
+			else if(r.GetName() == "carbon")
+				car++;
+			else if(r.GetName() == "uranium")
+				ur++;
+			else if(r.GetName() == "waterice")
+				wa++;
+		}
+	}
 	
 	public void SetResources(int sz) {
 		for(int i = 0; i < sz; i++) {
