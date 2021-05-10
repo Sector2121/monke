@@ -31,7 +31,5 @@ public interface Travel {
 	
 	public void SetWeather(String w);
 	
-	public void PrintNeighbor();
-	
 	public Asteroid GetOtherAsteroid();
 }

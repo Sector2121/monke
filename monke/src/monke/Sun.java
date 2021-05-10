@@ -23,24 +23,10 @@ public class Sun {
 	}
 	
 	/**
-	 * Beallitja az uj napkozeli aszteroidat.
-	 * Beallitja hot-ra.
-	 * Hozzaadja a megkapott aszteroidat a nap aszteroidaihoz (napkozeliekhez).
 	 * Visszaallitja az eddigit normal-ra.
-	 * Torli az eddigi aszteroidat a listarol.
+	 * Beallitja az uj napkozeli aszteroidat hot-ra.
 	 */
 	public void GetNewAsteroids() {
-		/*for(Asteroid a : asteroids) {
-			if(a.GetWeather().equals("hot")) {
-				for(Travel t : a.GetNeighbors()) {
-					if(t.GetWeather() != "hot" && t.GetWeather() != null) {
-						t.SetWeather("hot");
-						a.SetWeather("normal");
-						break;
-					}
-				}
-			}
-		}*/
 		for(Asteroid a : asteroids) {
 			SetNormal(a);
 		}
@@ -57,7 +43,6 @@ public class Sun {
 	 * Minden napkozeli aszteroidara meghivja a napvihart.
 	 */
 	public void SunStorm() {
-		System.out.println("Sunstorm started!");
 		for(Asteroid a : asteroids) {
 			if(a.GetWeather().equals("critical"))
 			{

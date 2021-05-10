@@ -36,7 +36,6 @@ public class Ufo extends Creature{
 		game.RemoveUfo(this);
 		v.RemoveDrawable(this.GetView());
 		view.SetTomb();
-		System.out.println("R.I.P. " + GetName());
 	}
 	
 	/**

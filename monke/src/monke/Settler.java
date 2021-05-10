@@ -79,7 +79,6 @@ public class Settler extends Creature{
 	 */
 	public void AddResource(Resource r) {
 		resources.add(r);
-		System.out.println("Settler resource added succesfully!");
 	}
 	/**
 	 * Visszaadja a nyersanyaglistat.
@@ -157,7 +156,6 @@ public class Settler extends Creature{
 		view.SetTomb();
 		if(!game.CheckSettlerLifeLines())
 			game.EndGame();
-		System.out.println("R.I.P. " + GetName());
 	}
 	/**
 	 * Megepit egy teleportkapu part, amiket behelyez a listajaba.
@@ -189,22 +187,6 @@ public class Settler extends Creature{
 		}
 		return false;
 	}
-	/**
-    * Megnoveli a teleport szamlalojat.
-    * Letrehoz ket teleportot, melyeket egymas parjanak allit, majd beleteszi a listajaba oket.
-    */
-   /*public void AddTeleport(){
-       hasTpk += 2;
-       
-       Teleport t = new Teleport(game, tpid);
-       tpid++;
-       Teleport t2 = new Teleport(game, tpid);
-       tpid++;
-       t.SetPair(t2);
-       t2.SetPair(t);
-       teleports.add(t);
-       teleports.add(t2);
-   }*/
 	/**
 	 * Megepit egy robotot, amit lehelyez az aszteroidajara.
 	 * Megnezi van-e eleg nyersanyaga egy robothoz a nyersanyaglista alapjan.
@@ -243,33 +225,13 @@ public class Settler extends Creature{
 		hasTpk--;
 		return true;
 	}
-	/**
-	 * Kilistazza a nyersanyagok neveit.
-	 */
-	public void ListAllResourceName() {
-		int ir = 0;
-		int car = 0;
-		int ur = 0;
-		int wa = 0;
-		for(Resource r : resources) {
-			if(r.GetName() == "iron")
-				ir++;
-			else if(r.GetName() == "carbon")
-				car++;
-			else if(r.GetName() == "uranium")
-				ur++;
-			else if(r.GetName() == "waterice")
-				wa++;
-		}
-		System.out.println("Resources: [Iron: " + ir + ", Carbon: " + car + ", Uranium: " + ur + ", Waterice: " + wa + "]");
-	}
+
 	
 	public void SetResources(int sz) {
 		for(int i = 0; i < sz; i++) {
 			Iron iron = new Iron();
 			resources.add(iron);
 		}
-		System.out.println("Settler resources set!");
 	}
 	
 	public int GetHasTpk() {

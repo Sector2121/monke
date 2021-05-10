@@ -58,7 +58,6 @@ public class Robot extends Creature{
 		game.RemoveRobot(this);
 		v.RemoveDrawable(this.GetView());
 		view.SetTomb();
-		System.out.println("R.I.P. " + GetName());
 	}
 	/**
 	*A robot aszteroidaja felrobban.

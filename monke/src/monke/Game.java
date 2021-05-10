@@ -181,11 +181,6 @@ public class Game {
 		return sun;
 	}
 	
-	public void AddAsteroid(Asteroid a) {
-		System.out.println("Asteroid added!");
-		asteroids.add(a);
-	}
-	
 	public void SunStorm() {
 		sun.SunStorm();
 	}
@@ -195,7 +190,6 @@ public class Game {
 	 */
 	public void Step() {
 		view.GetGUI().SetPlayer(onTurn);
-		System.out.println("Next round!");
 		if(robots.size() > 0)
 			for(Robot r : robots)
 				r.Step();

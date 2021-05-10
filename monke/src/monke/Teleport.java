@@ -131,22 +131,11 @@ public class Teleport implements Travel{
 	public void RemoveNeighbor(Travel t) {
 		pair.SetPair(null);
 		game.RemoveTeleport(this);
-		System.out.println("Teleport destroyed!");
 	}
 	
 	@Override
 	public String GetWeather() {
 		return null;
-	}
-	
-	@Override
-	public void PrintNeighbor() {
-		if(pair.GetAsteroid() != null) {
-			System.out.println("Teleport " + id + " - Asteroid " + pair.GetAsteroid().GetId());
-		}
-		else {
-			System.out.println("Teleport " + id + " - Asteroid null");
-		}
 	}
 	
 	@Override

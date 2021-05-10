@@ -281,11 +281,6 @@ public class Asteroid implements Travel{
 	public void SetIsMoving() {}
 	
 	@Override
-	public void PrintNeighbor() {
-		System.out.println("Asteroid " + id);
-	}
-	
-	@Override
 	public Asteroid GetOtherAsteroid() {
 		return this;
 	}
