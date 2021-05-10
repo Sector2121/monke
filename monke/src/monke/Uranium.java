@@ -15,7 +15,9 @@ public class Uranium extends Resource{
 	public int GetExposedCount() {
 		return exposedCount;
 	}
-	
+	/**
+	 * Ha eleri a szamlalo a 3-at, akkor felrobban
+	 */
 	@Override
 	public void CloseToSun(Asteroid a) {
 		exposedCount++;
@@ -23,7 +25,9 @@ public class Uranium extends Resource{
 			a.Explode();
 		}
 	}
-	
+	/**
+	 * Visszaadja az uranium stringjet
+	 */
 	String GetName() {
 		return "uranium";
 	}
