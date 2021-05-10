@@ -10,6 +10,13 @@ public class SettlerView implements Drawable{
 	private JLabel[] pictures;
 	private JLabel label;
 	
+	/**
+	 * Konstruktor
+	 * @param x
+	 * @param y
+	 * @param v
+	 * @param which
+	 */
 	public SettlerView(int x, int y, View v, String which) {
 		this.x=x;
 		this.y=y;
@@ -35,17 +42,27 @@ public class SettlerView implements Drawable{
 			label = pictures[4];
 	}
 	
+	/**
+	 * Beallitja a halott telepes kepet
+	 */
 	public void SetTomb() {
 		label.setBounds(x + 10, y - 10, 30, 30);
 		label.setIcon(new ImageIcon("tombstone.png"));
 	}
 	
+	/**
+	 * Atallitja a telepes koordinatait a kapott aszteroidaehoz
+	 * @param a
+	 */
 	@Override
 	public void SetCoord(Asteroid a) {
 		x = a.GetView().GetX();
 		y = a.GetView().GetY();
 	}
 
+	/**
+	 * Beallitja a telepes koordinatait es hozzaadja a viewhoz
+	 */
 	@Override
 	public void Draw() {
 		label.setBounds(x + 10, y - 25, 30, 30);
